@@ -1,0 +1,9 @@
+@project          Listing Admin
+@copyright        2007
+@license          GPL Version 3; BSD Modified
+@author           Tess <theirrenegadexxx@gmail.com>
+@contributor      Ekaterina <scripts@robotess.net> http://scripts.robotess.net
+@file             <$file.fileName>
+@version          Robotess Fork
+
+\/\*\*\n.*\*.*\@copyright\s*2007\n\s*\*\s*\@license\s*GPL Version 3\; BSD Modified\n\s*\*\s*\@author\s*Tess \<theirrenegadexxx\@gmail\.com\>(.*\n)*.*\n.*\*\/
