@@ -542,4 +542,3 @@ if (!class_exists('dragons')) {
 }
 
 $dragons = new dragons();
-?>

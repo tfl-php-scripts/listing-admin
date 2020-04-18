@@ -16,7 +16,8 @@ RUN cp /root/go/bin/mhsendmail /usr/bin/mhsendmail
 RUN touch /usr/local/etc/php/php.ini
 RUN echo 'sendmail_path = /usr/bin/mhsendmail --smtp-addr mailhog:1025' >> /usr/local/etc/php/php.ini
 RUN echo 'display_errors = on' >> /usr/local/etc/php/php.ini \
-    && echo 'log_errors = off' >> /usr/local/etc/php/php.ini
+    && echo 'log_errors = off' >> /usr/local/etc/php/php.ini \
+    && echo 'error_reporting = E_ALL' >> /usr/local/etc/php/php.ini
 
 RUN yes | pecl install xdebug \
     && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
@@ -33,5 +34,5 @@ RUN yes | pecl install xdebug \
 RUN a2enmod rewrite
 RUN service apache2 restart
 
-RUN mkdir -p /app/public/images/affiliates
-RUN chmod -R 777 /app/public/images
+RUN mkdir -p /app/public/images/codes/
+RUN chmod -R 777 /app/public/images/codes/

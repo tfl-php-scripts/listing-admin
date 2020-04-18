@@ -29,7 +29,7 @@ if (class_exists('octopus') == false) {
         public function writeError($t, $u, $b, $i)
         {
             global $seahorses;
-            return $seahorses->writeMessage(0, $t, $u, $b, $i);
+            $seahorses->writeMessage(0, $t, $u, $b, $i);
         }
 
         /**

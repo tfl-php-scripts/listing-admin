@@ -531,4 +531,3 @@ one will be generated for you.)</p>
 }
 
 $frogs = new frogs();
-?>

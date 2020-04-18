@@ -247,6 +247,13 @@ CREATE TABLE IF NOT EXISTS `trex_codes_donors` (
     UNIQUE KEY `dName` (`dName`(25),`dEmail`(80),`dURL`(90))
     ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `trex_codes_donors`
+--
+
+INSERT INTO `trex_codes_donors` (`dID`, `dName`, `dEmail`, `dURL`, `dPending`, `dUpdated`, `dAdded`) VALUES
+    (1, 'fff', 'newemail+1234@gmail.com', '', 0, '0000-00-00 00:00:00', '2020-04-18 21:40:07');
+
 -- --------------------------------------------------------
 
 --
@@ -260,6 +267,13 @@ CREATE TABLE IF NOT EXISTS `trex_codes_sizes` (
     `sOrder` smallint(2) UNSIGNED NOT NULL,
     PRIMARY KEY (`sID`)
     ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `trex_codes_sizes`
+--
+
+INSERT INTO `trex_codes_sizes` (`sID`, `sName`, `sOrder`) VALUES
+    (1, '50x50', 1);
 
 -- --------------------------------------------------------
 

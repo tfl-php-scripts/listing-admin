@@ -688,4 +688,3 @@ class&#34;top-wishlist&#34;&#62;&#60;br&#62;{desc}&#60;/p&#62;
 }
 
 $seahorses = new seahorses();
-?>
