@@ -259,9 +259,7 @@ if(class_exists('lions') == false) {
     $select = "SELECT * FROM `$_ST[categories]`";
     $true = $scorpions->fetch($select);
     while(
-     $getItem = (
-      $laoptions->dbEngine == 'mysqli' ? $scorpions->obj($true) : mysql_fetch_object($true)
-     )
+     $getItem = $scorpions->obj($true)
     ) {
      $catid = $getItem->catid;
      $s2 = "SELECT * FROM `$_ST[main]` WHERE `category` LIKE '%!$catid!%'";
@@ -283,9 +281,7 @@ if(class_exists('lions') == false) {
      $select = "SELECT * FROM `$_ST[categories]`";
      $true = $scorpions->fetch($select);
      while(
-      $getItem = (
-       $laoptions->dbEngine == 'mysqli' ? $scorpions->obj($true) : mysql_fetch_object($true)
-      )
+      $getItem = $scorpions->obj($true)
      ) {
       $catid = $getItem->catid;
       $s2 = "SELECT * FROM `$_ST[joined]` WHERE `jCategory` LIKE '%!$catid!%'";

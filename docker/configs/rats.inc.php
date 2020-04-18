@@ -49,13 +49,13 @@ $_ST['prefix'] = 'trex_';
  *  method of database usage. You shouldn't need to change
  *  this unless your server doesn't support Mysqli.
  *
- *  Enter in "mysqli" or "mysql". For example:
+ *  Enter in "mysqli" or "pdo_mysql". For example:
  *
- *  $_ST['dbengine'] = "mysql";
+ *  $_ST['dbengine'] = "pdo_mysql";
  *  $_ST['dbengine'] = "mysqli";
  */
 # -----------------------------------------------------------
-$_ST['dbengine'] = 'mysqli';
+$_ST['dbengine'] = 'pdo_mysql';
 
 # -----------------------------------------------------------
 /*

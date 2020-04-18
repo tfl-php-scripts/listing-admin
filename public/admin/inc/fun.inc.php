@@ -286,10 +286,10 @@ if(class_exists('tigers') == false) {
 
    if(isset($_COOKIE['lalog']) && $a == true) {
     echo "<h3>Debug Mode</h3>\n<p>There seems to be a few (hopefully minor)" . 
-    " issues with the script:</p>\n<p class=\"$p\"><span class=\"$class\">MySQL" . 
+    " issues with the script:</p>\n<p class=\"$p\"><span class=\"$class\">DB" .
     " Errors:</span> ";
     if($q != 'n') {
-     echo $laoptions->dbEngine == 'mysqli' ? $scorpions->database->error : mysql_error($scorpions->connect);
+     echo $scorpions->database->error();
      echo "\n<br><em>" . $q . "</em></p>\n";
     } else {
      echo "</p>\n";
