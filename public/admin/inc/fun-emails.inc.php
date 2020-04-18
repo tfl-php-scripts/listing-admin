@@ -401,4 +401,3 @@ if(class_exists('jaguars') == false) {
 }
 
 $jaguars = new jaguars();
-?>

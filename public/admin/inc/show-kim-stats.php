@@ -20,4 +20,3 @@ $format = str_replace('{pending}', $kimadmin->kimCount(1), $format);
 $format = str_replace('{updated}', $kimadmin->kimUpdate(), $format);
 
 echo $format;
-?>

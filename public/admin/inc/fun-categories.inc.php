@@ -307,4 +307,3 @@ if(class_exists('lions') == false) {
 }
 
 $lions = new lions();
-?>

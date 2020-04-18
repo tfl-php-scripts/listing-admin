@@ -103,4 +103,3 @@ If this has been an error, or the information listed is wrong, feel more than fr
 --
 {owner}
 {listing_title} <{listing_url}>");
-?>

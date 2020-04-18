@@ -411,4 +411,3 @@ if(class_exists('rabbits') == false) {
 }
 
 $rabbits = new rabbits();
-?>

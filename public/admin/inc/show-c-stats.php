@@ -27,4 +27,3 @@ $format = str_replace('{joined}', $seahorses->getCount('joined'), $format);
 $format = str_replace('{newest}', $wolves->getNewest(), $format);
 
 echo $format;
-?>

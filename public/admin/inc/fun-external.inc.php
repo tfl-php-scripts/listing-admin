@@ -379,4 +379,3 @@ if (class_exists('octopus') == false) {
 }
 
 $octopus = new octopus();
-?>

@@ -188,4 +188,3 @@ if(class_exists('laantispam') == false) {
 }
 
 $laantispam = new laantispam();
-?>

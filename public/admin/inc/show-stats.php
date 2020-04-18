@@ -58,4 +58,3 @@ if($options->useTemplate) {
  $la_fl_opened  = date($getItem->date, strtotime($getItem->since));
  $la_fl_updated = $snakes->getUpdated($options->listingID);
 }
-?>

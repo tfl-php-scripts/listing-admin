@@ -57,4 +57,3 @@ if($count > 0) {
 else {
  echo '<p class="tc">No quotes appear to exist under that listing.</p>';
 }
-?>

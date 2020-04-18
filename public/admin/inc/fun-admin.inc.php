@@ -261,4 +261,3 @@ if(class_exists('leopards') == false) {
 }
 
 $leopards = new leopards();
-?>

@@ -1,9 +1,8 @@
 <?php  
 # 'B.INC.PHP' FILE 
 /* ----------------------------------------------------------
-Tess Ally 2007 © Listing Admin 
+Tess Ally 2007 ï¿½ Listing Admin 
 ------------------------------------------------------------- */
 if(defined('MAINDIR') == false) {
  define('MAINDIR', str_replace('inc', '', dirname(__FILE__)));
 }
-?>

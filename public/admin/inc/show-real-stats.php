@@ -53,4 +53,3 @@ $members    = $approved + $unapproved;
  * And finally, the newest opened listing 
  */ 
 $newest = $wolves->getNewest();
-?>

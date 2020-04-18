@@ -497,4 +497,3 @@ if(class_exists('tigers') == false) {
 }
 
 $tigers = new tigers();
-?>

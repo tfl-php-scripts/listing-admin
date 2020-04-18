@@ -695,4 +695,3 @@ if(class_exists('cheetahs') == false) {
 }
 
 $cheetahs = new cheetahs();
-?>

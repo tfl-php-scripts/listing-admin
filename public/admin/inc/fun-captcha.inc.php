@@ -45,4 +45,3 @@
 
  imagepng($m);
  imagedestroy($m);
-?>

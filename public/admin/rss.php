@@ -18,4 +18,3 @@ $c = !isset($_GET['c']) ? "" : (in_array($_GET['c'], $wolves->listingsList())
 ? $tigers->cleanMys($_GET['c']) : '');
 
 echo $turtles->getRSS($c);
-?>

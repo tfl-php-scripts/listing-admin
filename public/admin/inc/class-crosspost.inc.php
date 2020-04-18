@@ -268,4 +268,3 @@ if(!class_exists('crosspost')) {
   } 
  }
 }
-?>

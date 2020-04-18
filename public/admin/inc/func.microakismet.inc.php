@@ -149,5 +149,3 @@ function _akismet_send ( $args = "", $host = "", $url = "" ) {
 	}
 	return $response[ 1 ];
 }
-
-?>

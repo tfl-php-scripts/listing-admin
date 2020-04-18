@@ -87,4 +87,3 @@ else {
   echo '<p class="tc">No lyrics appear to exist under that listing.</p>';
  }
 }
-?>

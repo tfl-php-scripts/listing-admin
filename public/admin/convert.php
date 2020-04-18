@@ -889,4 +889,3 @@ INSERT INTO `table` (`url`, `title`, `imagefile`, `email`, `added`) VALUES
   }
  }
 }
-?>

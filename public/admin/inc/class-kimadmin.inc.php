@@ -391,4 +391,3 @@ if(class_exists('kimadmin') == false) {
 }
 
 $kimadmin = new kimadmin();
-?>

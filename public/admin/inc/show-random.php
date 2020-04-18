@@ -143,4 +143,3 @@ if($options->showJoined == 'y') {
   }
  }
 }
-?>
