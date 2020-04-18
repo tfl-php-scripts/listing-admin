@@ -72,7 +72,7 @@ $_ST['options'] = $prefix . 'options';
 # -----------------------------------------------------------
 
 /**
- * Get MySQL link!
+ * Get MySQLi link! - thanks to Martina http://inspirationally.net
  */
 $connect = mysqli_connect($database_host, $database_user, $database_pass, $database_name)
 or die('<p><span class="error">Error:</span> You cannot currently connect to MySQL.' .

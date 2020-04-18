@@ -1,17 +1,14 @@
 <?php
-require_once("pro.php");
 require("header.php");
-?>
-<h3>Members List</h3>
-<?php 
 # -----------------------------------------------------------
 require("jac.inc.php");
 # -----------------------------------------------------------
-$fKey = 1;
+$fKey = 0;
+$fClose = 'n';
+$fWhich = 'form';
+$turnAff = 1;
+$turnCon = 1;
 # -----------------------------------------------------------
-require(STPATH . "show-members.php");
+require(STPATH . "show-form.php");
 # -----------------------------------------------------------
-?> 
-<?php 
 require("footer.php");
-?>

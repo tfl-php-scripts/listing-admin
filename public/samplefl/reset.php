@@ -1,5 +1,5 @@
 <?php 
-require("pro.php");
+require_once("pro.php");
 require("header.php");
 ?>
 <h3>Reset Your Password</h3>
