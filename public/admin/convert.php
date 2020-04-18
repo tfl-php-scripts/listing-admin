@@ -352,7 +352,7 @@ if(
      'mysql\">Error:</span> There was an error trying to pull from the table' . 
      " you specified in the form.</p>\n<h3>MySQL Error(s)</h3>\n<p><em>$query" . 
      "</em><br>\n" . 
-     ($laoptions->dbEngine == 'mysql' ? mysql_error() : $scorpions->database->error) . 
+     $scorpions->database->error() .
      "</p>\n");
     }
 		

@@ -39,8 +39,7 @@ if(isset($_POST['action'])) {
    if(isset($_COOKIE['lalog'])) {
 		$errors['add'] .= "<h4>Debug</h4>\n";
 		$errors['add'] .= "<p class=\"mysqlButton\"><span class=\"mysql\">MySQL" . 
-    " Errors:</span> " . ($laoptions->dbEngine == 'mysql' ? mysql_error() : 
-    $scorpions->database->error) . "<br>\n<em>$insert</em></p>\n";
+    " Errors:</span> " . $scorpions->database->error() . "<br>\n<em>$insert</em></p>\n";
 	 }
   } elseif ($true == true) {
    $success['add'] = $tigers->displaySuccess('The size was added to the database!');
@@ -66,8 +65,7 @@ if(isset($_POST['action'])) {
     if(isset($_COOKIE['lalog'])) {
 		 $errors['add'] .= "<h4>Debug</h4>\n";
 		 $errors['add'] .= "<p class=\"mysqlButton\"><span class=\"mysql\">MySQL" . 
-     " Errors:</span> " . ($laoptions->dbEngine == 'mysql' ? mysql_error() : 
-     $scorpions->database->error) . "<br>\n<em>$update</em></p>\n";
+     " Errors:</span> " . $scorpions->database->error() . "<br>\n<em>$update</em></p>\n";
 	  }
 	 }
 	}
@@ -88,8 +86,7 @@ if(isset($_POST['action'])) {
     if(isset($_COOKIE['lalog'])) {
 		 $errors['add'] .= "<h4>Debug</h4>\n";
 		 $errors['add'] .= "<p class=\"mysqlButton\"><span class=\"mysql\">MySQL" . 
-     " Errors:</span> " . ($laoptions->dbEngine == 'mysql' ? mysql_error() : 
-     $scorpions->database->error) . "<br>\n<em>$delete</em></p>\n";
+     " Errors:</span> " . $scorpions->database->error() . "<br>\n<em>$delete</em></p>\n";
 	  }
 	 }
 	}
