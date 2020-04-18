@@ -316,89 +316,38 @@ CREATE TABLE IF NOT EXISTS `trex_joined` (
 --
 
 INSERT INTO `trex_joined` (`jID`, `jSubject`, `jURL`, `jImage`, `jCategory`, `jMade`, `jStatus`, `jAdd`) VALUES
-    (1, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (2, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (3, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (4, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (5, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (6, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (7, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (8, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (9, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (10, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (11, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (12, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (13, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (14, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (15, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (16, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (17, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (18, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (19, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (20, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (21, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (22, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (23, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (24, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (25, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (26, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (27, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (28, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (29, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (30, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (31, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (32, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (33, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (34, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (35, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (36, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (37, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (38, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (39, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (40, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (41, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (42, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (43, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (44, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (45, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (46, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (47, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (48, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (49, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (50, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (51, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (52, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (53, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (54, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (55, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (56, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (57, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (58, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (59, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (60, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (61, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (62, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (63, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (64, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (65, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (66, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (67, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (68, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (69, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (70, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (71, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (72, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (73, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (74, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (75, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (76, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (77, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (78, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (79, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (80, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (81, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27'),
-    (82, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27');
+    (1, 'Joined My Owned one', 'http://localhost:8041/samplefl', '', '|21|41|55|', 'y', 0, '2020-02-27');
 
+
+DROP procedure if exists InsertJoined;
+
+DELIMITER $$
+CREATE PROCEDURE InsertJoined(IN NumRows INT)
+    BEGIN
+        DECLARE i INT;
+        DECLARE subject VARCHAR(40);
+        DECLARE url VARCHAR(80);
+        DECLARE catsMax INT;
+        DECLARE cats VARCHAR(25);
+        DECLARE added DATE;
+        SET i = 1;
+        SET added = '2017-08-25';
+        select max(catid) INTO catsMax from trex_categories;
+        START TRANSACTION;
+        WHILE i <= NumRows DO
+            SET url = CONCAT('http://', i, '.localhost123456.com');
+            SET subject = CONCAT('Subject ', i);
+            SET cats = CONCAT('|',MOD(i, catsMax),'|',MOD(i+2, catsMax),'|',MOD(i+4, catsMax),'|');
+            SET added = DATE_ADD(added, INTERVAL 10 DAY);
+            INSERT INTO `trex_joined` (`jSubject`, `jURL`, `jImage`, `jCategory`, `jMade`, `jStatus`, `jAdd`) VALUES
+            (subject, url, '', cats, 'n', 0, added);
+            SET i = i + 1;
+        END WHILE;
+        COMMIT;
+    END$$
+DELIMITER ;
+
+CALL InsertJoined(150);
 -- --------------------------------------------------------
 
 --
