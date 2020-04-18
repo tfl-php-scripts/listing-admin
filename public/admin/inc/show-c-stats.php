@@ -1,21 +1,21 @@
 <?php
-/** 
- *  @copyright   2007 
- *  @license     GPL Version 3; BSD Modified 
- *  @author      Tess <treibend@gmail.com> 
- *  @file        <show-c-stats.php> 
- *  @since       September 2nd, 2010   
- *  @version     1.0    
- */ 
-if(!defined('MAINDIR')) {
- define('MAINDIR', str_replace('inc', '', dirname(__FILE__)));
-}
-require(MAINDIR . "rats.inc.php");
-require_once("fun.inc.php");
-require_once("fun-listings.inc.php");
-require_once("fun-members.inc.php");
-require_once("fun-misc.inc.php");
-require(MAINDIR . "vars.inc.php");
+/**
+ * @project          Listing Admin
+ * @copyright        2007
+ * @license          GPL Version 3; BSD Modified
+ * @author           Tess <theirrenegadexxx@gmail.com>
+ * @contributor      Ekaterina <scripts@robotess.net> http://scripts.robotess.net
+ * @file             <show-c-stats.php>
+ * @version          Robotess Fork
+ */
+
+require_once('b.inc.php');
+require(MAINDIR . 'rats.inc.php');
+require_once('fun.inc.php');
+require_once('fun-listings.inc.php');
+require_once('fun-members.inc.php');
+require_once('fun-misc.inc.php');
+require(MAINDIR . 'vars.inc.php');
 
 $format = html_entity_decode($seahorses->getTemplate('collective_stats_template'));
 $format = str_replace('{current}', $seahorses->getCount('current', 'y'), $format);
