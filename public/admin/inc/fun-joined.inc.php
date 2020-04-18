@@ -13,7 +13,7 @@ if (!class_exists('dragons')) {
 
     class dragons
     {
-        private $range = 3;
+        private $range = 10;
 
         /**
          * @function  $dragons->joinedList()

@@ -6,7 +6,7 @@ Original author is [Tess](http://scripts.wyngs.net) / Original readme by Tess is
 
 #### I would highly recommend not to use this script for new installations, please only update it if you have already installed it before.
 
-This version requires at least PHP 7.2.
+This version requires at least PHP 7.2 and MySQLi or PDO_MySQL extensions.
 
 | PHP version | Supported until | Supported by Listing Admin |
 |------------------------------------------|--------------------|-------------------------|
