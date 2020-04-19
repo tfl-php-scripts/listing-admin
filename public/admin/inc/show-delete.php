@@ -55,7 +55,7 @@
                 'e-mail</samp> field are not allowed.', false);
         }
         $password = $tigers->cleanMys($_POST['password']);
-        if (!$snakes->checkReset($email, $options->listingID)) {
+        if (!$snakes->checkIfEmailExists($email, $options->listingID)) {
             $tigers->displayError('Script Error', 'It appears your email is not' .
                 ' listed at this listing. This might be because you are not a member, or you' .
                 ' have chosen the wrong e-mail address.', false);
@@ -101,24 +101,12 @@
             }
         }
 
-        /**
-         * Since everything's A-OK, let's delete the member :D
-         */
-        $select = "SELECT * FROM `$_ST[members]` WHERE `fNiq` = '" . $options->listingID .
-            "' AND `mEmail` = '$email' AND `mPassword` = MD5('$password')";
-        $true = $scorpions->query($select);
-        if ($true == true && $scorpions->total($true) == 1) {
-            $getMember = $scorpions->obj($true);
-            $delete = "DELETE FROM `$_ST[members]` WHERE `mID` = '" . $getMember->mID . "' LIMIT 1";
-            $result = $scorpions->query($delete);
-            if ($result == true) {
-                echo '<p class="successButton"><span class="success">Success!</span> You' .
-                    " have been successfully deleted from the listing!</p>\n";
-            }
-        } else {
-            $tigers->displayError('Database Error', 'The script was unable to pull your' .
-                ' information from the database. Please make sure your information is correct.',
-                false);
+        $mID = $snakes->getMemberInfo($email, $password, $options->listingID);
+        $delete = "DELETE FROM `$_ST[members]` WHERE `mID` = '" . $mID . "' LIMIT 1";
+        $result = $scorpions->query($delete);
+        if ($result == true) {
+            echo '<p class="successButton"><span class="success">Success!</span> You' .
+                " have been successfully deleted from the listing!</p>\n";
         }
     } else {
         $mark = $getItem->markup == 'xhtml' ? ' /' : '';

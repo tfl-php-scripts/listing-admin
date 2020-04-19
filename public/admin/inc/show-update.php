@@ -62,6 +62,10 @@
                 'new email</samp> field are not allowed.', false);
         }
 
+        if ($snakes->checkIfEmailExists($new_email, $options->listingID)) {
+            $tigers->displayError('Script Error', 'It appears your new email is already taken by someone else.', false);
+        }
+
         $new_name = $tigers->cleanMys($_POST['new_name']);
         if (!empty($new_name)) {
             if (!preg_match("/([A-Za-z-\s]+)/i", $new_name)) {

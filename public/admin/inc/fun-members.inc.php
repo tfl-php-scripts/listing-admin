@@ -914,6 +914,36 @@ case 'head':
         }
 
         /**
+         * @function  $snakes->getMemberInfo()
+         *
+         * @param     $email , string; member e-mail
+         * @param     $password , string; password
+         * @param     $listingId , int; listing ID
+         * @return mixed
+         */
+        public function getMemberInfo($email, $password, $listingId)
+        {
+            global $_ST, $scorpions, $tigers;
+
+            $select = "SELECT * FROM `$_ST[members]` WHERE TRIM(LOWER(`mEmail`)) =" .
+                " '$email' AND `mPassword` = MD5('$password') AND `fNiq` = '$listingId'";
+
+            $true = $scorpions->query($select);
+            if ($true == false) {
+                $tigers->displayError('Database Error', 'The script was unable to' .
+                    ' check you as a member.', false);
+            }
+
+            if($scorpions->total($true) !== 1) {
+                $tigers->displayError('Database Error', 'The script was unable to pull your' .
+                ' information from the database. Please make sure your information is correct.',
+                false);
+            }
+
+            return $scorpions->fetch($select, 'mID');
+        }
+
+        /**
          * @function  $snakes->checkMember()
          *
          * @param     $e , string; member e-mail
@@ -932,26 +962,6 @@ case 'head':
                 $tigers->displayError('Database Error', 'The script was unable to' .
                     ' check you as a member.', false);
             }
-
-            $valid = false;
-            if ($scorpions->total($true) == 1) {
-                $valid = true;
-            }
-
-            return $valid;
-        }
-
-        /**
-         * @function  $snakes->checkReset()
-         * @param     $e , string; e-mail
-         * @param     $l , int; listing ID
-         */
-        public function checkReset($e, $l)
-        {
-            global $_ST, $scorpions;
-
-            $select = "SELECT * FROM `$_ST[members]` WHERE `mEmail` = '$e' AND `fNiq` = '$l'";
-            $true = $scorpions->query($select);
 
             $valid = false;
             if ($scorpions->total($true) == 1) {
