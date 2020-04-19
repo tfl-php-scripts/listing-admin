@@ -49,7 +49,7 @@ $GLOBALS["akismet_url"]		= "1.1";
 
 /**
  * Check the given message and server parameters against Akismet
- * @param	string	$vars		Info about the comment, in key/val pairs
+ * @param	array	$vars		Info about the comment, in key/val pairs
  * @return 	boolean				True if it's spam, false if not
  * @access	public
  */
