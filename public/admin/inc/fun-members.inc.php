@@ -893,17 +893,17 @@ case 'head':
         /**
          * @function  $snakes->checkMember()
          *
-         * @param     $n , string; member name
          * @param     $e , string; member e-mail
          * @param     $p , string; member password
          * @param     $i , int; listing ID
          */
-        public function checkMember($n, $e, $p, $i)
+        public function validateMember($e, $p, $i)
         {
             global $_ST, $scorpions, $tigers;
 
-            $select = "SELECT * FROM `$_ST[members]` WHERE `mName` = '$n' AND `mEmail` =" .
+            $select = "SELECT * FROM `$_ST[members]` WHERE TRIM(LOWER(`mEmail`)) =" .
                 " '$e' AND `mPassword` = MD5('$p') AND `fNiq` = '$i'";
+
             $true = $scorpions->query($select);
             if ($true == false) {
                 $tigers->displayError('Database Error', 'The script was unable to' .

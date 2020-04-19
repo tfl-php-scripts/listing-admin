@@ -18,6 +18,7 @@ header('Cache-Control: no-cache, must-revalidate');
  * functions 8D
  */
 require('rats.inc.php');
+require_once('inc/Robotess/StringUtils.php');
 require('inc/fun.inc.php');
 require('inc/fun-addons.inc.php');
 require('inc/fun-admin.inc.php');

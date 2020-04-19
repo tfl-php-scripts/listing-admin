@@ -6,14 +6,14 @@
      * @license          GPL Version 3; BSD Modified
      * @author           Tess <theirrenegadexxx@gmail.com>
      * @contributor      Ekaterina <scripts@robotess.net> http://scripts.robotess.net
-     * @file             <show-joined.php>
+     * @file             <show-join.php>
      * @version          Robotess Fork
      */
 
     use Robotess\StringUtils;
 
     require('b.inc.php');
-    require('Robotess/StringUtils.php');
+    require_once('Robotess/StringUtils.php');
     require(MAINDIR . 'rats.inc.php');
     require_once('class-antispam.inc.php');
     require_once('fun.inc.php');
@@ -226,6 +226,8 @@
                     ' join us.', false);
             }
         }
+
+        //@todo check that member exists
 
         /**
          * Now that we've checked everything, time to add the member! :D
