@@ -402,7 +402,7 @@ if (!class_exists('dragons')) {
                     <?php
                 }
             } else {
-                $mark = $seahorses->getOption('markup') == 'xhtml' ? ' /' : '';
+                $mark = $seahorses->getOption('markup') === 'xhtml' ? ' /' : '';
                 ?>
                 <p>Below is the form to search through my joined fanlistings. This is
                     particularly useful when looking for a listing of yours I may have joined, or

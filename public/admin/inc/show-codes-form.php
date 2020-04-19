@@ -9,10 +9,10 @@
  * @version          Robotess Fork
  */
 
-use Robotess\Utils;
+use Robotess\StringUtils;
 
 require('b.inc.php');
-require_once('Robotess/Utils.php');
+require_once('Robotess/StringUtils.php');
 require(MAINDIR . 'rats.inc.php');
 require_once('fun.inc.php');
 require_once('fun-addons.inc.php');
@@ -65,7 +65,7 @@ if (isset($_POST['action'])) {
         if (!empty($name)) {
             $donor = $cheetahs->donor($name);
         }
-        $email = Utils::instance()->normalize($tigers->cleanMys($_POST['email']));
+        $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
         if (
             empty($email) &&
             (empty($name) && (isset($_POST['new_name']) && !empty($_POST['new_name'])))
@@ -263,7 +263,7 @@ else {
                 <input name="new_name" class="input1" type="text"<?php echo $markup; ?>></p>
             <p><label><strong>New E-mail</strong><br>
                     This will not be published:</label>
-                <input name="email" class="input1" type="text"<?php echo $markup; ?>></p>
+                <input name="email" class="input1" type="email"<?php echo $markup; ?>></p>
             <p class="clearField" style="clear: both; margin: 0 0 0.5% 0;"></p>
             <p><label><strong>New URL:</strong></label>
                 <input name="url" class="input1" type="text"<?php echo $markup; ?>></p>

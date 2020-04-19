@@ -10,10 +10,10 @@
      * @version          Robotess Fork
      */
 
-    use Robotess\Utils;
+    use Robotess\StringUtils;
 
     require('b.inc.php');
-    require_once('Robotess/Utils.php');
+    require_once('Robotess/StringUtils.php');
     require(MAINDIR . 'rats.inc.php');
     require_once('class-antispam.inc.php');
     require_once('fun.inc.php');
@@ -46,11 +46,11 @@
      * The form has been set, so let's check the variables~
      */
     if (isset($_POST['action']) && $_POST['action'] == 'Delete Me') {
-        $email = Utils::instance()->normalize($tigers->cleanMys($_POST['email']));
+        $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
         if (empty($email)) {
             $tigers->displayError('Form Error', 'The <samp>email</samp> field has not been' .
                 ' filled out.', false);
-        } elseif (!Utils::instance()->isEmailValid($email)) {
+        } elseif (!StringUtils::instance()->isEmailValid($email)) {
             $tigers->displayError('Form Error', 'The characters specified in the <samp>' .
                 'e-mail</samp> field are not allowed.', false);
         }

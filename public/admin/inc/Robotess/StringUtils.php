@@ -10,7 +10,7 @@
 
 namespace Robotess;
 
-class Utils
+class StringUtils
 {
     /**
      * @var self
@@ -28,23 +28,6 @@ class Utils
         }
 
         return self::$instance;
-    }
-
-    /**
-     * @param $data
-     * @return string
-     */
-    public function clean(string $data): string
-    {
-        $data = trim(htmlentities(strip_tags($data), ENT_QUOTES));
-
-        if (get_magic_quotes_gpc()) {
-            $data = stripslashes($data);
-        }
-
-        $data = addslashes($data);
-
-        return $data;
     }
 
     /**

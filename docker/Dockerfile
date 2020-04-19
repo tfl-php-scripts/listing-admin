@@ -1,5 +1,5 @@
 #FROM composer:1.6
-FROM php:7.1-apache
+FROM php:7.2-apache
 
 MAINTAINER Scripts.robotess.net
 
@@ -33,6 +33,10 @@ RUN yes | pecl install xdebug \
 
 RUN a2enmod rewrite
 RUN service apache2 restart
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint
+RUN chmod +x /usr/local/bin/docker-entrypoint
 
-RUN mkdir -p /app/public/images/codes/
-RUN chmod -R 777 /app/public/images/codes/
+WORKDIR /app
+
+ENTRYPOINT ["docker-entrypoint"]
+CMD ["apache2-foreground"]
