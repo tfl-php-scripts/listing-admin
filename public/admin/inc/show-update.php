@@ -141,7 +141,7 @@
                 'Update Error', $userinfo->url, $userinfo->text, $automated
             );
             $tigers->displayError('Script Error', 'It appears the script has not' .
-                ' indentified you as a member. This could be because you have not used the' .
+                ' identified you as a member. This could be because you have not used the' .
                 ' correct e-mail address or you have entered a incorrect password.' .
                 ' Try finding your details on the members list and entering them in the form' .
                 ' <em>exactly</em> as they appear, and/or requesting a new password.', false);

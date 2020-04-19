@@ -227,7 +227,12 @@
             }
         }
 
-        //@todo check that member exists
+        if ($snakes->checkIfEmailExists($email, $id)) {
+            $octopus->writeError(
+                'Join Error', $userinfo->url, $userinfo->text, $automated
+            );
+            $tigers->displayError('Script Error', 'It appears that email you entered already exists in the system. Please use Update Form if you wish to update your information.', false);
+        }
 
         /**
          * Now that we've checked everything, time to add the member! :D

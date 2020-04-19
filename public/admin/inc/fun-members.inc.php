@@ -891,6 +891,29 @@ case 'head':
         }
 
         /**
+         * @function  $snakes->checkIfEmailExists()
+         *
+         * @param     $email , string; member e-mail
+         * @param     $listingId , int; listing ID
+         * @return bool
+         */
+        public function checkIfEmailExists($email, $listingId): bool
+        {
+            global $_ST, $scorpions, $tigers;
+
+            $select = "SELECT * FROM `$_ST[members]` WHERE TRIM(LOWER(`mEmail`)) =" .
+                " '$email' AND `fNiq` = '$listingId'";
+
+            $true = $scorpions->query($select);
+            if ($true == false) {
+                $tigers->displayError('Database Error', 'The script was unable to' .
+                    ' check if email exists.', false);
+            }
+
+            return $scorpions->total($true) !== 0;
+        }
+
+        /**
          * @function  $snakes->checkMember()
          *
          * @param     $e , string; member e-mail
