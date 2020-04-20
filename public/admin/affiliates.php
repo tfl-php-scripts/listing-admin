@@ -1,20 +1,22 @@
 <?php
 /**
- * @copyright 2007
- * @license   GPL Version 3; BSD Modified
- * @author    Tess <treibend@gmail.com>
- * @file      <affiliates.php>
- * @since     September 2nd, 2010
- * @version   1.0
+ * @project          Listing Admin
+ * @copyright        2007
+ * @license          GPL Version 3; BSD Modified
+ * @author           Tess <theirrenegadexxx@gmail.com>
+ * @contributor      Ekaterina <scripts@robotess.net> http://scripts.robotess.net
+ * @file             <affiliates.php>
+ * @version          Robotess Fork
  */
-$getTitle = "Affiliates";
-require("pro.inc.php");
-require("vars.inc.php");
-require("header.php");
+
+use Robotess\StringUtils;$getTitle = 'Affiliates';
+require('pro.inc.php');
+require('vars.inc.php');
+require('header.php');
 
 $sp = isset($_GET['listing']) && !isset($_GET['g']) ?
-    "<span><a href=\"affiliates.php?listing=" . $tigers->cleanMys($_GET['listing']) .
-    "&#38;g=new\">Add Affiliate</a></span>" : '';
+    '<span><a href="affiliates.php?listing=' . $tigers->cleanMys($_GET['listing']) .
+    '&#38;g=new">Add Affiliate</a></span>' : '';
 echo "<h2>{$getTitle}$sp</h2>\n";
 
 if (!isset($_GET['p']) || empty($_GET['p']) || !ctype_digit($_GET['p'])) {
@@ -38,9 +40,9 @@ if (isset($_GET['g']) && $_GET['g'] == 'new') {
             <p><label><strong>Subject:</strong></label>
                 <input name="subject" class="input1" type="text"></p>
             <p><label><strong>E-Mail:</strong></label>
-                <input name="email" class="input1" type="text"></p>
+                <input name="email" class="input1" type="email"></p>
             <p><label><strong>URI:</strong></label>
-                <input name="url" class="input1" type="text"></p>
+                <input name="url" class="input1" type="url"></p>
             <p><label><strong>E-Mail Recipient:</strong></label>
                 <input name="rec" class="input3" type="radio" value="y"> Yes
                 <input name="rec" checked="checked" class="input3" type="radio" value="n"> No</p>
@@ -61,12 +63,12 @@ if (isset($_GET['g']) && $_GET['g'] == 'new') {
                     if ($true == false) {
                         echo "  <option value=\"0\">No Listings Available</option>\n";
                     } else {
-                        $c = $getlistingid == '0' || $getlistingid == 0 ? " selected=\"selected\"" : '';
+                        $c = $getlistingid == '0' || $getlistingid == 0 ? ' selected="selected"' : '';
                         echo "<option$c value=\"collective\">&#8212; Collective</option>\n";
                         while ($getItem = $scorpions->obj($true)) {
-                            echo "  <option value=\"" . $getItem->id . "\"";
+                            echo '  <option value="' . $getItem->id . '"';
                             if ($getItem->id == $getlistingid) {
-                                echo " selected=\"selected\"";
+                                echo ' selected="selected"';
                             }
                             echo '>' . $getItem->subject . "</option>\n";
                         }
@@ -91,25 +93,25 @@ if (isset($_GET['g']) && $_GET['g'] == 'new') {
         $tigers->displayError('Form Error', 'Your <samp>subject</samp> field' .
             ' is empty.', false);
     }
-    $email = $tigers->cleanMys($_POST['email']);
+    $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
     if (empty($email)) {
         $tigers->displayError('Form Error', 'Your <samp>e-mail</samp> field' .
             ' is empty.', false);
-    } elseif (!preg_match("/([A-Za-z0-9-_\.]+)@(([A-Za-z0-9-_]+\.)+)([a-zA-Z]{2,4})$/i", $email)) {
+    } elseif (!StringUtils::instance()->isEmailValid($email)) {
         $tigers->displayError('Form Error', 'The characters specified in the' .
             ' <samp>e-mail</samp> field are not allowed.', false);
     }
-    $url = $tigers->cleanMys($_POST['url']);
+    $url = StringUtils::instance()->normalize($tigers->cleanMys($_POST['url']));
     if (empty($url)) {
         $tigers->displayError('Form Error', 'Your <samp>site URL</samp> field' .
             ' is empty.', false);
-    } elseif (!strstr($url, 'http://')) {
+    } elseif (!StringUtils::instance()->isUrlValid($url)) {
         $tigers->displayError('Form Error', 'Your <samp>site URL</samp> does' .
             ' not start with http:// and therefore is not valid. Try again.', false);
     }
     $rec = $tigers->cleanMys($_POST['rec']);
     $image = $_FILES['image'];
-    $image_tag = substr(sha1(date("YmdHis")), mt_rand(0, 9), 15);
+    $image_tag = substr(sha1(date('YmdHis')), mt_rand(0, 9), 15);
     if (!empty($_FILES['image']['name'])) {
         $imageinfo = getimagesize($_FILES['image']['tmp_name']);
         $imagetype = $imageinfo[2];
@@ -120,7 +122,6 @@ if (isset($_GET['g']) && $_GET['g'] == 'new') {
     }
 
     if ($getItem->dblist != 1) {
-        $listing = array();
         $listing = $_POST['listing'];
         $listing = array_map(array($tigers, 'cleanMys'), $listing);
         $listing = $tigers->collective($listing);
@@ -131,15 +132,7 @@ if (isset($_GET['g']) && $_GET['g'] == 'new') {
 
             if ($rec == 'y') {
                 $mail = $jaguars->sendAffEmail(
-                    'affiliates_approve',
-                    $v,
-                    'n',
-                    'Affiliate Added',
-                    'n',
-                    $g,
-                    $subject,
-                    $url,
-                    $email
+                    'affiliates_approve', $v, 'n', 'Affiliate Added', 'n', $g, $url, $email
                 );
                 if ($mail == true) {
                     echo '<p class="successButton"><span class="success">SUCCESS!</span> Your' .
@@ -147,21 +140,13 @@ if (isset($_GET['g']) && $_GET['g'] == 'new') {
                 }
             }
         }
-        $dblisting = implode("!", $listing);
-        $dblisting = "!" . trim($dblisting, "!") . "!";
+        $dblisting = implode('!', $listing);
+        $dblisting = '!' . trim($dblisting, '!') . '!';
     } else {
         $dblisting = '!' . $getItem->dbflid . '!';
         if ($rec == 'y') {
             $mail = $jaguars->sendAffEmail(
-                'affiliates_approve',
-                'listing',
-                'n',
-                'Affiliate Added',
-                'n',
-                $getlistingid,
-                $subject,
-                $url,
-                $email
+                'affiliates_approve', 'listing', 'n', 'Affiliate Added', 'n', $getlistingid, $url, $email
             );
             if ($mail == true) {
                 echo '<p class="successButton"><span class="success">SUCCESS!</span> Your' .
@@ -198,7 +183,7 @@ if (isset($_GET['g']) && $_GET['g'] == 'new') {
         } elseif ($getItem->dbtype == 'listingadmin') {
             $insert = "INSERT INTO `$dbtable` (`fNiq`, `aSubject`, `aEmail`, `aURL`," .
                 " `aImage`, `aAdd`) VALUES ('$dblisting', '$subject', '$email', '$url', '$file'," .
-                " CURDATE())";
+                ' CURDATE())';
             $scorpions->query("SET NAMES 'utf8';");
         }
         $true = $scorpions->query($insert);
@@ -209,13 +194,11 @@ if (isset($_GET['g']) && $_GET['g'] == 'new') {
         } elseif ($true == true) {
             echo '<p class="successButton"><span class="success">SUCCESS!</span> Your' .
                 " affiliate was added to the database!</p>\n";
-            if (isset($success)) {
-                if ($success) {
-                    echo '<p class="successButton"><span class="success">SUCCESS!</span> Your' .
-                        " affiliate image was uploaded!</p>\n";
-                }
+            if (isset($success) && $success) {
+                echo '<p class="successButton"><span class="success">SUCCESS!</span> Your' .
+                    " affiliate image was uploaded!</p>\n";
             }
-            echo "<p class=\"backLink\">&#171; <a href=\"affiliates.php?listing=" . $getlistingid .
+            echo '<p class="backLink">&#171; <a href="affiliates.php?listing=' . $getlistingid .
                 "\">Back to '" . $getItem->subject . "' Affiliates</a></p>\n";
             echo $tigers->backLink('aff');
         }
@@ -224,7 +207,7 @@ if (isset($_GET['g']) && $_GET['g'] == 'new') {
     } else {
         $insert = "INSERT INTO `$_ST[affiliates]` (`fNiq`, `aSubject`, `aEmail`, `aURL`," .
             " `aImage`, `aAdd`) VALUES ('$dblisting', '$subject', '$email', '$url', '$file'," .
-            " CURDATE())";
+            ' CURDATE())';
         $scorpions->query("SET NAMES 'utf8';");
         $true = $scorpions->query($insert);
         if ($true == false) {
@@ -234,11 +217,9 @@ if (isset($_GET['g']) && $_GET['g'] == 'new') {
         } elseif ($true == true) {
             echo '<p class="successButton"><span class="success">SUCCESS!</span> Your' .
                 " affiliate was added to the database!</p>\n";
-            if (isset($success)) {
-                if ($success == true) {
-                    echo '<p class="successButton"><span class="success">SUCCESS!</span> Your' .
-                        " affiliate image was uploaded!</p>\n";
-                }
+            if (isset($success) && $success == true) {
+                echo '<p class="successButton"><span class="success">SUCCESS!</span> Your' .
+                    " affiliate image was uploaded!</p>\n";
             }
             echo $tigers->backLink('aff', 'n', 'n', $getlistingid);
             echo $tigers->backLink('aff');
@@ -272,9 +253,9 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'old') {
             <p class="tc"><label><strong>Subject:</strong></label>
                 <input name="subject" class="input1" type="text" value="<?php echo $getItem->aSubject; ?>"></p>
             <p class="tc"><label><strong>E-Mail:</strong></label>
-                <input name="email" class="input1" type="text" value="<?php echo $getItem->aEmail; ?>"></p>
+                <input name="email" class="input1" type="email" value="<?php echo $getItem->aEmail; ?>"></p>
             <p class="tc"><label><strong>URI:</strong></label>
-                <input name="url" class="input1" type="text" value="<?php echo $getItem->aURL; ?>"></p>
+                <input name="url" class="input1" type="url" value="<?php echo $getItem->aURL; ?>"></p>
         </fieldset>
 
         <fieldset>
@@ -311,11 +292,11 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'old') {
                         if ($true == false) {
                             echo "  <option value=\"0\">No Listings Available</option>\n";
                         } else {
-                            $c = $getlistingid == 0 || $getlistingid == '0' ? "selected=\"selected\" " : '';
+                            $c = $getlistingid == 0 || $getlistingid == '0' ? 'selected="selected" ' : '';
                             echo "  <option {$c}value=\"0\">&#187; Collective</option>\n";
                             while ($getCat = $scorpions->obj($true)) {
                                 $cats = explode('!', $getItem->fNiq);
-                                echo "  <option value=\"" . $getCat->id . '"';
+                                echo '  <option value="' . $getCat->id . '"';
                                 if (in_array($getCat->id, $cats)) {
                                     echo ' selected="selected"';
                                 }
@@ -344,14 +325,13 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'old') {
     }
     $listingnow = $wolves->getListings($getlistingid, 'object');
     if ($listingnow->dblist == 0 || $listingnow->dblist == '0') {
-        $listing = array();
         $listing = $_POST['listing'];
         if (empty($listing)) {
             $listing[] = '0';
         }
         $listing = array_map(array($tigers, 'cleanMys'), $listing);
-        $dblisting = implode("!", $listing);
-        $dblisting = "!" . trim($dblisting, "!") . "!";
+        $dblisting = implode('!', $listing);
+        $dblisting = '!' . trim($dblisting, '!') . '!';
     } else {
         $dblisting = '!' . $listingnow->dbflid . '!';
     }
@@ -360,12 +340,12 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'old') {
         $tigers->displayError('Form Error', 'Your <samp>subject</samp> field' .
             ' is empty.', false);
     }
-    $email = $tigers->cleanMys($_POST['email']);
+    $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
     if (empty($email)) {
         $tigers->displayError('Form Error', 'Your <samp>email</samp> field' .
             ' is empty.', false);
     }
-    $url = $tigers->cleanMys($_POST['url']);
+    $url = StringUtils::instance()->normalize($tigers->cleanMys($_POST['url']));
     if (empty($url)) {
         $tigers->displayError('Form Error', 'Your <samp>url</samp> field is' .
             ' empty.', false);
@@ -378,7 +358,7 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'old') {
     }
     $image = $_FILES['image'];
     $image_tag1 = substr(md5(mt_rand(80, 680)), 0, 5);
-    $image_tag2 = substr(md5(date("YmdHis")), 0, 5);
+    $image_tag2 = substr(md5(date('YmdHis')), 0, 5);
     if ($change == 'add' || $change == 'edit') {
         $imageinfo = getimagesize($_FILES['image']['tmp_name']);
         $imagetype = $imageinfo[2];
@@ -408,9 +388,10 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'old') {
     }
 
     if (file_exists($path . 'LAdminAff_' . $image['name']) && !empty($image['name'])) {
+        $image_tag = substr(sha1(date('YmdHis')), 0, 10);
         $e = $image_tag . '_';
     } else {
-        $e = "";
+        $e = '';
     }
 
     $file = $scorpions->escape('LAdminAff_' . $e . $image['name']);
@@ -432,7 +413,7 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'old') {
                 $update .= ", `imagefile` = '$file'";
             }
             if (isset($_POST['datenow']) && $_POST['datenow'] == 'y') {
-                $update .= ", `added` = CURDATE()";
+                $update .= ', `added` = CURDATE()';
             }
             $update .= " WHERE `affiliateid` = '$id' LIMIT 1";
         } elseif ($listingnow->dbtype == 'listingadmin') {
@@ -442,7 +423,7 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'old') {
                 $update .= ", `aImage` = '$file'";
             }
             if (isset($_POST['datenow']) && $_POST['datenow'] == 'y') {
-                $update .= ", `aAdd` = CURDATE()";
+                $update .= ', `aAdd` = CURDATE()';
             }
             $update .= " WHERE `aID` = '$id' LIMIT 1";
             $scorpions->query("SET NAMES 'utf8';");
@@ -451,12 +432,12 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'old') {
         if ($true == false) {
             $tigers->displayError('Database Error', 'The script was unable to' .
                 ' update the affiliate.|Make sure your ID is not empty and your affiliates' .
-                ' table exists.', true, $update, $c1);
+                ' table exists.', true, $update);
         } elseif ($true == true) {
             echo '<p class="successButton"><span class="success">SUCCESS!</span> Your' .
                 " affiliate was updated!</p>\n";
-            echo "<p class=\"backLink\">&#171; <a href=\"affiliates.php?listing=" .
-                $getlistingid . "\">Back to '" . $getItem->subject . "' Affiliates</a></p>\n";
+            echo '<p class="backLink">&#171; <a href="affiliates.php?listing=' .
+                $getlistingid . "\">Back to '" . $listingnow->subject . "' Affiliates</a></p>\n";
             echo $tigers->backLink('aff');
         }
         $scorpions->breach(0);
@@ -481,7 +462,7 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'old') {
         }
     }
 
-    if (isset($delete) && isset($success)) {
+    if (isset($delete, $success)) {
         if ($delete && $success) {
             echo $tigers->displaySuccess('Your old image was deleted and replaced with' .
                 ' a new one!');
@@ -511,8 +492,8 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'erase') {
             ' that doesn\'t exist. Go back and try again.', false);
     }
     $getItem = $rabbits->getAffiliate($id, 'id', $getlistingid);
-    $s = $getlistingid == '0' ? "<strong>" . $qname . "</strong> collective" :
-        "<strong>" . $listing->subject . "</strong> listing";
+    $s = $getlistingid == '0' ? '<strong>' . $qname . '</strong> collective' :
+        '<strong>' . $listing->subject . '</strong> listing';
     ?>
     <p>You are about to delete the <strong><?php echo $getItem->aSubject; ?></strong>
         affiliate listed under the <?php echo $s ?>; please be aware that once you delete
@@ -611,7 +592,7 @@ else {
                     $select = $rabbits->affiliatesList($getlistingid, 'asc');
                     foreach ($select as $obj) {
                         $getTion = $rabbits->getAffiliate($obj, 'id', $getlistingid);
-                        $cleanEmail = $laantispam->clean($getTion->aEmail, 'n', 'y');
+                        $cleanEmail = StringUtils::instance()->normalize($laantispam->clean($getTion->aEmail, 'n', 'y'));
                         echo '<option value="' . $cleanEmail . '">' . $getTion->aEmail . "</option>\n";
                     }
                     ?>
@@ -634,7 +615,7 @@ if (isset($_GET['g']) && $_GET['g'] == 'searchAffiliates') {
     $s = '';
     $b = '';
 }
-$select = $rabbits->sortAffiliates($getlistingid, $s, $b, $start);
+$select = $rabbits->sortAffiliates($getlistingid, $s, $b);
 $count = count($select);
 
 if ($count > 0) {
@@ -644,7 +625,7 @@ if ($ender > $count) {
 
 if (isset($_GET['get']) && $_GET['get'] == 'searchAffiliates') {
     $s = $tigers->cleanMys($_GET['s']);
-    echo "<h4>Searching for the <em>" . $get_affsearch_array[$s] . "</em> " .
+    echo '<h4>Searching for the <em>' . $get_affsearch_array[$s] . '</em> ' .
         $tigers->cleanMys($_GET['q']) . "...</h4>\n";
 }
 ?>
@@ -693,12 +674,12 @@ if (isset($_GET['get']) && $_GET['get'] == 'searchAffiliates') {
     echo '<p id="pagination">Pages: ';
     for ($i = 1; $i <= $pages; $i++) {
         if ($p == $i) {
-            echo $i . " ";
+            echo $i . ' ';
         } else {
-            echo '<a href="affiliates.php?listing=' . $getlistingid . "&#38;";
+            echo '<a href="affiliates.php?listing=' . $getlistingid . '&#38;';
             if (isset($_GET['g']) && $_GET['g'] == 'searchMembers') {
-                echo "g=searchMembers&#38;s=" . $tigers->cleanMys($_GET['s']) .
-                    "&#38;q=" . $tigers->cleanMys($_GET['q']) . "&#38;";
+                echo 'g=searchMembers&#38;s=' . $tigers->cleanMys($_GET['s']) .
+                    '&#38;q=' . $tigers->cleanMys($_GET['q']) . '&#38;';
             }
             echo 'p=' . $i . '">' . $i . '</a> ';
         }
@@ -768,4 +749,4 @@ if (isset($_GET['get']) && $_GET['get'] == 'searchAffiliates') {
         }
         }
 
-        require("footer.php");
+        require('footer.php');

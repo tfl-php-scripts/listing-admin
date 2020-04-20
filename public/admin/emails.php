@@ -198,7 +198,7 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'Email Affiliates') {
  $affiliates = $rabbits->affiliatesList($listing);
 
  foreach($affiliates as $a) {
-  $mailAffiliate = $jaguars->sendAffEmail($template, $list, $a, $s, $b, $listing, 'n', 'n', 'n');
+  $mailAffiliate = $jaguars->sendAffEmail($template, $list, $a, $s, $b, $listing, 'n', 'n');
   if($mailAffiliate == true) {
    echo $tigers->displaySuccess("Your email has been sent!");
   }
@@ -235,7 +235,7 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'E-Mail Member') {
  } elseif ($template == 'members_update') { 
   $mailMember = $jaguars->updateMember($memberid, $listingid);
  } else {
-  $mailMember = $jaguars->sendEmail($template, 'listing', $memberid, $s, $b, $listingid, '', '', '', $e);
+  $mailMember = $jaguars->sendEmail($template, 'listing', $memberid, $s, $b, $listingid, '', $e);
  }
  
  if($mailMember == true) {
@@ -271,7 +271,7 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'Email Members') {
   } elseif ($template == 'members_update') { 
    $mailMember = $jaguars->updateMember($m, $listingid, $listing->dblist, $p);
 	} else {
-   $mailMember = $jaguars->sendEmail($template, 'listing', $m, $b, $e, $listingid, '', '', '', $c);
+   $mailMember = $jaguars->sendEmail($template, 'listing', $m, $b, $e, $listingid, '', $c);
 	}
 	
 	if($mailMember == true) {
