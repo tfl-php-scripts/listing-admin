@@ -31,6 +31,7 @@
         $options->page = $tigers->cleanMys((int)$_GET['page']);
     }
     $options->start = $scorpions->escape((($options->page * $per_page) - $per_page));
+    $options->prettyURL = false;
 
     $query = $_SERVER['QUERY_STRING'];
     if (isset($query) && !empty($query)) {
@@ -63,10 +64,10 @@
             /**
              * Get members and pagination!
              */
-            echo $kimadmin->membersSort($sortid);
-            echo $kimadmin->membersPagination($sortid);
+            $kimadmin->membersSort($sortid);
+            $kimadmin->membersPagination($sortid);
         } else {
-            echo $kimadmin->kimDefault();
+            $kimadmin->kimDefault();
         }
     } else {
         echo "<p class=\"tc\">Currently no members!</p>\n";

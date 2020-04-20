@@ -23,7 +23,7 @@ if (!class_exists('kimadmin')) {
          */
         public function membersList($i = '', $p = ''): array
         {
-            global $_ST, $get_type_id_array, $scorpions, $tigers, $wolves;
+            global $_ST, $scorpions, $tigers, $wolves;
 
             $select = "SELECT * FROM `$_ST[kim]`";
             if (in_array($i, $wolves->listingsList())) {
@@ -68,7 +68,7 @@ if (!class_exists('kimadmin')) {
             if ($p == 'id') {
                 $select .= " WHERE `mID` = '$i'";
             } elseif ($p == 'email' && in_array($e, $wolves->listingsList())) {
-                $select .= " WHERE `mEmail` = '$i' AND `fNiq` = '$e'";
+                $select .= " WHERE TRIM(LOWER(`mEmail`)) = '$i' AND `fNiq` = '$e'";
             }
             $select .= ' LIMIT 1';
             $true = $scorpions->query($select);
@@ -82,7 +82,7 @@ if (!class_exists('kimadmin')) {
         /**
          * @function  $kimadmin->kimName()
          * @param     $i , int; member ID
-         * @return
+         * @return string
          */
         public function kimName($i)
         {
@@ -212,7 +212,7 @@ if (!class_exists('kimadmin')) {
         {
             global $_ST, $scorpions;
 
-            $select = "SELECT * FROM `$_ST[kim]` WHERE `mEmail` = '$e' AND `fNiq` = '$s'";
+            $select = "SELECT * FROM `$_ST[kim]` WHERE TRIM(LOWER(`mEmail`)) = '$e' AND `fNiq` = '$s'";
             $count = $scorpions->counts($select);
 
             $valid = false;
@@ -230,14 +230,12 @@ if (!class_exists('kimadmin')) {
          *
          * @param     $i , int; listing ID
          * @param     $t , string; template slug
-         * @param     $m , int; member ID
-         * @param     $e , string; pull member by ID or e-mail
-         * @return string|string[]
+         * @param string $m , int; member ID
          * @return string|string[]
          */
-        public function format($i, $t, $m = '', $e = 'id')
+        public function format($i, $t, $m = '')
         {
-            global $_ST, $octopus, $options, $scorpions, $seahorses, $tigers, $wolves;
+            global $octopus, $seahorses, $wolves;
 
             $listing = $wolves->getListings($i, 'object');
             $mark = $listing->markup == 'xhtml' ? ' /' : '';
@@ -335,8 +333,7 @@ if (!class_exists('kimadmin')) {
          */
         public function membersSort($i): void
         {
-            global $_ST, $options, $per_page, $scorpions, $start, $tigers,
-                   $wolves;
+            global $_ST, $options, $scorpions, $tigers, $wolves;
 
             $countfls = count($this->membersList($i, '0'));
             $listing = $wolves->getListings($i, 'object');
@@ -351,11 +348,11 @@ if (!class_exists('kimadmin')) {
 
             echo '<p class="tc">You are viewing KIM members from the listing,' .
                 ' <strong>' . $listing->subject .
-                "</strong>.</p>\n" . $this->format($options->listingID, 'members_header');
+                "</strong>.</p>\n" . $this->format($i, 'members_header');
             while ($getItem = $scorpions->obj($true)) {
-                echo $this->format($options->listingID, 'members', $getItem->mID);
+                echo $this->format($i, 'members', $getItem->mID);
             }
-            echo $this->format($options->listingID, 'members_footer');
+            echo $this->format($i, 'members_footer');
         }
 
         /**
@@ -366,7 +363,7 @@ if (!class_exists('kimadmin')) {
          */
         public function kimDefault($s = 'listing'): void
         {
-            global $_ST, $octopus, $options, $scorpions, $seahorses, $tigers, $wolves;
+            global $octopus, $options, $seahorses, $wolves;
 
             if ($s == 'listing') {
                 $_a = $wolves->listingsList('subject');

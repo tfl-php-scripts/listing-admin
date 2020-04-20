@@ -14,15 +14,15 @@
 
     require('b.inc.php');
     require_once('Robotess/StringUtils.php');
-    require(MAINDIR . "rats.inc.php");
-    require_once("class-antispam.inc.php");
-    require_once("class-kimadmin.inc.php");
-    require_once("fun.inc.php");
-    require_once("fun-external.inc.php");
-    require_once("fun-listings.inc.php");
-    require_once("fun-members.inc.php");
-    require_once("fun-misc.inc.php");
-    require(MAINDIR . "vars.inc.php");
+    require(MAINDIR . 'rats.inc.php');
+    require_once('class-antispam.inc.php');
+    require_once('class-kimadmin.inc.php');
+    require_once('fun.inc.php');
+    require_once('fun-external.inc.php');
+    require_once('fun-listings.inc.php');
+    require_once('fun-members.inc.php');
+    require_once('fun-misc.inc.php');
+    require(MAINDIR . 'vars.inc.php');
 
     /**
      * Aaaaa-and we're posting, so let's check this shit!
@@ -116,9 +116,9 @@
             $tigers->displayError('Database Error', 'The script was unable to update your' .
                 ' information.', false);
         } elseif ($true == true) {
-            $subject = $qname . " KIM: Update Member";
+            $subject = $qname . ' KIM: Update Member';
 
-            $message = "You have a received a update form from a member for your KIM" .
+            $message = 'You have a received a update form from a member for your KIM' .
                 " list:\n\nName: {$name}\nOld E-mail: {$email}\n";
             if (!empty($new_email)) {
                 $message .= "New E-mail: {$new_email}\n";
@@ -137,7 +137,7 @@
             }
             $message .= "IP Address: {$_SERVER['REMOTE_ADDR']}\nBrowser:" .
                 " {$_SERVER['HTTP_USER_AGENT']}\n\nTo moderate (or delete) this member" .
-                " update, go here: <" . $myadminpath->http . ">";
+                ' update, go here: <' . $myadminpath->http . '>';
             $headers = "From: Listing Admin <$my_email>\nReply-To: <{$e}>";
             $mmail = mail($my_email, $subject, $message, $headers);
 
@@ -149,12 +149,14 @@
      * Now let's get our form, so we can make the above possible~
      */
     else {
-        $symb = $seahorses->getOption('markup') == 'html5' ? "&#187;" : "&raquo;";
+        $symb = $seahorses->getOption('markup') == 'html5' ? '&#187;' : '&raquo;';
         if ($seahorses->getOption('markup') == 'xhtml') {
-            $mark = " /";
+            $mark = ' /';
         } else {
-            $mark = "";
+            $mark = '';
         }
+        $options = new stdClass();
+        $options->markup = $mark;
         ?>
         <p>Please use the form below for updating your information only. If you would like
             to join the list, you can <a href="<?php echo $seahorses->getOption('kim_join'); ?>">do so here</a>.
@@ -204,7 +206,7 @@
 
             <fieldset>
                 <legend>Listing</legend>
-                <p><label>* <strong>Listing:</strong></label> <select name="listing" class="input1">
+                <p><label>* <strong>Listing:</strong></label> <select name="listing" class="input1" required="required">
                         <?php
                         $select = "SELECT * FROM `$_ST[main]` WHERE `status` = '0' ORDER BY `subject` ASC";
                         $true = $scorpions->query($select);
@@ -212,7 +214,7 @@
                             echo "  <option>No Listings Available</option>\n";
                         } else {
                             while ($getItem = $scorpions->obj($true)) {
-                                echo "  <option value=\"" . $getItem->id . '">' . $getItem->subject . "</option>\n";
+                                echo '  <option value="' . $getItem->id . '">' . $getItem->subject . "</option>\n";
                             }
                         }
                         ?>
