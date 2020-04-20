@@ -7,7 +7,7 @@
  * @since      September 2nd, 2010 
  * @version    1.0    
  */ 
-$getTitle = "Wishlist";
+use Robotess\StringUtils;$getTitle = "Wishlist";
 require("pro.inc.php");
 require("vars.inc.php");
 require("header.php");
@@ -98,13 +98,14 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'Add Wish') {
   $tigers->displayError('Form Error', 'Your <samp>subject</samp> field is' . 
   ' empty.', false);
  } 
- $url = $tigers->cleanMys($_POST['url']);
- if(!empty($url)) {
-  if(strstr($url, 'http://') === false) {
-   $tigers->displayError('Form Error', 'The <samp>URL</samp> does not' . 
-	 ' start with http:// and thereforeis not valid. Try again.', false);
-  } 
- }
+$url = StringUtils::instance()->normalize($tigers->cleanMys($_POST['url']));
+        if (empty($url)) {
+            $tigers->displayError('Form Error', 'Your <samp>site URL</samp> field' .
+                ' is empty.', false);
+        } elseif (!StringUtils::instance()->isUrlValid($url)) {
+            $tigers->displayError('Form Error', 'Your <samp>site URL</samp> does' .
+                ' not start with http:// and therefore is not valid. Try again.', false);
+        }
  $desc = $tigers->cleanMys($_POST['desc'], 'n');
  $image = $_FILES['image'];
  $image_tag = substr(sha1(date("YmdHis")), 0, 15);

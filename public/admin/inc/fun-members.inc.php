@@ -131,7 +131,7 @@ public function membersList($i = 'n', $p = 1, $b = '', $s = '')
  */
 public function allMembers($i = 'n', $p = 1)
 {
-    $this->membersList($i, $p);
+    return $this->membersList($i, $p);
 }
 
 /**

@@ -9,7 +9,7 @@
  * @version          Robotess Fork
  */
 
-$getTitle = 'Joined';
+use Robotess\StringUtils;$getTitle = 'Joined';
 require('pro.inc.php');
 require('vars.inc.php');
 require('header.php');
@@ -92,10 +92,11 @@ if (isset($_GET['g']) && $_GET['g'] == 'new') {
         $tigers->displayError('Form Error', 'Your <samp>subject</samp> field is' .
             ' empty.', false);
     }
-    $url = $tigers->cleanMys($_POST['url']);
-    if (empty($url)) {
-        $tigers->displayError('Form Error', 'Your <samp>url</samp> field is empty.', false);
-    }
+    $url = StringUtils::instance()->normalize($tigers->cleanMys($_POST['url']));
+        if (empty($url)) {
+            $tigers->displayError('Form Error', 'Your <samp>site URL</samp> field' .
+                ' is empty.', false);
+        }
     $status = $tigers->cleanMys($_POST['status']);
     if (!is_numeric($status) || $status > 1 || strlen($status) > 1) {
         $tigers->displayError('Form Error', 'Your <samp>status</samp> field' .

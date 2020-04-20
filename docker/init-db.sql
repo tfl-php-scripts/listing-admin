@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Apr 20, 2020 at 09:30 PM
+-- Generation Time: Apr 20, 2020 at 09:45 PM
 -- Server version: 5.5.62
 -- PHP Version: 7.2.25
 
@@ -101,7 +101,7 @@ CREATE TABLE `trex` (
 --
 
 INSERT INTO `trex` (`id`, `title`, `subject`, `url`, `image`, `category`, `status`, `show`, `dbhost`, `dbuser`, `dbpass`, `dbname`, `dbtype`, `dbtabl`, `dblist`, `dbaffs`, `dbflid`, `dbhttp`, `dbpath`, `desc`, `stats`, `affiliates`, `wishlist`, `quotes`, `members`, `members_header`, `members_footer`, `updates`, `form_delete`, `form_form`, `form_join`, `form_join_comments`, `form_join_rules`, `form_reset`, `form_update`, `fave_fields`, `previous`, `date`, `since`, `updated`, `granted`, `markup`) VALUES
-    (1, 'Listing1', 'Cool Subject', 'http://localhost:8041/samplefl', '1da3ce569064_', '!3!28!52!', 0, 0, '', '', '', '', 'enth', '', 0, '', 0, '', '', 'DESCRIPTION', '&lt;p class=&quot;details&quot;&gt;\r\n&lt;strong&gt;Members:&lt;/strong&gt; {members} (&lt;em&gt;{pending} Pending &lt;/em&gt;)&lt;br&gt;\r\n&lt;strong&gt;Since:&lt;/strong&gt; {since}&lt;br&gt;\r\n&lt;strong&gt;Last Updated:&lt;/strong&gt; {updated}\r\n&lt;/p&gt;', '', '', '', '<li>{name}<br />\n{email} &middot; {url}</li>', '<ol>', '</ol>', '<div class=\"entry_listingadmin\">\n<span class=\"date\">{date}</span> {entry}\n<p class=\"tc cat\">Filed Under: {categories}</p>\n</div>', '', '', '', 0, '', '', '', '', '', 'F j, Y', '2000-02-27', '0000-00-00', 1, 'xhtml');
+    (1, 'Listing1', 'Cool Subject', 'http://localhost:8041/samplefl', '1da3ce569064_', '!3!28!52!', 0, 0, '', '', '', '', 'enth', '', 0, '', 0, '', '', 'DESCRIPTION', '&lt;p class=&quot;details&quot;&gt;\r\n&lt;strong&gt;Members:&lt;/strong&gt; {members} (&lt;em&gt;{pending} Pending &lt;/em&gt;)&lt;br&gt;\r\n&lt;strong&gt;Since:&lt;/strong&gt; {since}&lt;br&gt;\r\n&lt;strong&gt;Last Updated:&lt;/strong&gt; {updated}\r\n&lt;/p&gt;', '', '', '', '<li>{name}<br />\n{email} &middot; {url}</li>', '<ol>', '</ol>', '<div class=\"entry_listingadmin\">\n<span class=\"date\">{date}</span> {entry}\n<p class=\"tc cat\">Filed Under: {categories}</p>\n</div>', 'delete.php', 'site.php', 'join.php', 0, '', 'reset.php', 'update.php', '', 'a:3:{s:17:\"http://google.com\";s:8:\"Previous\";s:30:\"http://localhost:8041/samplefl\";s:11:\"SomeoneElse\";s:18:\"http://google2.com\";s:8:\"Prevous2\";}', 'F j, Y', '2000-02-27', '0000-00-00', 1, 'xhtml');
 
 -- --------------------------------------------------------
 

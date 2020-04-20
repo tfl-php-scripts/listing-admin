@@ -49,10 +49,10 @@
             $tigers->displayError('Form Error', 'The characters specified in the' .
                 ' <samp>email</samp> field are not allowed.', false);
         }
-        $url = StringUtils::instance()->normalize($_POST['url']);
+        $url = StringUtils::instance()->normalize($tigers->cleanMys($_POST['url']));
         if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
-            $tigers->displayError('Form Error', 'Your <samp>site URL</samp> is' .
-                ' not valid. Please supply a valid site URL or empty the field.', false);
+            $tigers->displayError('Form Error', 'Your <samp>site URL</samp> does' .
+                ' not start with http:// and therefore is not valid. Try again.', false);
         }
         $listing = $tigers->cleanMys($_POST['listing']);
         if (empty($listing) || !in_array($listing, $wolves->listingsList())) {

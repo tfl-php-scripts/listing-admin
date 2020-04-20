@@ -149,14 +149,11 @@ $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
             $tigers->displayError('Form Error', 'The characters specified in the' .
                 ' <samp>e-mail</samp> field are not allowed.', false);
         }
-        $url = StringUtils::instance()->normalize($tigers->cleanMys($_POST['url']));
-        if (empty($url)) {
-            $tigers->displayError('Form Error', 'Your <samp>site URL</samp> field' .
-                ' is empty.', false);
-        } elseif (!StringUtils::instance()->isUrlValid($url)) {
-            $tigers->displayError('Form Error', 'Your <samp>site URL</samp> does' .
-                ' not start with http:// and therefore is not valid. Try again.', false);
-        }
+        if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
+    $tigers->displayError('Form Error', 'Your <samp>site URL</samp> is' .
+        ' not valid. Please supply a valid site URL or empty the field.', false);
+}
+
   $country = $tigers->cleanMys($_POST['country']);
   if(empty($country)) { 
    $tigers->displayError('Form Error', 'The <samp>country</samp> field is' . 
@@ -418,14 +415,11 @@ $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
                 ' <samp>e-mail</samp> field are not allowed.', false);
         }
         $url = StringUtils::instance()->normalize($tigers->cleanMys($_POST['url']));
-        if (empty($url)) {
-            $tigers->displayError('Form Error', 'Your <samp>site URL</samp> field' .
-                ' is empty.', false);
-        } elseif (!StringUtils::instance()->isUrlValid($url)) {
-            $tigers->displayError('Form Error', 'Your <samp>site URL</samp> does' .
-                ' not start with http:// and therefore is not valid. Try again.', false);
-        }
-  $country = $tigers->cleanMys($_POST['country']);
+        if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
+    $tigers->displayError('Form Error', 'Your <samp>site URL</samp> is' .
+        ' not valid. Please supply a valid site URL or empty the field.', false);
+}
+        $tigers->cleanMys($_POST['country']);
   if(empty($country)) { 
    $tigers->displayError('Form Error', 'Your <samp>country</samp> field is' . 
    ' empty.', false);
