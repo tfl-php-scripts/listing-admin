@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Apr 20, 2020 at 09:10 PM
+-- Generation Time: Apr 20, 2020 at 09:30 PM
 -- Server version: 5.5.62
 -- PHP Version: 7.2.25
 
@@ -590,7 +590,7 @@ CREATE TABLE `trex_members` (
 --
 
 INSERT INTO `trex_members` (`mID`, `mEmail`, `fNiq`, `mName`, `mURL`, `mCountry`, `mPassword`, `mExtra`, `mVisible`, `mPending`, `mUpdate`, `mEdit`, `mAdd`) VALUES
-    (1, 'joinerjoiner@gmaaaaaaail.com', 1, 'Joiner', 'http://myurl.com', 'El Salvador', '6f55c171fdf2ba21bff9a9f17cb76c65', '', 1, 0, 'n', '0000-00-00 00:00:00', '2020-02-27');
+    (1, 'joiner+kkkkjoiner@gmaaaaaaail.com', 1, 'Joiner', 'http://myurl.com', 'El Salvador', '6f55c171fdf2ba21bff9a9f17cb76c65', '', 1, 0, 'n', '2020-04-20 21:29:56', '2020-04-20');
 
 -- --------------------------------------------------------
 
@@ -860,7 +860,7 @@ INSERT INTO `trex_templates_emails` (`name`, `title`, `template`) VALUES
 --
 
     INSERT INTO `trex_updates_comments` (`cID`, `eNiq`, `cName`, `cEmail`, `cURL`, `cComment`, `cInfo`, `cFlag`, `cPending`, `cAdded`) VALUES
-    (1, 1, 'Gdfgdgdfg', 'ggggdkd+kd@kkkggg.com', 'https://123455.com', 'GGGFDGD', '|192.168.210.1|Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36|', 'legit', 0, '2020-04-20 21:03:27'),
+    (1, 1, 'Gdfgdgdfg', 'ggggdkd+kd@kkkggg.com', 'https://123455.com', 'GGGFDGD  777', '|192.168.210.1|Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36|', 'legit', 0, '2020-04-20 21:03:27'),
     (2, 1, 'Gdfgdgdfg', 'ggggdkd+kd@kkkggg.com', 'https://123455.com', 'GGGFDGD', '|192.168.210.1|Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36|', 'legit', 0, '2020-04-20 21:04:16');
 
 -- --------------------------------------------------------
