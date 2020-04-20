@@ -59,7 +59,6 @@ if (!class_exists('kimadmin')) {
          * @param     $p , string; get member by ID or e-mail
          * @param     $e , int; listing ID
          * @return mixed
-         * @return mixed
          */
         public function getMember($i, $p = 'id', $e = '')
         {
@@ -101,7 +100,6 @@ if (!class_exists('kimadmin')) {
         /**
          * @function  $kimadmin->kimCount()
          * @param     $s , boolean; 0 for approved, 1 for pending
-         * @return mixed
          * @return mixed
          */
         public function kimCount($s = 0)
@@ -151,7 +149,6 @@ if (!class_exists('kimadmin')) {
          * @param     $p , string; member password
          * @param     $s , int; listing ID
          * @return object
-         * @return object
          */
         public function checkPassword($e, $p, $s)
         {
@@ -162,7 +159,7 @@ if (!class_exists('kimadmin')) {
                 'password' => false
             );
 
-            $select = "SELECT * FROM `$_ST[kim]` WHERE `mEmail` = '$e' AND `fNiq`" .
+            $select = "SELECT * FROM `$_ST[kim]` WHERE TRIM(LOWER(`mEmail`)) = '$e' AND `fNiq`" .
                 " = '$s'";
             $count = $scorpions->counts($select);
             if ($count->rows == 1) {
@@ -170,7 +167,7 @@ if (!class_exists('kimadmin')) {
             }
 
             $m = md5($p);
-            $query = "SELECT * FROM `$_ST[kim]` WHERE `mEmail` = '$e' AND `fNiq` =" .
+            $query = "SELECT * FROM `$_ST[kim]` WHERE TRIM(LOWER(`mEmail`)) = '$e' AND `fNiq` =" .
                 " '$s' AND `mPassword` = '$m'";
             $results = $scorpions->counts($query);
             if ($results->rows == 1) {
@@ -183,7 +180,6 @@ if (!class_exists('kimadmin')) {
         /**
          * @function  $kimadmin->checkKIM()
          * @param     $i , int; member ID
-         * @return bool
          * @return bool
          */
         public function checkKIM($i): bool

@@ -209,9 +209,40 @@ if (!class_exists('scorpions')) {
          */
         public function __construct($h, $u, $p, $n)
         {
+            $this->initDB($h, $u, $p, $n);
+        }
+
+        /**
+         * @param $h
+         * @param $u
+         * @param $p
+         * @param $n
+         * @deprecated
+         *
+         * Legacy method
+         *
+         */
+        public function scorpions($h, $u, $p, $n): void
+        {
+            $this->initDB($h, $u, $p, $n);
+        }
+
+        /**
+         * @param $h
+         * @param $u
+         * @param $p
+         * @param $n
+         */
+        public function initDB($h, $u, $p, $n): void
+        {
+            if($this->database !== null) {
+                // no need to re-initialize..
+                return;
+            }
+
             global $laoptions;
 
-            switch($laoptions->dbEngine) {
+            switch ($laoptions->dbEngine) {
                 case 'mysqli':
                     $dbConnectionClass = MySQLiConnection::class;
                     break;

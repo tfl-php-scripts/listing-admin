@@ -12,7 +12,7 @@
  * @version          Robotess Fork
  */
 
-if (class_exists('octopus') == false) {
+if (!class_exists('octopus')) {
     class octopus
     {
 

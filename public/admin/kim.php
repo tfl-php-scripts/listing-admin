@@ -451,8 +451,8 @@ cannot be undone!</em> To proceed, click the "Delete Member" button.</p>
 	 if($true == true) {
 	  echo '<p class="successButton"><span class="success">SUCCESS!</span> The' . 
 		' <samp>' . $member->mName . '</samp> member (from the <em>' . 
-		$wolves->getSubject($member->fNiq) . "</em> listing) has been approved!' . 
-		' :D</p>\n";
+		$wolves->getSubject($member->fNiq) . '</em> listing) has been approved!' .
+		' :D</p>';
 	 } 
 	 $mailNow = $jaguars->approveKIM($pm);
 	 if($mailNow) {

@@ -187,6 +187,7 @@
             $vars = array(
                 'comments' => $comments,
                 'mathproblem' => $_POST['mathproblem'],
+                'nots' => $laantispam->spamarray(),
                 's1' => $s1,
                 's2' => $s2,
                 'url' => $url
@@ -199,7 +200,7 @@
                 );
                 $tigers->displayError('SPAM Error', 'It appears the script has' .
                     ' identified you as SPAM. If you believe you\'re not SPAM, feel free to' .
-                    ' join FL.', false);
+                    ' join ' . $hide_address . '.', false);
             }
         }
 
@@ -223,7 +224,7 @@
                 $tigers->displayError('SPAM Error', 'It appears Akismet thinks you\'re' .
                     ' SPAM.|While this isn\'t a <em>huge</em> issue it\'s keeping you from being' .
                     ' added to the pending list. If you believe you\'re not SPAM, feel free to' .
-                    ' join us.', false);
+                    ' join ' . $hide_address . '.', false);
             }
         }
 
