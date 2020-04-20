@@ -27,7 +27,8 @@ If you are using Listing Admin 2.4 (old version by Tess) or Listing Admin [Robot
 2. Take note of your database information in all your `config.php` files.
 3. Download [an archive of the public folder of this repository](https://gitlab.com/tfl-php-scripts/listing-admin/-/archive/master/listing-admin-master.zip?path=public). Extract the archive.
 4. Replace your current `admin/` files with the `public/admin/` files from this repository. Make sure that you have all files from the folder uploaded.
-5. In every fanlisting folder, as well as in the collective folder, paste the `jac.sample.inc.php` file; edit your database information and save it as `jac.inc.php` to overwrite your old one. In the listing admin folder paste the `admin/rats.sample.inc.php` file; edit your database information and save it as `rats.inc.php` to overwrite your old one. There are samplecollective and samplefl folders put to the archive right for that so please, make your FLs consistent with those examples. 
+5. In every fanlisting folder, as well as in the collective folder, paste the `jac.sample.inc.php` file; edit your database information and save it as `jac.inc.php` to overwrite your old one. Please note that additionally you have to add `db-connection.inc.php` to every fanlisting/collective folder, this file should not be modified though. 
+6. In the listing admin folder paste the `admin/rats.sample.inc.php` file; edit your database information and save it as `rats.inc.php` to overwrite your old one. There are samplecollective and samplefl folders put to the archive right for that so please, make your FLs consistent with those examples. 
 
 Please follow the instructions carefully. A lot of issues were caused by users having incorrect config files.
 
