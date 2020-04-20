@@ -237,17 +237,17 @@ if (!class_exists('jaguars')) {
          * for affiliates and members; markup created for table-wide use, or for
          * individual use.
          *
-         * @param  $t = Template
+         * @param  $templat = Template
+         * @param  $subjectLine = Subject Line
          * @param string $f = Form (collective, listing)
          * @param string $i = Affiliate ID
-         * @param  $b = Subject Line
          * @param string $o = Body
          * @param string $l = Listing
          * @param string $u = URL
          * @param string $e = E-Mail
          * @return bool
          */
-        public function sendAffEmail($t, $f = 'listing', $i = 'n', $b, $o = 'n', $l = 'n', $u = 'n', $e = 'n')
+        public function sendAffEmail($templat, $subjectLine, $f = 'listing', $i = 'n', $o = 'n', $l = 'n', $u = 'n', $e = 'n')
         {
             global $rabbits, $wolves, $seahorses, $qname, $my_email, $qowns;
 
@@ -264,14 +264,14 @@ if (!class_exists('jaguars')) {
                 }
             }
 
-            if ($t != 'n') {
-                $template = $this->getEmailTemplate($t);
+            if ($templat != 'n') {
+                $template = $this->getEmailTemplate($templat);
             } else {
                 $template = trim($o);
             }
 
-            $h = $b == 'n' ? ($t == 'n' ? '' : ': ' . $this->getEmailTitle($t)) : ': ' . $b;
-            $subject = $f == 'collective' ? $qname . ': ' . $b : $glistings->subject . $h;
+            $h = $subjectLine == 'n' ? ($templat == 'n' ? '' : ': ' . $this->getEmailTitle($templat)) : ': ' . $subjectLine;
+            $subject = $f == 'collective' ? $qname . ': ' . $subjectLine : $glistings->subject . $h;
             $w = $f == 'collective' ? $qname . ' collective' : $glistings->subject . ' listing';
 
             $r = $u != 'n' ? '<' . $u . '>' : '<' . $affiliate->aURL . '>';

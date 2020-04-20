@@ -132,7 +132,7 @@ if (isset($_GET['g']) && $_GET['g'] == 'new') {
 
             if ($rec == 'y') {
                 $mail = $jaguars->sendAffEmail(
-                    'affiliates_approve', $v, 'n', 'Affiliate Added', 'n', $g, $url, $email
+                    'affiliates_approve', 'Affiliate Added', $v, 'n', 'n', $g, $url, $email
                 );
                 if ($mail == true) {
                     echo '<p class="successButton"><span class="success">SUCCESS!</span> Your' .
@@ -146,7 +146,7 @@ if (isset($_GET['g']) && $_GET['g'] == 'new') {
         $dblisting = '!' . $getItem->dbflid . '!';
         if ($rec == 'y') {
             $mail = $jaguars->sendAffEmail(
-                'affiliates_approve', 'listing', 'n', 'Affiliate Added', 'n', $getlistingid, $url, $email
+                'affiliates_approve', 'Affiliate Added', 'listing', 'n', 'n', $getlistingid, $url, $email
             );
             if ($mail == true) {
                 echo '<p class="successButton"><span class="success">SUCCESS!</span> Your' .
