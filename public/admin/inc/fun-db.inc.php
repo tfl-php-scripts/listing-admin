@@ -69,6 +69,7 @@ if (!class_exists('scorpions')) {
         public function close(): void
         {
             $this->dbConnect->close();
+            unset($this->dbConnect);
         }
 
         /**
@@ -147,7 +148,8 @@ if (!class_exists('scorpions')) {
 
         public function close(): void
         {
-            //nothing
+            $this->dbConnect = null;
+            unset($this->dbConnect);
         }
 
         public function real_escape_string($e): string
@@ -235,11 +237,6 @@ if (!class_exists('scorpions')) {
          */
         public function initDB($h, $u, $p, $n): void
         {
-            if($this->database !== null) {
-                // no need to re-initialize..
-                return;
-            }
-
             global $laoptions;
 
             switch ($laoptions->dbEngine) {
@@ -288,7 +285,7 @@ if (!class_exists('scorpions')) {
                     break;
 
                 case 1:
-                    $this->__construct($database_host, $database_user, $database_pass,
+                    $this->initDB($database_host, $database_user, $database_pass,
                         $database_name);
                     break;
             }

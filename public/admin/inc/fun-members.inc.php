@@ -1391,7 +1391,7 @@ case 'head':
          */
         public function membersPagination($s, $q = '')
         {
-            global $_ST, $options, $page, $per_page, $scorpions, $start, $tiger, $wolves;
+            global $_ST, $options, $page, $per_page, $scorpions, $wolves;
 
             $listing = $wolves->getListings($options->listingID, 'object');
             if (!empty($listing->dbhost) && !empty($listing->dbuser) && !empty($listing->dbname)) {

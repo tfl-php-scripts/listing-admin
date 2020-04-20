@@ -83,13 +83,13 @@ if (isset($_POST['action'])) {
             $doadd = 1;
             $donator = $new_name;
         }
-        $url = $tigers->cleanMys($_POST['url']);
+        $url = StringUtils::instance()->normalize($tigers->cleanMys($_POST['url']));
         $number = $tigers->cleanMys($_POST['number']);
         if (!is_numeric($number) || $number > 10) {
             $tigers->displayError('Form Error', 'You can only upload 1-10 code buttons' .
                 ' at a time!', false);
         }
-        $postcap = $tigers->cleanMys($_POST[$octopus->cheatCaptcha]);
+        $postcap = isset($_POST[$octopus->cheatCaptcha]) ? $tigers->cleanMys($_POST[$octopus->cheatCaptcha]) : '';
         if ($seahorses->getOption('captcha_opt') == 'y') {
             if (!isset($_POST['captcha']) || strpos(sha1($postcap), $_POST['captcha']) !== 0) {
                 $tigers->displayError('Form Error', 'The <samp>CAPTCHA</samp> is invalid!', false);
@@ -266,7 +266,7 @@ else {
                 <input name="email" class="input1" type="email"<?php echo $markup; ?>></p>
             <p class="clearField" style="clear: both; margin: 0 0 0.5% 0;"></p>
             <p><label><strong>New URL:</strong></label>
-                <input name="url" class="input1" type="text"<?php echo $markup; ?>></p>
+                <input name="url" class="input1" type="url"<?php echo $markup; ?>></p>
             <p><label><strong>Number of Buttons:</strong><br>
                     This is the number of code buttons you'd like to donate:</label>
                 <select name="number" class="input1">

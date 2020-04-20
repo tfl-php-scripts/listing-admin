@@ -72,7 +72,7 @@ if (!isset($_POST['action']) || $_SERVER['REQUEST_METHOD'] != "POST") {
         $tigers->displayError('Form Error', 'In order to post a comment, you must' .
             ' fill out the <samp>Comment</samp> field.', false);
     }
-    $ck = $tigers->cleanMys($_POST[$octopus->cheatCaptcha]);
+    $ck = isset($_POST[$octopus->cheatCaptcha]) ? $tigers->cleanMys($_POST[$octopus->cheatCaptcha]) : '';
     $s1 = $tigers->cleanMys($_POST['antispamh']);
     $s2 = $tigers->cleanMys($_POST['antispamb']);
     $s3 = $tigers->cleanMys($_POST['mathproblem']);
