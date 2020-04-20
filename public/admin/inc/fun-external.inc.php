@@ -103,7 +103,7 @@ if (!class_exists('octopus')) {
          */
         public function frontEndLink($p, $i)
         {
-            global $laoptions, $my_updates, $qwebs;
+            global $seahorses, $my_updates, $qwebs;
 
             $myw = strpos($qwebs, '/') !== false ? $qwebs : $qwebs . '/';
             $myw2 = strpos($my_updates, 'index.php') !== false ? $myw : $my_updates;
@@ -283,6 +283,8 @@ if (!class_exists('octopus')) {
          */
         public function returnURL($l, $text = 'via form')
         {
+            global $wolves;
+
             $g = $wolves->getListings($l, 'object');
             $f = $g->url;
             $s = "<a href=\"$f\">$text</a>";

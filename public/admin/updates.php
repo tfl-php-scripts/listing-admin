@@ -379,7 +379,6 @@ else {
     ' exceed 1.', false);
    }
    if($_POST['listing'] != 0) {
-    $listing = array();
     $listing = $_POST['listing'];
 	  $listing = array_map(array($tigers, 'cleanMys'), $listing);
 	  $list = implode('!', $listing);
@@ -420,7 +419,6 @@ else {
    $lj_post = 'n';
    $lj_post_opt = '|itemid:|community:|tags:|userpic:|';
    if(isset($_POST['crosspost']) && !empty($_POST['crosspost']) && count($_POST['crosspost']) > 0) {
-    $crosspost = array();
     $crosspost = $_POST['crosspost'];
 	  $crosspost = array_map(array($tigers, 'cleanMys'), $crosspost);
     if(in_array('dw', $crosspost)) {
@@ -678,7 +676,6 @@ else {
 		' must not exceed 1.', false);
    }
    if($_POST['listing'] != 0) {
-    $listing = array();
     $listing = $_POST['listing'];
 	  $listing = array_map(array($tigers, 'cleanMys'), $listing);
 	  $list = implode('!', $listing);
@@ -718,8 +715,7 @@ else {
    $lj_post = 'n';
    $lj_post_opt = '|itemid:|community:|tags:|userpic:|';
    if(isset($_POST['crosspost']) && !empty($_POST['crosspost']) && count($_POST['crosspost']) > 0) {
-    $crosspost = array();
-    $crosspost = $_POST['crosspost'];
+       $crosspost = $_POST['crosspost'];
 	  $crosspost = array_map(array($tigers, 'cleanMys'), $crosspost);
 	  if(in_array('dw', $crosspost)) {
 	   $dw_post = 'y';
@@ -980,10 +976,10 @@ else {
 		 ' delete the <strong>' . $title . '</strong> entry.|Make sure your table' . 
 		 ' exists.', true, $delete);
     } elseif ($true == true) {
-     echo $tigers->displayError('Your <samp>' . $title . "</samp> entry was" . 
+     $tigers->displayError('Your <samp>' . $title . "</samp> entry was" .
     " deleted from the database! :D");
 	   if($dw_post == 'y') {
-	    echo $tigers->displayError('Your <samp>' . $title . "</samp> entry was" . 
+	    $tigers->displayError('Your <samp>' . $title . "</samp> entry was" .
       " deleted from <strong>Dreamwidth</strong>! :D");
 	   } if($ij_post == 'y') {
 	    echo $tigers->displaySuccess('Your <samp>' . $title . "</samp> entry was" . 

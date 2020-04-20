@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Apr 20, 2020 at 08:05 PM
+-- Generation Time: Apr 20, 2020 at 09:10 PM
 -- Server version: 5.5.62
 -- PHP Version: 7.2.25
 
@@ -11,12 +11,6 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `bambino`
@@ -728,7 +722,9 @@ CREATE TABLE `trex_success` (
 INSERT INTO `trex_success` (`messID`, `messType`, `messURL`, `messText`, `messInfo`, `messAdded`) VALUES
     (1, 'User Log-In Success', 'http://localhost/admin/index.php', 'Username: My Name\nPassword: password', '|192.168.210.1|Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36|', '2020-02-27 18:26:24'),
     (2, 'User Log-In Success', 'http://localhost/admin/members.php', 'Username: username\nPassword: password', '|192.168.210.1|Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36|', '2020-02-27 18:27:45'),
-    (3, 'User Log-In Success', 'http://localhost/admin/emails.php', 'Username: admin\nPassword: password', '|192.168.210.1|Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36|', '2020-02-27 18:35:43');
+    (3, 'User Log-In Success', 'http://localhost/admin/emails.php', 'Username: admin\nPassword: password', '|192.168.210.1|Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36|', '2020-02-27 18:35:43'),
+    (4, 'New Comment', 'http://localhost/admin/inc/fun-process.inc.php', 'Name: Gdfgdgdfg\nE-mail: ggggdkd+kd@kkkggg.com\nURL: https://123455.com\nComment: GGGFDGD', '|192.168.210.1|Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36|', '2020-04-20 21:03:27'),
+    (5, 'New Comment', 'http://localhost/admin/inc/fun-process.inc.php', 'Name: Gdfgdgdfg\nE-mail: ggggdkd+kd@kkkggg.com\nURL: https://123455.com\nComment: GGGFDGD', '|192.168.210.1|Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36|', '2020-04-20 21:04:16');
 
 -- --------------------------------------------------------
 
@@ -753,7 +749,7 @@ INSERT INTO `trex_templates` (`name`, `title`, `template`) VALUES
     ('listings_template', 'Listings', '&lt;p class=&quot;img&quot;&gt;&lt;a href=&quot;{url}&quot;&gt;&lt;img src=&quot;{image}&quot; alt=&quot;{subject}&quot; title=&quot;{subject}&quot; class=&quot;current&quot;&gt;&lt;/a&gt;&lt;/p&gt;\r\n&lt;p class=&quot;details&quot;&gt;\r\n&lt;strong&gt;Subject:&lt;/strong&gt; {subject}&lt;br&gt;\r\n&lt;strong&gt;Members:&lt;/strong&gt; {approved} (&lt;em&gt;{pending} Pending &lt;/em&gt;)&lt;br&gt;\r\n&lt;strong&gt;Since:&lt;/strong&gt; {since}&lt;br&gt;\r\n&lt;strong&gt;Last Updated:&lt;/strong&gt; {updated}\r\n&lt;/p&gt;\r\n&lt;p class=&quot;desc&quot;&gt;\r\n{desc}\r\n&lt;/p&gt;'),
     ('joined_template', 'Joined', '&lt;a href=&quot;{url}&quot;&gt;&lt;img src=&quot;{image}&quot; alt=&quot;{subject}&quot; title=&quot;{subject}&quot; class=&quot;joined&quot; /&gt;&lt;/a&gt;'),
     ('kim_stats_template', 'KIM Stats', '&lt;table class=&quot;kim-stats&quot; width=&quot;100%&quot;&gt;&lt;tbody&gt;\r\n&lt;tr&gt;&lt;td class=&quot;tr&quot;&gt;Listed:&lt;/td&gt;\r\n&lt;td class=&quot;tl&quot;&gt;{members} (&lt;em&gt;{pending} Pending &lt;/em&gt;)&lt;/td&gt;&lt;/tr&gt;\r\n&lt;tr&gt;&lt;td class=&quot;tr&quot;&gt;Last Updated:&lt;/td&gt;\r\n&lt;td class=&quot;tl&quot;&gt;{updated}&lt;/td&gt;&lt;/tr&gt;\r\n&lt;/tbody&gt;&lt;/table&gt;'),
-    ('updates_template', 'Updates', '{date} {entry}\r\nFiled Under: {categories}'),
+    ('updates_template', 'Updates', '{title}\r\n{date} {entry}\r\nFiled Under: {categories}  \r\n{permalink}'),
     ('wishlist_top_template', 'Wishlist: Top', '&lt;p class=&quot;floatLeft&quot;&gt;&lt;img src=&quot;{image}&quot; alt=&quot;{subject} ({category})&quot; title=&quot;{subject} ({category})&quot; class&quot;top-wishlist&quot;&gt;&lt;br&gt;{desc}&lt;/p&gt;'),
     ('wishlist_granted_template', 'Wishlist: Granted', '&lt;p class=&quot;floatLeft&quot;&gt;&lt;img src=&quot;{image}&quot; alt=&quot;{subject} ({category})&quot; title=&quot;{subject} ({category})&quot; class&quot;top-wishlist&quot;&gt;&lt;br&gt;{desc}&lt;/p&gt;'),
     ('wishlist_query_template', 'Wishlist: Query', '&lt;p class=&quot;floatLeft&quot;&gt;&lt;img src=&quot;{image}&quot; alt=&quot;{subject} ({category})&quot; title=&quot;{subject} ({category})&quot; class&quot;top-wishlist&quot;&gt;&lt;br&gt;{desc}&lt;/p&gt;'),
@@ -815,7 +811,7 @@ INSERT INTO `trex_templates_emails` (`name`, `title`, `template`) VALUES
 --
 
     INSERT INTO `trex_updates` (`uID`, `uTitle`, `uCategory`, `uEntry`, `uDW`, `uDWOpt`, `uIJ`, `uIJOpt`, `uLJ`, `uLJOpt`, `uPending`, `uDisabled`, `uAdded`) VALUES
-    (1, 'cool update', '!0!1!', 'Blablah', 'n', '|itemid:|community:|tags:|userpic:|', 'n', '|itemid:|community:|tags:|userpic:|', 'n', '|itemid:|community:|tags:|userpic:|', 0, 0, '2020-02-27 19:05:38'),
+    (1, 'WITH COMMENTS', '!0!1!', 'Blablah', 'n', '|itemid:|community:|tags:|userpic:|', 'n', '|itemid:|community:|tags:|userpic:|', 'n', '|itemid:|community:|tags:|userpic:|', 0, 1, '2020-02-10 20:42:29'),
     (2, 'cool update 2', '!0!1!', 'Blablah', 'n', '|itemid:|community:|tags:|userpic:|', 'n', '|itemid:|community:|tags:|userpic:|', 'n', '|itemid:|community:|tags:|userpic:|', 0, 0, '2020-02-27 18:48:17'),
     (3, 'cool update 3', '!0!1!', 'Blablah4444', 'n', '|itemid:|community:|tags:|userpic:|', 'n', '|itemid:|community:|tags:|userpic:|', 'n', '|itemid:|community:|tags:|userpic:|', 0, 0, '2020-02-27 18:48:17'),
     (4, 'cool update ', '!0!1!', 'Blablah', 'n', '|itemid:|community:|tags:|userpic:|', 'n', '|itemid:|community:|tags:|userpic:|', 'n', '|itemid:|community:|tags:|userpic:|', 0, 0, '2020-02-27 18:48:17'),
@@ -858,6 +854,14 @@ INSERT INTO `trex_templates_emails` (`name`, `title`, `template`) VALUES
     `cPending` tinyint(1) NOT NULL DEFAULT '0',
     `cAdded` datetime NOT NULL
     ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `trex_updates_comments`
+--
+
+    INSERT INTO `trex_updates_comments` (`cID`, `eNiq`, `cName`, `cEmail`, `cURL`, `cComment`, `cInfo`, `cFlag`, `cPending`, `cAdded`) VALUES
+    (1, 1, 'Gdfgdgdfg', 'ggggdkd+kd@kkkggg.com', 'https://123455.com', 'GGGFDGD', '|192.168.210.1|Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36|', 'legit', 0, '2020-04-20 21:03:27'),
+    (2, 1, 'Gdfgdgdfg', 'ggggdkd+kd@kkkggg.com', 'https://123455.com', 'GGGFDGD', '|192.168.210.1|Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36|', 'legit', 0, '2020-04-20 21:04:16');
 
 -- --------------------------------------------------------
 
@@ -1153,7 +1157,7 @@ INSERT INTO `trex_templates_emails` (`name`, `title`, `template`) VALUES
 -- AUTO_INCREMENT for table `trex_success`
 --
     ALTER TABLE `trex_success`
-    MODIFY `messID` mediumint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+    MODIFY `messID` mediumint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `trex_updates`
@@ -1165,7 +1169,7 @@ INSERT INTO `trex_templates_emails` (`name`, `title`, `template`) VALUES
 -- AUTO_INCREMENT for table `trex_updates_comments`
 --
     ALTER TABLE `trex_updates_comments`
-    MODIFY `cID` int(20) NOT NULL AUTO_INCREMENT;
+    MODIFY `cID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `trex_wishlist`
@@ -1173,7 +1177,3 @@ INSERT INTO `trex_templates_emails` (`name`, `title`, `template`) VALUES
     ALTER TABLE `trex_wishlist`
     MODIFY `wID` smallint(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
     COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

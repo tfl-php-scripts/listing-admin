@@ -100,6 +100,8 @@
         $mark = '';
     }
 
+    $options->markup = $mark;
+
     /**
      * Get entry P:
      */
@@ -108,9 +110,9 @@
         if (!empty($e) || in_array($e, $turtles->updatesList())) {
             $getItem = $turtles->getEntry($e);
             echo $turtles->templateEntries(str_replace('{MORE}', '', $e), 'single');
-            if ($getItem->uDisabled == 1) {
+            if ($getItem->uDisabled === '1') {
                 echo "<h3 id=\"comments\">Comments</h3>\n";
-                echo $turtles->comments($e);
+                $turtles->comments($e);
             }
         } else {
             $tigers->displayError('Script Error', 'Invalid entry!', false);

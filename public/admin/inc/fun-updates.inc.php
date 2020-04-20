@@ -16,6 +16,8 @@ if (!class_exists('turtles')) {
         /**
          * @function  $turtles->updatesList()
          * @param     $s , int; listing ID; optional
+         * @return array
+         * @return array
          */
         public function updatesList($s = '')
         {
@@ -25,7 +27,7 @@ if (!class_exists('turtles')) {
             if ($s != 'y' && ($s == 0 || $s == '0' || in_array($s, $wolves->listingsList()))) {
                 $select .= " WHERE `uCategory` LIKE '%!$s!%'";
             }
-            $select .= " ORDER BY `uID` ASC";
+            $select .= ' ORDER BY `uID` ASC';
             $true = $scorpions->query($select);
             if ($true == false) {
                 $tigers->displayError('Database Error', 'The script was unable to select' .
@@ -43,6 +45,8 @@ if (!class_exists('turtles')) {
         /**
          * @function  $turtles->commentsList()
          * @param     $e , int; entry ID; optional
+         * @return array
+         * @return array
          */
         public function commentsList($e = '')
         {
@@ -52,7 +56,7 @@ if (!class_exists('turtles')) {
             if ($e != '' && in_array($e, $this->updatesList())) {
                 $select .= " WHERE `eNiq` = '$e'";
             }
-            $select .= " ORDER BY `cAdded` DESC";
+            $select .= ' ORDER BY `cAdded` DESC';
             $true = $scorpions->query($select);
             if ($true == false) {
                 $tigers->displayError('Database Error', 'The script was unable to select' .
@@ -80,15 +84,16 @@ if (!class_exists('turtles')) {
             $true = $scorpions->query($select);
             if ($true == false || $scorpions->total($true) < 0) {
                 return 0;
-            } else {
-                $getItem = $scorpions->obj($true);
-                return $getItem->uID;
             }
+
+            return $scorpions->obj($true)->uID;
         }
 
         /**
          * @function  $turtles->getEntry()
          * @param     $i , int; update ID
+         * @return mixed
+         * @return mixed
          */
         public function getEntry($i)
         {
@@ -100,14 +105,15 @@ if (!class_exists('turtles')) {
                 $tigers->displayError('Database Error', 'The script was unable to select' .
                     ' the specified update.', false);
             }
-            $getItem = $scorpions->obj($true);
 
-            return $getItem;
+            return $scorpions->obj($true);
         }
 
         /**
          * @access   public
          * @function $turtles->entryName()
+         * @param $i
+         * @return string
          * @since    2.1.4
          */
         public function entryName($i)
@@ -115,7 +121,7 @@ if (!class_exists('turtles')) {
             global $_ST, $scorpions, $tigers;
 
             if ($i == 0 || $i == '0') {
-                return "Whole Collective";
+                return 'Whole Collective';
             }
 
             $select = "SELECT `uTitle` FROM `$_ST[updates]` WHERE `uID` = '$i' LIMIT 1";
@@ -124,14 +130,14 @@ if (!class_exists('turtles')) {
                 $tigers->displayError('Database Error', 'The script could not select the' .
                     ' title from the database.', true, $select);
             }
-            $getItem = $scorpions->obj($true);
-
-            return $getItem->uTitle;
+            return $scorpions->obj($true)->uTitle;
         }
 
         /**
          * @access   public
          * @function $turtles->getComment()
+         * @param $i
+         * @return mixed
          * @since    2.1.4
          */
         public function getComment($i)
@@ -144,9 +150,7 @@ if (!class_exists('turtles')) {
                 $tigers->displayError('Database Error', 'The script was unable to select' .
                     ' the specified comment.', false);
             }
-            $getItem = $scorpions->obj($true);
-
-            return $getItem;
+            return $scorpions->obj($true);
         }
 
         /**
@@ -154,6 +158,8 @@ if (!class_exists('turtles')) {
          *
          * @access   public
          * @function $turtles->strip_characters()
+         * @param $r
+         * @return string|string[]
          * @since    2.1.4
          */
         public function strip_characters($r)
@@ -194,6 +200,10 @@ if (!class_exists('turtles')) {
         /**
          * @access   public
          * @function $turtles->cleanLJ()
+         * @param $post
+         * @param string $p
+         * @param string $s
+         * @return string|string[]|null
          * @since    2.1.4
          */
         public function cleanLJ($post, $p = 'y', $s = 'y')
@@ -223,6 +233,11 @@ if (!class_exists('turtles')) {
          *
          * @access   public
          * @function $turtles->formatEntry()
+         * @param $s
+         * @param $c
+         * @param $n
+         * @param $k
+         * @return string
          * @since    2.1.4
          */
         public function formatEntry($s, $c, $n, $k)
@@ -236,12 +251,10 @@ if (!class_exists('turtles')) {
                 } else {
                     $w .= '/e/';
                 }
+            } else if (strpos($w, '/') !== false) {
+                $w .= '?e=';
             } else {
-                if (strpos($w, '/') !== false) {
-                    $w .= '?e=';
-                } else {
-                    $w .= '/?e=';
-                }
+                $w .= '/?e=';
             }
 
             $b = trim($c);
@@ -250,7 +263,7 @@ if (!class_exists('turtles')) {
                     $e = explode('{MORE}', $c);
                     $r = $e[0];
                     $r .= '<cut text="Read More...">' . $e[1] . "</cut>\n";
-                    if (getOption('updates_crosspost_dw_link') == 'y' && $k == 1) {
+                    if ($seahorses->getOption('updates_crosspost_dw_link') == 'y' && $k == 1) {
                         $r .= '<br /><br /><small>Originally posted at <a href="' . $w . $n . '">' .
                             $qname . '</a>. Please post comments there.</small>';
                     }
@@ -321,6 +334,8 @@ if (!class_exists('turtles')) {
         /**
          * @access   public
          * @function $turtles->makeEntryLink()
+         * @param $e
+         * @return string
          * @since    2.1.4
          */
         public function makeEntryLink($e)
@@ -334,16 +349,18 @@ if (!class_exists('turtles')) {
         /**
          * @access   public
          * @function $turtles->makeExcerpt()
+         * @param $i
+         * @return string
          * @since    2.1.4
          */
         public function makeExcerpt($i)
         {
             global $seahorses;
             if ($seahorses->getOption('updates_prettyurls') == 'y') {
-                return "<a href=\"" . $this->blogURL() . "e/$i\">Read More &#38;#187;</a>";
-            } else {
-                return "<a href=\"" . $this->blogURL() . "?e=$i\">Read More &#38;#187;</a>";
+                return '<a href="' . $this->blogURL() . "e/$i\">Read More &#38;#187;</a>";
             }
+
+            return '<a href="' . $this->blogURL() . "?e=$i\">Read More &#38;#187;</a>";
         }
 
         /**
@@ -359,6 +376,9 @@ if (!class_exists('turtles')) {
          *
          * @access   public
          * @function $turtles->cleanText()
+         * @param $p
+         * @param string $m
+         * @return string|string[]|null
          * @since    2.1.4
          */
         public function cleanText($p, $m = 'html')
@@ -380,7 +400,7 @@ if (!class_exists('turtles')) {
             $p = str_replace('&quot;', '"', $p);
             $p = str_replace('&#39;', "'", $p);
 
-            $p = $p . "\n";
+            $p .= "\n";
             $allblocks = '(?:table|thead|tfoot|caption|colgroup|tbody|tr|td|th|div|section|' .
                 'dl|dd|dt|menu|ul|ol|li|pre|select|fieldset|legend|form|map|area|code|blockquote|' .
                 'address|math|style|input|p|h[1-6]|hr)';
@@ -388,21 +408,21 @@ if (!class_exists('turtles')) {
             $p = preg_replace('!(</' . $allblocks . '>)!', "$1\n\n", $p);
             $p = str_replace(array("\r\n", "\r"), "\n", $p);
             if (strpos($p, '<object') !== false) {
-                $p = preg_replace('|\s*<param([^>]*)>\s*|', "<param$1>", $p);
+                $p = preg_replace('|\s*<param([^>]*)>\s*|', '<param$1>', $p);
                 $p = preg_replace('|\s*</embed>\s*|', '</embed>', $p);
             }
             $p = preg_replace("/\n\n+/", "\n\n", $p);
             $p = preg_replace('/\n?(.+?)(?:\n\s*\n|\z)/s', "<p>$1</p>\n", $p);
             $p = preg_replace('|<p>\s*?</p>|', '', $p);
-            $p = preg_replace('!<p>([^<]+)\s*?(</(?:div|address|form)[^>]*>)!', "<p>$1</p>$2", $p);
-            $p = preg_replace('|<p>|', "$1<p>", $p);
-            $p = preg_replace('!<p>\s*(</?' . $allblocks . '[^>]*>)\s*</p>!', "$1", $p);
-            $p = preg_replace("|<p>(<li.+?)</p>|", "$1", $p);
-            $p = preg_replace('|<p><blockquote([^>]*)>|i', "<blockquote$1><p>", $p);
+            $p = preg_replace('!<p>([^<]+)\s*?(</(?:div|address|form)[^>]*>)!', '<p>$1</p>$2', $p);
+            $p = preg_replace('|<p>|', '$1<p>', $p);
+            $p = preg_replace('!<p>\s*(</?' . $allblocks . '[^>]*>)\s*</p>!', '$1', $p);
+            $p = preg_replace('|<p>(<li.+?)</p>|', '$1', $p);
+            $p = preg_replace('|<p><blockquote([^>]*)>|i', '<blockquote$1><p>', $p);
             $p = str_replace('</blockquote></p>', '</p></blockquote>', $p);
-            $p = preg_replace('!<p>\s*(</?' . $allblocks . '[^>]*>)!', "$1", $p);
-            $p = preg_replace('!(</?' . $allblocks . '[^>]*>)\s*</p>!', "$1", $p);
-            $p = preg_replace('!(</?' . $allblocks . '[^>]*>)\s*<br />!', "$1", $p);
+            $p = preg_replace('!<p>\s*(</?' . $allblocks . '[^>]*>)!', '$1', $p);
+            $p = preg_replace('!(</?' . $allblocks . '[^>]*>)\s*</p>!', '$1', $p);
+            $p = preg_replace('!(</?' . $allblocks . '[^>]*>)\s*<br />!', '$1', $p);
             $p = preg_replace('!<br>(\s*</?(?:p|li|div|dl|dd|dt|th|pre|td|ul|ol)[^>]*>)!', '$1', $p);
             $p = preg_replace("|\n</p>$|", '</p>', $p);
 
@@ -445,16 +465,19 @@ if (!class_exists('turtles')) {
         /**
          * @access   public
          * @function $turtles->templateEntries()
+         * @param $d
+         * @param string $b
+         * @return string
          * @since    2.1.4
          */
         public function templateEntries($d, $b = 'default')
         {
-            global $_ST, $options, $my_website, $seahorses, $tigers, $wolves;
+            global $options, $my_website, $seahorses, $wolves;
 
             $listing = $wolves->getListings($options->listingID, 'object');
             $getItem = $this->getEntry($d);
             $e = $getItem->uID;
-
+            $mark = $seahorses->getOption('markup') === 'xhtml' ? ' /' : '';
             if (
                 ($options->listingID == '0' || $options->listingID == 0) ||
                 ($options->listingID != '0' && $options->listingID != 0 && empty($listing->updates))
@@ -491,28 +514,28 @@ if (!class_exists('turtles')) {
                 ) {
                     $comment_link .= "<br$mark>\n";
                     if ($getItem->uDW == 'y') {
-                        $comment_link .= "<img src=\"" .
+                        $comment_link .= '<img src="' .
                             $my_website . "img/write_bw.png\" alt=\"\"$mark> <a href=\"http://" .
-                            $seahorses->getOption('updates_crosspost_dw_user') . ".dreamwidth.org/\"" .
-                            " title=\"External Link: Dreamwidth\">Dreamwidth &amp;raquo;</a> ";
+                            $seahorses->getOption('updates_crosspost_dw_user') . '.dreamwidth.org/"' .
+                            ' title="External Link: Dreamwidth">Dreamwidth &amp;raquo;</a> ';
                     }
                     if ($getItem->uIJ == 'y') {
-                        $comment_link .= "<img src=\"" .
+                        $comment_link .= '<img src="' .
                             $my_website . "img/write_bw.png\" alt=\"\"$mark> <a href=\"http://" .
-                            $seahorses->getOption('updates_crosspost_ij_user') . ".insanejournal.com/\"" .
-                            " title=\"External Link: InsaneJournal\">InsaneJournal &amp;raquo;</a> ";
+                            $seahorses->getOption('updates_crosspost_ij_user') . '.insanejournal.com/"' .
+                            ' title="External Link: InsaneJournal">InsaneJournal &amp;raquo;</a> ';
                     }
                     if ($getItem->uLJ == 'y') {
                         $ex = preg_split("/[\s|]+/", $getItem->uLJOpt);
-                        if ($ex[2] === "community:") {
-                            $comment_link .= "<img src=\"" .
+                        if ($ex[2] === 'community:') {
+                            $comment_link .= '<img src="' .
                                 $my_website . "img/write_bw.png\" alt=\"\"$mark> <a href=\"http://" .
-                                $seahorses->getOption('updates_crosspost_lj_user') . ".livejournal.com/\"" .
-                                " title=\"External Link: LiveJournal\">LiveJournal &amp;raquo;</a> ";
+                                $seahorses->getOption('updates_crosspost_lj_user') . '.livejournal.com/"' .
+                                ' title="External Link: LiveJournal">LiveJournal &amp;raquo;</a> ';
                         } else {
-                            $comment_link .= "<img src=\"" .
+                            $comment_link .= '<img src="' .
                                 $my_website . "img/write_bw.png\" alt=\"\"$mark> <a href=\"http://community.livejournal.com/" .
-                                str_replace('community:', '', $ex[2]) . "/\" title=\"External Link: LiveJournal\">LiveJournal &amp;raquo;</a> ";
+                                str_replace('community:', '', $ex[2]) . '/" title="External Link: LiveJournal">LiveJournal &amp;raquo;</a> ';
                         }
                     }
                 }
@@ -522,21 +545,18 @@ if (!class_exists('turtles')) {
             }
             $comments = trim($comments);
 
-            if ($b == 'default') {
-                if (strpos($getItem->uEntry, '{MORE}') !== false) {
-                    $x = explode('{MORE}', $getItem->uEntry);
-                    $getItem->uEntry = $x[0] . $this->makeExcerpt($getItem->uID);
-                }
+            if (($b == 'default') && strpos($getItem->uEntry, '{MORE}') !== false) {
+                $x = explode('{MORE}', $getItem->uEntry);
+                $getItem->uEntry = $x[0] . $this->makeExcerpt($getItem->uID);
             }
 
             if ($seahorses->getOption('updates_prettyurls') == 'y') {
-                $perma = "<a href=\"" . $this->blogURL() . "e/" . $getItem->uID .
-                    "/\">Permalink</a>";
-                $permar = $this->blogURL() . "e/" . $getItem->uID;
+                $permar = $this->blogURL() . 'e/' . $getItem->uID;
             } else {
-                $perma = "<a href=\"/" . $this->blogURL() . 'e=' . $getItem->uID . "\">Permalink</a>";
-                $permar = $this->blogURL() . 'e=' . $getItem->uID;
+                $permar = $this->blogURL() . '?e=' . $getItem->uID;
             }
+
+            $perma = '<a href="' . $permar . '">Permalink</a>';
             $format = str_replace('{categories}', $wolves->pullSubjects_Links($getItem->uCategory, '!'), $fulltemp);
             $format = str_replace('{comments}', $comments, $format);
             $format = str_replace('{date}', date($seahorses->getTemplate('date_template'), strtotime($getItem->uAdded)), $format);
@@ -551,6 +571,8 @@ if (!class_exists('turtles')) {
         /**
          * @access   public
          * @function $turtles->updatesDefault()
+         * @param $s
+         * @param $b
          * @since    2.1.4
          */
         public function updatesDefault($s, $b)
@@ -570,8 +592,8 @@ if (!class_exists('turtles')) {
                 } else {
                     echo $octopus->alternate('menu', $seahorses->getOption('markup'));
                     while ($getItem = $true->fetch_object()) {
-                        echo " <li><a href=\"?m=" . $getItem->friendly . '">' .
-                            $getItem->month . "</a> (" . $getItem->entries . ")</li>\n";
+                        echo ' <li><a href="?m=' . $getItem->friendly . '">' .
+                            $getItem->month . '</a> (' . $getItem->entries . ")</li>\n";
                     }
                     echo $octopus->alternate('menu', $seahorses->getOption('markup'), 1);
                 }
@@ -587,8 +609,8 @@ if (!class_exists('turtles')) {
                             " LIKE '%!" . $id . "!%' AND `uPending` = '0'");
                         $count = $scorpions->total($query);
                         if ($count > 0) {
-                            echo " <li><a href=\"?s=" . $listing->id . '">' . $listing->subject .
-                                "</a> (" . $count . ")</li>\n";
+                            echo ' <li><a href="?s=' . $listing->id . '">' . $listing->subject .
+                                '</a> (' . $count . ")</li>\n";
                         }
                     }
                     echo $octopus->alternate('menu', $seahorses->getOption('markup'), 1);
@@ -657,11 +679,12 @@ if (!class_exists('turtles')) {
         /**
          * @access   public
          * @function $turtles->comments()
+         * @param $i
          * @since    2.1.4
          */
         public function comments($i)
         {
-            global $_ST, $octopus, $options, $scorpions, $seahorses;
+            global $my_email, $_ST, $octopus, $tigers, $scorpions, $seahorses;
 
             $select = "SELECT * FROM `$_ST[updates_comments]` WHERE `eNiq` = '$i'" .
                 " AND `cFlag` = 'legit' AND `cPending` = '0' ORDER BY `cAdded`, `cID` ASC";
@@ -672,7 +695,7 @@ if (!class_exists('turtles')) {
             }
             $count = $scorpions->total($true);
 
-            $mark = $seahorses->getOption('markup') == 'xhtml' ? " /" : '';
+            $mark = $seahorses->getOption('markup') == 'xhtml' ? ' /' : '';
             if ($count > 0) {
                 echo $octopus->alternate('menu', $seahorses->getOption('markup'), 0, 'commentsDisplay');
                 while ($getItem = $scorpions->obj($true)) {
@@ -690,23 +713,23 @@ if (!class_exists('turtles')) {
                     }
 
                     if (empty($getItem->cURL)) {
-                        $n = "<strong>" . $getItem->cName . "</strong>";
+                        $n = '<strong>' . $getItem->cName . '</strong>';
                     } else {
                         $n = '<a href="' . $getItem->cURL . '" title="External Link: ' . $getItem->cName .
-                            ' at ' . $octopus->shortURL($getItem->cURL) . '">' . $getItem->cName . " &raquo;</a>";
+                            ' at ' . $octopus->shortURL($getItem->cURL) . '">' . $getItem->cName . ' &raquo;</a>';
                     }
 
-                    echo "<li id=\"commentid-" . $getItem->cID . "\">\n";
+                    echo '<li id="commentid-' . $getItem->cID . "\">\n";
                     if ($seahorses->getOption('updates_gravatar') == 'y') {
                         echo '<p class="i"><img src="' . $gravatar . '" class="commentImage" alt=""' . $mark . "></p>\n";
                     } else {
-                        echo '<p class="i"><img src="' . $imageH . 'default.png' . '" class="commentImage" alt=""' . $mark . "></p>\n";
+                        echo '<p class="i"><img src="' . $default .'" class="commentImage" alt=""' . $mark . "></p>\n";
                     }
                     echo "<p class=\"c$image_class\">{$n}<br$mark>\n";
-                    echo "<span class=\"commentBox\">" . date($seahorses->getTemplate('date_template'), strtotime($getItem->cAdded)) .
-                        "</span> &#187; <a href=\"#commentid-" . $getItem->cID . "\">Permalink</a><br$mark>\n";
+                    echo '<span class="commentBox">' . date($seahorses->getTemplate('date_template'), strtotime($getItem->cAdded)) .
+                        '</span> &#187; <a href="#commentid-' . $getItem->cID . "\">Permalink</a><br$mark>\n";
                     if ($mark == 'html') {
-                        echo $this->lineBreak(html_entity_decode($getItem->cComment)) . "</p>\n";
+                        echo $octopus->lineBreak(html_entity_decode($getItem->cComment)) . "</p>\n";
                     } else {
                         echo nl2br(html_entity_decode($getItem->cComment)) . "</p>\n";
                     }
@@ -718,7 +741,6 @@ if (!class_exists('turtles')) {
             }
 
             $w = $seahorses->getOption('adm_http') . 'fun-process.inc.php';
-            $v = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['PHP_SELF'];
             $a2 = mt_rand(10000, 99999);
             $b1 = mt_rand(1, 10);
             $b2 = mt_rand(1, 10);
@@ -726,6 +748,11 @@ if (!class_exists('turtles')) {
             $b4 = $b1 . ' + ' . $b2;
             ?>
             <form action="<?php echo $w; ?>" method="post">
+                <?php
+                if ($seahorses->getOption('javascript_opt') == 'y') {
+                    echo $octopus->javascriptCheat(sha1($seahorses->getOption('javascript_key')));
+                }
+                ?>
                 <input name="eid" type="hidden" value="<?php echo $i; ?>"<?php echo $mark; ?>>
                 <?php
                 if ($seahorses->getOption('updates_captcha') == 'y') {
@@ -740,12 +767,14 @@ if (!class_exists('turtles')) {
                 <fieldset id="reply">
                     <legend>Details</legend>
                     <p><label>* <strong>Name:</strong></label>
-                        <input name="name" class="input1" type="text"<?php echo $mark; ?>></p>
-                    <p><label>* <strong>E-mail</strong><br>
+                        <input name="name" class="input1" type="text" required="required"<?php echo $mark; ?>></p>
+                    <p style="    min-height: 60px;
+    width: 100%;
+    display: inline-block;"><label>* <strong>E-mail</strong><br>
                             Your e-mail will not be published:</label>
-                        <input name="email" class="input1" type="text"<?php echo $mark; ?>></p>
+                        <input name="email" class="input1" type="email" required="required"<?php echo $mark; ?>></p>
                     <p><label><strong>URL:</strong></label>
-                        <input name="url" class="input1" type="text"<?php echo $mark; ?>></p>
+                        <input name="url" class="input1" type="url"<?php echo $mark; ?>></p>
                 </fieldset>
 
                 <?php
@@ -762,7 +791,7 @@ if (!class_exists('turtles')) {
                                     Enter the letters/numbers as shown to the right:
                                 </label>
                                 <input name="captcha" class="input1" style="width: 48%;"
-                                       type="text"<?php echo $mark; ?>><br<?php echo $mark; ?>>
+                                       type="text" required="required"<?php echo $mark; ?>><br<?php echo $mark; ?>>
                                 <img alt="CAPTCHA Image" title="CAPTCHA Image"
                                      src="<?php echo $seahorses->getOption('adm_http'); ?>fun-captcha.inc.php?k=<?php echo $a2; ?>"
                                      style="width: 48%;"<?php echo $mark; ?>>
@@ -794,7 +823,7 @@ if (!class_exists('turtles')) {
                     <legend>Comment</legend>
                     <p>
                         <strong>* Comment:</strong><br<?php echo $mark; ?>>
-                        <textarea name="comment" cols="50" rows="15" style="height: 150px; width: 100%;"></textarea>
+                        <textarea name="comment" cols="50" rows="15" style="height: 150px; width: 100%;" required="required"></textarea>
                     </p>
                     <p class="tc"><input name="action" class="input2" type="submit"
                                          value="Post Comment"<?php echo $mark; ?>></p>
@@ -807,6 +836,8 @@ if (!class_exists('turtles')) {
          * @access   public
          * @function $turtles->grabEntryDate()
          * @since    2.1.4
+         * @param string $i
+         * @return string
          */
         public function grabEntryDate($i = '')
         {
@@ -816,35 +847,36 @@ if (!class_exists('turtles')) {
             if ($i != '' && in_array($i, $wolves->listingsList())) {
                 $select .= " WHERE `uCategory` LIKE '%!$i!%'";
             }
-            $select .= " ORDER BY `uAdded` DESC LIMIT 1";
+            $select .= ' ORDER BY `uAdded` DESC LIMIT 1';
             $true = $scorpions->query($select);
             if ($true == false) {
                 $tigers->displayError('Database Error', 'The script was unable to select the' .
                     ' last entry from the updates table.', false);
             }
             $getItem = $scorpions->obj($true);
-            $r = empty($getItem->uAdded) ? 'Date Unavailable' : date("D, d M Y H:i:s", strtotime($getItem->uAdded));
+            $r = empty($getItem->uAdded) ? 'Date Unavailable' : date('D, d M Y H:i:s', strtotime($getItem->uAdded));
 
-            return $r . " GMT";
+            return $r . ' GMT';
         }
 
         /**
          * @access   public
          * @function $turtles->getRSS()
          * @since    2.1.4
+         * @param string $c
          */
         public function getRSS($c = '')
         {
-            global $_ST, $seahorses, $scorpions, $tigers, $wolves;
+            global $_ST, $laoptions, $seahorses, $scorpions, $tigers, $wolves;
 
             $b = false;
             $select = "SELECT * FROM `$_ST[updates]`";
-            if ($i != '' && in_array($i, $wolves->listingsList())) {
+            if ($c != '' && in_array($c, $wolves->listingsList())) {
                 $b = true;
                 $d = $wolves->getListings($b, 'object');
-                $select .= " WHERE `uCategory` LIKE '%!$i!%'";
+                $select .= " WHERE `uCategory` LIKE '%!$c!%'";
             }
-            $select .= " ORDER BY `uAdded` DESC";
+            $select .= ' ORDER BY `uAdded` DESC';
             $true = $scorpions->query($select);
             if ($true == false) {
                 $tigers->displayError('Database Error', 'The script was unable to select' .
@@ -853,7 +885,7 @@ if (!class_exists('turtles')) {
             $getSing = $scorpions->obj($true);
 
             $e = (object)array(
-                'desc' => ($b == true ? $d->subject . " fanlisting" : "A Listing Collective"),
+                'desc' => ($b == true ? $d->subject . ' fanlisting' : 'A Listing Collective'),
                 'title' => ($b == true ? $d->title : $seahorses->getOption('collective_name')),
                 'url' => ($b == true ? $d->url : $seahorses->getOption('my_website'))
             );
@@ -861,15 +893,15 @@ if (!class_exists('turtles')) {
             /**
              * Get header and start building the RSS feed
              */
-            header("Content-Type: text/xml; charset=ISO-8859-1");
-            echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>" .
+            header('Content-Type: text/xml; charset=ISO-8859-1');
+            echo '<?xml version="1.0" encoding="iso-8859-1"?>' .
                 "\n<rss version=\"2.0\" xmlns:content=\"http://purl.org/rss/1.0/modules/" .
-                "content/\" xmlns:atom=\"http://www.w3.org/2005/Atom\" xmlns:wfw=\"http://" .
+                'content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:wfw="http://' .
                 "wellformedweb.org/CommentAPI/\">\n<channel>\n<title>" . $e->title .
                 "</title>\n<description>" . $e->desc . "</description>\n" .
-                "<atom:link href=\"" . str_replace('inc/', '', $seahorses->getOption('adm_http')) .
+                '<atom:link href="' . str_replace('inc/', '', $seahorses->getOption('adm_http')) .
                 "rss.php\" rel=\"self\" type=\"application/rss+xml\" />\n<link>" . $e->url .
-                "</link>\n<pubDate>" . $this->grabEntryDate($i) .
+                "</link>\n<pubDate>" . $this->grabEntryDate($c) .
                 "</pubDate>\n<generator>" . $laoptions->version . "</generator>\n";
 
             /**
@@ -883,15 +915,15 @@ if (!class_exists('turtles')) {
                     $entry = trim($x[0]);
                     $y = explode('{MORE}', $getItem->eEntry);
                     $raw = $this->cleanText(html_entity_decode($y[0])) .
-                        "<a href=\"" . $this->makeEntryLink($getItem->uID) .
-                        "\">Read More &#187;</a>";
+                        '<a href="' . $this->makeEntryLink($getItem->uID) .
+                        '">Read More &#187;</a>';
                 } else {
                     $raw = $this->cleanText(html_entity_decode($getItem->uEntry));
                 }
                 echo "<item>\n<title>" . $getItem->uTitle . "</title>\n" .
-                    "<pubDate>" . date("D, d M Y H:i:s", strtotime($getItem->uAdded)) .
+                    '<pubDate>' . date('D, d M Y H:i:s', strtotime($getItem->uAdded)) .
                     " GMT</pubDate>\n<guid" .
-                    " isPermaLink=\"true\">" . $this->makeEntryLink($getItem->uID) .
+                    ' isPermaLink="true">' . $this->makeEntryLink($getItem->uID) .
                     "</guid>\n<description>$entry</description>" .
                     "\n<content:encoded><![CDATA[$raw]]></content:encoded>\n</item>\n";
             }
