@@ -127,4 +127,3 @@ you edit a template. An example will be provided for each template as well.</p>
 }
 
 require("footer.php");
-?>

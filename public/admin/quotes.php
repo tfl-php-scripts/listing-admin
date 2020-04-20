@@ -365,4 +365,3 @@ else {
 }
 
 require("footer.php");
-?>

@@ -383,4 +383,3 @@ pages.</p>
 }
 
 require("footer.php");
-?>

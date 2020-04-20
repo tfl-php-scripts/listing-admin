@@ -737,4 +737,3 @@ if ($ender > $count) {
         }
 
         require('footer.php');
-        ?>

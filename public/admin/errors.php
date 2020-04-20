@@ -1,9 +1,4 @@
-<?php  
-/* 
- /////////////////////////////////////////////////////////////
- Listing Admin (c) 2007 
- ///////////////////////////////////////////////////////////// 
-*/ 
+<?php
 /** 
  * @copyright  2007 
  * @license    GPL Version 3; BSD Modified 
@@ -150,4 +145,3 @@ the errors that Listing Admin logs, and view/delete those logs.</p>
 }
 
 require("footer.php");
-?>

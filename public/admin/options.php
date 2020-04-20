@@ -913,4 +913,3 @@ else {
 }
 
 require("footer.php");
-?>

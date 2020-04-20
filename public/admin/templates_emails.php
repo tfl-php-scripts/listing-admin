@@ -163,4 +163,3 @@ of the script. Currently, you are only able to edit the current existing the tem
 }
 
 require("footer.php");
-?>

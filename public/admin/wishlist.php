@@ -628,4 +628,3 @@ click "Edit" or "Delete" by the appropriate wish.</p>
 }
 
 require("footer.php");
-?>

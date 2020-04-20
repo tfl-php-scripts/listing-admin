@@ -944,4 +944,3 @@ else {
 }
 
 require("footer.php");
-?>

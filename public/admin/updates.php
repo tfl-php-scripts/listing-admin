@@ -1140,4 +1140,3 @@ else {
 }
 
 require("footer.php");
-?>

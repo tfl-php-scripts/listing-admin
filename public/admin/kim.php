@@ -635,4 +635,3 @@ else {
 }
 
 require("footer.php");
-?>

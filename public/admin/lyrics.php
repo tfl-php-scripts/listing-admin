@@ -689,4 +689,3 @@ else {
 }
 
 require("footer.php");
-?>

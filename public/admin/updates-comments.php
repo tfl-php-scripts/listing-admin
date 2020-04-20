@@ -405,4 +405,3 @@ one, click "Edit" or "Delete" by the appropriate comment.</p>
 }
 
 require("footer.php");
-?>
