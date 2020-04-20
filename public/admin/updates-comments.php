@@ -151,7 +151,7 @@ if (isset($_GET['g']) && $_GET['g'] == 'old') {
             ' not valid. Please supply a valid site URL or empty the field.', false);
     }
     $entryid = $tigers->cleanMys($_POST['entry']);
-    if (!in_array($entryid, $turtles->updatesList())) {
+    if (!in_array($entryid, $turtles->updatesList('y'))) {
         $tigers->displayError('Form Error', 'The <samp>entry</samp> field is invalid.',
             false);
     }
@@ -162,8 +162,8 @@ if (isset($_GET['g']) && $_GET['g'] == 'old') {
     }
 
     $update = "UPDATE `$_ST[updates_comments]` SET `eNiq` = '$entryid', `cName`" .
-        " = '$name', `cEmail` = '$email', `cURL` = '$url', `cComment` = '$comment'," .
-        " `cUpdated` = NOW() WHERE `cID` = '$id' LIMIT 1";
+        " = '$name', `cEmail` = '$email', `cURL` = '$url', `cComment` = '$comment'" .
+        " WHERE `cID` = '$id' LIMIT 1";
     $scorpions->query("SET NAMES 'utf8';");
     $true = $scorpions->query($update);
     if ($true == false) {
