@@ -202,11 +202,12 @@
             if (!empty($url)) {
                 $message .= "URL: <{$url}>\n";
             }
+            $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
             $message .= 'Listing: ' . $wolves->getSubject($listing) .
                 "\n\nComments: " . $_POST['comments'] . "\n\nIP Address:" .
                 " {$_SERVER['REMOTE_ADDR']}\n\nTo moderate (or delete) this member," .
                 ' go here: <' . $myadminpath->http . '>';
-            $headers = "From: Listing Admin <$my_email>\nReply-To: <{$_POST['email']}>";
+            $headers = "From: Listing Admin <$my_email>\nReply-To: <$email>";
             $mmail = mail($my_email, $subject, $message, $headers);
 
             /**

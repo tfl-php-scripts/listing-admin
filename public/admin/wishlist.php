@@ -28,7 +28,7 @@ if(isset($_GET['g']) && $_GET['g'] == 'new') {
 <fieldset>
  <legend>Details</legend>
  <p><label><strong>Subject:</strong></label> <input name="subject" class="input1" type="text"></p>
- <p><label><strong>URL:</strong></label> <input name="url" class="input1" type="text"></p>
+ <p><label><strong>URL:</strong></label> <input name="url" class="input1" type="url"></p>
  <p><label><strong>Image:</strong></label> <input name="image" class="input1" type="file"></p>
  <p class="tc"><strong>Description:</strong><br>
  <textarea name="desc" cols="50" rows="8" style="width: 100%;"></textarea></p>
@@ -341,14 +341,13 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'Edit Wish') {
  if(empty($subject)) { 
   $tigers->displayError('Form Error', 'Your <samp>subject</samp> field is' . 
   ' empty.', false);
- } 
- $url = $tigers->cleanMys($_POST['url']);
- if(!empty($url)) {
-  if(strstr($url, 'http://') === false) {
-   $tigers->displayError('Form Error', 'The <samp>URL</samp> does not' . 
-	 ' start with http:// and therefore is not valid. Try again.', false);
-  } 
  }
+ $url = StringUtils::instance()->normalize($_POST['url']);
+        if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
+            $tigers->displayError('Form Error', 'Your <samp>site URL</samp>' .
+                ' appears to be invalid; make sure you haven\'t included any invalid characters' .
+                ' and you prepended your URL with <samp>http</samp>.', false);
+        }
  $desc = $tigers->cleanMys($_POST['desc'], 'nom');
  $change = $tigers->cleanMys($_POST['change']);
  $changeArray = array('add', 'edit', 'delete', 'none');
@@ -366,7 +365,6 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'Edit Wish') {
    '</samp> and <samp>.png</samp> extensions allowed.', false);
   }
  }
- $category = array();
  $category = $_POST['category'];
  if(empty($category)) {
   $tigers->displayError('Form Error', 'Your <samp>category</samp> field is' . 
