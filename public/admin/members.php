@@ -1,21 +1,24 @@
 <?php
-/** 
- * @copyright  2007 
- * @license    GPL Version 3; BSD Modified 
- * @author     Tess <theirrenegadexxx@gmail.com> 
- * @file       <members.php> 
- * @since      September 2nd, 2010 
- * @version    1.0    
- */ 
-$getTitle = "Members";
-require("pro.inc.php");
-require("vars.inc.php");
-require("header.php");
+/**
+ * @project          Listing Admin
+ * @copyright        2007
+ * @license          GPL Version 3; BSD Modified
+ * @author           Tess <theirrenegadexxx@gmail.com>
+ * @contributor      Ekaterina <scripts@robotess.net> http://scripts.robotess.net
+ * @file             <members.php>
+ * @version          Robotess Fork
+ */
+use Robotess\StringUtils;
+
+$getTitle = 'Members';
+require('pro.inc.php');
+require('vars.inc.php');
+require('header.php');
 
 $sp = isset($_GET['listing']) ? (!isset($_GET['g']) 
-|| (isset($_GET['g']) && preg_match("/^(search)([A-Za-z]+)/", $_GET['g'])) ? 
-"<span><a href=\"members.php?listing=" . $tigers->cleanMys($_GET['listing']) . 
-"&#38;g=new\">Add Member</a></span>" : '') : '';
+|| (isset($_GET['g']) && preg_match('/^(search)([A-Za-z]+)/', $_GET['g'])) ?
+'<span><a href="members.php?listing=' . $tigers->cleanMys($_GET['listing']) .
+'&#38;g=new">Add Member</a></span>' : '') : '';
 echo "<h2>{$getTitle}$sp</h2>\n";
 
 if(!isset($_GET['p']) || empty($_GET['p']) || !is_numeric($_GET['p'])) { 
@@ -27,7 +30,7 @@ $ender = $start + $per_members;
 
 if(isset($_GET['listing']) && is_numeric($_GET['listing'])) {
  $getlistingid = $tigers->cleanMys($_GET['listing']);
- echo "<h3>Members &#187; " . $wolves->getSubject($getlistingid) . "</h3>\n";
+ echo '<h3>Members &#187; ' . $wolves->getSubject($getlistingid) . "</h3>\n";
  
  if(isset($_GET['g']) && $_GET['g'] == 'new') {
 ?>
@@ -49,9 +52,9 @@ of the listing you'd like the member added to.</p>
 
  else {
   while($getItem = $scorpions->obj($true, 0)) {
-   echo "  <option value=\"" . $getItem->id . '"';
+   echo '  <option value="' . $getItem->id . '"';
 	 if($getItem->id == $getlistingid) {
-	  echo " selected=\"selecgted\"";
+	  echo ' selected="selecgted"';
 	 }
 	 echo '>' . $getItem->subject . "</option>\n"; 
   }
@@ -63,10 +66,10 @@ of the listing you'd like the member added to.</p>
 <fieldset>
  <legend>Member Details</legend>
  <p><label>* <strong>Name:</strong></label> <input name="name" class="input1" type="text"></p>
- <p><label>* <strong>E-Mail:</strong></label> <input name="email" class="input1" type="text"></p>
- <p><label><strong>URI:</strong></label> <input name="url" class="input1" type="text"></p>
+ <p><label>* <strong>E-Mail:</strong></label> <input name="email" class="input1" type="email"></p>
+ <p><label><strong>URI:</strong></label> <input name="url" class="input1" type="url"></p>
  <p><label>* <strong>Country:</strong></label> <select name="country" class="input1">
-<?php require("inc/countries.inc.php"); ?>
+<?php require('inc/countries.inc.php'); ?>
  </select></p>
  <p><label><strong>Show E-Mail:</strong></label> 
   <input name="visible" class="input3" type="radio" value="0"> Yes
@@ -95,7 +98,7 @@ if(!isset($_GET['extend']) && !isset($_GET['count']) && !isset($_POST['fave'])) 
 }
 
 if(isset($_GET['extend']) && is_numeric($_GET['extend'])) {
- $c1 = $tigers->cleanMys((int)$_GET['count']) + 1;
+ $c1 = (int)$tigers->cleanMys($_GET['count']) + 1;
  $q2 = basename($_SERVER['PHP_SELF']) . '?g=old&#38;id=' . $_GET['id'] . 
  '&#38;extend=1&#38;count=' . $c1 . '#fave'; 
  $countQuery = $tigers->cleanMys((int)$_GET['count'], 'y', 'y', 'n');
@@ -106,8 +109,8 @@ if(isset($_GET['extend']) && is_numeric($_GET['extend'])) {
  <input name="fave[]" class="input1" type="text"></p>
 <?php
  }
- echo "<p class=\"noteButton tc\"><span class=\"note\">Note:</span> Adding" . 
- " another fave field will erase any data you may have entered in the field(s)." . 
+ echo '<p class="noteButton tc"><span class="note">Note:</span> Adding' .
+ ' another fave field will erase any data you may have entered in the field(s).' .
  "<br><a href=\"$q2\">Add Another Field?</a></p>\n";
  echo "</div>\n";
 }
@@ -138,20 +141,22 @@ if(isset($_GET['extend']) && is_numeric($_GET['extend'])) {
    $tigers->displayError('Form Error', 'The <samp>name</samp> is too' . 
 	 ' long. Go back and shorten it.', false);
   } 
-  $email = $tigers->cleanMys($_POST['email']);
-  if(empty($email)) { 
-   $tigers->displayError('Form Error', 'The <samp>e-mail</samp> field is empty.', false);
-  } elseif (!preg_match("/([A-Za-z0-9-_\.]+)@(([A-Za-z0-9-_]+\.)+)([a-zA-Z]{2,4})$/i", $email)) {
-   $tigers->displayError('Form Error', 'The characters specified in the' . 
-	 ' <samp>e-mail</samp> field are not allowed.', false); 
-  }
-  $url = $tigers->cleanMys($_POST['url']);
-  if(!empty($url)) {
-   if($url == 'http://' || strstr($url, 'http://') === false) {
-    $tigers->displayError('Form Error', 'Your <samp>site URL</samp> is not' . 
-    ' valid. Please supply a valid site URL or empty the field.', false);
-   } 
-  }
+$email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
+        if (empty($email)) {
+            $tigers->displayError('Form Error', 'Your <samp>e-mail</samp> field' .
+                ' is empty.', false);
+        } elseif (!StringUtils::instance()->isEmailValid($email)) {
+            $tigers->displayError('Form Error', 'The characters specified in the' .
+                ' <samp>e-mail</samp> field are not allowed.', false);
+        }
+        $url = StringUtils::instance()->normalize($tigers->cleanMys($_POST['url']));
+        if (empty($url)) {
+            $tigers->displayError('Form Error', 'Your <samp>site URL</samp> field' .
+                ' is empty.', false);
+        } elseif (!StringUtils::instance()->isUrlValid($url)) {
+            $tigers->displayError('Form Error', 'Your <samp>site URL</samp> does' .
+                ' not start with http:// and therefore is not valid. Try again.', false);
+        }
   $country = $tigers->cleanMys($_POST['country']);
   if(empty($country)) { 
    $tigers->displayError('Form Error', 'The <samp>country</samp> field is' . 
@@ -174,13 +179,12 @@ if(isset($_GET['extend']) && is_numeric($_GET['extend'])) {
   } 
   if(empty($password1) && empty($password2)) {
    $hashy1 = substr(sha1(mt_rand(1990, 16770)), 0, 8);
-	 $hashy2 = substr(sha1(date("YmdHis")), 0, 8);
+	 $hashy2 = substr(sha1(date('YmdHis')), 0, 8);
 	 $pass = $hashy1 . $hashy2;
   } else {
    $pass = $password1;
   }
   if(isset($_POST['fave'])) {
-   $fields = array();
    $fields = $_POST['fave'];
    $fields = array_map(array($tigers, 'replaceArray'), $fields);
    if(!empty($fields)) { 
@@ -191,9 +195,9 @@ if(isset($_GET['extend']) && is_numeric($_GET['extend'])) {
 	  if(empty($dbentry->fave_fields)) {
 	   $ff = '';
 	  } else {
-     $dbadditional = explode("|", $dbentry->fave_fields);
+     $dbadditional = explode('|', $dbentry->fave_fields);
      $dbfields = $tigers->emptyarray($dbadditional);
-	   for($i = 0; $i < count($dbfields); $i++) {
+	   for($i = 0,$iMax = count($dbfields); $i < $iMax; $i++) {
 	    $fave[] = 'NONE';
 	   }
 	   $ff = implode('|', $fave);
@@ -205,9 +209,9 @@ if(isset($_GET['extend']) && is_numeric($_GET['extend'])) {
 	 if(empty($dbentry->fave_fields)) {
 	  $ff = '';
 	 } else {
-    $dbadditional = explode("|", $dbentry->fave_fields);
+    $dbadditional = explode('|', $dbentry->fave_fields);
     $dbfields = $tigers->emptyarray($dbadditional);
-	  for($i = 0; $i < count($dbfields); $i++) {
+	  for($i = 0,$iMax = count($dbfields); $i < $iMax; $i++) {
 	   $fave[] = 'NONE';
 	  }
 	  $ff = implode('|', $fave);
@@ -216,16 +220,16 @@ if(isset($_GET['extend']) && is_numeric($_GET['extend'])) {
   }
 
   $insert = "INSERT INTO `$_ST[members]` (`mEmail`, `fNiq`, `mName`, `mURL`," . 
-	" `mCountry`, `mPassword`, `mExtra`, `mVisible`, `mPending`, `mUpdate`," . 
+	' `mCountry`, `mPassword`, `mExtra`, `mVisible`, `mPending`, `mUpdate`,' .
   " `mEdit`, `mAdd`) VALUES ('$email', '$listing', '$name', '$url', '$country'," . 
-	" MD5('$pass'), '$fav', '$visible', '0', 'n', '0000-00-00 00:00:00', CURDATE())";
+	" MD5('$pass'), '$ff', '$visible', '0', 'n', '0000-00-00 00:00:00', CURDATE())";
   $true = $scorpions->insert($insert);
 
   if($true == false) {
    $tigers->displayError('Database Error', 'The script was unable to insert' . 
    ' the member.', true, $insert);
   } elseif ($true == true) {
-   echo "<p class=\"successButton\"><span class=\"success\">SUCCESS!</span> The" . 
+   echo '<p class="successButton"><span class="success">SUCCESS!</span> The' .
    " member was added! :D</p>\n";
 	 echo $tigers->backLink('mem', $getlistingid);
    echo $tigers->backLink('mem');
@@ -286,9 +290,9 @@ if(isset($_GET['extend']) && is_numeric($_GET['extend'])) {
  <p><label><strong>Name:</strong></label> 
  <input name="name" class="input1" type="text" value="<?php echo $getItem->mName; ?>"></p>
  <p><label><strong>E-mail:</strong></label> 
- <input name="email" class="input1" type="text" value="<?php echo $getItem->mEmail; ?>"></p>
+ <input name="email" class="input1" type="email" value="<?php echo $getItem->mEmail; ?>"></p>
  <p><label><strong>URI:</strong></label> 
- <input name="url" class="input1" type="text" value="<?php echo $getItem->mURL; ?>"></p>
+ <input name="url" class="input1" type="url" value="<?php echo $getItem->mURL; ?>"></p>
  <p><label><strong>Country:</strong></label> 
  <input name="country" class="input1" type="text" value="<?php echo $getItem->mCountry; ?>"></p>
  <p><label><strong>Show E-Mail:</strong></label> 
@@ -339,16 +343,14 @@ if(isset($_GET['extend']) && is_numeric($_GET['extend'])) {
  } 
 }
 
-else {
- if(!isset($_GET['extend']) && !isset($_GET['count']) && !isset($_POST['fave'])) {
-  $q = basename($_SERVER['PHP_SELF']) . '?listing=' . $getlistingid . 
-  '&#38;g=old&#38;d=' . $id . '&#38;extend=1&#38;count=1#fave'; 
-  echo "<p class=\"tc\"><a href=\"$q\">Add Fave Field(s)?</a></p>\n";
- }
+else if(!isset($_GET['extend']) && !isset($_GET['count']) && !isset($_POST['fave'])) {
+ $q = basename($_SERVER['PHP_SELF']) . '?listing=' . $getlistingid .
+ '&#38;g=old&#38;d=' . $id . '&#38;extend=1&#38;count=1#fave';
+ echo "<p class=\"tc\"><a href=\"$q\">Add Fave Field(s)?</a></p>\n";
 }
 
 if(isset($_GET['extend']) && is_numeric($_GET['extend']) && is_numeric($_GET['count'])) {
- $c1 = $tigers->cleanMys((int)$_GET['count']) + 1;
+ $c1 = (int)$tigers->cleanMys($_GET['count']) + 1;
  $q2 = basename($_SERVER['PHP_SELF']) . '?listing=' . $getlistingid . '&#38;' . 
  'g=old&#38;d=' . $id . "&#38;extend=1&#38;count=$c1#fave"; 
  $countQuery = $tigers->cleanMys((int)$_GET['count']);
@@ -360,8 +362,8 @@ if(isset($_GET['extend']) && is_numeric($_GET['extend']) && is_numeric($_GET['co
  <input name="fave[]" class="input1" type="text"></p>
 <?php 
  }
- echo " <p class=\"noteButton tc\"><span class=\"note\">Note:</span> Adding" . 
- " another fave field will erase any data you may have entered in the field(s)" . 
+ echo ' <p class="noteButton tc"><span class="note">Note:</span> Adding' .
+ ' another fave field will erase any data you may have entered in the field(s)' .
  ".<br><a href=\"$q2\">Add Another Field?</a></p>\n";
  echo " </div>\n";
 }
@@ -407,21 +409,22 @@ if(count($favs) != 0 && !empty($fave)) {
    $tigers->displayError('Form Error', 'Your <samp>name</samp> is too' . 
    ' long. Go back and shorten it.', false);
   }
-  $email = $tigers->cleanMys($_POST['email']);
-  if(empty($email)) { 
-   $tigers->displayError('Form Error', 'The <samp>e-mail</samp> field is' . 
-   ' empty.', false);
-  } elseif (!preg_match("/([A-Za-z0-9-_\.]+)@(([A-Za-z0-9-_]+\.)+)([a-zA-Z]{2,4})$/i", $email)) {
-   $tigers->displayError('Form Error', 'The characters specified in the' . 
-   ' <samp>e-mail</samp> field are not allowed.', false); 
-  } 
-  $url = $tigers->cleanMys($_POST['url']);
-  if(!empty($url)) {
-   if(!strstr($url, 'http://')) {
-    $tigers->displayError('Form Error', 'Your <samp>site url</samp> does' . 
-    ' not start with http:// and therefore is not valid. Try again.', false);
-   } 
-  }
+$email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
+        if (empty($email)) {
+            $tigers->displayError('Form Error', 'Your <samp>e-mail</samp> field' .
+                ' is empty.', false);
+        } elseif (!StringUtils::instance()->isEmailValid($email)) {
+            $tigers->displayError('Form Error', 'The characters specified in the' .
+                ' <samp>e-mail</samp> field are not allowed.', false);
+        }
+        $url = StringUtils::instance()->normalize($tigers->cleanMys($_POST['url']));
+        if (empty($url)) {
+            $tigers->displayError('Form Error', 'Your <samp>site URL</samp> field' .
+                ' is empty.', false);
+        } elseif (!StringUtils::instance()->isUrlValid($url)) {
+            $tigers->displayError('Form Error', 'Your <samp>site URL</samp> does' .
+                ' not start with http:// and therefore is not valid. Try again.', false);
+        }
   $country = $tigers->cleanMys($_POST['country']);
   if(empty($country)) { 
    $tigers->displayError('Form Error', 'Your <samp>country</samp> field is' . 
@@ -433,7 +436,6 @@ if(count($favs) != 0 && !empty($fave)) {
    ' invalid.', false);
   }
   if(isset($_POST['fave'])) {
-   $fields = array();
    $fields = $_POST['fave'];
    $fields = array_map(array($tigers, 'replaceArray'), $fields);
    if(!empty($fields)) { 
@@ -450,7 +452,7 @@ if(count($favs) != 0 && !empty($fave)) {
 	if($listing->dblist == 1) {
    $scorpions->scorpions($listing->dbhost, $listing->dbuser, $listing->dbpass, $listing->dbname);
 	 if($email_now == 'y') {
-    $mail = $jaquars->updateMember($id);
+    $mail = $jaguars->updateMember($id);
    }
 	 $dbtable = $listing->dbtabl;
 	 if($listing->dbtype == 'enth') {
@@ -461,7 +463,7 @@ if(count($favs) != 0 && !empty($fave)) {
      $update .= ", `pending` = '0'"; 
     } 
     if(isset($_POST['update_date']) && $_POST['update_date'] == 'y') {
-		 $update .= ", `added` = CURDATE()";
+		 $update .= ', `added` = CURDATE()';
 		}
 		$update .= " WHERE `email` = '$id' LIMIT 1";
 	 } elseif ($listing->dbtype == 'fanbase') {
@@ -473,13 +475,14 @@ if(count($favs) != 0 && !empty($fave)) {
     } 
 		$update .= " WHERE `id` = '$id' LIMIT 1";
 	 } elseif ($listing->dbtype == 'listingadmin') {
+	  $v = $visible == 1 ? 'y' : 'n';
 	  $update = "UPDATE `$dbtable` SET `mEmail` = '$email', `mName` = '$name'," . 
 		" `mURL` = '$url', `mCountry` = '$country', `mVisible` = '$v'"; 
 		if($status == 'y') {
      $update .= ", `pending` = '0'"; 
     } 
     if(isset($_POST['update_date']) && $_POST['update_date'] == 'y') {
-		 $update .= ", `mAdd` = CURDATE()";
+		 $update .= ', `mAdd` = CURDATE()';
 		}
 		$update .= " WHERE `mID` = '$id' LIMIT 1";
 		$scorpions->query("SET NAMES 'utf8';");
@@ -490,12 +493,10 @@ if(count($favs) != 0 && !empty($fave)) {
     $tigers->displayError('Database Error', 'The script was unable to' . 
 		' update the member you selected.', true, $update);
    } elseif ($true == true) {
-    echo $tigers->displaySuccess("The member was updated! :D");
-	  if(isset($mail)) { 
-	   if($mail) {
-	    echo $tigers->displaySuccess("The member was notified of their update!");
-	   }
-	  }
+    echo $tigers->displaySuccess('The member was updated! :D');
+	  if(isset($mail) && $mail) {
+       echo $tigers->displaySuccess('The member was notified of their update!');
+      }
 	 }
 	 $scorpions->breach(0);
 	 $scorpions->breach(1);
@@ -503,7 +504,7 @@ if(count($favs) != 0 && !empty($fave)) {
 	
 	else {
    if($email_now == 'y') {
-    $mail = $jaquars->updateMember($id);
+    $mail = $jaguars->updateMember($id);
    }
    $update = "UPDATE `$_ST[members]` SET `mEmail` = '$email', `mName` = '$name'," . 
 	 " `mURL` = '$url', `mCountry` = '$country', `mExtra` = '$ff', `mVisible` =" . 
@@ -512,9 +513,9 @@ if(count($favs) != 0 && !empty($fave)) {
     $update .= " `mPending` = '0',"; 
    } 
 	 if(isset($_POST['update_date']) && $_POST['update_date'] == 'y') {
-		$update .= " `mAdd` = CURDATE(),";
+		$update .= ' `mAdd` = CURDATE(),';
 	 }
-   $update .= " `mEdit` = NOW()";
+   $update .= ' `mEdit` = NOW()';
    $update .= " WHERE `mID` = '$id' LIMIT 1";
    $scorpions->query("SET NAMES 'utf8';");
    $true = $scorpions->query($update);
@@ -523,12 +524,10 @@ if(count($favs) != 0 && !empty($fave)) {
     $tigers->displayError('Database Error', 'The script was unable to' . 
     ' update the members.', true, $update);
    } elseif ($true == true) {
-    echo $tigers->displaySuccess("The member was updated! :D");
-	  if(isset($mail)) { 
-	   if($mail) {
-	    echo $tigers->displaySuccess("The member was notified of their update!");
-	   }
-	  }
+    echo $tigers->displaySuccess('The member was updated! :D');
+	  if(isset($mail) && $mail) {
+       echo $tigers->displaySuccess('The member was notified of their update!');
+      }
 	 }
 	}
 	$d = $idtype == 'email' && $id != $email ? $email : $id;
@@ -558,7 +557,7 @@ if(count($favs) != 0 && !empty($fave)) {
 	 $dbtabl = $dbplod[0];
 	 $dbflid = $getItem->dbflid;
 	 $update = "UPDATE `$dbtabl` SET `updated` = CURDATE() WHERE `id` = '$dbflid'" . 
-   " LIMIT 1";
+   ' LIMIT 1';
    $scorpions->query("SET NAMES 'utf8';");
 	 $true = $scorpions->query($update);
 	 if($true == false) {
@@ -568,39 +567,37 @@ if(count($favs) != 0 && !empty($fave)) {
 	 } else {
 	  $scorpions->breach(0);
 		$scorpions->breach(1);
-	  echo $tigers->displaySuccess("The <em>" . $tigers->replaceSpec($getItem->subject) . 
-    "</em> listing has been updated! :D");
+	  echo $tigers->displaySuccess('The <em>' . $tigers->replaceSpec($getItem->subject) .
+    '</em> listing has been updated! :D');
 	  echo $tigers->backLink('mem');
 	  echo $tigers->backLink('index');
 	 } 
-	} else {
-	 if($getItem->dblist == 1 && $getItem->dbtype != 'listingadmin') {
-	  echo $tigers->displaySuccess("The <em>" . $getItem->subject . "</em> listing" . 
-    " is crosslisted to a non-Listing Admin script, and therefore cannot be" . 
-    " updated this way. Sorry, m'love! :(");
-		echo $tigers->backLink('mem');
-	  echo $tigers->backLink('index');
-	 } 
-	 
-	 /**  
-	  * Non-crosslisted listings are updated right harrrr :D 
-	  */  
-	 elseif ($dblist == 0) {
-	  $update = "UPDATE `$_ST[main]` SET `updated` = CURDATE() WHERE `id` =" . 
-    " '$listing' LIMIT 1";
-    $scorpions->query("SET NAMES 'utf8';");
-	  $true = $scorpions->query($update);
-	  if($true == false) {
-	   $tigers->displayError('Database Error', 'The script was unable to edit' . 
-	   ' the listing.', true, $update);
-	  } else {
-	   echo $tigers->displaySuccess("The <em>" . $getItem->subject . "</em>" . 
-     " listing has been updated! :D");
-	   echo $tigers->backLink('mem');
-	   echo $tigers->backLink('index');
-	  } 
-	 }
-	}
+	} else if($getItem->dblist == 1 && $getItem->dbtype != 'listingadmin') {
+     echo $tigers->displaySuccess('The <em>' . $getItem->subject . '</em> listing' .
+   ' is crosslisted to a non-Listing Admin script, and therefore cannot be' .
+   " updated this way. Sorry, m'love! :(");
+       echo $tigers->backLink('mem');
+     echo $tigers->backLink('index');
+    }
+
+    /**
+     * Non-crosslisted listings are updated right harrrr :D
+     */
+    elseif ($getItem->dblist == 0) {
+     $update = "UPDATE `$_ST[main]` SET `updated` = CURDATE() WHERE `id` =" .
+   " '$listing' LIMIT 1";
+   $scorpions->query("SET NAMES 'utf8';");
+     $true = $scorpions->query($update);
+     if($true == false) {
+      $tigers->displayError('Database Error', 'The script was unable to edit' .
+      ' the listing.', true, $update);
+     } else {
+      echo $tigers->displaySuccess('The <em>' . $getItem->subject . '</em>' .
+    ' listing has been updated! :D');
+      echo $tigers->backLink('mem');
+      echo $tigers->backLink('index');
+     }
+    }
  }
 
  /** 
@@ -629,7 +626,7 @@ if(count($favs) != 0 && !empty($fave)) {
 		 " WHERE `mID` = '$pm' LIMIT 1";
      $scorpions->query("SET NAMES 'utf8';");
 	  } 
-		$true = $scorpions->query($update, $c1);
+		$true = $scorpions->query($update);
 	  if($true == false) {
 	   $tigers->displayError('Database Error', 'The script was unable to' . 
 		 ' approve the member.', true, $update);
@@ -641,7 +638,7 @@ if(count($favs) != 0 && !empty($fave)) {
 		$scorpions->breach(1);
 	  $mailNow = $jaguars->approveMember($pm, $getlistingid, $getItem->dblist, $getItem->dbtype);
 	  if($mailNow) {
-	   echo "<p class=\"successButton\"><span class=\"success\">SUCCESS!</span> The" . 
+	   echo '<p class="successButton"><span class="success">SUCCESS!</span> The' .
 		 " member was notified of their approval!</p>\n";
 	  }
 	 } else {
@@ -654,12 +651,12 @@ if(count($favs) != 0 && !empty($fave)) {
 		 ' approve the member.', true, $update);
 	  } elseif ($true == true) {
 	   echo $tigers->displaySuccess('The <samp>' . $snakes->memberName($pm) . 
-     '</samp> member (from the <em>' . $getItem->subject . "</em> listing) has" . 
-     " been approved! :D");
+     '</samp> member (from the <em>' . $getItem->subject . '</em> listing) has' .
+     ' been approved! :D');
 	  } 
 	  $mailNow = $jaguars->approveMember($pm);
 	  if($mailNow) {
-	   echo $tigers->displaySuccess("The member was notified of their approval!");
+	   echo $tigers->displaySuccess('The member was notified of their approval!');
 	  }
 	 }
 	}
@@ -675,6 +672,7 @@ if(count($favs) != 0 && !empty($fave)) {
    $tigers->displayError('Form Error', 'You need to select a member' . 
 	 ' (or two, etc.) in order to delete them.', false);
   }
+	$getItem = $wolves->getListings($getlistingid, 'object');
  
   foreach($_POST['member'] as $pm) {
    if($getItem->dblist == 1) {
@@ -694,9 +692,9 @@ if(count($favs) != 0 && !empty($fave)) {
     $true = $scorpions->query($delete);
 	  if($true == false) {
 	   $tigers->displayError('Database Error', 'The script was unable to' . 
-		 ' delete the member.', true, $update);
+		 ' delete the member.', true, $delete);
 	  } elseif ($true == true) {
-	   echo $tigers->displaySuccess("The member has been deleted! :D");
+	   echo $tigers->displaySuccess('The member has been deleted! :D');
 	  } 
 		$scorpions->breach(0);
 		$scorpions->breach(1);
@@ -704,7 +702,7 @@ if(count($favs) != 0 && !empty($fave)) {
     $delete = "DELETE FROM `$_ST[members]` WHERE `mID` = '$pm' LIMIT 1";
 	  $true   = $scorpions->query($delete);
 	  if($true == true) {
-	   echo $tigers->displaySuccess("The member was deleted!");
+	   echo $tigers->displaySuccess('The member was deleted!');
 	  } 
    }
   }
@@ -737,7 +735,7 @@ if(count($favs) != 0 && !empty($fave)) {
      " `mEdit` = NOW() WHERE `mID` = '$pm' LIMIT 1";
      $scorpions->query("SET NAMES 'utf8';");
 	  } 
-		$true = $scorpions->query($update, $c1);
+		$true = $scorpions->query($update);
 	  if($true == false) {
 	   $tigers->displayError('Database Error', 'The script was unable to' . 
 		 ' update the member.', true, $update);
@@ -747,9 +745,9 @@ if(count($favs) != 0 && !empty($fave)) {
 	  } 
 		$scorpions->breach(0);
 		$scorpions->breach(1);
-		$mailNow = $jaguars->updateMember($pm, $getlistingid, $getItem->dblist, $getItem->dbtype);
+		$mailNow = $jaguars->updateMember($pm, $getlistingid);
 	  if($mailNow) {
-	   echo $tigers->displaySuccess("The member was notified of their update!");
+	   echo $tigers->displaySuccess('The member was notified of their update!');
 	  }
 	 } else {
 	  $member = $snakes->getMembers($pm, 'object');
@@ -762,11 +760,11 @@ if(count($favs) != 0 && !empty($fave)) {
 		 ' approve the member.', true, $update);
 	  } elseif ($true == true) {
 	   echo $tigers->displaySuccess('The <samp>' . $member->mName . '</samp> member' . 
-		 ' (from the <em>' . $getItem->subject . "</em> listing) has been updated! :D");
+		 ' (from the <em>' . $getItem->subject . '</em> listing) has been updated! :D');
 	  } 
 	  $mailNow = $jaguars->updateMember($pm);
 	  if($mailNow) {
-	   echo $tigers->displaySuccess("The member was notified of their update!");
+	   echo $tigers->displaySuccess('The member was notified of their update!');
 	  }
 	 }
 	}
@@ -786,7 +784,7 @@ Below is the list of your members; to edit or delete a member, click "Edit" or
 "Delete" by the appropriate member.</p>
 
 <?php  
-  echo $snakes->membersPage($getlistingid, 'form');
+  $snakes->membersPage($getlistingid, 'form');
   if(isset($_GET['g']) && $_GET['g'] == 'searchMembers') {
    $a = array(
 	  'searchType' => $tigers->cleanMys($_GET['s']),
@@ -806,17 +804,17 @@ Below is the list of your members; to edit or delete a member, click "Edit" or
 	  $ender = $count;
 	 }
 	 
-	 echo $snakes->membersPage($getlistingid, 'head');
+	 $snakes->membersPage($getlistingid, 'head');
    while($start < $ender) {
 	  $u = $select[$start];
 		$i = is_numeric($u['mID']) ? 'id' : 'email';
 	  $getItem = $snakes->getMembers($u['mID'], $i, 'object', $getlistingid);
 		
-		$qw = !isset($_GET['listingid']) ? "" : "&#38;listingid=" . $listingadmin->cleanMys($_GET['listingid']);
-    $c = $getItem->mPending == '1' ? ($getItem->mUpdate == 'y' ? " class=\"update\"" : 
-		" class=\"approve\"") : "";
-    $n = $getItem->mPending == '1' ? ($getItem->mUpdate == 'y' ? "<strong>" . $getItem->mName . 
-		"</strong>" : "<em>" . $getItem->mName . "</em>") : $getItem->mName;
+		$qw = !isset($_GET['listingid']) ? '' : '&#38;listingid=' . $tigers->cleanMys($_GET['listingid']);
+    $c = $getItem->mPending == '1' ? ($getItem->mUpdate == 'y' ? ' class="update"' :
+		' class="approve"') : '';
+    $n = $getItem->mPending == '1' ? ($getItem->mUpdate == 'y' ? '<strong>' . $getItem->mName .
+		'</strong>' : '<em>' . $getItem->mName . '</em>') : $getItem->mName;
 ?>
 <tbody<?php echo $c; ?>><tr>
  <td class="tc"><input name="member[]" type="checkbox" value="<?php echo $getItem->mID; ?>"></td>
@@ -824,12 +822,12 @@ Below is the list of your members; to edit or delete a member, click "Edit" or
 <?php 
  if($getItem->mPending == 1) {
   if($getItem->mUpdate == 'y') {
-	 echo "<strong>Pending Update</strong>";
+	 echo '<strong>Pending Update</strong>';
 	} else {
-	 echo "<em>Pending Approval</em>";
+	 echo '<em>Pending Approval</em>';
 	}
  } else {
-  echo "Approved";
+  echo 'Approved';
  }
 ?>
  </td>
@@ -837,9 +835,9 @@ Below is the list of your members; to edit or delete a member, click "Edit" or
  <td class="tc"><?php echo $getItem->mEmail; ?></td>
  <td class="floatIcons tc">
 <?php  
-    $edit   = "members.php?listing=" . $getlistingid . "&#38;g=old" . $qw . "&#38;d=" . $getItem->mID;
-		$email  = "emails.php?p=mem&#38;d=" . $getlistingid . "&#38;m=" . $getItem->mID;
-		$delete = "members.php?listing=" . $getlistingid . "&#38;g=erase&#38;d=" . $getItem->mID;
+    $edit   = 'members.php?listing=' . $getlistingid . '&#38;g=old' . $qw . '&#38;d=' . $getItem->mID;
+		$email  = 'emails.php?p=mem&#38;d=' . $getlistingid . '&#38;m=' . $getItem->mID;
+		$delete = 'members.php?listing=' . $getlistingid . '&#38;g=erase&#38;d=' . $getItem->mID;
 ?>
   <a href="<?php echo $edit; ?>">
 	 <img src="img/icons/edit.png" alt="">
@@ -863,8 +861,7 @@ Below is the list of your members; to edit or delete a member, click "Edit" or
    $ma = array();
    $sa = $get_type_id_array['listingadmin']; 
    if(
-    (isset($_GET['g']) && $_GET['g'] == 'searchMembers') && 
-    (isset($_GET['s']) && in_array($_GET['s'], array_keys($sa)))
+    isset($_GET['g'], $_GET['s']) && $_GET['g'] == 'searchMembers' && array_key_exists($_GET['s'], $sa)
    ) {
     $members_pagination = count(
      $snakes->membersList(
@@ -877,7 +874,7 @@ Below is the list of your members; to edit or delete a member, click "Edit" or
  
    echo '<p id="pagination">';
 	 $pages = ceil($members_pagination / $per_members);
-   echo $snakes->paginate($pages);
+   $snakes->paginate($pages);
    echo "</p>\n";
 	 
 	 $dbcheck = $wolves->getListings($getlistingid, 'object');
@@ -925,7 +922,7 @@ else {
    if($getItem->status == 1 || $getItem->status == '1') {
 	  echo $getItem->subject;
 	 } else {
-	  echo "<a href=\"" . $getItem->url . "\">" . $getItem->subject . "</a>";
+	  echo '<a href="' . $getItem->url . '">' . $getItem->subject . '</a>';
 	 }
 ?>
  </td>
@@ -943,4 +940,4 @@ else {
  }
 }
 
-require("footer.php");
+require('footer.php');
