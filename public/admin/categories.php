@@ -283,4 +283,3 @@ a current one, click "Edit" or "Delete" by the appropriate category.</p>
 }
 
 require("footer.php");
-?>

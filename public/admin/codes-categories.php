@@ -79,7 +79,6 @@ if(isset($_GET['g']) && $_GET['g'] == 'new') {
 
 elseif (isset($_POST['action']) && $_POST['action'] == 'Add Category') {
  if($_POST['listing'] != 0) {
-  $listing = array();
   $listing = $_POST['listing'];
   $listing = array_map(array($tigers, 'cleanMys'), $listing);
   $list = implode('!', $listing);
@@ -198,7 +197,6 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'Edit Category') {
   ' that doesn\'t exist. Go back and try again.', false);
  } 
  if($_POST['listing'] != 0) {
-  $listing = array();
   $listing = $_POST['listing'];
   $listing = array_map(array($tigers, 'cleanMys'), $listing);
   $list = implode('!', $listing);
