@@ -1,12 +1,12 @@
 <?php
-/** 
- * @copyright  2007 
- * @license    GPL Version 3; BSD Modified 
- * @author     Tess <theirrenegadexxx@gmail.com> 
- * @file       <install.php> 
- * @since      November 19th, 2011  
- * @version    2.3alpha 
- */ 
+/**
+ * @copyright  2007
+ * @license    GPL Version 3; BSD Modified
+ * @author     Tess <theirrenegadexxx@gmail.com>
+ * @file       <install.php>
+ * @since      November 19th, 2011
+ * @version    2.3alpha
+ */
 require("rats.inc.php");
 require("inc/fun.inc.php");
 require("inc/fun-admin.inc.php");
@@ -21,87 +21,91 @@ $getTitle = "Upgrade";
 <html lang="en">
 
 <head>
- <meta charset="utf-8">
- <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
- <meta name="Author" content="Tess">
- <title> <?php echo $laoptions->version; ?> &#8212; <?php echo $leopards->isTitle($getTitle); ?> </title>
- <link href="style.css" rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="Author" content="Tess">
+    <title> <?php echo $laoptions->version; ?> &#8212; <?php echo $leopards->isTitle($getTitle); ?> </title>
+    <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
 
 <div id="container">
 
-<header>
- <h1><?php echo $laoptions->version; ?></h1>
-</header>
+    <header>
+        <h1><?php echo $laoptions->version; ?></h1>
+    </header>
+    <section id="install"><span class="mysql">Notice:</span> please note that there's no active support for FRESH
+        installations. You might try to install a script, but there's no guarantee it will be working.
+        <ins>If you wish to install a script, you can use original Tess' version.</ins>
+    </section>
 
-<section id="install">
-<?php 
-//$steps = $tigers->cleanMys($_GET['step']);var_dump($_GET['step']);
-$steps = $_GET['step'];
-switch($steps) {
- case 1:
-  echo $frogs->installMain();
- break;
- case 2: 
-  echo $frogs->installFeatures();
- break;
- case 3:
-  echo $frogs->installAddons();
- break;
- case 4:
-  echo $frogs->showFinished();
- break;
- default: 
-  if(isset($_POST['action'])) {
-   if(isset($_POST['action']) && $_POST['action'] == 'Install Main Functions') {
-    $collname = $tigers->cleanMys($_POST['cname']);
-    $adm_path = $tigers->cleanMys($_POST['adm_path']);
-    $adm_http = $tigers->cleanMys($_POST['adm_http']);
-    $my_name  = $tigers->cleanMys($_POST['my_name']);
-    if(!empty($my_name) && !preg_match("/([A-Za-z-\s]+)/i", $my_name)) {
-     $tigers->displayError('Form Error', 'The name you provided can only contain' . 
-     ' letters, spaces and dashes.', false);
-    }
-    $my_email = $tigers->cleanMys($_POST['my_email']);
-    if(!empty($my_email)) {
-     if(!preg_match("/([A-Za-z0-9-_\.]+)@(([A-Za-z0-9-_]+\.)+)([a-zA-Z]{2,4})$/i", $my_email)) {
-      $tigers->displayError('Form Error', 'The e-mail address you provided is' . 
-      'not valid.', false);
-     }
-    }
-    $my_website = $tigers->cleanMys($_POST['my_website']);
+    <section id="install">
+        <?php
+        //$steps = $tigers->cleanMys($_GET['step']);var_dump($_GET['step']);
+        $steps = $_GET['step'];
+        switch ($steps) {
+            case 1:
+                echo $frogs->installMain();
+                break;
+            case 2:
+                echo $frogs->installFeatures();
+                break;
+            case 3:
+                echo $frogs->installAddons();
+                break;
+            case 4:
+                echo $frogs->showFinished();
+                break;
+            default:
+                if (isset($_POST['action'])) {
+                    if (isset($_POST['action']) && $_POST['action'] == 'Install Main Functions') {
+                        $collname = $tigers->cleanMys($_POST['cname']);
+                        $adm_path = $tigers->cleanMys($_POST['adm_path']);
+                        $adm_http = $tigers->cleanMys($_POST['adm_http']);
+                        $my_name = $tigers->cleanMys($_POST['my_name']);
+                        if (!empty($my_name) && !preg_match("/([A-Za-z-\s]+)/i", $my_name)) {
+                            $tigers->displayError('Form Error', 'The name you provided can only contain' .
+                                ' letters, spaces and dashes.', false);
+                        }
+                        $my_email = $tigers->cleanMys($_POST['my_email']);
+                        if (!empty($my_email)) {
+                            if (!preg_match("/([A-Za-z0-9-_\.]+)@(([A-Za-z0-9-_]+\.)+)([a-zA-Z]{2,4})$/i", $my_email)) {
+                                $tigers->displayError('Form Error', 'The e-mail address you provided is' .
+                                    'not valid.', false);
+                            }
+                        }
+                        $my_website = $tigers->cleanMys($_POST['my_website']);
 
-    $create = "CREATE TABLE `$_ST[categories]` (
+                        $create = "CREATE TABLE `$_ST[categories]` (
      `catid` smallint(3) NOT NULL AUTO_INCREMENT,
      `catname` varchar(255) NOT NULL,
      `parent` smallint(3) UNSIGNED NOT NULL DEFAULT '0',
      PRIMARY KEY (`catid`)
     ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
-    $true = $scorpions->query($create);
-    if($true == false) {
-     exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() . 
-     "<br />\n<em>" . $create . '</em></p>');
-    } 
-    if(isset($_POST['installcats']) && $_POST['installcats'] == 'y') {
-     $frogs->installCategories();
-    }
+                        $true = $scorpions->query($create);
+                        if ($true == false) {
+                            exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() .
+                                "<br />\n<em>" . $create . '</em></p>');
+                        }
+                        if (isset($_POST['installcats']) && $_POST['installcats'] == 'y') {
+                            $frogs->installCategories();
+                        }
 
-    $create = "CREATE TABLE `$_ST[options]` (
+                        $create = "CREATE TABLE `$_ST[options]` (
      `name` varchar(255) NOT NULL,
      `text` text NOT NULL,
      UNIQUE KEY `name` (`name`)
     ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
-    $true = $scorpions->query($create);
-    if($true == false) {
-     exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() . 
-     "<br />\n<em>" . $create . '</em></p>');
-    } 
+                        $true = $scorpions->query($create);
+                        if ($true == false) {
+                            exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() .
+                                "<br />\n<em>" . $create . '</em></p>');
+                        }
 
-    $hashhash_input       = sha1(date("YmdHis"));
-    $javascript_key_input = sha1(mt_rand(9999, 999999));
-    $insert = "INSERT INTO `$_ST[options]` (`name`, `text`) VALUES
+                        $hashhash_input = sha1(date("YmdHis"));
+                        $javascript_key_input = sha1(mt_rand(9999, 999999));
+                        $insert = "INSERT INTO `$_ST[options]` (`name`, `text`) VALUES
     ('collective_name', '$collective_name'),
     ('per_joined', '25'), 
     ('per_members', '25'), 
@@ -181,14 +185,14 @@ switch($steps) {
     ('updates_prettyurls', 'y'),
     ('updates_url', ''),
     ('wishlist_granted', 'y')";
-    $scorpions->query("SET NAMES 'utf8';");
-    $true = $scorpions->query($insert);
-    if($true == false) {
-     exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() . 
-     "<br />\n<em>" . $create . '</em></p>');
-    } 
+                        $scorpions->query("SET NAMES 'utf8';");
+                        $true = $scorpions->query($insert);
+                        if ($true == false) {
+                            exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() .
+                                "<br />\n<em>" . $create . '</em></p>');
+                        }
 
-    $create = "CREATE TABLE `$_ST[errors]` (
+                        $create = "CREATE TABLE `$_ST[errors]` (
      `messID` mediumint(4) NOT NULL AUTO_INCREMENT,
      `messType` varchar(255) NOT NULL,
      `messURL` varchar(255) NOT NULL,
@@ -197,13 +201,13 @@ switch($steps) {
      `messAdded` datetime NOT NULL,
      PRIMARY KEY (`messID`)
     ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
-    $true = $scorpions->query($create);
-    if($true == false) {
-     exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() . 
-     "<br />\n<em>" . $create . '</em></p>');
-    }
- 
-    $create = "CREATE TABLE `$_ST[logs]` (
+                        $true = $scorpions->query($create);
+                        if ($true == false) {
+                            exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() .
+                                "<br />\n<em>" . $create . '</em></p>');
+                        }
+
+                        $create = "CREATE TABLE `$_ST[logs]` (
      `logID` int(10) NOT NULL AUTO_INCREMENT,
      `userNiq` mediumint(4) NOT NULL,
      `logUser` varchar(255) NOT NULL,
@@ -211,13 +215,13 @@ switch($steps) {
      `logLast` datetime NOT NULL,
      PRIMARY KEY (`logID`)
     ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
-    $true = $scorpions->query($create);
-    if($true == false) {
-     exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() . 
-     "<br />\n<em>" . $create . '</em></p>');
-    }
+                        $true = $scorpions->query($create);
+                        if ($true == false) {
+                            exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() .
+                                "<br />\n<em>" . $create . '</em></p>');
+                        }
 
-    $create = "CREATE TABLE `$_ST[main]` (
+                        $create = "CREATE TABLE `$_ST[main]` (
     `id` mediumint(6) NOT NULL AUTO_INCREMENT,
     `title` varchar(100) NOT NULL,
     `subject` varchar(255) NOT NULL,
@@ -263,13 +267,13 @@ switch($steps) {
      PRIMARY KEY (`id`),
      UNIQUE KEY (`subject`)
     ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
-    $true = $scorpions->query($create);
-    if($true == false) {
-     exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() . 
-     "<br />\n<em>" . $create . '</em></p>');
-    }
+                        $true = $scorpions->query($create);
+                        if ($true == false) {
+                            exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() .
+                                "<br />\n<em>" . $create . '</em></p>');
+                        }
 
-    $create = "CREATE TABLE `$_ST[members]` (
+                        $create = "CREATE TABLE `$_ST[members]` (
     `mID` mediumint(6) NOT NULL AUTO_INCREMENT,
     `mEmail` varchar(255) NOT NULL,
     `fNiq` mediumint(6) UNSIGNED NOT NULL,
@@ -286,13 +290,13 @@ switch($steps) {
      PRIMARY KEY (`mID`),
      UNIQUE KEY `mName` (`fNiq`, `mEmail`)
     ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
-    $true = $scorpions->query($create);
-    if($true == false) {
-     exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() . 
-     "<br />\n<em>" . $create . '</em></p>');
-    }
+                        $true = $scorpions->query($create);
+                        if ($true == false) {
+                            exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() .
+                                "<br />\n<em>" . $create . '</em></p>');
+                        }
 
-    $create = "CREATE TABLE `$_ST[success]` (
+                        $create = "CREATE TABLE `$_ST[success]` (
     `messID` mediumint(4) NOT NULL AUTO_INCREMENT,
     `messType` varchar(255) NOT NULL,
     `messURL` varchar(255) NOT NULL,
@@ -301,26 +305,26 @@ switch($steps) {
     `messAdded` datetime NOT NULL,
      PRIMARY KEY (`messID`)
     ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
-    $true = $scorpions->query($create);
-    if($true == false) {
-     exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() . 
-     "<br />\n<em>" . $create . '</em></p>');
-    }
+                        $true = $scorpions->query($create);
+                        if ($true == false) {
+                            exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() .
+                                "<br />\n<em>" . $create . '</em></p>');
+                        }
 
-    $create = "CREATE TABLE `$_ST[templates]` (
+                        $create = "CREATE TABLE `$_ST[templates]` (
     `name` varchar(255) NOT NULL,
     `title` varchar(255) NOT NULL,
     `template` text NOT NULL,
      UNIQUE KEY (`name`)
     ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
-    $true = $scorpions->query($create);
-    if($true == false) {
-     exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() . 
-     "<br />\n<em>" . $create . '</em></p>');
-    }
+                        $true = $scorpions->query($create);
+                        if ($true == false) {
+                            exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() .
+                                "<br />\n<em>" . $create . '</em></p>');
+                        }
 
-    $insert = "INSERT INTO `$_ST[templates]` (`name`, `title`, `template`)";
-    $insert .= " VALUES ('affiliates_template', 'Affiliates', ''),
+                        $insert = "INSERT INTO `$_ST[templates]` (`name`, `title`, `template`)";
+                        $insert .= " VALUES ('affiliates_template', 'Affiliates', ''),
     ('collective_stats_template', 'Collective Stats', ''),
     ('date_template', 'Date', 'F j, Y'),
     ('listings_template', 'Listings', ''), 
@@ -331,28 +335,28 @@ switch($steps) {
     ('wishlist_granted_template', 'Wishlist: Granted', ''), 
     ('wishlist_query_template', 'Wishlist: Query', ''), 
     ('wishlist_template', 'Wishlist', '')";
-    $scorpions->query("SET NAMES 'utf8';");
-    $true = $scorpions->query($insert);
-    if($true == false) {
-     exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() . 
-     "<br />\n<em>" . $insert . '</em></p>');
-    }
+                        $scorpions->query("SET NAMES 'utf8';");
+                        $true = $scorpions->query($insert);
+                        if ($true == false) {
+                            exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() .
+                                "<br />\n<em>" . $insert . '</em></p>');
+                        }
 
-    $create = "CREATE TABLE `$_ST[templates_emails]` (
+                        $create = "CREATE TABLE `$_ST[templates_emails]` (
     `name` varchar(255) NOT NULL,
     `title` varchar(255) NOT NULL,
     `template` text NOT NULL,
      UNIQUE KEY (`name`)
     ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
-    $true = $scorpions->query($create);
-    if($true == false) {
-     exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() . 
-     "<br />\n<em>" . $create . '</em></p>');
-    }
+                        $true = $scorpions->query($create);
+                        if ($true == false) {
+                            exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() .
+                                "<br />\n<em>" . $create . '</em></p>');
+                        }
 
-    require("templates.inc.php");
-    $insert = "INSERT INTO `$_ST[templates_emails]` (`name`, `title`, `template`)";
-    $insert .= " VALUES ('affiliates_approve', 'Affiliates: Approve', '$affa'),
+                        require("templates.inc.php");
+                        $insert = "INSERT INTO `$_ST[templates_emails]` (`name`, `title`, `template`)";
+                        $insert .= " VALUES ('affiliates_approve', 'Affiliates: Approve', '$affa'),
     ('affiliates_closed', 'Affiliates: Closed', '$affc'),
     ('affiliates_moved', 'Affiliates: Moved', '$affm'),
     ('kim_approve', 'KIM: Approve', '$kima'),
@@ -363,25 +367,23 @@ switch($steps) {
     ('members_lostpass', 'Members: Reset Password', '$meml'),
     ('members_moved', 'Members: Moved', '$memm'),
     ('members_update', 'Members: Update', '$memu')";
-    $scorpions->query("SET NAMES 'utf8';");
-    $true = $scorpions->query($insert);
-    if($true == false) {
-     exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() . 
-     "<br />\n<em>" . $insert . '</em></p>');
-    }
-    unlink("templates.inc.php");
-     
-    echo $tigers->displaySuccess("If you experienced zero errors, your main" . 
-    " functions were created, and the first part of the installation was" . 
-    " completed!");
-	  echo "<p class=\"nextStep\"><a href=\"install.php?step=2\">Next Step</a></p>\n";
-	 } 
+                        $scorpions->query("SET NAMES 'utf8';");
+                        $true = $scorpions->query($insert);
+                        if ($true == false) {
+                            exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() .
+                                "<br />\n<em>" . $insert . '</em></p>');
+                        }
+                        unlink("templates.inc.php");
 
-   /** 
-    * Install Features 
-    */ 
-   elseif (isset($_POST['action']) && $_POST['action'] == 'Install Features') {
-	  $create = "CREATE TABLE `$_ST[affiliates]` (
+                        echo $tigers->displaySuccess("If you experienced zero errors, your main" .
+                            " functions were created, and the first part of the installation was" .
+                            " completed!");
+                        echo "<p class=\"nextStep\"><a href=\"install.php?step=2\">Next Step</a></p>\n";
+                    } /**
+                     * Install Features
+                     */
+                    elseif (isset($_POST['action']) && $_POST['action'] == 'Install Features') {
+                        $create = "CREATE TABLE `$_ST[affiliates]` (
     `aID` mediumint(6) NOT NULL AUTO_INCREMENT,
 	  `fNiq` varchar(255) NOT NULL DEFAULT '!0!',
 	  `aSubject` varchar(255) NOT NULL,
@@ -391,13 +393,13 @@ switch($steps) {
 	  `aAdd` date NOT NULL,
 	   PRIMARY KEY (`aID`)
 	  ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
-    $true = $scorpions->query($create);
-    if($true == false) {
-     exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() . 
-     "<br />\n<em>" . $create . '</em></p>');
-    }
+                        $true = $scorpions->query($create);
+                        if ($true == false) {
+                            exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() .
+                                "<br />\n<em>" . $create . '</em></p>');
+                        }
 
-    $create = "CREATE TABLE `$_ST[joined]` (
+                        $create = "CREATE TABLE `$_ST[joined]` (
     `jID` mediumint(5) NOT NULL AUTO_INCREMENT,
     `jSubject` varchar(150) NOT NULL,
     `jURL` varchar(255) NOT NULL,
@@ -408,13 +410,13 @@ switch($steps) {
     `jAdd` date NOT NULL,
      PRIMARY KEY (`jID`)
     ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
-    $true = $scorpions->query($create);
-    if($true == false) {
-     exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() . 
-     "<br />\n<em>" . $create . '</em></p>');
-    }
+                        $true = $scorpions->query($create);
+                        if ($true == false) {
+                            exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() .
+                                "<br />\n<em>" . $create . '</em></p>');
+                        }
 
-    $create = "CREATE TABLE `$_ST[wishlist]` (
+                        $create = "CREATE TABLE `$_ST[wishlist]` (
     `wID` smallint(3) NOT NULL AUTO_INCREMENT,
     `wSubject` varchar(255) NOT NULL,
     `wURL` varchar(255) NOT NULL,
@@ -424,71 +426,67 @@ switch($steps) {
     `wType` enum('custom', 'granted', 'list', 'top') NOT NULL,
      PRIMARY KEY (`wID`)
     ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
-    $true = $scorpions->query($create);
-    if($true == false) {
-     exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() . 
-     "<br />\n<em>" . $create . '</em></p>');
-    }
+                        $true = $scorpions->query($create);
+                        if ($true == false) {
+                            exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() .
+                                "<br />\n<em>" . $create . '</em></p>');
+                        }
 
-    echo $tigers->displaySuccess("If you haven't come across any errors, your" . 
-     " features were created, and the second part of the installation was" . 
-    " completed!");
-	  echo "<p class=\"nextStep\"><a href=\"install.php?step=3\">Next Step</a></p>\n";
-	 } 
+                        echo $tigers->displaySuccess("If you haven't come across any errors, your" .
+                            " features were created, and the second part of the installation was" .
+                            " completed!");
+                        echo "<p class=\"nextStep\"><a href=\"install.php?step=3\">Next Step</a></p>\n";
+                    } /**
+                     * Install Addons!
+                     */
+                    elseif (isset($_POST['action']) && $_POST['action'] == 'Install Addons') {
+                        foreach ($get_addon_array as $k => $v) {
+                            if (isset($_POST[$k]) && $_POST[$k] == 'y') {
+                                $result = $frogs->installAddon($k);
+                                if ($result->status == true) {
+                                    echo $tigers->displaySuccess("The <strong>$v</strong> addon was installed!");
+                                    $seahorses->editOption($k . '_opt', 'y');
+                                } else {
+                                    exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() .
+                                        "<br />\n<em>" . $result->message . '</em></p>');
+                                }
+                            }
+                        }
 
-   /** 
-    * Install Addons! 
-    */ 
-   elseif (isset($_POST['action']) && $_POST['action'] == 'Install Addons') {
-		foreach($get_addon_array as $k => $v) {
-     if(isset($_POST[$k]) && $_POST[$k] == 'y') {
-      $result = $frogs->installAddon($k);
-      if($result->status == true) {
-       echo $tigers->displaySuccess("The <strong>$v</strong> addon was installed!");
-       $seahorses->editOption($k . '_opt', 'y');
-      } else {
-       exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() . 
-       "<br />\n<em>" . $result->message . '</em></p>');
-      }
-     }
-    }
+                        echo $tigers->displaySuccess("A-OK, dudes! Now it's time to complete the" .
+                            " installation and get you logged in and clicking away (and probably cursing" .
+                            " me, whatevs)!");
+                        echo "<p class=\"nextStep\"><a href=\"install.php?step=4\">Next Step</a></p>\n";
+                    } /**
+                     * Create password and login~!
+                     */
+                    elseif (isset($_POST['action']) && $_POST['action'] == 'Finish Installation') {
+                        $password = isset($_POST['password']) && !empty($_POST['password']) ?
+                            $tigers->cleanMys($_POST['password'], 'y', 'y', 'n') :
+                            substr(mt_rand(99999, 888888), 0, 4) . substr(sha1(date("YmdHis")), 0, 11);
+                        $update = "UPDATE `$_ST[options]` SET `text` = MD5('$password') WHERE `name`" .
+                            " = 'user_password' LIMIT 1";
+                        $true = $scorpions->query($update);
+                        if ($true == false) {
+                            exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() .
+                                "<br />\n<em>" . $create . '</em></p>');
+                        }
 
-    echo $tigers->displaySuccess("A-OK, dudes! Now it's time to complete the" . 
-    " installation and get you logged in and clicking away (and probably cursing" . 
-    " me, whatevs)!");
-	  echo "<p class=\"nextStep\"><a href=\"install.php?step=4\">Next Step</a></p>\n";
-	 } 
-
-   /** 
-    * Create password and login~! 
-    */ 
-   elseif (isset($_POST['action']) && $_POST['action'] == 'Finish Installation') {
-    $password = isset($_POST['password']) && !empty($_POST['password']) ? 
-    $tigers->cleanMys($_POST['password'], 'y', 'y', 'n') : 
-    substr(mt_rand(99999, 888888), 0, 4) . substr(sha1(date("YmdHis")), 0, 11);
-    $update = "UPDATE `$_ST[options]` SET `text` = MD5('$password') WHERE `name`" . 
-    " = 'user_password' LIMIT 1";
-    $true = $scorpions->query($update);
-    if($true == false) {
-     exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() . 
-     "<br />\n<em>" . $create . '</em></p>');
-    }
-
-    echo $tigers->displaySuccess("Success! You've completed the installation." . 
-    " Below is your information; save it, keep it safe, and/or change it once" . 
-    " you login.");
-    echo "<code><samp>Username:</samp> " . $seahorses->getOption('user_username') . 
-    "<br>\n<samp>Password:</samp> $password</code>\n";
-	  echo "<p class=\"nextStep\"><a href=\"http://" . $_SERVER['SERVER_NAME'] . 
-    str_replace('install.php', '', $_SERVER['PHP_SELF']) . "\">Login!</a></p>\n";
-	 }
-  } else { 
-   echo $frogs->showWelcome();
-  }
- break;
-}
-?>
-</section>
+                        echo $tigers->displaySuccess("Success! You've completed the installation." .
+                            " Below is your information; save it, keep it safe, and/or change it once" .
+                            " you login.");
+                        echo "<code><samp>Username:</samp> " . $seahorses->getOption('user_username') .
+                            "<br>\n<samp>Password:</samp> $password</code>\n";
+                        echo "<p class=\"nextStep\"><a href=\"http://" . $_SERVER['SERVER_NAME'] .
+                            str_replace('install.php', '', $_SERVER['PHP_SELF']) . "\">Login!</a></p>\n";
+                    }
+                } else {
+                    echo $frogs->showWelcome();
+                }
+                break;
+        }
+        ?>
+    </section>
 
 </div>
 
