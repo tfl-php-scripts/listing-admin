@@ -6,7 +6,7 @@
  * @file       <lyrics.php> 
  * @since      September 2nd, 2010 
  * @version    1.0    
- */ 
+ */
 $s = isset($_GET['g']) && $_GET['g'] == 'albums' ? 'Albums' : 'Songs';
 $w = isset($_GET['g']) ? $s : 'Lyrics';
 $getTitle = $w;
@@ -14,6 +14,11 @@ $getTitle = $w;
 require('pro.inc.php');
 require('vars.inc.php');
 require('header.php');
+
+?>
+    <p class="scriptButton"><span class="script"><b>Notice:</b></span> This extension is simply legacy hence is not supported by current version of the LA script. I would recommend turning it off.</ins>
+    </p>
+   <?php
 
 $sp = isset($_GET['g']) ? ($_GET['g'] == 'songs' ? '<span><a href="lyrics.php?' .
 'g=songs&#38;p=new">Add Song</a></span>' : '<span><a href="lyrics.php?g=albums' .

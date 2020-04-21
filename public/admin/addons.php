@@ -40,7 +40,6 @@ echo "<h2>$getTitle</h2>\n";
     ($_GET['sec'] == 'install' || array_key_exists($_GET['sec'], $get_addon_array))
     ) {
     $sec = $tigers->cleanMys($_GET['sec']);
-    $sech = sha1($get_addon_array[$sec]);
 
     if ($sec == 'codes') {
         $cpfull1 = $seahorses->getOption('codes_img_http');
@@ -230,6 +229,9 @@ echo "<h2>$getTitle</h2>\n";
         <?php
     } elseif ($sec == 'lyrics') {
         ?>
+        <p class="scriptButton"><span class="script"><b>Notice:</b></span> This extension is simply legacy hence is not
+            supported by current version of the LA script. I would recommend turning it off.</ins>
+        </p>
         <form action="addons.php" method="post">
             <input name="sec" type="hidden" value="lyrics">
             <input name="sech" type="hidden" value="<?php echo sha1($get_addon_array['lyrics']); ?>">
@@ -260,6 +262,9 @@ echo "<h2>$getTitle</h2>\n";
         <?php
     } elseif ($sec == 'quotes') {
         ?>
+        <p class="scriptButton"><span class="script"><b>Notice:</b></span> This extension is simply legacy hence is not
+            supported by current version of the LA script. I would recommend turning it off.</ins>
+        </p>
         <form action="addons.php" method="post">
             <input name="sec" type="hidden" value="quotes">
             <input name="sech" type="hidden" value="<?php echo sha1($get_addon_array['quotes']); ?>">
@@ -971,4 +976,3 @@ elseif (
 echo "</div>\n";
 
 require('footer.php');
-?>
