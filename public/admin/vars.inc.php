@@ -257,6 +257,8 @@ $get_addon_array = array(
  'updates' => 'Updates'
 );
 
+$notSupportedAddons = ['lyrics', 'quotes'];
+
 /** 
  * Pagination variables 
  */

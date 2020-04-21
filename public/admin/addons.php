@@ -16,29 +16,38 @@ require('pro.inc.php');
 
 $getTitle = $leopards->getTitle('Addons');
 
+$lyricsTurnedOn = $cheetahs->isInstalled('lyrics');
+$quotesTurnedOn = $cheetahs->isInstalled('quotes');
+
 require('vars.inc.php');
 require('header.php');
 
+$get_addon_array_for_installation = array_diff_key($get_addon_array, array_flip($notSupportedAddons));
+
 echo "<h2>$getTitle</h2>\n";
 ?>
-<div id="menuRight">
-    <menu>
-        <li><a href="addons.php?sec=codes">Codes</a></li>
-        <li><a href="addons.php?sec=kim">KIM</a></li>
-        <li><a href="addons.php?sec=lyrics">Lyrics</a></li>
-        <li><a href="addons.php?sec=quotes">Quotes</a></li>
-        <li><a href="addons.php?sec=updates">Updates</a></li>
-        <li><a href="addons.php?sec=install">&#187; Install</a></li>
-        <li class="last"><a href="addons.php">Addons</a></li>
-    </menu>
-</div>
+    <div id="menuRight">
+        <menu>
+            <li><a href="addons.php?sec=codes">Codes</a></li>
+            <li><a href="addons.php?sec=kim">KIM</a></li>
+            <?php if ($lyricsTurnedOn) { ?>
+                <li><a href="addons.php?sec=lyrics">Lyrics (not supported)</a></li>
+            <?php } ?>
+            <?php if ($quotesTurnedOn) { ?>
+                <li><a href="addons.php?sec=quotes">Quotes (not supported)</a></li>
+            <?php } ?>
+            <li><a href="addons.php?sec=updates">Updates</a></li>
+            <li><a href="addons.php?sec=install">&#187; Install</a></li>
+            <li class="last"><a href="addons.php">Addons</a></li>
+        </menu>
+    </div>
 
-<div id="mainContent">
-    <?php
-    if (
+    <div id="mainContent">
+<?php
+if (
     isset($_GET['sec']) &&
     ($_GET['sec'] == 'install' || array_key_exists($_GET['sec'], $get_addon_array))
-    ) {
+) {
     $sec = $tigers->cleanMys($_GET['sec']);
 
     if ($sec == 'codes') {
@@ -132,16 +141,14 @@ echo "<h2>$getTitle</h2>\n";
                     <select name="installaddon" class="input1">
                         <?php
                         $countaddons = 0;
-                        $getaddons = $get_addon_array;
+                        $getaddons = $get_addon_array_for_installation;
                         foreach ($getaddons as $k => $v) {
-                            if ($cheetahs->isInstalled($k) == false) {
+                            if (!$cheetahs->isInstalled($k)) {
                                 echo "  <option value=\"$k\">$v</option>\n";
                                 $countaddons++;
                             }
                         }
-                        if ($countaddons == 0) {
-                            echo "  <option value=\"none\">No Addons</option>\n";
-                        } else {
+                        if ($countaddons === 0) {
                             echo "  <option value=\"none\">No Addons</option>\n";
                         }
                         ?>
@@ -154,16 +161,13 @@ echo "<h2>$getTitle</h2>\n";
                     <select name="uninstalladdon" class="input1">
                         <?php
                         $countuaddons = 0;
-                        $getuaddons = $get_addon_array;
-                        foreach ($getuaddons as $e => $a) {
-                            if ($cheetahs->isInstalled($k) == true) {
-                                echo "  <option value=\"$e\">$a</option>\n";
+                        foreach ($get_addon_array as $code => $name) {
+                            if ($cheetahs->isInstalled($code)) {
+                                echo "  <option value=\"$code\">$name" . (in_array($code, $notSupportedAddons, true) ? ' (not supported anymore, once uninstalled, won\'t be allowed to install)' : '') . "</option>\n";
                                 $countuaddons++;
                             }
                         }
-                        if ($countuaddons == 0) {
-                            echo "  <option value=\"none\">No Addons</option>\n";
-                        } else {
+                        if ($countuaddons === 0) {
                             echo "  <option value=\"none\">No Addons</option>\n";
                         }
                         ?>
@@ -227,7 +231,7 @@ echo "<h2>$getTitle</h2>\n";
             </fieldset>
         </form>
         <?php
-    } elseif ($sec == 'lyrics') {
+    } elseif ($sec == 'lyrics' && $lyricsTurnedOn) {
         ?>
         <p class="scriptButton"><span class="script"><b>Notice:</b></span> This extension is simply legacy hence is not
             supported by current version of the LA script. I would recommend turning it off.</ins>
@@ -260,7 +264,7 @@ echo "<h2>$getTitle</h2>\n";
             </fieldset>
         </form>
         <?php
-    } elseif ($sec == 'quotes') {
+    } elseif ($sec == 'quotes' && $quotesTurnedOn) {
         ?>
         <p class="scriptButton"><span class="script"><b>Notice:</b></span> This extension is simply legacy hence is not
             supported by current version of the LA script. I would recommend turning it off.</ins>
@@ -291,325 +295,321 @@ echo "<h2>$getTitle</h2>\n";
             </fieldset>
         </form>
         <?php
-    }
-
-    elseif ($sec == 'updates') {
-    ?>
-    <form action="addons.php" method="post">
-        <input name="sec" type="hidden" value="updates">
-        <input name="sech" type="hidden" value="<?php echo sha1($get_addon_array['updates']); ?>">
-
-        <fieldset>
-            <legend>Addons &#187; Updates</legend>
-            <p><label>On or Off:</label> <select name="updates_opt_input" class="input1">
-                    <?php
-                    $upArray = array('y' => 'On', 'n' => 'Off');
-                    foreach ($upArray as $upKey => $upVal) {
-                        echo '  <option value="' . $upKey . '"';
-                        if ($upKey == $seahorses->getOption('updates_opt')) {
-                            echo ' selected="selected"';
-                        }
-                        echo '>' . $upVal . "</option>\n";
-                    }
-                    ?>
-                </select></p>
-            <p><label><strong>Updates URL:</strong><br>
-                    URL to your updates, e.g.: <samp>http://mywebsite.com/updates.php</samp> (if
-                    index file, <samp>http://mywebsite.com/index.php</samp>)</label>
-                <input name="updates_url_opt" class="input1" type="text"
-                       value="<?php echo $seahorses->getOption('updates_url'); ?>"></p>
-            <p style="clear: both; margin: 0 0 2% 0;"></p>
-            <p><label><strong>Pretty URLs:</strong><br>
-                    If set to on, will display entries like <samp>http://website.com/e/12/</samp>;
-                    if set to off, will display entries like <samp>http://website.com/?e=12</samp>
-                </label> <select name="updates_prettyurls_opt" class="input1">
-                    <?php
-                    $upArray = array('y' => 'On', 'n' => 'Off');
-                    foreach ($upArray as $upKey => $upVal) {
-                        echo '  <option value="' . $upKey . '"';
-                        if ($upKey == $seahorses->getOption('updates_prettyurls')) {
-                            echo ' selected="selected"';
-                        }
-                        echo '>' . $upVal . "</option>\n";
-                    }
-                    ?>
-                </select></p>
-        </fieldset>
-
-        <fieldset>
-            <legend>Comment Settings</legend>
-            <p><label><strong>Comments:</strong> On or Off?</label>
-                <?php
-                $coArray = array('y' => 'On', 'n' => 'Off');
-                foreach ($coArray as $coKey => $coVal) {
-                    echo '  <input name="updates_comments_opt"';
-                    if ($coKey == $seahorses->getOption('updates_comments')) {
-                        echo ' checked="checked"';
-                    }
-                    echo ' class="input3" type="radio" value="' . $coKey . '"> ' . $coVal . "\n";
-                }
-                ?>
-            </p>
-            <p><label><strong>Comments Header:</strong><br>
-                    Header file to your entries (this will be the header in your <em>main</em> directory);
-                    make sure include the full path, like so: <samp>/home/username/site/header.php</samp></label>
-                <input name="updates_comments_header_opt" class="input1" type="text"
-                       value="<?php echo $seahorses->getOption('updates_comments_header'); ?>"></p>
-            <p style="clear: both; margin: 0 0 2% 0;"></p>
-            <p><label><strong>Comments Footer:</strong><br>
-                    Footer file to your entries (this will be the footer in your <em>main</em> directory);
-                    make sure include the full path, like so: <samp>/home/username/site/footer.php</samp></label>
-                <input name="updates_comments_footer_opt" class="input1" type="text"
-                       value="<?php echo $seahorses->getOption('updates_comments_footer'); ?>"></p>
-            <p style="clear: both; margin: 0 0 2% 0;"></p>
-            <p><label><strong>Comment Moderation:</strong> On or Off?<br>
-                    If comment moderation is set to on, comments will be held for moderation, and
-                    you will need to approve them via the admin panel for them to show up on the
-                    entry.</label>
-                <?php
-                $cmArray = array('y' => 'On', 'n' => 'Off');
-                foreach ($cmArray as $cmKey => $cmVal) {
-                    echo '  <input name="updates_comments_moderation_opt"';
-                    if ($cmKey == $seahorses->getOption('updates_comments_moderation')) {
-                        echo ' checked="checked"';
-                    }
-                    echo ' class="input3" type="radio" value="' . $cmKey . '" /> ' . $cmVal . "\n";
-                }
-                ?>
-            </p>
-            <p style="clear: both; margin: 0 0 2% 0;"></p>
-            <p><label><strong>Comment Notification:</strong> On or Off?<br>
-                    If comment notification is set to on, you will be e-mailed whenever a person
-                    comments.</label>
-                <?php
-                $cnArray = array('y' => 'On', 'n' => 'Off');
-                foreach ($cnArray as $cnKey => $cnVal) {
-                    echo ' <input name="updates_comments_notification_opt"';
-                    if ($cnKey == $seahorses->getOption('updates_comments_notification')) {
-                        echo ' checked="checked"';
-                    }
-                    echo ' class="input3" type="radio" value="' . $cnKey . '"> ' . $cnVal . "\n";
-                }
-                ?>
-            </p>
-        </fieldset>
-
-        <fieldset>
-            <legend>Plugins</legend>
-            <p class="noteButton">The following plugins are for comments
-                <ins>only</ins>
-                . To
-                set each plugin, choose "On" or "Off" from each drop down menu.
-            </p>
-            <p><label><strong>Akismet:</strong></label> <select name="akismet_opt_input2" class="input1">
-                    <?php
-                    $ak1Array = array('y' => 'On', 'n' => 'Off');
-                    foreach ($ak1Array as $ak1Key => $ak1Val) {
-                        echo ' <option value="' . $ak1Key . '"';
-                        if ($ak1Key == $seahorses->getOption('updates_akismet')) {
-                            echo ' selected="selected"';
-                        }
-                        echo '>' . $ak1Val . "</option>\n";
-                    }
-                    ?>
-                </select></p>
-            <p><label><strong>Anti-SPAM:</strong></label> <select name="antispam_opt_input2" class="input1">
-                    <?php
-                    $an1Array = array('y' => 'On', 'n' => 'Off');
-                    foreach ($an1Array as $an1Key => $an1Val) {
-                        echo ' <option value="' . $an1Key . '"';
-                        if ($an1Key == $seahorses->getOption('updates_antispam')) {
-                            echo ' selected="selected"';
-                        }
-                        echo '>' . $an1Val . "</option>\n";
-                    }
-                    ?>
-                </select></p>
-            <p><label><strong>Akismet Key:</strong></label>
-                <input name="akismet_key_input2" class="input1" type="text"
-                       value="<?php echo $seahorses->getOption('updates_akismet_key'); ?>"></p>
-            <p><label><strong>Captcha:</strong></label> <select name="captcha_opt_input2" class="input1">
-                    <?php
-                    $ca1Array = array('y' => 'On', 'n' => 'Off');
-                    foreach ($ca1Array as $ca1Key => $ca1Val) {
-                        echo '  <option value="' . $ca1Key . '"';
-                        if ($ca1Key == $seahorses->getOption('updates_captcha')) {
-                            echo ' selected="selected"';
-                        }
-                        echo '>' . $ca1Val . "</option>\n";
-                    }
-                    ?>
-                </select></p>
-        </fieldset>
-
-        <fieldset>
-            <legend>Cross-Posting Settings</legend>
-            <p><label><strong>Dreamwidth:</strong> On or Off?</label>
-                <select name="dw_input" class="cps" id="toggleDW">
-                    <?php
-                    $dwArray = array('y' => 'On', 'n' => 'Off');
-                    $dwValue = explode('!', $seahorses->getOption('updates_crosspost_dw'));
-                    foreach ($dwArray as $dwKey => $dwVal) {
-                        echo '  <option';
-                        if (in_array($dwKey, $dwValue)) {
-                            echo ' selected="selected"';
-                        }
-                        echo ' value="' . $dwKey . '">' . $dwVal . "</option>\n";
-                    }
-                    ?>
-                </select></p>
-            <?php
-            if ($seahorses->getOption('updates_crosspost_dw') == 'y') {
-                echo "<div class=\"toggleDW\" style=\"display: block;\">\n";
-            } elseif ($seahorses->getOption('updates_crosspost_dw') == 'n') {
-                echo "<div class=\"toggleDW\" style=\"display: none;\">\n";
-            }
-            ?>
-            <p><label><strong>Username:</strong></label>
-                <input name="dw_user_input" class="input1" type="text"
-                       value="<?php echo $seahorses->getOption('updates_crosspost_dw_user'); ?>"></p>
-            <p><label><strong>Password:</strong><br>
-                    Leave blank to keep current password</label>
-                <input name="dw_pass_input" class="input1" type="password"></p>
-            <p style="clear: both; margin: 0 0 2% 0;"></p>
-            <p><label><strong>Add Link Back to the Updates Blog?</strong></label>
-                <?php
-                $lbdwArray = array('y' => 'Yes', 'n' => 'No');
-                foreach ($lbdwArray as $lbdwKey => $lbdwVal) {
-                    echo '<input name="updates_linkback_dw_opt"';
-                    if ($lbdwKey == $seahorses->getOption('updates_crosspost_dw_link')) {
-                        echo ' checked="checked"';
-                    }
-                    echo ' class="input3" type="radio" value="' . $lbdwKey . '"> ' . $lbdwVal . "\n";
-                }
-                ?>
-            </p>
-</div>
-
-    <p><label><strong>InsaneJournal:</strong> On or Off?</label>
-        <select name="ij_input" class="cps" id="toggleIJ">
-            <?php
-            $ijArray = array('y' => 'On', 'n' => 'Off');
-            foreach ($ijArray as $ijKey => $ijVal) {
-                echo '  <option';
-                if ($ijKey == $seahorses->getOption('updates_crosspost_ij')) {
-                    echo ' selected="selected"';
-                }
-                echo ' value="' . $ijKey . '">' . $ijVal . "</option>\n";
-            }
-            ?>
-        </select></p>
-<?php
-if ($seahorses->getOption('updates_crosspost_ij') == 'y') {
-    echo " <div class=\toggleIJ\" style=\"display: block;\">\n";
-} elseif ($seahorses->getOption('updates_crosspost_ij') == 'n') {
-    echo " <div class=\"toggleIJ\" style=\"display: none;\">\n";
-}
-?>
-    <p><label><strong>Username:</strong></label>
-        <input name="ij_user_input" class="input1" type="text"
-               value="<?php echo $seahorses->getOption('updates_crosspost_ij_user'); ?>"></p>
-    <p><label><strong>Password:</strong><br>
-            Leave blank to keep current password</label>
-        <input name="ij_pass_input" class="input1" type="password"></p>
-    <p style="clear: both; margin: 0 0 2% 0;"></p>
-    <p><label><strong>Add Link Back to the Updates Blog?</strong></label>
-        <?php
-        $lbijArray = array('y' => 'Yes', 'n' => 'No');
-        foreach ($lbijArray as $lbijKey => $lbijVal) {
-            echo '   <input name="updates_linkback_ij_opt"';
-            if ($lbijKey == $seahorses->getOption('updates_crosspost_ij_link')) {
-                echo ' checked="checked"';
-            }
-            echo ' class="input3" type="radio" value="' . $lbijKey . '"> ' . $lbijVal . "\n";
-        }
+    } elseif ($sec == 'updates') {
         ?>
-    </p>
-    </div>
+        <form action="addons.php" method="post">
+            <input name="sec" type="hidden" value="updates">
+            <input name="sech" type="hidden" value="<?php echo sha1($get_addon_array['updates']); ?>">
 
-    <p><label><strong>LiveJournal:</strong> On or Off?</label>
-        <select name="lj_input" class="cps" id="toggleLJ">
-            <?php
-            $ljArray = array('y' => 'On', 'n' => 'Off');
-            foreach ($ljArray as $ljKey => $ljVal) {
-                echo '   <option';
-                if ($ljKey == $seahorses->getOption('updates_crosspost_lj')) {
-                    echo ' selected="selected"';
-                }
-                echo ' value="' . $ljKey . '">' . $ljVal . "</option>\n";
-            }
-            ?>
-        </select></p>
-<?php
-if ($seahorses->getOption('updates_crosspost_lj') == 'y') {
-    echo " <div class=\"toggleLJ\" style=\"display: block;\">\n";
-} elseif ($seahorses->getOption('updates_crosspost_lj') == 'n') {
-    echo " <div class=\"toggleLJ\" style=\"display: none;\">\n";
-}
-?>
-    <p><label><strong>Username:</strong></label>
-        <input name="lj_user_input" class="input1" type="text"
-               value="<?php echo $seahorses->getOption('updates_crosspost_lj_user'); ?>"></p>
-    <p><label><strong>Password:</strong><br>
-            Leave blank to keep current password</label>
-        <input name="lj_pass_input" class="input1" type="password"></p>
-    <p style="clear: both; margin: 0 0 2% 0;"></p>
-    <p><label><strong>Add Link Back to the Updates Blog?</strong></label>
-        <?php
-        $lbljArray = array('y' => 'Yes', 'n' => 'No');
-        foreach ($lbljArray as $lbljKey => $lbljVal) {
-            echo '  <input name="updates_linkback_lj_opt"';
-            if ($lbljKey == $seahorses->getOption('updates_crosspost_lj_link')) {
-                echo ' checked="checked"';
-            }
-            echo ' class="input3" type="radio" value="' . $lbljKey . '"> ' . $lbljVal . "\n";
-        }
-        ?>
-    </p>
-    </div>
-    </fieldset>
+            <fieldset>
+                <legend>Addons &#187; Updates</legend>
+                <p><label>On or Off:</label> <select name="updates_opt_input" class="input1">
+                        <?php
+                        $upArray = array('y' => 'On', 'n' => 'Off');
+                        foreach ($upArray as $upKey => $upVal) {
+                            echo '  <option value="' . $upKey . '"';
+                            if ($upKey == $seahorses->getOption('updates_opt')) {
+                                echo ' selected="selected"';
+                            }
+                            echo '>' . $upVal . "</option>\n";
+                        }
+                        ?>
+                    </select></p>
+                <p><label><strong>Updates URL:</strong><br>
+                        URL to your updates, e.g.: <samp>http://mywebsite.com/updates.php</samp> (if
+                        index file, <samp>http://mywebsite.com/index.php</samp>)</label>
+                    <input name="updates_url_opt" class="input1" type="text"
+                           value="<?php echo $seahorses->getOption('updates_url'); ?>"></p>
+                <p style="clear: both; margin: 0 0 2% 0;"></p>
+                <p><label><strong>Pretty URLs:</strong><br>
+                        If set to on, will display entries like <samp>http://website.com/e/12/</samp>;
+                        if set to off, will display entries like <samp>http://website.com/?e=12</samp>
+                    </label> <select name="updates_prettyurls_opt" class="input1">
+                        <?php
+                        $upArray = array('y' => 'On', 'n' => 'Off');
+                        foreach ($upArray as $upKey => $upVal) {
+                            echo '  <option value="' . $upKey . '"';
+                            if ($upKey == $seahorses->getOption('updates_prettyurls')) {
+                                echo ' selected="selected"';
+                            }
+                            echo '>' . $upVal . "</option>\n";
+                        }
+                        ?>
+                    </select></p>
+            </fieldset>
 
-    <fieldset>
-        <legend>Gravatar Settings</legend>
-        <p><label><strong>Gravatar:</strong> On or Off?</label>
-            <select name="gravatar_opt" class="togglediv input1" id="toggleGravtar">
+            <fieldset>
+                <legend>Comment Settings</legend>
+                <p><label><strong>Comments:</strong> On or Off?</label>
+                    <?php
+                    $coArray = array('y' => 'On', 'n' => 'Off');
+                    foreach ($coArray as $coKey => $coVal) {
+                        echo '  <input name="updates_comments_opt"';
+                        if ($coKey == $seahorses->getOption('updates_comments')) {
+                            echo ' checked="checked"';
+                        }
+                        echo ' class="input3" type="radio" value="' . $coKey . '"> ' . $coVal . "\n";
+                    }
+                    ?>
+                </p>
+                <p><label><strong>Comments Header:</strong><br>
+                        Header file to your entries (this will be the header in your <em>main</em> directory);
+                        make sure include the full path, like so: <samp>/home/username/site/header.php</samp></label>
+                    <input name="updates_comments_header_opt" class="input1" type="text"
+                           value="<?php echo $seahorses->getOption('updates_comments_header'); ?>"></p>
+                <p style="clear: both; margin: 0 0 2% 0;"></p>
+                <p><label><strong>Comments Footer:</strong><br>
+                        Footer file to your entries (this will be the footer in your <em>main</em> directory);
+                        make sure include the full path, like so: <samp>/home/username/site/footer.php</samp></label>
+                    <input name="updates_comments_footer_opt" class="input1" type="text"
+                           value="<?php echo $seahorses->getOption('updates_comments_footer'); ?>"></p>
+                <p style="clear: both; margin: 0 0 2% 0;"></p>
+                <p><label><strong>Comment Moderation:</strong> On or Off?<br>
+                        If comment moderation is set to on, comments will be held for moderation, and
+                        you will need to approve them via the admin panel for them to show up on the
+                        entry.</label>
+                    <?php
+                    $cmArray = array('y' => 'On', 'n' => 'Off');
+                    foreach ($cmArray as $cmKey => $cmVal) {
+                        echo '  <input name="updates_comments_moderation_opt"';
+                        if ($cmKey == $seahorses->getOption('updates_comments_moderation')) {
+                            echo ' checked="checked"';
+                        }
+                        echo ' class="input3" type="radio" value="' . $cmKey . '" /> ' . $cmVal . "\n";
+                    }
+                    ?>
+                </p>
+                <p style="clear: both; margin: 0 0 2% 0;"></p>
+                <p><label><strong>Comment Notification:</strong> On or Off?<br>
+                        If comment notification is set to on, you will be e-mailed whenever a person
+                        comments.</label>
+                    <?php
+                    $cnArray = array('y' => 'On', 'n' => 'Off');
+                    foreach ($cnArray as $cnKey => $cnVal) {
+                        echo ' <input name="updates_comments_notification_opt"';
+                        if ($cnKey == $seahorses->getOption('updates_comments_notification')) {
+                            echo ' checked="checked"';
+                        }
+                        echo ' class="input3" type="radio" value="' . $cnKey . '"> ' . $cnVal . "\n";
+                    }
+                    ?>
+                </p>
+            </fieldset>
+
+            <fieldset>
+                <legend>Plugins</legend>
+                <p class="noteButton">The following plugins are for comments
+                    <ins>only</ins>
+                    . To
+                    set each plugin, choose "On" or "Off" from each drop down menu.
+                </p>
+                <p><label><strong>Akismet:</strong></label> <select name="akismet_opt_input2" class="input1">
+                        <?php
+                        $ak1Array = array('y' => 'On', 'n' => 'Off');
+                        foreach ($ak1Array as $ak1Key => $ak1Val) {
+                            echo ' <option value="' . $ak1Key . '"';
+                            if ($ak1Key == $seahorses->getOption('updates_akismet')) {
+                                echo ' selected="selected"';
+                            }
+                            echo '>' . $ak1Val . "</option>\n";
+                        }
+                        ?>
+                    </select></p>
+                <p><label><strong>Anti-SPAM:</strong></label> <select name="antispam_opt_input2" class="input1">
+                        <?php
+                        $an1Array = array('y' => 'On', 'n' => 'Off');
+                        foreach ($an1Array as $an1Key => $an1Val) {
+                            echo ' <option value="' . $an1Key . '"';
+                            if ($an1Key == $seahorses->getOption('updates_antispam')) {
+                                echo ' selected="selected"';
+                            }
+                            echo '>' . $an1Val . "</option>\n";
+                        }
+                        ?>
+                    </select></p>
+                <p><label><strong>Akismet Key:</strong></label>
+                    <input name="akismet_key_input2" class="input1" type="text"
+                           value="<?php echo $seahorses->getOption('updates_akismet_key'); ?>"></p>
+                <p><label><strong>Captcha:</strong></label> <select name="captcha_opt_input2" class="input1">
+                        <?php
+                        $ca1Array = array('y' => 'On', 'n' => 'Off');
+                        foreach ($ca1Array as $ca1Key => $ca1Val) {
+                            echo '  <option value="' . $ca1Key . '"';
+                            if ($ca1Key == $seahorses->getOption('updates_captcha')) {
+                                echo ' selected="selected"';
+                            }
+                            echo '>' . $ca1Val . "</option>\n";
+                        }
+                        ?>
+                    </select></p>
+            </fieldset>
+
+            <fieldset>
+                <legend>Cross-Posting Settings</legend>
+                <p><label><strong>Dreamwidth:</strong> On or Off?</label>
+                    <select name="dw_input" class="cps" id="toggleDW">
+                        <?php
+                        $dwArray = array('y' => 'On', 'n' => 'Off');
+                        $dwValue = explode('!', $seahorses->getOption('updates_crosspost_dw'));
+                        foreach ($dwArray as $dwKey => $dwVal) {
+                            echo '  <option';
+                            if (in_array($dwKey, $dwValue)) {
+                                echo ' selected="selected"';
+                            }
+                            echo ' value="' . $dwKey . '">' . $dwVal . "</option>\n";
+                        }
+                        ?>
+                    </select></p>
                 <?php
-                $grArray = array('y' => 'On', 'n' => 'Off');
-                foreach ($grArray as $grKey => $grVal) {
+                if ($seahorses->getOption('updates_crosspost_dw') == 'y') {
+                    echo "<div class=\"toggleDW\" style=\"display: block;\">\n";
+                } elseif ($seahorses->getOption('updates_crosspost_dw') == 'n') {
+                    echo "<div class=\"toggleDW\" style=\"display: none;\">\n";
+                }
+                ?>
+                <p><label><strong>Username:</strong></label>
+                    <input name="dw_user_input" class="input1" type="text"
+                           value="<?php echo $seahorses->getOption('updates_crosspost_dw_user'); ?>"></p>
+                <p><label><strong>Password:</strong><br>
+                        Leave blank to keep current password</label>
+                    <input name="dw_pass_input" class="input1" type="password"></p>
+                <p style="clear: both; margin: 0 0 2% 0;"></p>
+                <p><label><strong>Add Link Back to the Updates Blog?</strong></label>
+                    <?php
+                    $lbdwArray = array('y' => 'Yes', 'n' => 'No');
+                    foreach ($lbdwArray as $lbdwKey => $lbdwVal) {
+                        echo '<input name="updates_linkback_dw_opt"';
+                        if ($lbdwKey == $seahorses->getOption('updates_crosspost_dw_link')) {
+                            echo ' checked="checked"';
+                        }
+                        echo ' class="input3" type="radio" value="' . $lbdwKey . '"> ' . $lbdwVal . "\n";
+                    }
+                    ?>
+                </p>
+        </div>
+
+        <p><label><strong>InsaneJournal:</strong> On or Off?</label>
+            <select name="ij_input" class="cps" id="toggleIJ">
+                <?php
+                $ijArray = array('y' => 'On', 'n' => 'Off');
+                foreach ($ijArray as $ijKey => $ijVal) {
                     echo '  <option';
-                    if ($grKey == $seahorses->getOption('updates_gravatar')) {
+                    if ($ijKey == $seahorses->getOption('updates_crosspost_ij')) {
                         echo ' selected="selected"';
                     }
-                    echo ' value="' . $grKey . '">' . $grVal . "</option>\n";
+                    echo ' value="' . $ijKey . '">' . $ijVal . "</option>\n";
                 }
                 ?>
             </select></p>
         <?php
-        if ($seahorses->getOption('updates_gravatar') == 'y') {
-            echo " <div class=\"toggleGravatar\" style=\"display: block;\">\n";
-        } elseif ($seahorses->getOption('updates_gravatar') == 'n') {
-            echo " <div class=\"toggleGravatar\" style=\"display: none;\">\n";
+        if ($seahorses->getOption('updates_crosspost_ij') == 'y') {
+            echo " <div class=\toggleIJ\" style=\"display: block;\">\n";
+        } elseif ($seahorses->getOption('updates_crosspost_ij') == 'n') {
+            echo " <div class=\"toggleIJ\" style=\"display: none;\">\n";
         }
         ?>
-        <p><label><strong>Gravatar Rating:</strong></label>
-            <input name="gravatar_rating_opt" class="input1" type="text"
-                   value="<?php echo $seahorses->getOption('updates_gravatar_rating'); ?>"></p>
-        <p><label><strong>Gravatar Size:</strong></label>
-            <input name="gravatar_size_opt" class="input1" type="text"
-                   value="<?php echo $seahorses->getOption('updates_gravatar_size'); ?>"></p>
+        <p><label><strong>Username:</strong></label>
+            <input name="ij_user_input" class="input1" type="text"
+                   value="<?php echo $seahorses->getOption('updates_crosspost_ij_user'); ?>"></p>
+        <p><label><strong>Password:</strong><br>
+                Leave blank to keep current password</label>
+            <input name="ij_pass_input" class="input1" type="password"></p>
+        <p style="clear: both; margin: 0 0 2% 0;"></p>
+        <p><label><strong>Add Link Back to the Updates Blog?</strong></label>
+            <?php
+            $lbijArray = array('y' => 'Yes', 'n' => 'No');
+            foreach ($lbijArray as $lbijKey => $lbijVal) {
+                echo '   <input name="updates_linkback_ij_opt"';
+                if ($lbijKey == $seahorses->getOption('updates_crosspost_ij_link')) {
+                    echo ' checked="checked"';
+                }
+                echo ' class="input3" type="radio" value="' . $lbijKey . '"> ' . $lbijVal . "\n";
+            }
+            ?>
+        </p>
         </div>
-    </fieldset>
 
-    <fieldset>
-        <legend>Submit</legend>
-        <p class="tc"><input name="action" class="input2" type="submit" value="Edit Addons"></p>
-    </fieldset>
-    </form>
-<?php
-}
-}
+        <p><label><strong>LiveJournal:</strong> On or Off?</label>
+            <select name="lj_input" class="cps" id="toggleLJ">
+                <?php
+                $ljArray = array('y' => 'On', 'n' => 'Off');
+                foreach ($ljArray as $ljKey => $ljVal) {
+                    echo '   <option';
+                    if ($ljKey == $seahorses->getOption('updates_crosspost_lj')) {
+                        echo ' selected="selected"';
+                    }
+                    echo ' value="' . $ljKey . '">' . $ljVal . "</option>\n";
+                }
+                ?>
+            </select></p>
+        <?php
+        if ($seahorses->getOption('updates_crosspost_lj') == 'y') {
+            echo " <div class=\"toggleLJ\" style=\"display: block;\">\n";
+        } elseif ($seahorses->getOption('updates_crosspost_lj') == 'n') {
+            echo " <div class=\"toggleLJ\" style=\"display: none;\">\n";
+        }
+        ?>
+        <p><label><strong>Username:</strong></label>
+            <input name="lj_user_input" class="input1" type="text"
+                   value="<?php echo $seahorses->getOption('updates_crosspost_lj_user'); ?>"></p>
+        <p><label><strong>Password:</strong><br>
+                Leave blank to keep current password</label>
+            <input name="lj_pass_input" class="input1" type="password"></p>
+        <p style="clear: both; margin: 0 0 2% 0;"></p>
+        <p><label><strong>Add Link Back to the Updates Blog?</strong></label>
+            <?php
+            $lbljArray = array('y' => 'Yes', 'n' => 'No');
+            foreach ($lbljArray as $lbljKey => $lbljVal) {
+                echo '  <input name="updates_linkback_lj_opt"';
+                if ($lbljKey == $seahorses->getOption('updates_crosspost_lj_link')) {
+                    echo ' checked="checked"';
+                }
+                echo ' class="input3" type="radio" value="' . $lbljKey . '"> ' . $lbljVal . "\n";
+            }
+            ?>
+        </p>
+        </div>
+        </fieldset>
 
-elseif (
+        <fieldset>
+            <legend>Gravatar Settings</legend>
+            <p><label><strong>Gravatar:</strong> On or Off?</label>
+                <select name="gravatar_opt" class="togglediv input1" id="toggleGravtar">
+                    <?php
+                    $grArray = array('y' => 'On', 'n' => 'Off');
+                    foreach ($grArray as $grKey => $grVal) {
+                        echo '  <option';
+                        if ($grKey == $seahorses->getOption('updates_gravatar')) {
+                            echo ' selected="selected"';
+                        }
+                        echo ' value="' . $grKey . '">' . $grVal . "</option>\n";
+                    }
+                    ?>
+                </select></p>
+            <?php
+            if ($seahorses->getOption('updates_gravatar') == 'y') {
+                echo " <div class=\"toggleGravatar\" style=\"display: block;\">\n";
+            } elseif ($seahorses->getOption('updates_gravatar') == 'n') {
+                echo " <div class=\"toggleGravatar\" style=\"display: none;\">\n";
+            }
+            ?>
+            <p><label><strong>Gravatar Rating:</strong></label>
+                <input name="gravatar_rating_opt" class="input1" type="text"
+                       value="<?php echo $seahorses->getOption('updates_gravatar_rating'); ?>"></p>
+            <p><label><strong>Gravatar Size:</strong></label>
+                <input name="gravatar_size_opt" class="input1" type="text"
+                       value="<?php echo $seahorses->getOption('updates_gravatar_size'); ?>"></p>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Submit</legend>
+            <p class="tc"><input name="action" class="input2" type="submit" value="Edit Addons"></p>
+        </fieldset>
+        </form>
+        <?php
+    }
+} elseif (
     isset($_POST['action']) &&
     $_POST['action'] == 'Edit Addons' &&
     $_SERVER['REQUEST_METHOD'] == 'POST'
@@ -672,7 +672,7 @@ elseif (
         $uninstalladdon = $tigers->cleanMys($_POST['uninstalladdon']);
         if (
             $installaddon != 'none' &&
-            !array_key_exists($installaddon, $get_addon_array)
+            !array_key_exists($installaddon, $get_addon_array_for_installation)
         ) {
             $tigers->displayError('Form Error', 'The addon you want to install is not' .
                 ' valid, m\'dear!', false);
@@ -685,7 +685,7 @@ elseif (
         /**
          * Install the addon!
          */
-        if (($installaddon != 'none') && $cheetahs->isInstalled($installaddon) == false) {
+        if (($installaddon != 'none') && !$cheetahs->isInstalled($installaddon)) {
             $install = $frogs->installAddon($installaddon);
             if ($install->status == true) {
                 echo $tigers->displaySuccess('The addon has been installed!');

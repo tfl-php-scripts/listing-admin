@@ -13,7 +13,7 @@ require('vars.inc.php');
 require('header.php');
 
 ?>
-    <p class="scriptButton"><span class="script"><b>Notice:</b></span> This extension is simply legacy hence is not supported by current version of the LA script. I would recommend turning it off.</ins>
+    <p class="scriptButton"><span class="script"><b>Notice:</b></span> This extension is simply legacy hence is not supported by current version of the LA script. I would recommend turning it off.
     </p>
    <?php
 $sp = !isset($_GET['g']) ? '<span><a href="quotes.php?g=new">Add Quote</a>' .

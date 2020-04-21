@@ -472,6 +472,9 @@ if (isset($_POST['action']) && $_POST['action'] == 'Edit Options') {
             <?php
         } elseif (isset($_GET['g']) && $_GET['g'] == 'import') {
             ?>
+            <p class="scriptButton"><span class="script"><b>Notice:</b></span> This functionality has not been properly
+                tested in <?= $laoptions->version ?>. Please report any issues if such occur.
+            </p>
             <p class="noteButton">You can use the <samp>Import/Export</samp> section to
                 import affiliates and members from other scripts, as well as categories and
                 joined from Enthusiast, updates and codes from FanUpdate and CodeSort
