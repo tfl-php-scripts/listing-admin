@@ -120,7 +120,7 @@
         $count = $scorpions->total($true);
 
         $category = $lions->getCategory($sort_category);
-        $parentcat = $category->parent == 0 ? '' : $lions->getCatName($category->parent) .
+        $parentcat = $category === false || $category->parent == 0 ? '' : $lions->getCatName($category->parent) .
             ($seahorses->getOption('markup') == 'html5' ? ' &#187; ' : ' &raquo; ');
         $name = $parentcat . $lions->getCatName($sort_category);
         if (isset($_GET['sort']) && $_GET['sort'] == 'all') {
@@ -166,8 +166,8 @@
                 echo $wolves->getTemplate_Listings($getItem->id) . "\n";
             }
             echo "</div>\n";
-            echo "<p class=\"showBack\"><a href=\"javascript:window.history.back();\">&#171; Go back?</p>\n";
         }
+        echo "<p class=\"showBack\"><a href=\"javascript:window.history.back();\">&#171; Go back?</p>\n";
     } /**
      * Get index of listings!
      */
