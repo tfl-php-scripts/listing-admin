@@ -7,15 +7,15 @@
  * @since       September 2nd, 2010  
  * @version     2.2 
  */ 
-require("b.inc.php");
-require(MAINDIR . "rats.inc.php");
-require_once("fun.inc.php");
-require_once("fun-affiliates.inc.php");
-require_once("fun-categories.inc.php");
-require_once("fun-listings.inc.php");
-require_once("fun-members.inc.php");
-require_once("fun-misc.inc.php");
-require(MAINDIR . "vars.inc.php");
+require('b.inc.php');
+require(MAINDIR . 'rats.inc.php');
+require_once('fun.inc.php');
+require_once('fun-affiliates.inc.php');
+require_once('fun-categories.inc.php');
+require_once('fun-listings.inc.php');
+require_once('fun-members.inc.php');
+require_once('fun-misc.inc.php');
+require(MAINDIR . 'vars.inc.php');
 
 /** 
  * Get overall affiliates count, with collective count 

@@ -200,10 +200,10 @@ if (!class_exists('tigers')) {
          */
         public function logout()
         {
-            global $cheetahs;
+            global $leopards;
 
             setcookie('lalog', '');
-            header('Location: ' . $cheetahs->isPage());
+            header('Location: ' . $leopards->isPage());
             die('Logging you out, m\'dear...');
         }
 

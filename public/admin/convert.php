@@ -16,15 +16,15 @@ ob_start();
 /** 
  * Make sure we're logged in and got our necessary files~ 
  */ 
-require("pro.inc.php");
-require("vars.inc.php");
+require('pro.inc.php');
+require('vars.inc.php');
 
 /** 
  * Now, if this file has been accessed via a form, let's start this jazz! 
  */ 
 if(
  isset($_POST) &&
- $_SERVER['REQUEST_METHOD'] == "POST"
+ $_SERVER['REQUEST_METHOD'] == 'POST'
 ) {
  $opttype = $tigers->cleanMys($_POST['opttype']);
  if(empty($opttype) || !in_array($opttype, array('import', 'export'))) {
@@ -35,12 +35,12 @@ if(
 
  if($opttype == 'import') {
   $script = $tigers->cleanMys($_POST['script']);
-  if(empty($script) || !in_array($script, array_keys($get_script_array))) {
+  if(empty($script) || !array_key_exists($script, $get_script_array)) {
    $tigers->displayError('Form Error', 'The given script to export to' . 
    ' appears to be invalid! :x', false);
   }
   $importcat = $tigers->cleanMys($_POST['importcat']);
-  if(!in_array($importcat, array_keys($get_import_cats_array))) {
+  if(!array_key_exists($importcat, $get_import_cats_array)) {
    $tigers->displayError('Form Error', 'The import category you chose is' . 
    ' invalid!', false);
   }
@@ -50,7 +50,7 @@ if(
    !empty($_FILES['importfile']['tmp_name'])
   ) {
    $file = $_FILES['importfile'];  
-   if(!preg_match("/.txt$/", $file['name']) || filetype($file['tmp_name']) != 'file') {
+   if(!preg_match('/.txt$/', $file['name']) || filetype($file['tmp_name']) != 'file') {
     $tigers->displayError('Form Error', 'Only a <samp>.txt</samp> file is' . 
     ' allowed to be imported; if you\'re importing a .sql file, import it to' . 
     ' your database instead, and fill out the database settings in the form. :D', 
@@ -80,7 +80,7 @@ if(
   ) {
    $usedb = 1;
    if(
-    isset($_POST['dbhost']) && isset($_POST['dbuser']) && isset($_POST['dbname'])
+       isset($_POST['dbhost'], $_POST['dbuser']) && isset($_POST['dbname'])
    ) {
     $dbhost = $tigers->cleanMys($_POST['dbhost']);
     $dbuser = $tigers->cleanMys($_POST['dbuser']);
@@ -98,7 +98,7 @@ if(
    ' table.', false);
   }
   $tablenamecj = !isset($_POST['tablenamecj']) || empty($_POST['tablenamecj']) ? 
-  $tablename . "_catjoin" : $tigers->cleanMys($_POST['tablenamecj']);
+  $tablename . '_catjoin' : $tigers->cleanMys($_POST['tablenamecj']);
   $importcp = !isset($_POST['importcp']) || empty($_POST['importcp']) ? 
   'n' : $tigers->cleanMys($_POST['importcp']);
   $importjoined = !isset($_POST['importjoined']) || empty($_POST['importjoined']) ? 
@@ -106,7 +106,6 @@ if(
   if(isset($_POST['toggle']) && $_POST['toggle'] == 'y') {
    $favefield = 1;
    if(isset($_POST['fave']) && count($_POST['fave']) > 0) {
-    $faves = array();
     $faves =  $_POST['fave'];
     $faves = array_map(array($tigers, 'cleanMys'), $faves);
    }
@@ -167,7 +166,7 @@ if(
      /** 
       * Import Categories 
       */ 
-     elseif ($import == 'categories') {
+     elseif ($importcat == 'categories') {
       if($script == 'enthusiast') {
        $parents             = array();
        $array[$item->catid] = (object) array(
@@ -247,23 +246,19 @@ if(
       * Import Members 
       */ 
      elseif ($importcat == 'members') {
-      if($favefield == 1) {
-       if($script == 'enthusiast') {
-        $h = array();
-        foreach($faves as $f) {
-	       if(!empty($f)) {
-	        if(empty($item->$f)) {
-		       $h[] = 'NONE';
-		      } else {
-           $h[] = $item->$f;
-		      }
-		     }
-	      }
-	      $ff = implode("|", $h);
-	      $ff = '|' . trim($p, '|') . '|';
-       } else {
-        $ff = '';
-       }
+      if(($favefield == 1) && $script == 'enthusiast') {
+       $h = array();
+       foreach($faves as $f) {
+          if(!empty($f)) {
+           if(empty($item->$f)) {
+              $h[] = 'NONE';
+             } else {
+          $h[] = $item->$f;
+             }
+            }
+         }
+         $ff = implode("|", $h);
+         $ff = '|' . trim($p, '|') . '|';
       } else {
        $ff = '';
       }
@@ -272,7 +267,7 @@ if(
       $ap = $script == 'phpfanbase' ? ($item->apr == 'y' ? 0 : 1) : $item->pending;
       $se = $script == 'phpfanbase' ? ($item->hideemail == 'y' ? 1 : 0) : 
       ($item->showemail == 0 ? 1 : 0);
-      $da = $script == 'enthusiast' ? $item->added : date("Y-m-d");
+      $da = $script == 'enthusiast' ? $item->added : date('Y-m-d');
       $array[$item->email] = (object) array(
        'name' => $item->name,
        'email' => $item->email,
@@ -379,7 +374,7 @@ if(
      /** 
       * Import Categories 
       */ 
-     elseif ($import == 'categories') {
+     elseif ($importcat == 'categories') {
       if($script == 'enthusiast') {
        $parents             = array();
        $array[$item->catid] = (object) array(
@@ -459,23 +454,19 @@ if(
       * Import Members 
       */ 
      elseif ($importcat == 'members') {
-      if($favefield == 1) {
-       if($script == 'enthusiast') {
-        $h = array();
-        foreach($faves as $f) {
-	       if(!empty($f)) {
-	        if(empty($item->$f)) {
-		       $h[] = 'NONE';
-		      } else {
-           $h[] = $item->$f;
-		      }
-		     }
-	      }
-	      $ff = implode("|", $h);
-	      $ff = '|' . trim($p, '|') . '|';
-       } else {
-        $ff = '';
-       }
+      if(($favefield == 1) && $script == 'enthusiast') {
+       $h = array();
+       foreach($faves as $f) {
+          if(!empty($f)) {
+           if(empty($item->$f)) {
+              $h[] = 'NONE';
+             } else {
+          $h[] = $item->$f;
+             }
+            }
+         }
+         $ff = implode("|", $h);
+         $ff = '|' . trim($p, '|') . '|';
       } else {
        $ff = '';
       }
@@ -484,7 +475,7 @@ if(
       $ap = $script == 'phpfanbase' ? ($item->apr == 'y' ? 0 : 1) : $item->pending;
       $se = $script == 'phpfanbase' ? ($item->hideemail == 'y' ? 1 : 0) : 
       ($item->showemail == 0 ? 1 : 0);
-      $da = $script == 'enthusiast' ? $item->added : date("Y-m-d");
+      $da = $script == 'enthusiast' ? $item->added : date('Y-m-d');
       $array[$item->email] = (object) array(
        'name' => $item->name,
        'email' => $item->email,
@@ -557,17 +548,17 @@ if(
     foreach($members as $m) {
      if($script == 'bellabuffs') {
       if($importcat == 'affiliates') {
-       list($button, $name, $email, $url, $sitename) = explode(',', $m);
+       [$button, $name, $email, $url, $sitename] = explode(',', $m);
        $array[$sitename] = (object) array(
         'name' => $name,
         'email' => $seahorses->formatExport($email, 'bb', 'decode'),
         'url' => $url, 
         'subject' => $sitename,
-        'added' => date("Y-m-d")
+        'added' => date('Y-m-d')
        );
       } elseif ($importcat == 'members') {
-       list($name, $email, $show, $url, $country, $fave) = explode(',', $m);
-       $se = $show == "yes" ? 0 : 1;
+       [$name, $email, $show, $url, $country, $fave] = explode(',', $m);
+       $se = $show == 'yes' ? 0 : 1;
        $array[$email] = (object) array(
         'name' => $name,
         'email' => $seahorses->formatExport($email, 'bb', 'decode'),
@@ -578,12 +569,12 @@ if(
         'show' => $se,
         'pending' => 0,
         'update' => 'n',
-        'added' => date("Y-m-d")
+        'added' => date('Y-m-d')
        );
       }
      } elseif ($script == 'listingadmin') {
       if($importcat == 'affiliates') {
-       list($subject, $email, $url, $image, $added) = explode('||', $m);
+       [$subject, $email, $url, $image, $added] = explode('||', $m);
        $array[$subject] = (object) array(
         'email' => $seahorses->formatExport($email, 'la', 'decode'),
         'url' => $seahorses->formatExport($url, 'la', 'decode'), 
@@ -592,8 +583,8 @@ if(
         'added' => $added
        );
       } elseif ($importcat == 'members') {
-       list($email, $listing, $name, $url, $country, $password, $fave, $visible, 
-       $pending, $update, $added) = explode('__', $m);
+       [$email, $listing, $name, $url, $country, $password, $fave, $visible,
+           $pending, $update, $added] = explode('__', $m);
        $array[$email] = (object) array(
         'name' => $name,
         'email' => $seahorses->formatExport($email, 'la', 'decode'),
@@ -632,8 +623,8 @@ if(
      $tigers->displayError('Database Error', 'There was an error inserting' . 
      ' the affiliate into the listing.', true, $insert);
     } else {
-     echo $tigers->displaySuccess("The <strong>" . $obj->subject . "</strong> (" . 
-     "<samp>" . $obj->email . "</samp>) affiliate was added to the listing! :D");
+     echo $tigers->displaySuccess('The <strong>' . $obj->subject . '</strong> (' .
+         '<samp>' . $obj->email . '</samp>) affiliate was added to the listing! :D');
     }
    }
 
@@ -648,8 +639,8 @@ if(
      $tigers->displayError('Database Error', 'There was an error inserting' . 
      ' the category into the listing.', true, $insert);
     } else {
-     echo $tigers->displaySuccess("The <strong>" . $obj->catname . "</strong>" . 
-     " category was added to the listing! :D");
+     echo $tigers->displaySuccess('The <strong>' . $obj->catname . '</strong>' .
+         ' category was added to the listing! :D');
     }
    }
 
@@ -664,8 +655,8 @@ if(
      $tigers->displayError('Database Error', 'There was an error inserting' . 
      ' the code into the listing.', true, $insert);
     } else {
-     echo $tigers->displaySuccess("The <strong>" . $obj->image . "</strong>" . 
-     " code was added to the listing! :D");
+     echo $tigers->displaySuccess('The <strong>' . $obj->image . '</strong>' .
+         ' code was added to the listing! :D');
     }
    }
 
@@ -680,16 +671,16 @@ if(
      $tigers->displayError('Database Error', 'There was an error inserting' . 
      ' the joined listing into the listing.', true, $insert);
     } else {
-     echo $tigers->displaySuccess("The <strong>" . $obj->subject . "</strong>" . 
-     " joined listing was added to the database! :D");
+     echo $tigers->displaySuccess('The <strong>' . $obj->subject . '</strong>' .
+         ' joined listing was added to the database! :D');
     }
    }
    
    elseif ($importcat == 'members') {
 	  $mem = trim($member);
 	  if(!empty($mem) && !empty($obj)) {
-     $insert = "INSERT INTO `$_ST[members]` (`mEmail`, `fNiq`, `mName`, `mURL`," . 
-     " `mCountry`, `mPassword`, `mExtra`, `mVisible`, `mPending`, `mUpdate`," . 
+     $insert = "INSERT INTO `$_ST[members]` (`mEmail`, `fNiq`, `mName`, `mURL`," .
+         ' `mCountry`, `mPassword`, `mExtra`, `mVisible`, `mPending`, `mUpdate`,' .
      " `mAdd`) VALUES ('" . $obj->email . "', '" . $fanlistingid . 
 		 "', '" . htmlentities(html_entity_decode($obj->name), ENT_QUOTES, 'UTF-8') . 
      "', '" . $obj->url . "', '" . $obj->country . "', '" . $obj->password . 
@@ -701,15 +692,15 @@ if(
       $tigers->displayError('Database Error', 'There was an error inserting' . 
       ' the member into the listing.', true, $insert);
      } else {
-      echo $tigers->displaySuccess("The <strong>" . $obj->name . "</strong> (" . 
-      "<samp>" . $obj->email . "</samp>) member was added to the listing! :D");
+      echo $tigers->displaySuccess('The <strong>' . $obj->name . '</strong> (' .
+          '<samp>' . $obj->email . '</samp>) member was added to the listing! :D');
      }
 		}
    }
 
    elseif ($importcat == 'updates') {
-    $insert = "INSERT INTO `$_ST[updates]` (`uTitle`, `uCategory`, `uEntry`," . 
-	  " `uDW`, `uDWOpt`, `uIJ`, `uIJOpt`, `uLJ`, `uLJOpt`, `uPending`, `uDisabled`," . 
+    $insert = "INSERT INTO `$_ST[updates]` (`uTitle`, `uCategory`, `uEntry`," .
+        ' `uDW`, `uDWOpt`, `uIJ`, `uIJOpt`, `uLJ`, `uLJOpt`, `uPending`, `uDisabled`,' .
 	  " `uAdded`) VALUES ('" . $obj->title . "', '!" . $fanlistingid . 
     "!', '" . $obj->entry . "', '" . $obj->dwpost . "', '" . $obj->dwpostopt . 
     "', '" . $obj->ijpost . "', '" . $obj->ijpostopt . "', '" . $obj->ljpost . 
@@ -721,9 +712,9 @@ if(
      $tigers->displayError('Database Error', 'There was an error inserting' . 
      ' the update into the listing.', true, $insert);
     } else {
-     echo $tigers->displaySuccess("The <strong>" . $obj->title . "</strong> (" . 
-     "<samp>" . date("F jS, Y", strtotime($obj->added)) . 
-     "</samp>) update was added to the listing! :D");
+     echo $tigers->displaySuccess('The <strong>' . $obj->title . '</strong> (' .
+         '<samp>' . date('F jS, Y', strtotime($obj->added)) .
+         '</samp>) update was added to the listing! :D');
     }
    }
   }
@@ -735,12 +726,12 @@ if(
   */ 
  elseif ($opttype == 'export') {
   $script = $tigers->cleanMys($_POST['script']);
-  if(empty($script) || !in_array($script, array_keys($get_script_array))) {
+  if(empty($script) || !array_key_exists($script, $get_script_array)) {
    $tigers->displayError('Form Error', 'The given script to export to' . 
    ' appears to be invalid! :x', false);
   }
   $exportcat = $tigers->cleanMys($_POST['exportcat']);
-  if(empty($exportcat) || !in_array($exportcat, array_keys($get_export_cats_array))) {
+  if(empty($exportcat) || !array_key_exists($exportcat, $get_export_cats_array)) {
    $tigers->displayError('Form Error', 'You can only export members and' . 
    ' affiliates, m\'dear!', false);
   }
@@ -760,9 +751,9 @@ if(
      "', '" . $affiliate->aImage . "', '" . $affiliate->aEmail . 
      "', '" . $affiliate->aAdd . "'),\n";
     } elseif ($script == 'listingadmin') {
-     $str .= $affiliate->aSubject . "||" . $seahorses->formatExport($affiliate->aEmail) . 
-     "||" . $seahorses->formatExport($affiliate->aURL) . "||" . $affiliate->aImage . 
-     "||" . $affiliate->aAdd . "__\n";
+     $str .= $affiliate->aSubject . '||' . $seahorses->formatExport($affiliate->aEmail) .
+         '||' . $seahorses->formatExport($affiliate->aURL) . '||' . $affiliate->aImage .
+         '||' . $affiliate->aAdd . "__\n";
     }
    }
   } else {
@@ -772,11 +763,11 @@ if(
    foreach($array as $a) {
     $member = $snakes->getMembers($a, 'id', 'object', $fanlistingid);
     if($script == 'bellabuffs') {
-     $favefields = $tigers->emptyarray(explode("|", $listing->fave_fields));
-     $ff = count($favefields) == 1 ? str_replace(',', '|', trim(str_replace("|", '', $member->mFave))) : '';
-     $se = $member->mPending == 0 ? "yes" : "no";
-     $str .= $member->mName . "," . $seahorses->formatExport($member->mEmail) . 
-     "," . $se . "," . $member->mURL . "," . $ff . "\n";
+     $favefields = $tigers->emptyarray(explode('|', $listing->fave_fields));
+     $ff = count($favefields) == 1 ? str_replace(',', '|', trim(str_replace('|', '', $member->mFave))) : '';
+     $se = $member->mPending == 0 ? 'yes' : 'no';
+     $str .= $member->mName . ',' . $seahorses->formatExport($member->mEmail) .
+         ',' . $se . ',' . $member->mURL . ',' . $ff . "\n";
     } elseif ($script == 'enthusiast') {
      $se = $member->mVisible == 1 ? 0 : 1;
      $str .= "('" . $member->mEmail . "', '" . $member->mName . "', '" . $member->mCountry . 
@@ -797,10 +788,10 @@ if(
      $str .= " '" . $member->mPending . "', '" . $member->mPassword . 
      "', " . $se . ", 1, '" . $member->mAdd . "'),\n";
     } elseif ($script == 'listingadmin') {
-     $str .= $seahorses->formatExport($member->mEmail, 'la') . "__0__" . $member->mName . 
-     "__" . $seahorses->formatExport($member->mURL, 'la') . "__" . $member->mCountry . 
-     "__" . $member->mPassword . "__" . $member->mExtra . "__" . $member->mVisible . 
-     "__" . $member->mPending . "__" . $member->mUpdate . "__" . $member->mAdd . "\n";
+     $str .= $seahorses->formatExport($member->mEmail, 'la') . '__0__' . $member->mName .
+         '__' . $seahorses->formatExport($member->mURL, 'la') . '__' . $member->mCountry .
+         '__' . $member->mPassword . '__' . $member->mExtra . '__' . $member->mVisible .
+         '__' . $member->mPending . '__' . $member->mUpdate . '__' . $member->mAdd . "\n";
     }
    }
   }
@@ -850,7 +841,7 @@ INSERT INTO `table` (`url`, `title`, `imagefile`, `email`, `added`) VALUES
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
 ";
-    $finalstr .= "INSERT INTO `table` (`email`, `name`, `country`, `url`,";
+    $finalstr .= 'INSERT INTO `table` (`email`, `name`, `country`, `url`,';
     if(!empty($listing->fave_fields)) {
      $ff = $tigers->emptyarray(explode('|', $listing->fave_fields));
      foreach($ff as $f) {
@@ -859,7 +850,7 @@ INSERT INTO `table` (`url`, `title`, `imagefile`, `email`, `added`) VALUES
      }
     }
     $finalstr .= " `pending`, `password`, `showemail`, `showurl`, `added`) VALUES\n";
-    $finalstr .= rtrim($str, ",\n") . ";";
+    $finalstr .= rtrim($str, ",\n") . ';';
    }
   } elseif ($script == 'listingadmin') {
    $finalstr .= trim($str, "\n") . "\n";
@@ -883,7 +874,7 @@ INSERT INTO `table` (`url`, `title`, `imagefile`, `email`, `added`) VALUES
     
   else {
    $sw = $script == 'enthusiast' || $script == 'phpfanbase' ? '.sql' : '.txt';
-   echo "<p class=\"noteButton\">Copy and paste the text below into a blank" . 
+   echo '<p class="noteButton">Copy and paste the text below into a blank' .
    " file, and save it with a <samp>$sw</samp> extension.</p>\n";
    echo "<code>$finalstr</code>\n";
   }

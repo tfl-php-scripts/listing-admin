@@ -20,10 +20,10 @@ $automated = $tigers->cleanMys($auserinfo);
 /** 
  * Grab bad SPAM bots for forms 
  */ 
-$badheaders = "/(Indy|Blaiz|Java|libwww-perl|Python|OutfoxBot|User" . 
-"-Agent|PycURL|AlphaServer|T8Abot|Syntryx|WinHttp|WebBandit|nicebot|Jakar" . 
-"ta|curl|Snoopy|PHPcrawl|id-search|WebAlta Crawler|Baiduspider+|Gaisbot|K" . 
-"aloogaBot|Gigabot|Gaisbot|ia_archiver)/i";
+$badheaders = '/(Indy|Blaiz|Java|libwww-perl|Python|OutfoxBot|User' .
+    '-Agent|PycURL|AlphaServer|T8Abot|Syntryx|WinHttp|WebBandit|nicebot|Jakar' .
+    'ta|curl|Snoopy|PHPcrawl|id-search|WebAlta Crawler|Baiduspider+|Gaisbot|K' .
+    'aloogaBot|Gigabot|Gaisbot|ia_archiver)/i';
 
 /** 
  * Grab owner variables \o/ 
@@ -55,12 +55,12 @@ $myadminpath = (object) array(
  */ 
 $pending_comment_form = $seahorses->getOption('updates_comments_moderation') == 'y' ? '1' : '0';
 if($pending_comment_form == 1) {
- $if_pending = "<p class=\"noteButton\">As the owner has set comments to <em>pending</em>, your comment" . 
- " is currently being held for moderation. If your comment does not appear in a week," . 
+ $if_pending = '<p class="noteButton">As the owner has set comments to <em>pending</em>, your comment' .
+     ' is currently being held for moderation. If your comment does not appear in a week,' .
  " feel free to submit another one.</p>\n";
 } else {
- $if_pending = "<p class=\"noteButton\">Your comment should appear once you hit" . 
- " \"Back to Entry\" below. Please do NOT hit \"Back\" in your browser, as this" . 
+ $if_pending = '<p class="noteButton">Your comment should appear once you hit' .
+     ' "Back to Entry" below. Please do NOT hit "Back" in your browser, as this' .
  " will cause your comment to resubmit.</p>\n";
 }
 
@@ -268,9 +268,9 @@ $per_page    = $seahorses->getOption('per_page');
  * Journal server object :D 
  */ 
 $journals = (object) array( 
- 'dw' => "www.dreamwidth.org", 
- 'ij' => "www.insanejournal.com", 
- 'lj' => "www.livejournal.com"
+ 'dw' => 'www.dreamwidth.org',
+ 'ij' => 'www.insanejournal.com',
+ 'lj' => 'www.livejournal.com'
 );
 
 /** 

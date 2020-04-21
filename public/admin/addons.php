@@ -672,7 +672,7 @@ elseif (
             $tigers->displayError('Form Error', 'The addon you want to install is not' .
                 ' valid, m\'dear!', false);
         }
-        if (($uninstalladdon != 'none') && !in_array($uninstalladdon, array_keys($get_addon_array))) {
+        if (($uninstalladdon != 'none') && !array_key_exists($uninstalladdon, $get_addon_array)) {
             $tigers->displayError('Form Error', 'The addon you want to uninstall is not' .
                 ' valid, m\'dear!', false);
         }
@@ -683,7 +683,7 @@ elseif (
         if (($installaddon != 'none') && $cheetahs->isInstalled($installaddon) == false) {
             $install = $frogs->installAddon($installaddon);
             if ($install->status == true) {
-                echo $tigers->displaySuccess("The addon has been installed!");
+                echo $tigers->displaySuccess('The addon has been installed!');
                 $seahorses->editOption($installaddon . '_opt', 'y');
             } else {
                 $tigers->displayError(
@@ -701,7 +701,7 @@ elseif (
         if (($uninstalladdon != 'none') && $cheetahs->isInstalled($uninstalladdon) == true) {
             $uninstall = $frogs->uninstallAddon($uninstalladdon);
             if ($uninstall->status == true) {
-                echo $tigers->displaySuccess("The addon has been uninstalled!");
+                echo $tigers->displaySuccess('The addon has been uninstalled!');
                 $seahorses->editOption($uninstalladdon . '_opt', 'n');
             } else {
                 $tigers->displayError(

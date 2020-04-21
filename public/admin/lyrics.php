@@ -7,17 +7,17 @@
  * @since      September 2nd, 2010 
  * @version    1.0    
  */ 
-$s = isset($_GET['g']) && $_GET['g'] == 'albums' ? 'Albums' : "Songs";
-$w = isset($_GET['g']) ? $s : "Lyrics";
+$s = isset($_GET['g']) && $_GET['g'] == 'albums' ? 'Albums' : 'Songs';
+$w = isset($_GET['g']) ? $s : 'Lyrics';
 $getTitle = $w;
 
-require("pro.inc.php");
-require("vars.inc.php");
-require("header.php");
+require('pro.inc.php');
+require('vars.inc.php');
+require('header.php');
 
-$sp = isset($_GET['g']) ? ($_GET['g'] == 'songs' ? "<span><a href=\"lyrics.php?" . 
-"g=songs&#38;p=new\">Add Song</a></span>" : "<span><a href=\"lyrics.php?g=albums" . 
-"&#38;p=new\">Add Album</a></span>") : '';
+$sp = isset($_GET['g']) ? ($_GET['g'] == 'songs' ? '<span><a href="lyrics.php?' .
+'g=songs&#38;p=new">Add Song</a></span>' : '<span><a href="lyrics.php?g=albums' .
+'&#38;p=new">Add Album</a></span>') : '';
 echo "<h2>{$getTitle}$sp</h2>\n";
 
 if(!isset($_GET['p']) || empty($_GET['p']) || !ctype_digit($_GET['p'])) {
@@ -55,7 +55,7 @@ if(isset($_GET['g']) && $_GET['g'] == 'albums') {
 	
  else {
   while($getItem = $scorpions->obj($true)) {
-   echo "  <option value=\"" . $getItem->id . '">' . $getItem->subject . "</option>\n";
+   echo '  <option value="' . $getItem->id . '">' . $getItem->subject . "</option>\n";
   }
  }
 ?>
@@ -210,13 +210,13 @@ cannot be undone!</em> To proceed, click the "Delete Album" button.</p>
 <?php 
    } 
    echo "</table>\n\n";
-   echo "<p id=\"pagination\">Pages: ";
+   echo '<p id="pagination">Pages: ';
    $total = count($cheetahs->lyricsList('', 'albums'));
    $pages = ceil($total / $per_page);
 
    for($i = 1; $i <= $pages; $i++) {
     if($page == $i) {
-     echo $i . " ";
+     echo $i . ' ';
     } else {
      echo '<a href="lyrics.php?g=albums&#38;p=' . $i . '">' . $i . '</a> ';
     }
@@ -247,7 +247,7 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'songs') {
 	
  else {
   while($getItem = $scorpions->obj($true)) {
-   echo "  <option value=\"" . $getItem->aID . '">' . $getItem->aName . "</option>\n";
+   echo '  <option value="' . $getItem->aID . '">' . $getItem->aName . "</option>\n";
   }
  }
 ?>
@@ -269,7 +269,7 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'songs') {
 	
  else {
   while($getItem = $scorpions->obj($true)) {
-   echo "  <option value=\"" . $getItem->id . '">' . $getItem->subject . "</option>\n";
+   echo '  <option value="' . $getItem->id . '">' . $getItem->subject . "</option>\n";
   }
  }
 ?>
@@ -321,7 +321,7 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'songs') {
  else {
   while($getCat = $scorpions->obj($true)) {
    $cats = explode('!', $getItem->aNiq);
-   echo "  <option value=\"" . $getCat->aID . '"'; 
+   echo '  <option value="' . $getCat->aID . '"';
 	 if(in_array($getCat->aID, $cats)) {
 	  echo ' selected="selected"'; 
    }
@@ -350,7 +350,7 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'songs') {
  else {
   while($getCat = $scorpions->obj($true)) {
    $cats = explode('!', $getItem->fNiq);
-   echo "  <option value=\"" . $getCat->id . '"'; 
+   echo '  <option value="' . $getCat->id . '"';
 	 if(in_array($getCat->id, $cats)) {
 	  echo ' selected="selected"'; 
    }
@@ -452,7 +452,7 @@ cannot be undone!</em> To proceed, click the "Delete Song" button.</p>
 
    for($i = 1; $i <= $pages; $i++) {
     if($page == $i) {
-     echo $i . " ";
+     echo $i . ' ';
     } else {
      echo '<a href="lyrics.php?g=songs&#38;p=' . $i . '">' . $i . '</a> ';
     }
@@ -500,7 +500,7 @@ elseif (isset($_POST['action'])) {
    $tigers->displayError('Database Error', 'The script was unable to add' . 
 	 ' the song to the database.', true, $insert);
   } elseif ($true == true) {
-   echo $tigers->displaySuccess("The song was added to the database!</p>");
+   echo $tigers->displaySuccess('The song was added to the database!</p>');
    echo $tigers->backLink('lyrics', 'songs');
 	 echo $tigers->backLink('lyrics');
   }
@@ -542,7 +542,7 @@ elseif (isset($_POST['action'])) {
    $tigers->displayError('Database Error', 'The script was unable to edit the' . 
    ' song.', true, $update);
   } elseif ($true == true) {
-   echo $tigers->displaySuccess("The song was edited!");
+   echo $tigers->displaySuccess('The song was edited!');
    echo $tigers->backLink('lyrics', 'songs');
 	 echo $tigers->backLink('lyrics');
   }
@@ -562,7 +562,7 @@ elseif (isset($_POST['action'])) {
    $tigers->displayError('Database Error', 'The script was unable to delete' . 
 	 ' the song from the database.', true, $delete);
   } elseif ($true == true) {
-   echo $tigers->displaySuccess("The song was deleted!");
+   echo $tigers->displaySuccess('The song was deleted!');
    echo $tigers->backLink('lyrics', 'songs');
 	 echo $tigers->backLink('lyrics');
   }
@@ -582,7 +582,7 @@ elseif (isset($_POST['action'])) {
   }
 	$year = $tigers->cleanMys($_POST['year']);
   if(empty($year)) {
-   $y = date("Y");
+   $y = date('Y');
   } else {
 	 $y = $year;
 	}
@@ -595,7 +595,7 @@ elseif (isset($_POST['action'])) {
    $tigers->displayError('Database Error', 'The script was unable to add' . 
 	 ' the album to the database.', true, $insert);
   } elseif ($true == true) {
-   echo $tigers->displaySuccess("The album was added to the database!");
+   echo $tigers->displaySuccess('The album was added to the database!');
    echo $tigers->backLink('lyrics', 'albums');
 	 echo $tigers->backLink('lyrics');
   }
@@ -621,7 +621,7 @@ elseif (isset($_POST['action'])) {
   }
 	$year = $tigers->cleanMys($_POST['year']);
   if(empty($year)) {
-   $y = date("Y");
+   $y = date('Y');
   } else {
 	 $y = $year;
 	}
@@ -634,7 +634,7 @@ elseif (isset($_POST['action'])) {
    $tigers->displayError('Database Error', 'The script was unable to edit' . 
 	 ' the album.', true, $update);
   } elseif ($true == true) {
-   echo $tigers->displaySuccess("The album was edited!");
+   echo $tigers->displaySuccess('The album was edited!');
    echo $tigers->backLink('lyrics', 'albums');
 	 echo $tigers->backLink('lyrics');
   }
@@ -654,7 +654,7 @@ elseif (isset($_POST['action'])) {
    $tigers->displayError('Database Error', 'The script was unable to' . 
 	 ' delete the album from the database.', true, $delete);
   } elseif ($true == true) {
-   echo $tigers->displaySuccess("The album was deleted!");
+   echo $tigers->displaySuccess('The album was deleted!');
    echo $tigers->backLink('lyrics', 'albums');
 	 echo $tigers->backLink('lyrics');
   }
@@ -688,4 +688,4 @@ else {
 <?php 
 }
 
-require("footer.php");
+require('footer.php');

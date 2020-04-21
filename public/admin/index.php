@@ -79,7 +79,7 @@ $wishlist_granted = $seahorses->getCount('wishlist', 'y');
  */
 if ($cheetahs->isInstalled('codes') == true) {
     $codes = $cheetahs->codeCount();
-    $codes_collective = $cheetahs->codeCount('0', 'id');
+    $codes_collective = $cheetahs->codeCount('0');
 } else {
     $codes = '0';
     $codes_collective = '0';

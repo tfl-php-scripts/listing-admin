@@ -22,10 +22,10 @@ if(class_exists('mermaids') == false) {
    $select = "SELECT * FROM `$_ST[wishlist]`";
    if($b == 'category' && ($c != '' && is_numeric($c))) {  
     $select .= " WHERE `wCategory` LIKE '%!$c!%'";
-   } elseif ($b == 'type' && ($c != '' && in_array($c, array_keys($get_wishlist_array)))) {
+   } elseif ($b == 'type' && ($c != '' && array_key_exists($c, $get_wishlist_array))) {
     $select .= " WHERE `wType` = '$c'";
    }
-   $select .= " ORDER BY `wID` ASC";
+   $select .= ' ORDER BY `wID` ASC';
    $true = $scorpions->query($select);
    if($true == false) {
     $tigers->displayError('Database Error', 'The script could not select' . 
@@ -108,11 +108,11 @@ if(class_exists('mermaids') == false) {
  
    if(strpos($getItem->wDesc, '{MORE}') !== false) {
     if($b == 'wishlist_query_template') {
-	   $ex   = explode("{MORE}", $getItem->wDesc);
+	   $ex   = explode('{MORE}', $getItem->wDesc);
 	   $desc = trim($ex[1]);
 	   $desc = $octopus->getLineBreakers(html_entity_decode($desc));
     } elseif ($b == 'wishlist_top_template') {
-     $ex   = explode("{MORE}", $getItem->wDesc);
+     $ex   = explode('{MORE}', $getItem->wDesc);
 	   $desc = html_entity_decode(trim($ex[0]));
 	  }
    } else {

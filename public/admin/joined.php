@@ -156,7 +156,7 @@ if (isset($_GET['g']) && $_GET['g'] == 'new') {
         echo '<p class="successButton"><span class="success">Success!</span>' .
             " Your joined listing was added to the database!</p>\n";
         if (isset($success) && $success) {
-            echo "<p class=\"successButton\"><span class=\"success\">Success!</span>" .
+            echo '<p class="successButton"><span class="success">Success!</span>' .
                 " Your joined image was uploaded!</p>\n";
         }
         echo $tigers->backLink('joined');

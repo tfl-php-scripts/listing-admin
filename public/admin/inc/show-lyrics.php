@@ -7,13 +7,13 @@
  * @since      September 2nd, 2010   
  * @version    2.1.4     
  */ 
-require("b.inc.php");
-require_once(MAINDIR . "rats.inc.php");
-require_once("fun.inc.php");
-require_once("fun-addons.inc.php");
-require_once("fun-listings.inc.php");
-require_once("fun-external.inc.php");
-require_once("fun-members.inc.php");
+require('b.inc.php');
+require_once(MAINDIR . 'rats.inc.php');
+require_once('fun.inc.php');
+require_once('fun-addons.inc.php');
+require_once('fun-listings.inc.php');
+require_once('fun-external.inc.php');
+require_once('fun-members.inc.php');
 
 /** 
  * Get variables and options! 
@@ -37,7 +37,7 @@ if(isset($query) && !empty($query)) {
  $options->url = '?';
 }
 
-$options->albumID = isset($album_id) ? $album_id : 'n';
+$options->albumID = $album_id ?? 'n';
 
 /** 
  * Get specific lyric \o/ 
@@ -51,8 +51,8 @@ if(isset($_GET['ly']) && in_array($_GET['ly'], $cheetahs->lyricsList($_KY['listi
 	' specified lyrics.', false);
  } else {
   while($getItem = $true->fetch_object()) {
-	 echo "<h3>" . $getItem->lyName . "</h3>\n";
-	 echo "<div id=\"lyrics\" class=\"lyric" . $getItem->lyID . "\">";
+	 echo '<h3>' . $getItem->lyName . "</h3>\n";
+	 echo '<div id="lyrics" class="lyric' . $getItem->lyID . '">';
 	 if($getItem->markup == 'xhtml') {
 	  echo nl2br($getItem->lyText);
 	 } else {
@@ -82,7 +82,7 @@ else {
  $count = $scorpions->total($true);
 
  if($count > 0) {
-  echo $cheetahs->defaultLyrics($options->listingID, $options->albumID);
+  $cheetahs->defaultLyrics($options->listingID, $options->albumID);
  } else {
   echo '<p class="tc">No lyrics appear to exist under that listing.</p>';
  }

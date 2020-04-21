@@ -40,16 +40,16 @@ if (!class_exists('leopards')) {
 
             $r = $e;
             if (empty($e) || $e == '') {
-                $e = ucwords(str_replace('_', " ", str_replace('.php', '', $this->isPage())));
+                $e = ucwords(str_replace('_', ' ', str_replace('.php', '', $this->isPage())));
             }
 
             if (isset($_SERVER['QUERY_STRING']) && !empty($_SERVER['QUERY_STRING'])) {
                 $q = $tigers->cleanMys($_SERVER['QUERY_STRING'], 'y', 'n', 'n');
-                if (preg_match("/([a-z]+)=([a-z]+)&([a-z]+)=([a-z]+)/", $q)) {
-                    $x = $tigers->emptyarray(explode("=", $q));
-                    $p = $tigers->emptyarray(explode("&", $x[1]));
-                    $r .= " &#8211; " . ucwords(str_replace('_', " ", $p[0])) .
-                        " &#187; " . ucwords(str_replace('_', " ", $p[1]));
+                if (preg_match('/([a-z]+)=([a-z]+)&([a-z]+)=([a-z]+)/', $q)) {
+                    $x = $tigers->emptyarray(explode('=', $q));
+                    $p = $tigers->emptyarray(explode('&', $x[1]));
+                    $r .= ' &#8211; ' . ucwords(str_replace('_', ' ', $p[0])) .
+                        ' &#187; ' . ucwords(str_replace('_', ' ', $p[1]));
                 } else {
                     if (preg_match("/([a-z]+)=([a-z]+)/", $q)) {
                         $x = $tigers->emptyarray(explode("=", $q));
@@ -71,7 +71,7 @@ if (!class_exists('leopards')) {
 
             $skins = $tigers->emptyarray($_SKINS);
             foreach ($skins as $skin) {
-                echo "    <li><a href=\"" . basename($_SERVER['PHP_SELF']) .
+                echo '    <li><a href="' . basename($_SERVER['PHP_SELF']) .
                     "/?skin=$skin\">" . ucwords($skin) . "</a></li>\n";
             }
         }
@@ -126,11 +126,11 @@ if (!class_exists('leopards')) {
          */
         public function isYear($o)
         {
-            $y = date("Y");
+            $y = date('Y');
             if ($o == $y) {
                 return $o;
             } else {
-                return $o . "-" . $y;
+                return $o . '-' . $y;
             }
         }
 
@@ -145,14 +145,14 @@ if (!class_exists('leopards')) {
         public function currently($n, $o = 0)
         {
             if ($n == 'n') {
-                return " class=\"lastSpace\"";
+                return ' class="lastSpace"';
             } elseif ($n != 'index' && basename($_SERVER['PHP_SELF']) == $n . '.php') {
                 return " class=\"$n\" id=\"c\"";
             } elseif ($n == 'index') {
                 if (basename($_SERVER['PHP_SELF']) == $n . '.php') {
-                    return " class=\"cp\" id=\"c\"";
+                    return ' class="cp" id="c"';
                 } else {
-                    return " class=\"cp\"";
+                    return ' class="cp"';
                 }
             } else {
                 if ($o == 1) {
@@ -206,7 +206,7 @@ if (!class_exists('leopards')) {
              */
             $select = "INSERT INTO `$_ST[logs]` (`userNiq`, `logUser`, `logInfo`, `logLast`)" .
                 " VALUES ('$i', '$u', '$o', NOW())";
-            $wax = $scorpions->query($set);
+            $wax = $scorpions->query($select);
         }
 
         /**
@@ -262,10 +262,10 @@ if (!class_exists('leopards')) {
 
             $s = '';
             foreach ($new as $n => $e) {
-                $s .= "<span id=\"$n\"><a href=\"" . $urls[$n] . "\">" . $e . "</a></span> ";
+                $s .= "<span id=\"$n\"><a href=\"" . $urls[$n] . '">' . $e . '</a></span> ';
             }
 
-            return trim($s, " ");
+            return trim($s, ' ');
         }
 
         # End functionssss here!

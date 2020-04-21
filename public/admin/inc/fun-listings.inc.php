@@ -29,7 +29,7 @@ if (!class_exists('wolves')) {
             $select = "SELECT * FROM `$_ST[main]`";
             if ($j != '') {
                 if ($p == 'categories') {
-                    $select .= " WHERE";
+                    $select .= ' WHERE';
                     if ($e == 'current' || $e == '0') {
                         $select .= " `status` = '0' AND";
                     } elseif ($e == 'upcoming' || $e == 1) {
@@ -40,14 +40,14 @@ if (!class_exists('wolves')) {
                     if ($j != '' && in_array($j, $lions->categoryList())) {
                         $select .= " `category` LIKE '%!$j!%' AND";
                     }
-                    $select = trim($select, " AND");
+                    $select = trim($select, ' AND');
                     if ($c == 1 && count($lions->categoryList('list', 'child', $j)) > 0) {
                         $query = '';
                         $childcats = $lions->categoryList('list', 'child', $j);
                         foreach ($childcats as $cc) {
                             $query .= " OR `category` LIKE '%!$cc!%'";
                         }
-                        $select .= rtrim($query, " OR ");
+                        $select .= rtrim($query, ' OR ');
                     }
                 } elseif ($p == 'status') {
                     if ($j != '' && ($j == 'current' || $j == '0')) {
@@ -60,11 +60,11 @@ if (!class_exists('wolves')) {
                 }
             }
             if ($b == 'id' || $b == 'subject') {
-                $select .= " ORDER BY `subject` ASC";
+                $select .= ' ORDER BY `subject` ASC';
             }
             $true = $scorpions->query($select);
             if ($true == false) {
-                echo $scorpions->database->error;
+                echo $scorpions->database->error();
             }
 
             $all = array();
@@ -98,15 +98,13 @@ if (!class_exists('wolves')) {
                 $p = $this->getListings($i, 'object');
                 if ($b == 1) {
                     if (
-                        $snakes->getUpdated($p->id, 'raw') <= date("Y-m-d", strtotime("-2 months")) ||
-                        $snakes->getUpdated($p->id, 'raw') <= date("Y-m-d", strtotime("-60 days"))
+                        $snakes->getUpdated($p->id, 'raw') <= date('Y-m-d', strtotime('-2 months')) ||
+                        $snakes->getUpdated($p->id, 'raw') <= date('Y-m-d', strtotime('-60 days'))
                     ) {
                         $a[] = $i;
                     }
-                } else {
-                    if ($p->since <= date("Y-m-d", strtotime("-1 month"))) {
-                        $a[] = $i;
-                    }
+                } else if ($p->since <= date("Y-m-d", strtotime("-1 month"))) {
+                    $a[] = $i;
                 }
             }
 
@@ -146,7 +144,7 @@ if (!class_exists('wolves')) {
             global $_ST, $scorpions, $tigers;
 
             if (!is_numeric($i) || $i == 0 || $i == '0') {
-                return "Whole Collective";
+                return 'Whole Collective';
             }
 
             $select = "SELECT `subject` FROM `$_ST[main]` WHERE `id` = '$i' LIMIT 1";
@@ -202,7 +200,7 @@ if (!class_exists('wolves')) {
             global $_ST, $scorpions, $tigers;
 
             $select = "SELECT * FROM `$_ST[main]` WHERE `status` = '0' ORDER BY `since`" .
-                " DESC LIMIT 1";
+                ' DESC LIMIT 1';
             $count = $scorpions->counts($select);
             $true = $scorpions->query($select);
             if ($true == false) {
@@ -212,7 +210,7 @@ if (!class_exists('wolves')) {
             $newest = $scorpions->obj($true);
 
             if ($count->rows < 0) {
-                $b = "";
+                $b = '';
             } else {
                 $b = '<a href="' . $newest->url . '" title="' . $newest->title . ', the ' .
                     $newest->subject . ' listing">' . $newest->subject . " &#187;</a>\n";
@@ -260,7 +258,7 @@ if (!class_exists('wolves')) {
             $subjects = preg_split($a, $i);
             $subjects = $tigers->emptyarray($subjects);
             foreach ($subjects as $u) {
-                if ($u != '' && $u != " " && $u != ' 0 ') {
+                if ($u != '' && $u != ' ' && $u != ' 0 ') {
                     $subj .= $this->getSubject($u) . ', ';
                 }
             }
@@ -357,7 +355,7 @@ if (!class_exists('wolves')) {
             $template = $scorpions->obj($true);
 
             if (empty($template->affiliates)) {
-                return "";
+                return '';
             }
 
             if ($t == 'affiliates') {
@@ -399,7 +397,7 @@ if (!class_exists('wolves')) {
             }
             $getItem = $scorpions->obj($true);
 
-            if ($b != '' && preg_match("/([A-Za-z_]+)/i", $b)) {
+            if ($b != '' && preg_match('/([A-Za-z_]+)/i', $b)) {
                 $p = $scorpions->escape($b);
             } else {
                 $p = 'listings_template';
@@ -443,8 +441,8 @@ if (!class_exists('wolves')) {
             $cats = $lions->categoryList('list', 'parent');
 
             if (count($this->listingsList('id', $s, 'status')) > 0) {
-                $p .= "<form action=\"" . $options->query . "\" method=\"get\" name=\"sort\">\n" .
-                    "<p class=\"ddListings\"><select name=\"sort\" class=\"input1\" id=\"sort\"" .
+                $p .= '<form action="' . $options->query . "\" method=\"get\" name=\"sort\">\n" .
+                    '<p class="ddListings"><select name="sort" class="input1" id="sort"' .
                     " onchange=\"this.form.submit();\">\n";
                 foreach ($cats as $c) {
                     $cat = $lions->getCategory($c);
@@ -457,12 +455,12 @@ if (!class_exists('wolves')) {
                             $lions->childrenListings($c, $s) > 0
                         )
                     ) {
-                        $p .= " <option";
+                        $p .= ' <option';
                         if (
                             (isset($_GET['sort']) && $_GET['sort'] == $c) ||
                             ($a != '' && in_array($a, $lions->categoryList()) && $a == $c)
                         ) {
-                            $p .= " selected=\"selected\"";
+                            $p .= ' selected="selected"';
                         }
                         $p .= " value=\"$c\">" . $cat->catname . "</option>\n";
                     }
@@ -507,7 +505,7 @@ if (!class_exists('wolves')) {
          */
         public function showListings($s, $d)
         {
-            global $_ST, $lions, $options, $scorpions, $tigers;
+            global $_ST, $lions, $options, $scorpions, $seahorses;
 
             $ids = $lions->categoryList('list', 'parent');
 
@@ -525,20 +523,21 @@ if (!class_exists('wolves')) {
                             )
                         ) {
                             echo "<tbody><tr>\n";
-                            echo " <td class=\"left\"><a href=\"" . $options->query . 'sort=' . $id .
+                            echo ' <td class="left"><a href="' . $options->query . 'sort=' . $id .
                                 '">' . $lions->getCatName($id) . "</a></td>\n";
                             echo ' <td class="center">' . $listingcount . "</td>\n";
                             echo "</tr></tbody>\n";
                         }
                         if ($options->sort == 'y') {
+                            // @todo catid?
                             $lists = $lions->categoryList('default', 'child', $catid);
                             foreach ($lists as $list) {
                                 if ($this->checkListings($list['catid'], $s) == 1) {
                                     echo "<tbody><tr>\n";
-                                    echo "<td class=\"left\"><a href=\"" . $options->query . 'sort=' . $list['catid'] .
+                                    echo '<td class="left"><a href="' . $options->query . 'sort=' . $list['catid'] .
                                         '">' . $lions->getCatName($list['parent']) .
-                                        " &raquo; " . $lions->getCatName($list['catid']) . "</a></td>\n<td" .
-                                        " class=\"center\">" . count($this->listingsList('id', $list['catid'],
+                                        ' &raquo; ' . $lions->getCatName($list['catid']) . "</a></td>\n<td" .
+                                        ' class="center">' . count($this->listingsList('id', $list['catid'],
                                             'categories', $s, 1)) . "</td>\n</tr></tbody>\n";
                                 }
                             }
@@ -555,7 +554,7 @@ if (!class_exists('wolves')) {
                 if (isset($options->showcat) && in_array($options->showcat, $lions->categoryList())) {
                     $category = $lions->getCategory($options->showcat);
                     $parentcat = $category->parent == 0 ? '' : $lions->getCatName($category->parent) .
-                        ($seahorses->getOption('markup') == 'html5' ? " &#187; " : " &raquo; ");
+                        ($seahorses->getOption('markup') == 'html5' ? ' &#187; ' : ' &raquo; ');
                     $name = $parentcat . $lions->getCatName($options->showcat);
 
                     /**
@@ -595,7 +594,7 @@ if (!class_exists('wolves')) {
                 $true = $scorpions->query($select);
                 $template = $seahorses->getTemplate('listings_template');
 
-                echo "<div class=\"sec\">";
+                echo '<div class="sec">';
                 while ($getItem = $scorpions->obj($true)) {
                     echo $this->getTemplate_Listings($getItem->id) . "\n";
                 }
@@ -622,7 +621,7 @@ if (!class_exists('wolves')) {
                             )
                         ) {
                             echo "<tbody><tr>\n";
-                            echo " <td class=\"left\"><a href=\"" . $options->query . 'sort=' . $id .
+                            echo ' <td class="left"><a href="' . $options->query . 'sort=' . $id .
                                 '">' . $lions->getCatName($id) . "</a></td>\n";
                             echo ' <td class="center">' . $listingcount . "</td>\n";
                             echo "</tr></tbody>\n";
@@ -632,10 +631,10 @@ if (!class_exists('wolves')) {
                             foreach ($lists as $list) {
                                 if ($this->checkListings($list['catid'], $s) == 1) {
                                     echo "<tbody><tr>\n";
-                                    echo "<td class=\"left\"><a href=\"" . $options->query . 'sort=' . $list['catid'] .
+                                    echo '<td class="left"><a href="' . $options->query . 'sort=' . $list['catid'] .
                                         '">' . $lions->getCatName($list['parent']) .
-                                        " &raquo; " . $lions->getCatName($list['catid']) . "</a></td>\n<td" .
-                                        " class=\"center\">" . count($this->listingsList('id', $list['catid'],
+                                        ' &raquo; ' . $lions->getCatName($list['catid']) . "</a></td>\n<td" .
+                                        ' class="center">' . count($this->listingsList('id', $list['catid'],
                                             'categories', $s, 1)) . "</td>\n</tr></tbody>\n";
                                 }
                             }

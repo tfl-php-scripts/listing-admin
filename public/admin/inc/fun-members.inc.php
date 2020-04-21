@@ -57,13 +57,13 @@ public function membersList($i = 'n', $p = 1, $b = '', $s = '')
             $v = $listing->dblist == 1 ? ($listing->dbtype == 'listingadmin' ?
                 $get_type_id_array['listingadmin'] : $get_type_id_array['enth']) :
                 $get_type_id_array['listingadmin'];
-            if ($b != '' && in_array($b, array_keys($v)) && $s != '') {
-                $m = " `" . $v[$b] . "` LIKE '%" . $scorpions->escape(stripslashes($s)) . "%' AND";
+            if ($b != '' && array_key_exists($b, $v) && $s != '') {
+                $m = ' `' . $v[$b] . "` LIKE '%" . $scorpions->escape(stripslashes($s)) . "%' AND";
             }
             if ($m != '') {
-                $k = $listing->dblist == 1 && $listing->dbtype == 'listingadmin'
-                || $listing->dblist == 0 ? " AND" : " WHERE";
-                $q .= $k . trim($m, " AND");
+                $k = ($listing->dblist == 1 && $listing->dbtype == 'listingadmin')
+                || $listing->dblist == 0 ? ' AND' : ' WHERE';
+                $q .= $k . trim($m, ' AND');
             }
         }
 
@@ -172,11 +172,11 @@ public function sortMembers($i, $s = '', $a = array())
             $search->$k = $v;
         }
         $typeid = $tigers->cleanMys($search->searchType);
-        if (!in_array($typeid, array_keys($typearray))) {
+        if (!array_key_exists($typeid, $typearray)) {
             $typeid = 'name';
         }
         $textid = $laantispam->clean($tigers->cleanMys($search->searchText), 'n', 'y', 'declean');
-        $q .= " AND `" . $typearray[$typeid] . "` LIKE '%$textid%'";
+        $q .= ' AND `' . $typearray[$typeid] . "` LIKE '%$textid%'";
     }
 
     if ($listing->dblist == 1) {
@@ -186,27 +186,27 @@ public function sortMembers($i, $s = '', $a = array())
             if ($q != '') {
                 $select .= $q;
             }
-            $select .= " ORDER BY `added` DESC";
+            $select .= ' ORDER BY `added` DESC';
         } elseif ($listing->dbtype == 'fanupdate') {
             $select = "SELECT * FROM `$dbtabl`";
             if ($q != '') {
                 $select .= $q;
             }
-            $select .= " ORDER BY `id` DESC";
+            $select .= ' ORDER BY `id` DESC';
         } elseif ($listing->dbtype == 'listingadmin') {
             $listidnow = $listing->dbflid;
             $select = "SELECT * FROM `$dbtabl` WHERE `fNiq` = '$listidnow'";
             if ($q != '') {
                 $select .= $q;
             }
-            $select .= " ORDER BY `mAdd` DESC";
+            $select .= ' ORDER BY `mAdd` DESC';
         }
     } else {
         $select = "SELECT * FROM `$_ST[members]` WHERE `fNiq` = '$i'";
         if ($q != '') {
             $select .= $q;
         }
-        $select .= " ORDER BY `mAdd` DESC";
+        $select .= ' ORDER BY `mAdd` DESC';
     }
     $count = $scorpions->counts($select, 1);
     $true = $scorpions->query($select);
@@ -369,7 +369,7 @@ case 'head':
                     $select .= " WHERE `mEmail` = '$i'";
                 }
             }
-            $select .= " LIMIT 1";
+            $select .= ' LIMIT 1';
             $true = $scorpions->query($select);
             if ($true == false) {
                 $tigers->displayError('Database Error', 'The script was unable to' .
@@ -634,7 +634,7 @@ case 'head':
             global $_ST, $scorpions, $octopus, $tigers, $wolves;
 
             if ($this->getMemberCount($i) == 0) {
-                return "";
+                return '';
             }
 
             $listing = $wolves->getListings($i, 'object');
@@ -666,11 +666,11 @@ case 'head':
             $b = '';
             while ($getItem = $scorpions->obj($true, 0)) {
                 $namenow = $listing->dblist == 1 && $listing->dbtype !=
-                "listingadmin" ? $getItem->name : $getItem->mName;
+                'listingadmin' ? $getItem->name : $getItem->mName;
                 $emailnow = $listing->dblist == 1 && $listing->dbtype !=
-                "listingadmin" ? $getItem->email : $getItem->mEmail;
+                'listingadmin' ? $getItem->email : $getItem->mEmail;
                 $urlnow = $listing->dblist == 1 && $listing->dbtype !=
-                "listingadmin" ? $getItem->url : $getItem->mURL;
+                'listingadmin' ? $getItem->url : $getItem->mURL;
                 if (empty($urlnow)) {
                     $b .= "$namenow, ";
                 } else {
@@ -678,7 +678,7 @@ case 'head':
                         "\">$namenow &#187;</a>, ";
                 }
             }
-            $links = trim($b, ", ");
+            $links = trim($b, ', ');
 
             if ($listing->dblist == 1) {
                 $scorpions->breach(0);
@@ -699,10 +699,10 @@ case 'head':
 
             $listing = $wolves->getListings($i, 'object');
             if (empty($listing->previous)) {
-                return "";
+                return '';
             }
 
-            $previous = unserialize($listing->previous);
+            $previous = unserialize($listing->previous, ['allowed_classes' => true]);
             $b = '';
             foreach ($previous as $k => $v) {
                 if (empty($k) || $k == $listing->url) {
@@ -712,7 +712,7 @@ case 'head':
                         "\">$v &#187;</a>, ";
                 }
             }
-            $links = trim($b, ", ");
+            $links = trim($b, ', ');
 
             return $links;
         }
@@ -739,13 +739,13 @@ case 'head':
                 $dbtable = $listing->dbtabl;
                 if ($listing->dbtype == 'enth') {
                     $select = "SELECT `added` FROM `$dbtable` WHERE `pending` = '0' ORDER BY" .
-                        " `added` DESC LIMIT 1";
-                    $true = $scorpions->query($select, $c1);
+                        ' `added` DESC LIMIT 1';
+                    $true = $scorpions->query($select);
                     $getMembers = $scorpions->obj($true);
 
-                    $query = "SELECT `added` FROM `" . $listing->dbaffs . "` ORDER BY `added`" .
-                        " DESC LIMIT 1";
-                    $result = $scorpions->query($query, $c1);
+                    $query = 'SELECT `added` FROM `' . $listing->dbaffs . '` ORDER BY `added`' .
+                        ' DESC LIMIT 1';
+                    $result = $scorpions->query($query);
                     $getAffiliates = $scorpions->obj($result);
 
                     if ($s != '') {
@@ -759,7 +759,7 @@ case 'head':
                     }
                 } elseif ($listing->dbtype == 'fanbase') {
                     $select = "SELECT `date` FROM `{$dbtable}_u` ORDER BY `date` DESC LIMIT 1";
-                    $true = $scorpions->query($select, $c1);
+                    $true = $scorpions->query($select);
                     $getMembers = $scorpions->obj($true);
 
                     $array = array(
@@ -776,7 +776,7 @@ case 'head':
                     $update = $scorpions->query($edit);
                     $getEdit = $scorpions->obj($true);
 
-                    $query = "SELECT `aAdd` FROM `" . $listing->dbaffs .
+                    $query = 'SELECT `aAdd` FROM `' . $listing->dbaffs .
                         "` WHERE `fNiq` = '" . $listing->dbflid . "'  ORDER BY `aAdd` DESC LIMIT 1";
                     $result = $scorpions->query($select);
                     $getAffiliates = $scorpions->obj($true);
@@ -811,7 +811,7 @@ case 'head':
                 $getUpdate = $scorpions->fetch($edit, 'mEdit');
 
                 $query = "SELECT `aAdd` FROM `$_ST[affiliates]` WHERE `fNiq` = '$i' ORDER" .
-                    " BY `aAdd` DESC LIMIT 1";
+                    ' BY `aAdd` DESC LIMIT 1';
                 $getAffiliates = $scorpions->fetch($query, 'aAdd');
 
                 $sql = "SELECT `updated` FROM `$_ST[main]` WHERE `id` = '$i' LIMIT 1";
@@ -982,10 +982,10 @@ case 'head':
 
             if ($n == 'decode') {
                 $e = $tigers->cleanMys($b);
-                $e = str_replace("_", " ", $e);
+                $e = str_replace('_', ' ', $e);
             } elseif ($n == 'encode') {
                 $e = $tigers->cleanMys($b);
-                $e = str_replace(" ", "_", $e);
+                $e = str_replace(' ', '_', $e);
             }
 
             return trim($e);
@@ -1002,11 +1002,11 @@ case 'head':
 
             $n = array();
             $x = array();
-            $b = explode("|", $e);
+            $b = explode('|', $e);
             $b = $tigers->emptyarray($b);
             $z = $tigers->emptyarray($a);
             $c = count($z);
-            if (count($c) >= count($b)) {
+            if ($c >= count($b)) {
                 return false;
             }
 
@@ -1021,11 +1021,11 @@ case 'head':
             }
             for ($q = 0; $q < $c; $q++) {
                 if (!in_array($q, $x)) {
-                    $n[] = "NONE";
+                    $n[] = 'NONE';
                 }
             }
-            $w = implode("|", $n);
-            $w = "|" . trim($w, "|") . "|";
+            $w = implode('|', $n);
+            $w = '|' . trim($w, '|') . '|';
 
             return $w;
         }
@@ -1042,19 +1042,19 @@ case 'head':
             global $tigers;
 
             $n = array();
-            $b = explode("|", $a);
+            $b = explode('|', $a);
             $b = $tigers->emptyarray($b);
 
             $i = 0;
             foreach ($b as $k) {
                 $k = trim($k);
-                if ($i != $e && $k != "") {
+                if ($i != $e && $k != '') {
                     $n[] = $k;
                 }
                 $i++;
             }
-            $w = implode("|", $n);
-            $w = "|" . trim($w, "|") . "|";
+            $w = implode('|', $n);
+            $w = '|' . trim($w, '|') . '|';
 
             return $w;
         }
@@ -1098,29 +1098,29 @@ case 'head':
              * Get previous link/span!
              */
             if ($this->page > 1) {
-                $pg = "members.php?listing=" . $tigers->cleanMys($_GET['listing']) . '&#38;';
+                $pg = 'members.php?listing=' . $tigers->cleanMys($_GET['listing']) . '&#38;';
                 if (isset($_GET['g']) && $_GET['g'] == 'searchMembers') {
-                    $pg .= "g=searchMembers&#38;s=" . $search->sType . "&#38;q=" . $search->sText .
-                        "&#38;";
+                    $pg .= 'g=searchMembers&#38;s=' . $search->sType . '&#38;q=' . $search->sText .
+                        '&#38;';
                 }
-                $pg .= "p=" . $this->prev;
+                $pg .= 'p=' . $this->prev;
                 echo "<span id=\"prev\"><a href=\"$pg\">&#171; Previous</a></span> ";
 
                 /*
              *  Get the 1st page *unless* it's actually, ya' know, the first page
              */
                 if ($this->page != 1 && $this->page > 6) {
-                    $pg = "members.php?listing=" . $tigers->cleanMys($_GET['listing']) . '&#38;';
+                    $pg = 'members.php?listing=' . $tigers->cleanMys($_GET['listing']) . '&#38;';
                     if (isset($_GET['get']) && $_GET['g'] == 'searchMembers') {
-                        $pg .= "g=searchMembers&#38;s=" . $search->sType . "&#38;q=" . $search->sText .
-                            "&#38;";
+                        $pg .= 'g=searchMembers&#38;s=' . $search->sType . '&#38;q=' . $search->sText .
+                            '&#38;';
                     }
-                    $pg .= "p=1";
+                    $pg .= 'p=1';
                     echo "<span class=\"pagi\"><a href=\"$pg\">1</a></span> ";
-                    echo " ... ";
+                    echo ' ... ';
                 }
             } else {
-                echo "<span>&#171; Previous</span> ";
+                echo '<span>&#171; Previous</span> ';
             }
 
             /**
@@ -1146,18 +1146,18 @@ case 'head':
              */
             for ($i = ($first - 1); $i <= $last; $i++) {
                 if ($this->page != $pages && $i == $pages) {
-                    echo " ... ";
+                    echo ' ... ';
                 }
                 if ($i == 1 || $i == $this->page || in_array($i, $range)) {
                     if ($i == $this->page) {
                         echo "<span id=\"current\">$i</span> ";
                     } else {
-                        $pg = "members.php?listing=" . $tigers->cleanMys($_GET['listing']) . '&#38;';
+                        $pg = 'members.php?listing=' . $tigers->cleanMys($_GET['listing']) . '&#38;';
                         if (isset($_GET['get']) && $_GET['get'] == 'searchMembers') {
-                            $pg .= "g=searchMembers&#38;s=" . $search->sType . "&#38;q=" . $search->sText .
-                                "&#38;";
+                            $pg .= 'g=searchMembers&#38;s=' . $search->sType . '&#38;q=' . $search->sText .
+                                '&#38;';
                         }
-                        $pg .= "p=" . $i;
+                        $pg .= 'p=' . $i;
                         echo "<span class=\"pagi\"><a href=\"$pg\">$i</a></span> ";
                     }
                 }
@@ -1167,15 +1167,15 @@ case 'head':
              * And, finally, the next link!
              */
             if ($this->page < $pages) {
-                $pg = "members.php?listing=" . $tigers->cleanMys($_GET['listing']) . '&#38;';
+                $pg = 'members.php?listing=' . $tigers->cleanMys($_GET['listing']) . '&#38;';
                 if (isset($_GET['g']) && $_GET['g'] == 'searchMembers') {
-                    $pg .= "g=searchMembers&#38;s=" . $search->sType . "&#38;q=" . $search->sText .
-                        "&#38;";
+                    $pg .= 'g=searchMembers&#38;s=' . $search->sType . '&#38;q=' . $search->sText .
+                        '&#38;';
                 }
-                $pg .= "p=" . $this->next;
+                $pg .= 'p=' . $this->next;
                 echo "<span id=\"next\"><a href=\"$pg\">Next &#187;</a></span>";
             } else {
-                echo "<span>Next &#187;</span>";
+                echo '<span>Next &#187;</span>';
             }
         }
 
@@ -1204,7 +1204,7 @@ case 'head':
             }
             $getItem = $scorpions->obj($true);
 
-            $mark = $listing->markup == 'xhtml' ? " /" : '';
+            $mark = $listing->markup == 'xhtml' ? ' /' : '';
             switch ($t) {
                 case 'members':
                     if (empty($getItem->members)) {
@@ -1229,14 +1229,14 @@ case 'head':
                 if ($member->mVisible == 0) {
                     $email = $octopus->javascriptEmail($member->mEmail);
                 } else {
-                    $email = "<del>E-mail</del>";
+                    $email = '<del>E-mail</del>';
                 }
 
                 if (!empty($member->mURL)) {
-                    $url = "<a href=\"" . $member->mURL . "\" title=\"External Link: " .
-                        $octopus->shortURL($member->mURL) . "\">URL &raquo;</a>";
+                    $url = '<a href="' . $member->mURL . '" title="External Link: ' .
+                        $octopus->shortURL($member->mURL) . '">URL &raquo;</a>';
                 } else
-                    $url = "<del>URL</del>";
+                    { $url = "<del>URL</del>"; }
             }
 
             /**
@@ -1247,14 +1247,14 @@ case 'head':
                 $answers = $tigers->emptyarray(explode('|', $member->mExtra));
                 $ffHead = "<p class=\"faveField\">\n";
                 if (count($fields) == 1) {
-                    $ffBody = "<span class=\"faveField1\"><strong>" . str_replace('_', ' ', $fields[0]) .
-                        ":</strong> " . str_replace('NONE', "All", $answers[0]) . "\n</span>\n";
+                    $ffBody = '<span class="faveField1"><strong>' . str_replace('_', ' ', $fields[0]) .
+                        ':</strong> ' . str_replace('NONE', 'All', $answers[0]) . "\n</span>\n";
                 } elseif (count($fields) > 1) {
                     $n = 0;
                     foreach ($fields as $f) {
                         $n1 = $n + 1;
                         $ffBody = "<span class=\"faveField$n1\"><strong>" . str_replace('_', ' ', $f) .
-                            ":</strong> " . str_replace('NONE', "All", $answers[$n]) .
+                            ':</strong> ' . str_replace('NONE', 'All', $answers[$n]) .
                             "</span> <br$mark>\n";
                         $n++;
                     }
@@ -1285,7 +1285,7 @@ case 'head':
             global $fave_field, $fave_field_e, $fave_fields_db, $tigers, $mark;
 
             if (empty($fave_fields_db) || empty($fave_field)) {
-                return "";
+                return '';
             }
 
             if (!empty($fave_fields_db)) {
@@ -1293,17 +1293,17 @@ case 'head':
                 $fields_db = $tigers->emptyarray($fields_db);
 
                 if ($fields_db == 0) {
-                    return "";
+                    return '';
                 } elseif (count($fields_db) == 1) {
-                    echo "<p><label><strong>" . ucwords($this->additional($fields_db[0], 'decode')) .
-                        ":</strong></label> <input name=\"fave[]\" class=\"input1\" type=\"text\"" . $mark .
-                        "></p>";
+                    echo '<p><label><strong>' . ucwords($this->additional($fields_db[0], 'decode')) .
+                        ':</strong></label> <input name="fave[]" class="input1" type="text"' . $mark .
+                        '></p>';
                 } elseif (count($fields_db) > 1) {
                     $n = 0;
                     foreach ($fields_db as $f) {
-                        echo "<p><label><strong>" . ucwords($this->additional($f, 'decode')) .
-                            ":</strong></label> <input name=\"fave[]\" class=\"input1\" type=\"text\"" . $mark .
-                            "></p>";
+                        echo '<p><label><strong>' . ucwords($this->additional($f, 'decode')) .
+                            ':</strong></label> <input name="fave[]" class="input1" type="text"' . $mark .
+                            '></p>';
                         $n++;
                     }
                 }
@@ -1312,36 +1312,36 @@ case 'head':
                 $fields = $tigers->emptyarray($fields);
 
                 if ($fields == 0) {
-                    return "";
+                    return '';
                 } elseif (count($fields) == 1) {
                     if (isset($fave_field_e) && is_array($fave_field_e)) {
-                        echo "<p><label><strong>" . ucwords($fields[0]) . ":</strong></label>" .
+                        echo '<p><label><strong>' . ucwords($fields[0]) . ':</strong></label>' .
                             " <select name=\"fave[]\" class=\"input1\">\n";
                         foreach ($fave_field_e as $f2 => $f3) {
                             foreach ($f3 as $f4) {
-                                echo "<option>" . $f4 . "</option>\n";
+                                echo '<option>' . $f4 . "</option>\n";
                             }
                         }
                         echo "</select></p>\n";
                     } else {
-                        echo "<p><label><strong>" . ucwords($fields[0]) . ":</strong></label>" .
-                            " <input name=\"fave[]\" class=\"input1\" type=\"text\"" . $mark . "></p>";
+                        echo '<p><label><strong>' . ucwords($fields[0]) . ':</strong></label>' .
+                            ' <input name="fave[]" class="input1" type="text"' . $mark . '></p>';
                     }
                 } elseif (count($fields) > 1) {
                     $n = 0;
                     foreach ($fields as $f) {
                         if (isset($fave_field_e) && is_array($fave_field_e)) {
                             foreach ($fave_field_e as $f2 => $f3) {
-                                echo "<p><label><strong>" . ucwords($f2) . ":</strong></label>" .
+                                echo '<p><label><strong>' . ucwords($f2) . ':</strong></label>' .
                                     " <select name=\"fave[]\" class=\"input1\">\n";
                                 foreach ($f3 as $f4) {
-                                    echo "<option>" . $f4 . "</option>\n";
+                                    echo '<option>' . $f4 . "</option>\n";
                                 }
                                 echo "</select></p>\n";
                             }
                         } else {
-                            echo "<p><label><strong>" . ucwords($f) . ":</strong></label>" .
-                                " <input name=\"fave[]\" class=\"input1\" type=\"text\"" . $mark . "></p>";
+                            echo '<p><label><strong>' . ucwords($f) . ':</strong></label>' .
+                                ' <input name="fave[]" class="input1" type="text"' . $mark . '></p>';
                         }
                         if ($n == (count($fields) - 1)) {
                             break;
@@ -1366,21 +1366,21 @@ case 'head':
                 $answers = $tigers->emptyarray($answers);
                 echo "<p class=\"faveField\">\n";
                 if (count($fields) == 1) {
-                    echo "<span class=\"faveField1\">";
-                    echo "<strong>" . $fields[0] . ":</strong> " . $answers[0] . "\n";
+                    echo '<span class="faveField1">';
+                    echo '<strong>' . $fields[0] . ':</strong> ' . $answers[0] . "\n";
                     echo "</span>\n";
                 } elseif (count($fields) > 1) {
                     $n = 0;
                     foreach ($fields as $f) {
                         echo "<span class=\"faveField{$n}\">";
-                        echo "<strong>" . $f . ":</strong> " . str_replace('NONE', "All", $answers[$n]) . "<br$mark>\n";
+                        echo '<strong>' . $f . ':</strong> ' . str_replace('NONE', 'All', $answers[$n]) . "<br$mark>\n";
                         echo "</span>\n";
                         $n++;
                     }
                 }
                 echo "\n</p>\n";
             } else {
-                return "";
+                return '';
             }
         }
 
@@ -1402,17 +1402,17 @@ case 'head':
             echo "<p id=\"pagination\">\n";
             if ($listing->dblist == 1) {
                 if ($listing->dbtype == 'enth') {
-                    $select = "SELECT * FROM `" . $listing->dbtabl . "` WHERE `pending` = '0'";
+                    $select = 'SELECT * FROM `' . $listing->dbtabl . "` WHERE `pending` = '0'";
                     if ($s == 'country') {
                         $select .= " AND `country` = '$q'";
                     }
                 } elseif ($listing->dbtype == 'fanbase') {
-                    $select = "SELECT * FROM `" . $listing->dbtabl . "` WHERE `apr` = 'y'";
+                    $select = 'SELECT * FROM `' . $listing->dbtabl . "` WHERE `apr` = 'y'";
                     if ($s == 'country') {
                         $select .= " AND `country` = '$q'";
                     }
                 } elseif ($listing->dbtype == 'listingadmin') {
-                    $select = "SELECT * FROM `" . $listing->dbtabl . "` WHERE `fNiq` = '" . $listing->dbflid .
+                    $select = 'SELECT * FROM `' . $listing->dbtabl . "` WHERE `fNiq` = '" . $listing->dbflid .
                         "' AND `mPending` = '0'";
                     if ($s == 'country') {
                         $select .= " AND `mCountry` = '$q'";
@@ -1443,13 +1443,11 @@ case 'head':
 
             for ($i = 1; $i <= $pages; $i++) {
                 if ($page == $i) {
-                    echo $i . " ";
+                    echo $i . ' ';
+                } else if ($options->prettyURL == true) {
+                    echo '<a href="' . $listing->url . $options->url . 'page/' . $i . '">' . $i . '</a> ';
                 } else {
-                    if ($options->prettyURL == true) {
-                        echo '<a href="' . $listing->url . $options->url . 'page/' . $i . '">' . $i . '</a> ';
-                    } else {
-                        echo '<a href="' . $options->url . 'page=' . $i . '">' . $i . '</a> ';
-                    }
+                    echo '<a href="' . $options->url . 'page=' . $i . '">' . $i . '</a> ';
                 }
             }
 
@@ -1531,7 +1529,7 @@ case 'head':
                                 $select = "SELECT * FROM `$dbtabl` WHERE `apr` = 'y' AND `country` = '$g'" .
                                     " ORDER BY `name` ASC LIMIT $start, $per_page";
                             } elseif ($listing->dbtype == 'listingadmin') {
-                                $select = "SELECT * FROM `$dbtabl` WHERE `fNiq` = '$dbflid' AND `mPending`" .
+                                $select = "SELECT * FROM `$dbtabl` WHERE `fNiq` = '$listing->dbflid' AND `mPending`" .
                                     " = '0' AND `mCountry` = '$g' ORDER BY `mName` ASC LIMIT $start, $per_page";
                             }
                         } else {
@@ -1554,7 +1552,7 @@ case 'head':
                         }
                         echo $this->format($options->listingID, 'members_footer');
                     } else {
-                        echo $this->membersDefault('country');
+                        $this->membersDefault('country');
                     }
                     break;
 
@@ -1608,7 +1606,7 @@ case 'head':
 
             switch ($s) {
                 case 'all':
-                    echo $this->membersSort('all', $listing->dblist, $listing->dbtype);
+                    $this->membersSort('all', $listing->dblist, $listing->dbtype);
                     break;
 
                 case 'country':
@@ -1619,12 +1617,12 @@ case 'head':
                                 " '0' ORDER BY `country` ASC";
                         } elseif ($listing->dbtype == 'fanbase') {
                             $select = "SELECT DISTINCT `country` FROM `$dbtable` WHERE `apr` = 'y'" .
-                                " ORDER BY `country` ASC";
+                                ' ORDER BY `country` ASC';
                         }
                     } else {
                         $select = "SELECT DISTINCT `mCountry` FROM `$_ST[members]` WHERE `fNiq`" .
                             " = '" . $options->listingID . "' AND `mPending` = '0' ORDER BY" .
-                            " `mCountry` ASC";
+                            ' `mCountry` ASC';
                     }
                     $true = $scorpions->query($select);
                     if ($true == false) {
@@ -1636,10 +1634,10 @@ case 'head':
                     while ($getItem = $scorpions->obj($true)) {
                         $type = $listing->dblist == 1 ? $getItem->country : $getItem->mCountry;
                         if ($options->prettyURL == true) {
-                            echo '<li><a href="' . $listing->url . $options->url . "country/" .
+                            echo '<li><a href="' . $listing->url . $options->url . 'country/' .
                                 str_replace(' ', '+', $type) . "\">$type</a></li>\n";
                         } else {
-                            echo '<li><a href="' . $options->url . "sort=country&amp;name=" .
+                            echo '<li><a href="' . $options->url . 'sort=country&amp;name=' .
                                 str_replace(' ', '+', $type) . "\">$type</a></li>\n";
                         }
                     }
@@ -1654,7 +1652,7 @@ case 'head':
                     break;
 
                 case 'name':
-                    echo $this->membersSort('name', $listing->dblist, $listing->dbtype);
+                    $this->membersSort('name', $listing->dblist, $listing->dbtype);
                     break;
             }
 

@@ -34,7 +34,7 @@ if(class_exists('frogs') == false) {
     'status'  => true
    );
 
-   if(in_array($c, array_keys($get_addon_array))) {
+   if(array_key_exists($c, $get_addon_array)) {
     switch($c) {
      case 'codes':
       $create = "CREATE TABLE `$_ST[codes]` (
@@ -52,8 +52,8 @@ if(class_exists('frogs') == false) {
       $true = $scorpions->query($create);
       if($true == false) {
        $return->query   = $create;
-       $return->message = "The script was unable to create the <samp>$_ST[codes]" . 
-       "</samp> table.";
+       $return->message = "The script was unable to create the <samp>$_ST[codes]" .
+           '</samp> table.';
        $return->status  = false;
       }
 
@@ -68,7 +68,7 @@ if(class_exists('frogs') == false) {
       $true = $scorpions->query($create);
       if($true == false) {
        $return->query   = $create;
-       $return->message = "The script was unable to create the" . 
+       $return->message = 'The script was unable to create the' .
        " <samp>$_ST[codes_categories]</samp> table.";
        $return->status  = false;
       }
@@ -87,7 +87,7 @@ if(class_exists('frogs') == false) {
       $true = $scorpions->query($create);
       if($true == false) {
        $return->query   = $create;
-       $return->message = "The script was unable to create the" . 
+       $return->message = 'The script was unable to create the' .
        " <samp>$_ST[codes_donors]</samp> table.";
        $return->status  = false;
       }
@@ -101,7 +101,7 @@ if(class_exists('frogs') == false) {
       $true = $scorpions->query($create);
       if($true == false) {
        $return->query   = $create;
-       $return->message = "The script was unable to create the <samp>" . 
+       $return->message = 'The script was unable to create the <samp>' .
        "$_ST[codes_sizes]</samp> table.";
        $return->status  = false;
       }
@@ -127,8 +127,8 @@ UNIQUE KEY `mName` (`fNiq`, `mEmail`)
        $true = $scorpions->query($create);
        if($true == false) {
         $return->query   = $create;
-        $return->message = "The script was unable to create the <samp>$_ST[kim]" . 
-        "</samp> table.";
+        $return->message = "The script was unable to create the <samp>$_ST[kim]" .
+            '</samp> table.';
         $return->status  = false;
        }
       break;
@@ -145,7 +145,7 @@ UNIQUE KEY `mName` (`fNiq`, `mEmail`)
        $true = $scorpions->query($create);
        if($true == false) {
         $return->query   = $create;
-        $return->message = "The script was unable to create the <samp>" . 
+        $return->message = 'The script was unable to create the <samp>' .
         "$_ST[lyrics]</samp> table.";
         $return->status  = false;
        }
@@ -161,7 +161,7 @@ UNIQUE KEY `mName` (`fNiq`, `mEmail`)
       $true = $scorpions->query($create);
       if($true == false) {
        $return->query   = $create;
-       $return->message = "The script was unable to create the <samp>" . 
+       $return->message = 'The script was unable to create the <samp>' .
        "$_ST[lyrics_albums]</samp> table.";
        $return->status  = false;
       }
@@ -180,7 +180,7 @@ UNIQUE KEY `mName` (`fNiq`, `mEmail`)
        $true = $scorpions->query($create);
        if($true == false) {
         $return->query   = $create;
-        $return->message = "The script was unable to create the <samp>" . 
+        $return->message = 'The script was unable to create the <samp>' .
         "$_ST[quotes]</samp> table.";
         $return->status  = false;
        }
@@ -207,7 +207,7 @@ UNIQUE KEY `mName` (`fNiq`, `mEmail`)
        $true = $scorpions->query($create);
        if($true == false) {
         $return->query   = $create;
-        $return->message = "The script was unable to create the <samp>" . 
+        $return->message = 'The script was unable to create the <samp>' .
         "$_ST[updates]</samp> table.";
         $return->status  = false;
        }
@@ -228,7 +228,7 @@ UNIQUE KEY `mName` (`fNiq`, `mEmail`)
       $true = $scorpions->query($create);
       if($true == false) {
        $return->query   = $create;
-       $return->message = "The script was unable to create the <samp>" . 
+       $return->message = 'The script was unable to create the <samp>' .
        "$_ST[updates_comments]</samp> table.";
        $return->status  = false;
       }
@@ -255,7 +255,7 @@ UNIQUE KEY `mName` (`fNiq`, `mEmail`)
     'status'  => true
    );
 
-   $delete = "DROP TABLE";
+   $delete = 'DROP TABLE';
    switch($c) {
     case 'codes':
      $delete .= " `$_ST[codes]`, `$_ST[codes_categories]`, `$_ST[codes_donors]`," . 
@@ -276,8 +276,8 @@ UNIQUE KEY `mName` (`fNiq`, `mEmail`)
    }
    $true = $scorpions->query($delete);
    if($true == false) {
-    $return->message = "The script was unable to uninstall the" . 
-    " <samp>" . $get_addon_array[$c] . "</samp> addon.";
+    $return->message = 'The script was unable to uninstall the' .
+        ' <samp>' . $c . '</samp> addon.';
     $return->query  = $delete;
     $return->status = false;
    }

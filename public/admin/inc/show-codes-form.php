@@ -194,7 +194,7 @@ if (isset($_POST['action'])) {
                     $path = $seahorses->getOption('adm_path');
                 }
 
-                $image_tag = substr(sha1(date("YmdHis")), mt_rand(0, 9), 15);
+                $image_tag = substr(sha1(date('YmdHis')), mt_rand(0, 9), 15);
                 $string = file_exists($path . $_FILES['image']['name'][$field]) ? $image_tag . '_' : '';
                 $file = $scorpions->escape($string . $_FILES['image']['name'][$field]);
                 $success = @move_uploaded_file($_FILES['image']['tmp_name'][$field], $path . $file);

@@ -7,13 +7,13 @@
  * @since      September 2nd, 2010 
  * @version    2.1.4 
  */ 
-$getTitle = "Codes: Categories";
-require("pro.inc.php");
-require("vars.inc.php");
-require("header.php");
+$getTitle = 'Codes: Categories';
+require('pro.inc.php');
+require('vars.inc.php');
+require('header.php');
 
-$sp = !isset($_GET['g']) ? "<span><a href=\"codes-categories.php?g=new\">Add" . 
-" Code Category</a></span>" : '';
+$sp = !isset($_GET['g']) ? '<span><a href="codes-categories.php?g=new">Add' .
+    ' Code Category</a></span>' : '';
 echo "<h2>{$getTitle}$sp</h2>\n";
 
 if(!isset($_GET['p']) || empty($_GET['p']) || !ctype_digit($_GET['p'])) {
@@ -41,7 +41,7 @@ if(isset($_GET['g']) && $_GET['g'] == 'new') {
  else {
   echo "  <option value=\"0\">&#187; Collective</option>\n";
   while($getItem = $scorpions->obj($true)) {
-   echo "  <option value=\"" . $getItem->id . '">' . $getItem->subject . 
+   echo '  <option value="' . $getItem->id . '">' . $getItem->subject .
    "</option>\n";
   }
  }
@@ -52,8 +52,8 @@ if(isset($_GET['g']) && $_GET['g'] == 'new') {
  <p><label><strong>Parent Category:</strong></label> 
  <select name="parent" class="input1">
 <?php 
- $select = "SELECT * FROM `$_ST[codes_categories]` WHERE `catParent` = '0'" . 
- " ORDER BY `catName` ASC";
+ $select = "SELECT * FROM `$_ST[codes_categories]` WHERE `catParent` = '0'" .
+     ' ORDER BY `catName` ASC';
  $true = $scorpions->query($select);
  if($true == false) { 
   echo "  <option>No Categories Available</option>\n";
@@ -62,7 +62,7 @@ if(isset($_GET['g']) && $_GET['g'] == 'new') {
  else {
   echo "  <option selected=\"selected\" value=\"0\">No Parent</option>\n";
   while($getItem = $scorpions->obj($true)) {
-   echo "<option value=\"" . $getItem->catID . '">' . $getItem->catName . 
+   echo '<option value="' . $getItem->catID . '">' . $getItem->catName .
    "</option>\n";
   }
  }
@@ -148,7 +148,7 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'old') {
   echo "  <option value=\"0\">&#187; Collective</option>\n";
   while($getCat = $scorpions->obj($true)) {
    $cats = $tigers->emptyarray(explode('!', $getItem->fNiq));
-   echo "  <option value=\"" . $getCat->id . '"'; 
+   echo '  <option value="' . $getCat->id . '"';
 	 if(in_array($getCat->id, $cats)) {
 	  echo ' selected="selected"'; 
 	 }
@@ -162,8 +162,8 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'old') {
  <p><label><strong>Parent Category:</strong></label> 
  <select name="parent" class="input1">
 <?php 
- $select = "SELECT * FROM `$_ST[codes_categories]` WHERE `catParent` = '0'" . 
- " ORDER BY `catName` ASC";
+ $select = "SELECT * FROM `$_ST[codes_categories]` WHERE `catParent` = '0'" .
+     ' ORDER BY `catName` ASC';
  $true = $scorpions->query($select);
  if($true == false) { 
   echo "  <option>No Categories Available</option>\n";
@@ -172,11 +172,11 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'old') {
  else {
   echo "  <option value=\"0\">No Parent</option>\n";
   while($getCat = $scorpions->obj($true)) {
-   echo "  <option value=\"" . $getCat->catID . "\""; 
+   echo '  <option value="' . $getCat->catID . '"';
 	 if($getCat->catID == $getItem->catParent) {
 	  echo ' selected="selected"'; 
 	 }
-	 echo ">" . $getCat->catName . "</option>\n";
+	 echo '>' . $getCat->catName . "</option>\n";
   }
  }
 ?>
@@ -308,8 +308,8 @@ appropriate category.</p>
 <?php
   while($getItem = $scorpions->obj($true)) {
    $catid = $getItem->catID;
-	 $listingnow = $getItem->fNiq == '!0!' || $getItem->fNiq == '0' ? 
-	 "Collective" : $wolves->pullSubjects($getItem->fNiq, '!');
+	 $listingnow = $getItem->fNiq == '!0!' || $getItem->fNiq == '0' ?
+         'Collective' : $wolves->pullSubjects($getItem->fNiq, '!');
 ?>
 <tbody><tr>
  <td class="tc"><?php echo $getItem->catID; ?></td>
@@ -328,9 +328,9 @@ appropriate category.</p>
    $pull = $scorpions->query("SELECT * FROM `$_ST[codes_categories]` WHERE" . 
    " `catParent` = '$catid' ORDER BY `catName`");
    while($items = $scorpions->obj($pull)) {
-	  $pulllistingnow = $items->fNiq == '!0!' || $items->fNiq == '0' ? 
-		"Collective" : $wolves->pullSubjects($items->fNiq, '!');
-    $n = $cheetahs->getCodesCatName($items->catParent) . " &#187; " . $items->catName;
+	  $pulllistingnow = $items->fNiq == '!0!' || $items->fNiq == '0' ?
+          'Collective' : $wolves->pullSubjects($items->fNiq, '!');
+    $n = $cheetahs->getCodesCatName($items->catParent) . ' &#187; ' . $items->catName;
 ?>
 <tbody class="subcategory"><tr>
  <td class="tc"><?php echo $items->catID; ?></td>
@@ -356,7 +356,7 @@ appropriate category.</p>
 
   for($i = 1; $i <= $pages; $i++) {
    if($page == $i) {
-    echo $i . " ";
+    echo $i . ' ';
    } else { 
     echo '<a href="codes-categories.php?p=' . $i . '">' . $i . '</a> ';
    }
@@ -370,5 +370,4 @@ appropriate category.</p>
  }
 }
 
-require("footer.php");
-?>
+require('footer.php');

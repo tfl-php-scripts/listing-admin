@@ -7,14 +7,14 @@
  * @since      November 19th, 2011
  * @version    2.3alpha
  */
-require("rats.inc.php");
-require("inc/fun.inc.php");
-require("inc/fun-admin.inc.php");
-require("inc/fun-misc.inc.php");
-require("inc/fun-utility.inc.php");
-require("vars.inc.php");
+require('rats.inc.php');
+require('inc/fun.inc.php');
+require('inc/fun-admin.inc.php');
+require('inc/fun-misc.inc.php');
+require('inc/fun-utility.inc.php');
+require('vars.inc.php');
 
-$getTitle = "Upgrade";
+$getTitle = 'Upgrade';
 ?>
 <!DOCTYPE html>
 
@@ -69,11 +69,9 @@ $getTitle = "Upgrade";
                                 ' letters, spaces and dashes.', false);
                         }
                         $my_email = $tigers->cleanMys($_POST['my_email']);
-                        if (!empty($my_email)) {
-                            if (!preg_match("/([A-Za-z0-9-_\.]+)@(([A-Za-z0-9-_]+\.)+)([a-zA-Z]{2,4})$/i", $my_email)) {
-                                $tigers->displayError('Form Error', 'The e-mail address you provided is' .
-                                    'not valid.', false);
-                            }
+                        if (!empty($my_email) && !preg_match("/([A-Za-z0-9-_\.]+)@(([A-Za-z0-9-_]+\.)+)([a-zA-Z]{2,4})$/i", $my_email)) {
+                            $tigers->displayError('Form Error', 'The e-mail address you provided is' .
+                                'not valid.', false);
                         }
                         $my_website = $tigers->cleanMys($_POST['my_website']);
 
@@ -103,10 +101,10 @@ $getTitle = "Upgrade";
                                 "<br />\n<em>" . $create . '</em></p>');
                         }
 
-                        $hashhash_input = sha1(date("YmdHis"));
+                        $hashhash_input = sha1(date('YmdHis'));
                         $javascript_key_input = sha1(mt_rand(9999, 999999));
                         $insert = "INSERT INTO `$_ST[options]` (`name`, `text`) VALUES
-    ('collective_name', '$collective_name'),
+    ('collective_name', '$collname'),
     ('per_joined', '25'), 
     ('per_members', '25'), 
     ('per_page', '15'), 
@@ -354,7 +352,7 @@ $getTitle = "Upgrade";
                                 "<br />\n<em>" . $create . '</em></p>');
                         }
 
-                        require("templates.inc.php");
+                        require('templates.inc.php');
                         $insert = "INSERT INTO `$_ST[templates_emails]` (`name`, `title`, `template`)";
                         $insert .= " VALUES ('affiliates_approve', 'Affiliates: Approve', '$affa'),
     ('affiliates_closed', 'Affiliates: Closed', '$affc'),
@@ -373,11 +371,11 @@ $getTitle = "Upgrade";
                             exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() .
                                 "<br />\n<em>" . $insert . '</em></p>');
                         }
-                        unlink("templates.inc.php");
+                        unlink('templates.inc.php');
 
-                        echo $tigers->displaySuccess("If you experienced zero errors, your main" .
-                            " functions were created, and the first part of the installation was" .
-                            " completed!");
+                        echo $tigers->displaySuccess('If you experienced zero errors, your main' .
+                            ' functions were created, and the first part of the installation was' .
+                            ' completed!');
                         echo "<p class=\"nextStep\"><a href=\"install.php?step=2\">Next Step</a></p>\n";
                     } /**
                      * Install Features
@@ -433,8 +431,8 @@ $getTitle = "Upgrade";
                         }
 
                         echo $tigers->displaySuccess("If you haven't come across any errors, your" .
-                            " features were created, and the second part of the installation was" .
-                            " completed!");
+                            ' features were created, and the second part of the installation was' .
+                            ' completed!');
                         echo "<p class=\"nextStep\"><a href=\"install.php?step=3\">Next Step</a></p>\n";
                     } /**
                      * Install Addons!
@@ -454,8 +452,8 @@ $getTitle = "Upgrade";
                         }
 
                         echo $tigers->displaySuccess("A-OK, dudes! Now it's time to complete the" .
-                            " installation and get you logged in and clicking away (and probably cursing" .
-                            " me, whatevs)!");
+                            ' installation and get you logged in and clicking away (and probably cursing' .
+                            ' me, whatevs)!');
                         echo "<p class=\"nextStep\"><a href=\"install.php?step=4\">Next Step</a></p>\n";
                     } /**
                      * Create password and login~!
@@ -463,21 +461,21 @@ $getTitle = "Upgrade";
                     elseif (isset($_POST['action']) && $_POST['action'] == 'Finish Installation') {
                         $password = isset($_POST['password']) && !empty($_POST['password']) ?
                             $tigers->cleanMys($_POST['password'], 'y', 'y', 'n') :
-                            substr(mt_rand(99999, 888888), 0, 4) . substr(sha1(date("YmdHis")), 0, 11);
+                            substr(mt_rand(99999, 888888), 0, 4) . substr(sha1(date('YmdHis')), 0, 11);
                         $update = "UPDATE `$_ST[options]` SET `text` = MD5('$password') WHERE `name`" .
                             " = 'user_password' LIMIT 1";
                         $true = $scorpions->query($update);
                         if ($true == false) {
                             exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() .
-                                "<br />\n<em>" . $create . '</em></p>');
+                                "<br />\n<em>" . $update . '</em></p>');
                         }
 
                         echo $tigers->displaySuccess("Success! You've completed the installation." .
-                            " Below is your information; save it, keep it safe, and/or change it once" .
-                            " you login.");
-                        echo "<code><samp>Username:</samp> " . $seahorses->getOption('user_username') .
+                            ' Below is your information; save it, keep it safe, and/or change it once' .
+                            ' you login.');
+                        echo '<code><samp>Username:</samp> ' . $seahorses->getOption('user_username') .
                             "<br>\n<samp>Password:</samp> $password</code>\n";
-                        echo "<p class=\"nextStep\"><a href=\"http://" . $_SERVER['SERVER_NAME'] .
+                        echo '<p class="nextStep"><a href="http://' . $_SERVER['SERVER_NAME'] .
                             str_replace('install.php', '', $_SERVER['PHP_SELF']) . "\">Login!</a></p>\n";
                     }
                 } else {

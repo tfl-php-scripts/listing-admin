@@ -7,12 +7,12 @@
  * @since      September 2nd, 2010 
  * @version    1.0    
  */ 
-$getTitle = "Categories";
-require("pro.inc.php");
-require("vars.inc.php");
-require("header.php");
+$getTitle = 'Categories';
+require('pro.inc.php');
+require('vars.inc.php');
+require('header.php');
 
-$sp = !isset($_GET['g']) ? "<span><a href=\"categories.php?g=new\">Add Category</a></span>" : '';
+$sp = !isset($_GET['g']) ? '<span><a href="categories.php?g=new">Add Category</a></span>' : '';
 echo "<h2>{$getTitle}$sp</h2>\n";
 
 if(!isset($_GET['p']) || empty($_GET['p']) || !ctype_digit($_GET['p'])) { 
@@ -33,7 +33,7 @@ if(isset($_GET['g']) && $_GET['g'] == 'new') {
  <select name="parent" class="input1" size="10">
 <?php 
  $select = "SELECT * FROM `$_ST[categories]` WHERE `parent` = '0' ORDER BY" . 
- " `catname` ASC";
+ ' `catname` ASC';
  $true = $scorpions->query($select);
  if($true == false) { 
   echo "  <option value=\"0\">No Categories Available</option>\n";
@@ -41,7 +41,7 @@ if(isset($_GET['g']) && $_GET['g'] == 'new') {
 
  else {
   while($getItem = $scorpions->obj($true)) {
-   echo "  <option value=\"" . $getItem->catid . '">' . $getItem->catname . 
+   echo '  <option value="' . $getItem->catid . '">' . $getItem->catname .
    "</option>\n";
   }
  }
@@ -113,7 +113,7 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'old') {
  <select name="parent" class="input1" size="10">
 <?php 
  $select = "SELECT * FROM `$_ST[categories]` WHERE `parent` = '0' ORDER BY" . 
- " `catname` ASC";
+ ' `catname` ASC';
  $true = $scorpions->query($select);
  if($true == false) { 
   echo "  <option value=\"0\">No Categories Available</option>\n";
@@ -121,11 +121,11 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'old') {
 
  else {
   while($getCat = $scorpions->obj($true)) {
-   echo "  <option value=\"" . $getCat->catid . "\""; 
+   echo '  <option value="' . $getCat->catid . '"';
 	 if($getCat->catid == $getItem->parent) {
 	  echo ' selected="selected"'; 
 	 }
-	 echo ">" . $getCat->catname . "</option>\n";
+	 echo '>' . $getCat->catname . "</option>\n";
   }
  } 
 ?>
@@ -244,9 +244,9 @@ a current one, click "Edit" or "Delete" by the appropriate category.</p>
   while($start < $ender) {
    $u = $select[$start];
 	 $getItem = $lions->getCategory($u['catID']);
-	 $c = $getItem->parent == 0 ? '' : " class=\"subcategory\"";
+	 $c = $getItem->parent == 0 ? '' : ' class="subcategory"';
 	 $a = $getItem->parent == 0 ? $getItem->catname : 
-	 $lions->getCatName($getItem->parent) . " &#187; " . $getItem->catname;
+	 $lions->getCatName($getItem->parent) . ' &#187; ' . $getItem->catname;
 ?>
 <tbody<?php echo $c; ?>><tr>
  <td class="tc"><?php echo $getItem->catid; ?></td>
@@ -271,7 +271,7 @@ a current one, click "Edit" or "Delete" by the appropriate category.</p>
   echo '<p id="pagination">Pages: ';
   for($i = 1; $i <= $pages; $i++) {
    if($p == $i) {
-    echo $i . " ";
+    echo $i . ' ';
    } else { 
     echo '<a href="categories.php?p=' . $i . '">' . $i . '</a> ';
    }
@@ -282,4 +282,4 @@ a current one, click "Edit" or "Delete" by the appropriate category.</p>
  }
 }
 
-require("footer.php");
+require('footer.php');

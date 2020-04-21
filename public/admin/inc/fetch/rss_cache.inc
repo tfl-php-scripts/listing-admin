@@ -162,7 +162,7 @@ class RSSCache
     \*=======================================================================*/
     function unserialize($data)
     {
-        return unserialize($data);
+        return unserialize($data, ['allowed_classes' => true]);
     }
 
     /*=======================================================================*\

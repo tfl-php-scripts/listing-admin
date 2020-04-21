@@ -7,10 +7,10 @@
  * @since     September 16th, 2010 
  * @version   1.0    
  */ 
-$getTitle = "Templates";
-require("pro.inc.php");
-require("vars.inc.php");
-require("header.php");
+$getTitle = 'Templates';
+require('pro.inc.php');
+require('vars.inc.php');
+require('header.php');
 
 echo "<h2>{$getTitle}</h2>\n";
 
@@ -28,7 +28,7 @@ if(isset($_GET['g']) && $_GET['g'] == 'old') {
 ?>
 <h3><?php echo $getItem->title; ?></h3>
 <?php  
- echo $seahorses->templates($getItem->name);
+ $seahorses->templates($getItem->name);
 ?>
 
 <h3>Form</h3>
@@ -77,7 +77,7 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'Edit Template') {
   $tigers->displayError('Database Error', 'The script was unable to edit the' . 
   ' template.', true, $update);
  } elseif ($true == true) {
-  echo "<p class=\"successButton\"><span class=\"success\">SUCCESS!</span> Your" . 
+  echo '<p class="successButton"><span class="success">SUCCESS!</span> Your' .
   " template was edited!</p>\n";
   echo $tigers->backLink('temp');
  }
@@ -126,4 +126,4 @@ you edit a template. An example will be provided for each template as well.</p>
 <?php 
 }
 
-require("footer.php");
+require('footer.php');

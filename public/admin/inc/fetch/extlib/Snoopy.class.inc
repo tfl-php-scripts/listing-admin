@@ -69,7 +69,7 @@ class Snoopy
 	// http accept types
 	var $accept			=	"image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, */*";
 	
-	var $results		=	"";					// where the content is put
+	var $results		=	[];					// where the content is put
 		
 	var $error			=	"";					// error messages sent here
 	var	$response_code	=	"";					// response code returned from server
@@ -714,7 +714,7 @@ class Snoopy
 		if(($this->_framedepth < $this->maxframes) && preg_match_all("'<frame\s+.*src[\s]*=[\'\"]?([^\'\"\>]+)'i",$results,$match))
 		{
 			$this->results[] = $results;
-			for($x=0; $x<count($match[1]); $x++)
+			for($x=0, $xMax = count($match[1]); $x< $xMax; $x++)
 				$this->_frameurls[] = $this->_expandlinks($match[1][$x],$URI_PARTS["scheme"]."://".$this->host);
 		}
 		// have we already fetched framed content?

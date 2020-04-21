@@ -29,7 +29,7 @@ if(class_exists('lions') == false) {
    } elseif (($g != '' && $g == 'child') && ($n != '' && is_numeric($n))) {
     $select .= " WHERE `parent` = '$n'";
    }
-   $select .= " ORDER BY `catname` ASC";
+   $select .= ' ORDER BY `catname` ASC';
    $true = $scorpions->query($select);
 
    $all = array();
@@ -116,8 +116,8 @@ if(class_exists('lions') == false) {
   public function getCatName($i) {
    global $_ST, $scorpions;
 
-   $select = "SELECT `catname` FROM `$_ST[categories]` WHERE `catid` = '$i'" . 
-   " LIMIT 1";
+   $select = "SELECT `catname` FROM `$_ST[categories]` WHERE `catid` = '$i'" .
+       ' LIMIT 1';
    $r = $scorpions->fetch($select, 'catname');
 
    return $r; 
@@ -140,7 +140,7 @@ if(class_exists('lions') == false) {
     if($c->parent == 0) {
 	   $cat .= $this->getCatName($category) . ', ';
     } else {
-	   $cat .= $this->getCatName($c->parent) . " &#187; " . $this->getCatName($category) . ', ';
+	   $cat .= $this->getCatName($c->parent) . ' &#187; ' . $this->getCatName($category) . ', ';
     }
    }
    $cat = trim($cat, ', ');
@@ -226,7 +226,7 @@ if(class_exists('lions') == false) {
     while($getItem = $scorpions->obj($true)) {
      $catid = $getItem->catid;
      $s2 = "SELECT * FROM `$_ST[main]` WHERE `category` LIKE '%!$catid!%'";
-		 if($s != '' && in_array($s, array_keys($get_listing_array))) {
+		 if($s != '' && array_key_exists($s, $get_listing_array)) {
 		  $s2 .= " AND `status` = '" . $get_fulllist_array[$s] . "'";
 		 }
      $q2 = $scorpions->query($s2);

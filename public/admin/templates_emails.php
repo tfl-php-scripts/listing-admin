@@ -7,10 +7,10 @@
  * @since     September 2nd, 2010 
  * @version   2.1+     
  */ 
-$getTitle = "Templates";
-require("pro.inc.php");
-require("vars.inc.php");
-require("header.php");
+$getTitle = 'Templates';
+require('pro.inc.php');
+require('vars.inc.php');
+require('header.php');
 
 echo "<h2>{$getTitle}</h2>\n";
 
@@ -162,4 +162,4 @@ of the script. Currently, you are only able to edit the current existing the tem
  }
 }
 
-require("footer.php");
+require('footer.php');

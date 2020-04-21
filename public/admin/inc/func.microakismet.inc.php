@@ -60,13 +60,12 @@ function akismet_check ( $vars ) {
 	$url				= "http://$host/" . $GLOBALS["akismet_url"] 
 						. "/comment-check";
 	$result			= _akismet_send( $vars, $host, $url );
-	if ( $result == "false" ) { return false; }
-	else                      { return true;  }
+    return !($result == "false");
 }
 
 /**
  * Mark the given message as spam
- * @param	string	$vars		Info about the comment, in key/val pairs
+ * @param	array	$vars		Info about the comment, in key/val pairs
  * @return 	boolean				True on success
  * @access	public
  */
@@ -80,7 +79,7 @@ function akismet_spam ( $vars ) {
 
 /**
  * Mark the given message as ham
- * @param	string	$vars		Info about the comment, in key/val pairs
+ * @param	array	$vars		Info about the comment, in key/val pairs
  * @return 	boolean				True on success
  * @access	public
  */
@@ -102,9 +101,8 @@ function _akismet_login ( ) {
 							"blog" => $GLOBALS["akismet_home"] );
 	$host		= $GLOBALS["akismet_host"];
 	$url		= "http://$host/" . $GLOBALS["akismet_url"] . "/verify-key";
-	$valid	= _akismet_send( $args, $host, $url );	
-	if ( $valid == 'valid' ) { return true;  }
-	else                     { return false; }
+	$valid	= _akismet_send( $args, $host, $url );
+    return $valid == 'valid';
 }
 
 /**
