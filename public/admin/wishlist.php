@@ -555,10 +555,10 @@ click "Edit" or "Delete" by the appropriate wish.</p>
  $count = $scorpions->counts($select, 1);
  
  if($count->rows > 0) {
-     $catid=$lions->getCatName($c);
   if(isset($c)) {
+     $catid=$lions->getCatName($c);
 	 echo '<p style="font-size: 12pt; margin: 0;">Currently searching the <strong>' .
-	 $catId . "</strong> category...</p>\n";
+	 $catid . "</strong> category...</p>\n";
 	}
 ?>
 <table class="index">
