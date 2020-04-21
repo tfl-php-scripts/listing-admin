@@ -7,10 +7,10 @@
  * @since      September 2nd, 2010 
  * @version    2.1.4 
  */ 
-$getTitle = "Codes: Sizes";
-require("pro.inc.php");
-require("vars.inc.php");
-require("header.php");
+$getTitle = 'Codes: Sizes';
+require('pro.inc.php');
+require('vars.inc.php');
+require('header.php');
 
 echo "<h2>{$getTitle}</h2>\n";
 
@@ -34,13 +34,12 @@ if(isset($_POST['action'])) {
   $true = $scorpions->query($insert);
 
   if($true == false) {
-   $errors['add'] = "<p class=\"errorButton\">The script was unable to add the" . 
+   $errors['add'] = '<p class="errorButton">The script was unable to add the' .
    " size to the database.</p>\n";
    if(isset($_COOKIE['lalog'])) {
 		$errors['add'] .= "<h4>Debug</h4>\n";
-		$errors['add'] .= "<p class=\"mysqlButton\"><span class=\"mysql\">MySQL" . 
-    " Errors:</span> " . ($laoptions->dbEngine == 'mysql' ? mysql_error() : 
-    $scorpions->database->error) . "<br>\n<em>$insert</em></p>\n";
+		$errors['add'] .= '<p class="mysqlButton"><span class="mysql">MySQL' .
+            ' Errors:</span> ' . $scorpions->database->error() . "<br>\n<em>$insert</em></p>\n";
 	 }
   } elseif ($true == true) {
    $success['add'] = $tigers->displaySuccess('The size was added to the database!');
@@ -61,13 +60,12 @@ if(isset($_POST['action'])) {
 	 if($true == true) {
 	  $success['update'] = $tigers->displaySuccess('The size(s) were edited!'); 
 	 } else {
-	  $errors['add'] = "<p class=\"errorButton\">The script was unable to edit the" . 
+	  $errors['add'] = '<p class="errorButton">The script was unable to edit the' .
     " code size.</p>\n";
     if(isset($_COOKIE['lalog'])) {
 		 $errors['add'] .= "<h4>Debug</h4>\n";
-		 $errors['add'] .= "<p class=\"mysqlButton\"><span class=\"mysql\">MySQL" . 
-     " Errors:</span> " . ($laoptions->dbEngine == 'mysql' ? mysql_error() : 
-     $scorpions->database->error) . "<br>\n<em>$update</em></p>\n";
+		 $errors['add'] .= '<p class="mysqlButton"><span class="mysql">MySQL' .
+             ' Errors:</span> ' . $scorpions->database->error() . "<br>\n<em>$update</em></p>\n";
 	  }
 	 }
 	}
@@ -83,13 +81,12 @@ if(isset($_POST['action'])) {
 	 if($true == true) {
 	  $success['update'] = $tigers->displaySuccess('The size was deleted!'); 
 	 } else {
-	  $errors['add'] = "<p class=\"errorButton\">The script was unable to delete" . 
+	  $errors['add'] = '<p class="errorButton">The script was unable to delete' .
     " the code size from the database.</p>\n";
     if(isset($_COOKIE['lalog'])) {
 		 $errors['add'] .= "<h4>Debug</h4>\n";
-		 $errors['add'] .= "<p class=\"mysqlButton\"><span class=\"mysql\">MySQL" . 
-     " Errors:</span> " . ($laoptions->dbEngine == 'mysql' ? mysql_error() : 
-     $scorpions->database->error) . "<br>\n<em>$delete</em></p>\n";
+		 $errors['add'] .= '<p class="mysqlButton"><span class="mysql">MySQL' .
+             ' Errors:</span> ' . $scorpions->database->error() . "<br>\n<em>$delete</em></p>\n";
 	  }
 	 }
 	}
@@ -183,5 +180,4 @@ is your list of sizes. To edit a size, edit the value in the input field; to del
 </form>
 </div>
 <?php 
-require("footer.php");
-?>
+require('footer.php');

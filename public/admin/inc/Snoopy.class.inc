@@ -249,7 +249,7 @@ class Snoopy
 				break;
 			default:
 				// not a valid protocol
-				$this->error	=	'Invalid protocol "'.$URI_PARTS["scheme"].'"\n';
+				$this->error	=	'Invalid protocol "'.$URI_PARTS["scheme"].'"';
 				return false;
 				break;
 		}		
@@ -896,5 +896,3 @@ class Snoopy
 		return $postdata;
 	}
 }
-
-?>

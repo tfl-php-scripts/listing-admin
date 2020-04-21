@@ -1,5 +1,5 @@
-<?php 
-require("pro.php");
+<?php
+require_once("pro.php");
 require("header.php");
 ?>
 <h3>Buttons</h3>
@@ -15,7 +15,9 @@ $sort_by = 'id';
 # -----------------------------------------------------------
 require(STPATH . "show-codes.php");
 # -----------------------------------------------------------
-?> 
+require(STPATH . "show-codes-form.php");
+# -----------------------------------------------------------
+?>
 <?php 
 require("footer.php");
 ?>

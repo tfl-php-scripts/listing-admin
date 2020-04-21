@@ -12,7 +12,7 @@
 $_ST = array();
 
 if (!defined('LAVERSION')) {
-    define('LAVERSION', '[Robotess Fork] 1.0');
+    define('LAVERSION', '[Robotess Fork] 1.0.0');
 }
 
 /**

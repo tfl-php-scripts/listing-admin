@@ -12,10 +12,10 @@
  * @since       April 1st, 2011  
  * @version     2.2   
  */ 
-require("b.inc.php");
-require(MAINDIR . "rats.inc.php");
-require_once("fun.inc.php");
-require_once("fun-misc.inc.php");
+require('b.inc.php');
+require(MAINDIR . 'rats.inc.php');
+require_once('fun.inc.php');
+require_once('fun-misc.inc.php');
 
 /** 
  * Get variables and options~! 
@@ -72,38 +72,38 @@ if(isset($show_owned_rotate) && !empty($show_owned_rotate)) {
 
 $markup = $seahorses->getOption('markup');
 if($markup == 'xhtml') {
- $mark = " /";
+ $mark = ' /';
 } else {
- $mark = "";
+ $mark = '';
 }
 
 /** 
  * Get the index: owned and joined listings \o/ 
  */ 
 if($options->showOwned == 'y') {
- $select = "SELECT * FROM `$_ST[main]` WHERE `show` = '0' AND `status` = '0'" . 
- " ORDER BY `since` DESC LIMIT " . $options->showOwnedNumber;
+ $select = "SELECT * FROM `$_ST[main]` WHERE `show` = '0' AND `status` = '0'" .
+     ' ORDER BY `since` DESC LIMIT ' . $options->showOwnedNumber;
  $true = $scorpions->query($select);
  if($true == false) {
   $tigers->displayError('Database Error', 'The script was unable to select' . 
 	' the newest listing(s)!', false);
  } else {
   while($getItem = $scorpions->obj($true)) {
-   echo "<a href=\"" . $getItem->url . "\"><img src=\"" . $seahorses->getOption('img_http') . $getItem->image . 
-	 "\" alt=\"" . $getItem->subject . "\" title=\"" . $getItem->subject . "\"$mark></a>\n";
+   echo '<a href="' . $getItem->url . '"><img src="' . $seahorses->getOption('img_http') . $getItem->image .
+       '" alt="' . $getItem->subject . '" title="' . $getItem->subject . "\"$mark></a>\n";
   }
  }
 
- $query = "SELECT * FROM `$_ST[main]` WHERE `show` = '0' AND `status` = '0'" . 
- " ORDER BY RAND() LIMIT " . $options->showOwnedNumber;
+ $query = "SELECT * FROM `$_ST[main]` WHERE `show` = '0' AND `status` = '0'" .
+     ' ORDER BY RAND() LIMIT ' . $options->showOwnedNumber;
  $sql = $scorpions->query($query);
  if($sql == false) {
   $tigers->displayError('Database Error', 'The script was unable to select' . 
   ' the newest listing(s)!', false);
  } else {
   while($item = $scorpions->obj($sql)) {
-   echo "<a href=\"" . $item->url . "\"><img src=\"" . $seahorses->getOption('img_http') . $item->image . 
-	 "\" alt=\"" . $item->subject . "\" title=\"" . $item->subject . "\"$mark></a>\n";
+   echo '<a href="' . $item->url . '"><img src="' . $seahorses->getOption('img_http') . $item->image .
+       '" alt="' . $item->subject . '" title="' . $item->subject . "\"$mark></a>\n";
   }
  }
 }
@@ -117,11 +117,11 @@ if($options->showJoined == 'y') {
  } else {
   while($getItem = $scorpions->obj($true)) {
    if(file_exists($seahorses->getOption('jnd_path') . $getItem->jImage) && !empty($getItem->jImage)) {
-	  echo "<a href=\"" . $getItem->jURL . "\"><img src=\"" . $seahorses->getOption('jnd_http') . $getItem->jImage . 
-	  "\" alt=\"" . $getItem->jSubject . "\" title=\"" . $getItem->jSubject . "\" class=\"joinedRandom\"$mark></a>\n";
+	  echo '<a href="' . $getItem->jURL . '"><img src="' . $seahorses->getOption('jnd_http') . $getItem->jImage .
+          '" alt="' . $getItem->jSubject . '" title="' . $getItem->jSubject . "\" class=\"joinedRandom\"$mark></a>\n";
 	 } else {
-    echo "<a href=\"" . $getItem->jURL . "\"><img src=\"" . $seahorses->getOption('jnd_http') . "no_image.png" . 
-	  "\" alt=\"" . $getItem->jSubject . "\" title=\"" . $getItem->jSubject . "\" class=\"joinedRandom\"$mark></a>\n";
+    echo '<a href="' . $getItem->jURL . '"><img src="' . $seahorses->getOption('jnd_http') . 'no_image.png' .
+        '" alt="' . $getItem->jSubject . '" title="' . $getItem->jSubject . "\" class=\"joinedRandom\"$mark></a>\n";
 	 }
   }
  }
@@ -134,13 +134,12 @@ if($options->showJoined == 'y') {
  } else {
   while($item = $scorpions->obj($sql)) {
    if(file_exists($seahorses->getOption('jnd_path') . $item->jImage) && !empty($item->jImage)) {
-	  echo "<a href=\"" . $item->jURL . "\"><img src=\"" . $seahorses->getOption('jnd_http') . $item->jImage . 
-	  "\" alt=\"" . $item->jSubject . "\" title=\"" . $item->jSubject . "\" class=\"joinedRandom\"$mark></a>\n";
+	  echo '<a href="' . $item->jURL . '"><img src="' . $seahorses->getOption('jnd_http') . $item->jImage .
+          '" alt="' . $item->jSubject . '" title="' . $item->jSubject . "\" class=\"joinedRandom\"$mark></a>\n";
 	 } else {
-    echo "<a href=\"" . $item->jURL . "\"><img src=\"" . $seahorses->getOption('jnd_http') . "no_image.png" . 
-	  "\" alt=\"" . $item->jSubject . "\" title=\"" . $item->jSubject . "\" class=\"joinedRandom\"$mark></a>\n";
+    echo '<a href="' . $item->jURL . '"><img src="' . $seahorses->getOption('jnd_http') . 'no_image.png' .
+        '" alt="' . $item->jSubject . '" title="' . $item->jSubject . "\" class=\"joinedRandom\"$mark></a>\n";
 	 }
   }
  }
 }
-?>

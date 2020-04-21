@@ -1,5 +1,5 @@
-<?php 
-require("pro.php");
+<?php
+require_once("pro.php");
 require("header.php");
 ?>
 <h3>Update Your Information</h3>

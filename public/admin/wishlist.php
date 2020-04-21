@@ -7,12 +7,12 @@
  * @since      September 2nd, 2010 
  * @version    1.0    
  */ 
-$getTitle = "Wishlist";
-require("pro.inc.php");
-require("vars.inc.php");
-require("header.php");
+use Robotess\StringUtils;$getTitle = 'Wishlist';
+require('pro.inc.php');
+require('vars.inc.php');
+require('header.php');
 
-$sp = !isset($_GET['g']) ? " <span><a href=\"wishlist.php?g=new\">Add Wish</a></span>" : '';
+$sp = !isset($_GET['g']) ? ' <span><a href="wishlist.php?g=new">Add Wish</a></span>' : '';
 echo "<h2>{$getTitle}$sp</h2>\n";
 
 if(!isset($_GET['page']) || empty($_GET['page']) || !ctype_digit($_GET['page'])) {
@@ -28,7 +28,7 @@ if(isset($_GET['g']) && $_GET['g'] == 'new') {
 <fieldset>
  <legend>Details</legend>
  <p><label><strong>Subject:</strong></label> <input name="subject" class="input1" type="text"></p>
- <p><label><strong>URL:</strong></label> <input name="url" class="input1" type="text"></p>
+ <p><label><strong>URL:</strong></label> <input name="url" class="input1" type="url"></p>
  <p><label><strong>Image:</strong></label> <input name="image" class="input1" type="file"></p>
  <p class="tc"><strong>Description:</strong><br>
  <textarea name="desc" cols="50" rows="8" style="width: 100%;"></textarea></p>
@@ -39,10 +39,10 @@ if(isset($_GET['g']) && $_GET['g'] == 'new') {
 <?php  
  $typearray = $get_wishlist_array;
  foreach($typearray as $tA => $wA) {
-  $c = $tA == 'list' ? " checked=\"\"" : '';
+  $c = $tA == 'list' ? ' checked=""' : '';
   echo "<input name=\"type\"{$c} type=\"radio\" value=\"$tA\"> $wA";
   if($tA == 'granted') {
-   echo "<a href=\"#note-1\"><sup>1</sup></a>";
+   echo '<a href="#note-1"><sup>1</sup></a>';
   } 
   echo " \n";
  }
@@ -63,12 +63,12 @@ if(isset($_GET['g']) && $_GET['g'] == 'new') {
  else {
   while($getItem = $scorpions->obj($true, 0)) {
    $catid = $getItem->catid;
-   echo "  <option value=\"" . $getItem->catid . '">' . $getItem->catname . "</option>\n"; 
+   echo '  <option value="' . $getItem->catid . '">' . $getItem->catname . "</option>\n";
 	 $q2 = $scorpions->query("SELECT * FROM `$_ST[categories]` WHERE `parent` =" . 
    " '$catid' ORDER BY `catname` ASC");
 	 while($getItem2 = $scorpions->obj($q2, 0)) {
-    echo "  <option value=\"" . $getItem2->catid . '">' . 
-	  $lions->getCatName($getItem2->parent) . " &#187; " . $getItem2->catname . "</option>\n";
+    echo '  <option value="' . $getItem2->catid . '">' .
+	  $lions->getCatName($getItem2->parent) . ' &#187; ' . $getItem2->catname . "</option>\n";
 	 }
   }
  }
@@ -98,16 +98,17 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'Add Wish') {
   $tigers->displayError('Form Error', 'Your <samp>subject</samp> field is' . 
   ' empty.', false);
  } 
- $url = $tigers->cleanMys($_POST['url']);
- if(!empty($url)) {
-  if(strstr($url, 'http://') === false) {
-   $tigers->displayError('Form Error', 'The <samp>URL</samp> does not' . 
-	 ' start with http:// and thereforeis not valid. Try again.', false);
-  } 
- }
+$url = StringUtils::instance()->normalize($tigers->cleanMys($_POST['url']));
+        if (empty($url)) {
+            $tigers->displayError('Form Error', 'Your <samp>site URL</samp> field' .
+                ' is empty.', false);
+        } elseif (!StringUtils::instance()->isUrlValid($url)) {
+            $tigers->displayError('Form Error', 'Your <samp>site URL</samp> does' .
+                ' not start with http:// and therefore is not valid. Try again.', false);
+        }
  $desc = $tigers->cleanMys($_POST['desc'], 'n');
  $image = $_FILES['image'];
- $image_tag = substr(sha1(date("YmdHis")), 0, 15);
+ $image_tag = substr(sha1(date('YmdHis')), 0, 15);
  if(!empty($_FILES['image']['name'])) {
 	$imageinfo = getimagesize($_FILES['image']['tmp_name']);
 	$imagetype = $imageinfo[2];
@@ -124,7 +125,7 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'Add Wish') {
  }
  $category = array_map(array($tigers, 'cleanMys'), $category);
  $type = $tigers->cleanMys($_POST['type']);
- if(empty($type) || !in_array($type, array_keys($get_wishlist_array))) {
+ if(empty($type) || !array_key_exists($type, $get_wishlist_array)) {
   $tigers->displayError('Form Error', 'Your <samp>wish type</samp> is invalid. ', false);
  }
 
@@ -158,12 +159,10 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'Add Wish') {
  } elseif ($true == true) {
   echo '<p class="successButton"><span class="success">SUCCESS!</span> Your' . 
 	" wish was added to the database!</p>\n";
-	if(isset($success)) {
-	 if($success) { 
-	  echo '<p class="successButton"><span class="success">SUCCESS!</span> Your' . 
-		" wishlist image was uploaded!</p>\n";
-	 }
-	}
+	if(isset($success) && $success) {
+     echo '<p class="successButton"><span class="success">SUCCESS!</span> Your' .
+       " wishlist image was uploaded!</p>\n";
+    }
 	echo $tigers->backLink('wishlist', 'new');
   echo $tigers->backLink('wishlist');
  }
@@ -190,7 +189,7 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'old') {
 
  else {
   while($getItem = $scorpions->obj($true, 0)) {
-   echo "  <option value=\"" . $getItem->wID . '">' . $getItem->wSubject . "</option>\n";
+   echo '  <option value="' . $getItem->wID . '">' . $getItem->wSubject . "</option>\n";
   }
  }
 ?>
@@ -246,11 +245,11 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'old') {
  $type1 = explode('!', $getItem->wType);
  $types = $get_wishlist_array;
  foreach($types as $t1 => $t2) {
-  echo "<input name=\"type\"";
+  echo '<input name="type"';
   if(in_array($t1, $type1)) {
-   echo " checked=\"checked\"";
+   echo ' checked="checked"';
   }
-  echo " class=\"input3\" type=\"radio\" value=\"" . $t1 . "\"> " . $t2 . "\n";
+  echo ' class="input3" type="radio" value="' . $t1 . '"> ' . $t2 . "\n";
  }
 ?>
  </p>
@@ -289,18 +288,18 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'old') {
   while($getCat = $scorpions->obj($true, 0)) {
    $catid = $getCat->catid;
    $cats = explode('!', $getItem->wCategory);
-   echo "  <option value=\"" . $getCat->catid . '"'; 
+   echo '  <option value="' . $getCat->catid . '"';
 	 if(in_array($getCat->catid, $cats)) {
 	  echo ' selected="selected"'; 
    }
 	 echo '>' . $getCat->catname . "</option>\n";
 	 $q2 = $scorpions->query("SELECT * FROM `$_ST[categories]` WHERE `parent` = '$catid' ORDER BY `catname` ASC");
 	 while($getCat2 = $scorpions->obj($q2, 0)) {
-    echo "  <option value=\"" . $getCat2->catid . '"'; 
+    echo '  <option value="' . $getCat2->catid . '"';
 	  if(in_array($getCat2->catid, $cats)) {
 	   echo ' selected="selected"'; 
     }
-	  echo '>' . $lions->getCatName($getCat2->parent) . " &#187; " . $getCat2->catname . 
+	  echo '>' . $lions->getCatName($getCat2->parent) . ' &#187; ' . $getCat2->catname .
     "</option>\n";
 	 }
   }
@@ -340,14 +339,13 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'Edit Wish') {
  if(empty($subject)) { 
   $tigers->displayError('Form Error', 'Your <samp>subject</samp> field is' . 
   ' empty.', false);
- } 
- $url = $tigers->cleanMys($_POST['url']);
- if(!empty($url)) {
-  if(strstr($url, 'http://') === false) {
-   $tigers->displayError('Form Error', 'The <samp>URL</samp> does not' . 
-	 ' start with http:// and therefore is not valid. Try again.', false);
-  } 
  }
+ $url = StringUtils::instance()->normalize($_POST['url']);
+        if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
+            $tigers->displayError('Form Error', 'Your <samp>site URL</samp>' .
+                ' appears to be invalid; make sure you haven\'t included any invalid characters' .
+                ' and you prepended your URL with <samp>http</samp>.', false);
+        }
  $desc = $tigers->cleanMys($_POST['desc'], 'nom');
  $change = $tigers->cleanMys($_POST['change']);
  $changeArray = array('add', 'edit', 'delete', 'none');
@@ -356,7 +354,7 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'Edit Wish') {
 	' an image.', false);
  }
  $image = $_FILES['image'];
- $image_tag = substr(sha1(date("YmdHis")), mt_rand(0, 8), 15);
+ $image_tag = substr(sha1(date('YmdHis')), mt_rand(0, 8), 15);
  if($change == 'add' || $change == 'edit') {
 	$imageinfo = getimagesize($_FILES['image']['tmp_name']);
 	$imagetype = $imageinfo[2];
@@ -365,7 +363,6 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'Edit Wish') {
    '</samp> and <samp>.png</samp> extensions allowed.', false);
   }
  }
- $category = array();
  $category = $_POST['category'];
  if(empty($category)) {
   $tigers->displayError('Form Error', 'Your <samp>category</samp> field is' . 
@@ -373,7 +370,7 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'Edit Wish') {
  }
  $category = array_map(array($tigers, 'cleanMys'), $category);
  $type = $tigers->cleanMys($_POST['type']);
- if(empty($type) || !in_array($type, array_keys($get_wishlist_array))) {
+ if(empty($type) || !array_key_exists($type, $get_wishlist_array)) {
   $tigers->displayError('Form Error', 'Your <samp>wish type</samp> is invalid. ', false);
  }
  
@@ -423,7 +420,7 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'Edit Wish') {
  } elseif ($true == true) {
   echo '<p class="successButton"><span class="success">SUCCESS!</span> Your' . 
 	" wishlist was updated!</p>\n";
-	if(isset($delete) && isset($success)) {
+	if(isset($delete, $success)) {
    if($delete && $success) {	
 	  echo '<p class="successButton"><span class="success">SUCCESS!</span> Your' . 
 		" old image was deleted and replaced with a new one!</p>\n";
@@ -431,13 +428,13 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'Edit Wish') {
 	}
   elseif (isset($delete) && !isset($success)) {
 	 if($delete) { 
-	  echo "<p class=\"successButton\"><span class=\"success\">SUCCESS!</span>" . 
+	  echo '<p class="successButton"><span class="success">SUCCESS!</span>' .
 		" Your old image was deleted!</p>\n";
    }
 	}
 	elseif (!isset($delete) && isset($success)) {
 	 if($success) { 
-	  echo "<p class=\"successButton\"><span class=\"success\">SUCCESS!</span>" . 
+	  echo '<p class="successButton"><span class="success">SUCCESS!</span>' .
 		" Your image was uploaded!</p>\n";
    }
 	}
@@ -505,7 +502,7 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'Delete Wish') {
 	' the wish.|Make sure your ID is not empty and your wishlist table exists.', 
 	true, $delete);
  } elseif ($true == true) {
-  echo "<p class=\"successButton\"><span class=\"success\">SUCCESS!</span> Your" . 
+  echo '<p class="successButton"><span class="success">SUCCESS!</span> Your' .
 	" wish was deleted!</p>\n";
   echo $tigers->backLink('wishlist');
  }
@@ -535,13 +532,11 @@ click "Edit" or "Delete" by the appropriate wish.</p>
 
  else {
   while($getTion = $scorpions->obj($result, 0)) {
-   echo "  <option value=\"" . $getTion->catid . "\""; 
-	 if(isset($_GET['g']) && $_GET['g'] == 'searchCategories') {
-	  if($cat_id == $getTion->catid) {
-	   echo " selected=\"selected\"";
-	  }
-	 }
-	 echo ">" . $getTion->catname . "</option>\n";
+   echo '  <option value="' . $getTion->catid . '"';
+	 if(isset($_GET['g']) && $_GET['g'] == 'searchCategories' && $cat_id == $getTion->catid) {
+      echo " selected=\"selected\"";
+     }
+	 echo '>' . $getTion->catname . "</option>\n";
   }
  }
 ?>
@@ -560,9 +555,10 @@ click "Edit" or "Delete" by the appropriate wish.</p>
  $count = $scorpions->counts($select, 1);
  
  if($count->rows > 0) {
-  if(isset($_GET['g']) && $_GET['g'] == 'searchCategories') {
-	 echo "<p style=\"font-size: 12pt; margin: 0;\">Currently searching the <strong>" . 
-	 $lions->getCatName($c) . "</strong> category...</p>\n";
+  if(isset($c)) {
+     $catid=$lions->getCatName($c);
+	 echo '<p style="font-size: 12pt; margin: 0;">Currently searching the <strong>' .
+	 $catid . "</strong> category...</p>\n";
 	}
 ?>
 <table class="index">
@@ -579,9 +575,9 @@ click "Edit" or "Delete" by the appropriate wish.</p>
    $imp = strpos($my_wishess, '/') !== false ? $seahorses->getOption('wsh_http') . $getItem->wImage 
    : $seahorses->getOption('wsh_http') . '/' . $getItem->wImage;
    if(file_exists($seahorses->getOption('wsh_path') . $getItem->wImage)) {
-    $imgNow = "<img src=\"" . $imp . "\" alt=\"\">\n";
+    $imgNow = '<img src="' . $imp . "\" alt=\"\">\n";
    } else {
-    $imgNow = "";
+    $imgNow = '';
    }
 ?>
 <tbody><tr>
@@ -611,7 +607,7 @@ click "Edit" or "Delete" by the appropriate wish.</p>
 
   for($i = 1; $i <= $pages; $i++) {
    if($page == $i) {
-    echo $i . " ";
+    echo $i . ' ';
    } elseif (isset($_GET['g']) && $_GET['get'] == 'searchCategories') {
     echo '<a href="wishlist.php?g=searchCategories&amp;c=' . $catid . '&#38;page=' . $i . '">' . $i . '</a> ';
    } else {
@@ -627,5 +623,4 @@ click "Edit" or "Delete" by the appropriate wish.</p>
  } 
 }
 
-require("footer.php");
-?>
+require('footer.php');

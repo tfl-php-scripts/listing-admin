@@ -7,14 +7,14 @@
  * @since      September 2nd, 2010 
  * @version    2.1.4  
  */ 
-$getTitle = "Updates";
-require("pro.inc.php");
-require("vars.inc.php");
-require("header.php");
+$getTitle = 'Updates';
+require('pro.inc.php');
+require('vars.inc.php');
+require('header.php');
 
 $sp = !isset($_GET['g']) || 
-(isset($_GET['g']) && preg_match("/^(search)([A-Za-z]+)/", $_GET['g'])) ? 
-"<span><a href=\"updates.php?g=new\">Add Update</a></span>" : '';
+(isset($_GET['g']) && preg_match('/^(search)([A-Za-z]+)/', $_GET['g'])) ?
+    '<span><a href="updates.php?g=new">Add Update</a></span>' : '';
 echo "<h2>{$getTitle}$sp</h2>\n";
 
 if(!isset($_GET['p']) || empty($_GET['p']) || !is_numeric($_GET['p'])) {
@@ -44,8 +44,8 @@ if($true == false) {
 else {
  echo " <li><input name=\"listing[]\" class=\"input3\" type=\"checkbox\" value=\"0\"> Whole Collective</li>\n";
  while($getListing = $scorpions->obj($true)) {
-  echo " <li><input name=\"listing[]\" class=\"input3\" type=\"checkbox\"" . 
-	" value=\"" . $getListing->id . "\"> " . $getListing->subject . "</li>\n";
+  echo ' <li><input name="listing[]" class="input3" type="checkbox"' .
+      ' value="' . $getListing->id . '"> ' . $getListing->subject . "</li>\n";
  }
 }
 ?>
@@ -125,8 +125,8 @@ else {
 <?php 
  $dateArray = $get_date_array;
  foreach($dateArray as $dA => $dA2) {
-  echo "  <option value=\"" . $dA . "\"";
-  if($dA == date("m")) { 
+  echo '  <option value="' . $dA . '"';
+  if($dA == date('m')) {
    echo ' selected="selected"';
   }
   echo '>' . $dA2 . "</option>\n";
@@ -168,12 +168,12 @@ else {
   }
   $getItem = $scorpions->obj($true);
 
-  $dw = $getItem->uDW == 'y' ? "checked=\"checked\"" : "";
-  $dwc = explode("|", $getItem->uDWOpt);
-  $ij = $getItem->uIJ == 'y' ? "checked=\"checked\"" : "";
-  $ijc = explode("|", $getItem->uIJOpt);
-  $lj = $getItem->uLJ == 'y' ? "checked=\"checked\"" : "";
-  $ljc = explode("|", $getItem->uLJOpt);
+  $dw = $getItem->uDW == 'y' ? 'checked="checked"' : '';
+  $dwc = explode('|', $getItem->uDWOpt);
+  $ij = $getItem->uIJ == 'y' ? 'checked="checked"' : '';
+  $ijc = explode('|', $getItem->uIJOpt);
+  $lj = $getItem->uLJ == 'y' ? 'checked="checked"' : '';
+  $ljc = explode('|', $getItem->uLJOpt);
 ?>
 <form action="updates.php" enctype="multipart/form-data" method="post">
 <input name="id" type="hidden" value="<?php echo $id; ?>">
@@ -195,18 +195,18 @@ else {
  }
 
  else {
-  echo " <li><input name=\"listing[]\"";
+  echo ' <li><input name="listing[]"';
   if(in_array('0', $listings)) {
-	 echo " checked=\"checked\"";
+	 echo ' checked="checked"';
   }
   echo " class=\"input3\" type=\"checkbox\" value=\"0\"> Whole Collective</li>\n";
   while($getListing = $scorpions->obj($true)) {
-   echo " <li><input name=\"listing[]\"";
+   echo ' <li><input name="listing[]"';
 	 if(in_array($getListing->id, $listings)) {
-	  echo " checked=\"checked\"";
+	  echo ' checked="checked"';
 	 }
-	 echo ' class="input3" type="checkbox" value="' . $getListing->id . 
-   "\"> " . $getListing->subject . "</li>\n";
+	 echo ' class="input3" type="checkbox" value="' . $getListing->id .
+         '"> ' . $getListing->subject . "</li>\n";
   }
  }
 ?>
@@ -223,11 +223,11 @@ else {
  $estatus = explode('!', $getItem->uPending);
  $statuses = array('0' => 'Published', '1' => 'Draft');
  foreach($statuses as $s1 => $s2) {
-  echo "  <input name=\"status\"";
+  echo '  <input name="status"';
   if(in_array($s1, $estatus)) {
-   echo " checked=\"checked\"";
+   echo ' checked="checked"';
   }
-  echo " class=\"input3\" type=\"radio\" value=\"" . $s1 . "\"> " . $s2 . "\n";
+  echo ' class="input3" type="radio" value="' . $s1 . '"> ' . $s2 . "\n";
  }
 ?>
  </p>
@@ -236,11 +236,11 @@ else {
  $edisable = explode('!', $getItem->uDisabled);
  $disabled = array('0' => 'Yes', '1' => 'No');
  foreach($disabled as $d1 => $d2) {
-  echo "  <input name=\"disabled\"";
+  echo '  <input name="disabled"';
   if(in_array($d1, $edisable)) {
-   echo " checked=\"checked\"";
+   echo ' checked="checked"';
   }
-  echo " class=\"input3\" type=\"radio\" value=\"" . $d1 . "\"> " . $d2 . "\n";
+  echo ' class="input3" type="radio" value="' . $d1 . '"> ' . $d2 . "\n";
  }
 ?>
  </p>
@@ -256,9 +256,9 @@ else {
  <fieldset> 
 <?php  
  $showjournal = (object) array(
-  'dw' => ($getItem->uDW == 'y' ? " style=\"display: block;\"" : " style=\"display: none;\""),
-  'ij' => ($getItem->uIJ == 'y' ? " style=\"display: block;\"" : " style=\"display: none;\""),
-  'lj' => ($getItem->uLJ == 'y' ? " style=\"display: block;\"" : " style=\"display: none;\"")
+  'dw' => ($getItem->uDW == 'y' ? ' style="display: block;"' : ' style="display: none;"'),
+  'ij' => ($getItem->uIJ == 'y' ? ' style="display: block;"' : ' style="display: none;"'),
+  'lj' => ($getItem->uLJ == 'y' ? ' style="display: block;"' : ' style="display: none;"')
  );
 ?>
   <legend>Cross-Post</legend>
@@ -325,7 +325,7 @@ else {
  <p><label><strong>Month:</strong></label> <select name="month" class="input1">
 <?php 
  $dateArray = $get_date_array;
- $dateNow1 = date("m", strtotime($getItem->uAdded)); 
+ $dateNow1 = date('m', strtotime($getItem->uAdded));
  $dateNow2 = explode('!', $dateNow1);
  foreach($dateArray as $dA => $dA2) {
   echo '<option value="' . $dA . '"';
@@ -379,7 +379,6 @@ else {
     ' exceed 1.', false);
    }
    if($_POST['listing'] != 0) {
-    $listing = array();
     $listing = $_POST['listing'];
 	  $listing = array_map(array($tigers, 'cleanMys'), $listing);
 	  $list = implode('!', $listing);
@@ -408,7 +407,7 @@ else {
     $tigers->displayError('Form Error', 'The <samp>month or day</samp>' . 
 		' field needs to be the length of 2 digits.', false);
    }
-   $date = $tigers->cleanMys($year . '-' . $month . '-' . $day) . " " . date("H:i:s");
+   $date = $tigers->cleanMys($year . '-' . $month . '-' . $day) . ' ' . date('H:i:s');
 	
    /** 
     * Start crosslisting stuff! 
@@ -420,14 +419,13 @@ else {
    $lj_post = 'n';
    $lj_post_opt = '|itemid:|community:|tags:|userpic:|';
    if(isset($_POST['crosspost']) && !empty($_POST['crosspost']) && count($_POST['crosspost']) > 0) {
-    $crosspost = array();
     $crosspost = $_POST['crosspost'];
 	  $crosspost = array_map(array($tigers, 'cleanMys'), $crosspost);
     if(in_array('dw', $crosspost)) {
 	   $dw_post = 'y';
 	   $dw_post_opt = '|itemid:|community:|tags:|userpic:|';
 	   $dw_comm = $tigers->cleanMys($_POST['dw-community']);
-	   $dw_comm_if = !empty($dw_comm) ? $dw_comm : "";
+	   $dw_comm_if = !empty($dw_comm) ? $dw_comm : '';
 	   $dw_priv = $tigers->cleanMys($_POST['dw-priv']);
 	   $dw_tags = $tigers->cleanMys($_POST['dw-tags']);
 	   $dw_user = $tigers->cleanMys($_POST['dw-user']);
@@ -443,8 +441,8 @@ else {
 	   $data['year'] = $year;
 	   $data['month'] = $month;
 	   $data['day'] = $day;
-	   $data['hour'] = date("H");
-	   $data['min'] = date("i");
+	   $data['hour'] = date('H');
+	   $data['min'] = date('i');
 	   if(isset($dw_priv) && $dw_priv == 'y') {
 	    $data['security'] = 'usemask';
 	   } else {
@@ -452,8 +450,8 @@ else {
 	   }
      $comment = $disable == 0 ? 1 : 0;
 	   $meta = array( 
-	    "opt_nocomments" => $comment,
-		  "opt_preformatted" => true,
+	    'opt_nocomments' => $comment,
+		  'opt_preformatted' => true,
 	   );
 	   if(!empty($dw_tags)) {
 	    $meta['taglist'] = $dw_tags;
@@ -461,13 +459,13 @@ else {
 	   if(!empty($dw_user)) {
 	    $meta['picture_keyword'] = $dw_user;
 	   }
-	   if(date("Y") != $year || date("m") != $month || date("d") != $day) {
+	   if(date('Y') != $year || date('m') != $month || date('d') != $day) {
 	    $meta['opt_backdated'] = true;
 	   } 
 	   $w = $dw->postevent($data, $meta);
 	   if($w[0] == TRUE) {
 	    $dw_post = 'y';
-		  $dw_post_opt = "|itemid:" . $w[1]['itemid'] . "|community:{$dw_comm_if}|tags:{$dw_tags}|userpic:{$dw_user}|";
+		  $dw_post_opt = '|itemid:' . $w[1]['itemid'] . "|community:{$dw_comm_if}|tags:{$dw_tags}|userpic:{$dw_user}|";
 	   } else {
 	    $dw_post = 'n';
 	    echo '<p class="errorButton"><span class="error">Script Error:</span> The' . 
@@ -482,7 +480,7 @@ else {
 	   $ij_post = 'y';
 	   $ij_post_opt = '|itemid:|community:|tags:|userpic:|';
 	   $ij_comm = $tigers->cleanMys($_POST['ij-community']);
-	   $ij_comm_if = !empty($ij_comm) ? $ij_comm : "";
+	   $ij_comm_if = !empty($ij_comm) ? $ij_comm : '';
 	   $ij_priv = $tigers->cleanMys($_POST['ij-priv']);
 	   $ij_tags = $tigers->cleanMys($_POST['ij-tags']);
 	   $ij_user = $tigers->cleanMys($_POST['ij-user']);
@@ -498,8 +496,8 @@ else {
 	   $data['year'] = $year;
 	   $data['month'] = $month;
 	   $data['day'] = $day;
-	   $data['hour'] = date("H");
-	   $data['min'] = date("i");
+	   $data['hour'] = date('H');
+	   $data['min'] = date('i');
 	   if(isset($ij_priv) && $ij_priv == 'y') {
 	    $data['security'] = 'usemask';
 	   } else {
@@ -507,8 +505,8 @@ else {
 	   }
      $comment = $disable == 0 ? 1 : 0;
 	   $meta = array( 
-	    "opt_nocomments" => $comment,
-		  "opt_preformatted" => true,
+	    'opt_nocomments' => $comment,
+		  'opt_preformatted' => true,
 	   );
 	   if(!empty($ij_tags)) {
 	    $meta['taglist'] = $ij_tags;
@@ -516,13 +514,13 @@ else {
 	   if(!empty($ij_user)) {
 	    $meta['picture_keyword'] = $ij_user;
 	   } 
-	   if(date("Y") != $year || date("m") != $month || date("d") != $day) {
+	   if(date('Y') != $year || date('m') != $month || date('d') != $day) {
 	    $meta['opt_backdated'] = true;
 	   } 
 	   $w = $ij->postevent($data, $meta);
 	   if($w[0] == TRUE) {
 	    $ij_post = 'y';
-		  $ij_post_opt = "|itemid:" . $w[1]['itemid'] . "|community:{$ij_comm_if}|tags:{$ij_tags}|userpic:{$ij_user}|";
+		  $ij_post_opt = '|itemid:' . $w[1]['itemid'] . "|community:{$ij_comm_if}|tags:{$ij_tags}|userpic:{$ij_user}|";
 	   } else {
 	    $ij_post = 'n';
 		  $ij_post_opt = '|itemid:|community:|tags:|userpic:|';
@@ -538,7 +536,7 @@ else {
 	   $lj_post = 'y';
 	   $lj_post_opt = '|itemid:|community:|tags:|userpic:|';
 	   $lj_comm = $tigers->cleanMys($_POST['lj-community']);
-	   $lj_comm_if = !empty($lj_comm) ? $lj_comm : "";
+	   $lj_comm_if = !empty($lj_comm) ? $lj_comm : '';
 	   $lj_priv = $tigers->cleanMys($_POST['lj-priv']);
 	   $lj_tags = $tigers->cleanMys($_POST['lj-tags']);
 	   $lj_user = $tigers->cleanMys($_POST['lj-user']);
@@ -554,8 +552,8 @@ else {
 	   $data['year'] = $year;
 	   $data['month'] = $month;
 	   $data['day'] = $day;
-	   $data['hour'] = date("H");
-	   $data['min'] = date("i");
+	   $data['hour'] = date('H');
+	   $data['min'] = date('i');
 	   if(isset($lj_priv) && $lj_priv == 'y') {
 	    $data['security'] = 'usemask';
 	   } else {
@@ -563,8 +561,8 @@ else {
 	   }
      $comment = $disable == 0 ? 1 : 0;
 	   $meta = array( 
-	    "opt_nocomments" => $comment,
-		  "opt_preformatted" => true,
+	    'opt_nocomments' => $comment,
+		  'opt_preformatted' => true,
 	   );
 	   if(!empty($lj_tags)) {
 	    $meta['taglist'] = $lj_tags;
@@ -572,20 +570,20 @@ else {
 	   if(!empty($lj_user)) {
 	    $meta['picture_keyword'] = $lj_user;
 	   } 
-	   if(date("Y") != $year || date("m") != $month || date("d") != $day) {
+	   if(date('Y') != $year || date('m') != $month || date('d') != $day) {
 	    $meta['opt_backdated'] = true;
 	   } 
 	   $w = $lj->postevent($data, $meta);
 	   if($w[0] == TRUE) {
 	    $lj_post = 'y';
-		  $lj_post_opt = "|itemid:" . $w[1]['itemid'] . "|community:{$lj_comm_if}|tags:{$lj_tags}|userpic:{$lj_user}|";
+		  $lj_post_opt = '|itemid:' . $w[1]['itemid'] . "|community:{$lj_comm_if}|tags:{$lj_tags}|userpic:{$lj_user}|";
 	   } else {
 	    $lj_post = 'n';
 		  $lj_post_opt = '|itemid:|community:|tags:|userpic:|';
 	    echo '<p class="errorButton"><span class="error">Script Error:</span> The' . 
       " script was unable to add the <strong>$title</strong> entry to LiveJourn" . 
       "al!</p>\n";
-      echo "<p>Server Error: " . $w[1] . " (" . $w[2] . ")</p>\n";
+      echo '<p>Server Error: ' . $w[1] . ' (' . $w[2] . ")</p>\n";
 	   }
 	  } elseif (!in_array('lj', $crosspost)) {
 	   $lj_post = 'n';
@@ -610,8 +608,8 @@ else {
    /** 
     * Add entry \o/ 
     */ 
-   $insert = "INSERT INTO `$_ST[updates]` (`uTitle`, `uCategory`, `uEntry`," . 
-	 " `uDW`, `uDWOpt`, `uIJ`, `uIJOpt`, `uLJ`, `uLJOpt`, `uPending`, `uDisabled`," . 
+   $insert = "INSERT INTO `$_ST[updates]` (`uTitle`, `uCategory`, `uEntry`," .
+       ' `uDW`, `uDWOpt`, `uIJ`, `uIJOpt`, `uLJ`, `uLJOpt`, `uPending`, `uDisabled`,' .
 	 " `uAdded`) VALUES ('$title', '$list', '$entry', '$dw_post', '$dw_post_opt'," . 
 	 " '$ij_post', '$ij_post_opt', '$lj_post', '$lj_post_opt', '$status'," . 
 	 " '$disable', '$date')";
@@ -626,15 +624,15 @@ else {
 		' <samp>' . $title . "</samp> entry was added to the database! :D</p>\n";
 	  if($dw_post == 'y') {
 	   echo '<p class="successButton"><span class="success">Success!</span> Your' . 
-		 ' <samp>' . $title . "</samp> entry was crossposted to <strong>Dreamwidth" . 
+		 ' <samp>' . $title . '</samp> entry was crossposted to <strong>Dreamwidth' .
 		 "</strong>! :D</p>\n";
 	  } if($ij_post == 'y') {
 	   echo '<p class="successButton"><span class="success">Success!</span> Your' . 
-		 ' <samp>' . $title . "</samp> entry was crossposted to <strong>Insane" . 
+		 ' <samp>' . $title . '</samp> entry was crossposted to <strong>Insane' .
 		 "Journal</strong>! :D</p>\n";
 	  } if($lj_post == 'y') {
 	   echo '<p class="successButton"><span class="success">Success!</span> Your' . 
-		 ' <samp>' . $title . "</samp> entry was crossposted to <strong>Live" . 
+		 ' <samp>' . $title . '</samp> entry was crossposted to <strong>Live' .
 		 "Journal</strong>! :D</p>\n";
 	  }
    }
@@ -678,7 +676,6 @@ else {
 		' must not exceed 1.', false);
    }
    if($_POST['listing'] != 0) {
-    $listing = array();
     $listing = $_POST['listing'];
 	  $listing = array_map(array($tigers, 'cleanMys'), $listing);
 	  $list = implode('!', $listing);
@@ -706,7 +703,7 @@ else {
     $tigers->displayError('Form Error', 'The <samp>month or day</samp>' . 
 		' field needs to be the length of 2 digits.', false);
    }
-   $date = $tigers->cleanMys($year . '-' . $month . '-' . $day) . " " . date("H:i:s");
+   $date = $tigers->cleanMys($year . '-' . $month . '-' . $day) . ' ' . date('H:i:s');
 	
    /** 
     * Get crosslisting shit~ 
@@ -718,14 +715,13 @@ else {
    $lj_post = 'n';
    $lj_post_opt = '|itemid:|community:|tags:|userpic:|';
    if(isset($_POST['crosspost']) && !empty($_POST['crosspost']) && count($_POST['crosspost']) > 0) {
-    $crosspost = array();
-    $crosspost = $_POST['crosspost'];
+       $crosspost = $_POST['crosspost'];
 	  $crosspost = array_map(array($tigers, 'cleanMys'), $crosspost);
 	  if(in_array('dw', $crosspost)) {
 	   $dw_post = 'y';
 	   $dw_post_opt = '|itemid:|community:|tags:|userpic:|';
 	   $dw_comm = $tigers->cleanMys($_POST['dw-community']);
-	   $dw_comm_if = !empty($dw_comm) ? $dw_comm : "";
+	   $dw_comm_if = !empty($dw_comm) ? $dw_comm : '';
 	   $dw_priv = $tigers->cleanMys($_POST['dw-priv']);
 	   $dw_tags = $tigers->cleanMys($_POST['dw-tags']);
 	   $dw_user = $tigers->cleanMys($_POST['dw-user']);
@@ -744,8 +740,8 @@ else {
 	   $data['year'] = $year;
 	   $data['month'] = $month;
 	   $data['day'] = $day;
-	   $data['hour'] = date("H");
-	   $data['min'] = date("i");
+	   $data['hour'] = date('H');
+	   $data['min'] = date('i');
 	   if(isset($dw_priv) && $dw_priv == 'y') {
 	    $data['security'] = 'usemask';
 	   } else {
@@ -753,8 +749,8 @@ else {
 	   }
      $comment = $disable == 0 ? 1 : 0;
 	   $meta = array( 
-	    "opt_nocomments" => $comment,
-		  "opt_preformatted" => true,
+	    'opt_nocomments' => $comment,
+		  'opt_preformatted' => true,
 	   );
 	   if(!empty($dw_tags)) {
 	    $meta['taglist'] = $dw_tags;
@@ -775,7 +771,7 @@ else {
 	   if($w[0] == TRUE) {
 	    $dw_post = 'y';
 		  if(empty($dwitemid)) {
-		   $dw_post_opt = "|itemid:" . $w[1]['itemid'] . "|community:{$dw_comm_if}|tags:{$dw_tags}|userpic:{$dw_user}|";
+		   $dw_post_opt = '|itemid:' . $w[1]['itemid'] . "|community:{$dw_comm_if}|tags:{$dw_tags}|userpic:{$dw_user}|";
 		  } else {
 	     $dw_post_opt = "|itemid:{$dwitemid}|community:{$dw_comm_if}|tags:{$dw_tags}|userpic:{$dw_user}|";
 		  }
@@ -793,7 +789,7 @@ else {
 	   $ij_post = 'y';
 	   $ij_post_opt = '|itemid:|community:|tags:|userpic:|';
 	   $ij_comm = $tigers->cleanMys($_POST['ij-community']);
-	   $ij_comm_if = !empty($ij_comm) ? $ij_comm : "";
+	   $ij_comm_if = !empty($ij_comm) ? $ij_comm : '';
 	   $ij_priv = $tigers->cleanMys($_POST['ij-priv']);
 	   $ij_tags = $tigers->cleanMys($_POST['ij-tags']);
 	   $ij_user = $tigers->cleanMys($_POST['ij-user']);
@@ -812,8 +808,8 @@ else {
 	   $data['year'] = $year;
 	   $data['month'] = $month;
 	   $data['day'] = $day;
-	   $data['hour'] = date("H");
-	   $data['min'] = date("i");
+	   $data['hour'] = date('H');
+	   $data['min'] = date('i');
 	   if(isset($ij_priv) && $ij_priv == 'y') {
 	    $data['security'] = 'usemask';
 	   } else {
@@ -821,8 +817,8 @@ else {
 	   }
      $comment = $disable == 0 ? 1 : 0;
 	   $meta = array( 
-	    "opt_nocomments" => $comment,
-		  "opt_preformatted" => true,
+	    'opt_nocomments' => $comment,
+		  'opt_preformatted' => true,
 	   );
 	   if(!empty($ij_tags)) {
 	    $meta['taglist'] = $ij_tags;
@@ -842,7 +838,7 @@ else {
 	   if($w[0] == TRUE) {
 	    $ij_post = 'y';
 		  if(empty($ijitemid)) {
-		   $ij_post_opt = "|itemid:" . $w[1]['itemid'] . "|community:{$ij_comm_if}|tags:{$ij_tags}|userpic:{$ij_user}|";
+		   $ij_post_opt = '|itemid:' . $w[1]['itemid'] . "|community:{$ij_comm_if}|tags:{$ij_tags}|userpic:{$ij_user}|";
 		  } else {
 	     $ij_post_opt = "|itemid:{$ijitemid}|community:{$ij_comm_if}|tags:{$ij_tags}|userpic:{$ij_user}|";
 		  }
@@ -861,7 +857,7 @@ else {
 	   $lj_post = 'y';
 	   $lj_post_opt = '|itemid:|community:|tags:|userpic:|';
 	   $lj_comm = $tigers->cleanMys($_POST['lj-community']);
-	   $lj_comm_if = !empty($lj_comm) ? $lj_comm : "";
+	   $lj_comm_if = !empty($lj_comm) ? $lj_comm : '';
 	   $lj_priv = $tigers->cleanMys($_POST['lj-priv']);
 	   $lj_tags = $tigers->cleanMys($_POST['lj-tags']);
 	   $lj_user = $tigers->cleanMys($_POST['lj-user']);
@@ -880,8 +876,8 @@ else {
 	   $data['year'] = $year;
 	   $data['month'] = $month;
 	   $data['day'] = $day;
-	   $data['hour'] = date("H");
-	   $data['min'] = date("i");
+	   $data['hour'] = date('H');
+	   $data['min'] = date('i');
 	   if(isset($lj_priv) && $lj_priv == 'y') {
 	    $data['security'] = 'usemask';
 	   } else {
@@ -889,8 +885,8 @@ else {
 	   }
      $comment = $disable == 0 ? 1 : 0;
 	   $meta = array( 
-	    "opt_nocomments" => $comment,
-		  "opt_preformatted" => true,
+	    'opt_nocomments' => $comment,
+		  'opt_preformatted' => true,
 	   );
 	   if(!empty($lj_tags)) {
 	    $meta['taglist'] = $lj_tags;
@@ -911,7 +907,7 @@ else {
 	   if($w[0] == TRUE) {
 	    $lj_post = 'y';
 		  if(empty($ljitemid)) {
-		   $lj_post_opt = "|itemid:" . $w[1]['itemid'] . "|community:{$lj_comm_if}|tags:{$lj_tags}|userpic:{$lj_user}|";
+		   $lj_post_opt = '|itemid:' . $w[1]['itemid'] . "|community:{$lj_comm_if}|tags:{$lj_tags}|userpic:{$lj_user}|";
 		  } else {
 	   	 $lj_post_opt = "|itemid:{$ljitemid}|community:{$lj_comm_if}|tags:{$lj_tags}|userpic:{$lj_user}|";
 		  }
@@ -960,17 +956,17 @@ else {
 		 ' edit the <strong>' . $title . '</strong> entry.|Make sure your table' . 
 		 ' exists.', true, $update);
     } elseif ($true == true) {
-     echo $tigers->displaySuccess('Your <samp>' . $title . "</samp> entry was" . 
-     " added to the database! :D");
+     echo $tigers->displaySuccess('Your <samp>' . $title . '</samp> entry was' .
+         ' added to the database! :D');
 	   if($dw_post == 'y') {
-	    echo $tigers->displaySuccess('Your <samp>' . $title . "</samp> entry was" . 
-      " crossposted to <strong>Dreamwidth</strong>!");
+	    echo $tigers->displaySuccess('Your <samp>' . $title . '</samp> entry was' .
+            ' crossposted to <strong>Dreamwidth</strong>!');
 	   } if($ij_post == 'y') {
-	    echo $tigers->displaySuccess('Your <samp>' . $title . "</samp> entry was" . 
-      " crossposted to <strong>InsaneJournal</strong>! :D");
+	    echo $tigers->displaySuccess('Your <samp>' . $title . '</samp> entry was' .
+            ' crossposted to <strong>InsaneJournal</strong>! :D');
 	   } if($lj_post == 'y') {
-	    echo $tigers->displaySuccess('Your <samp>' . $title . "</samp> entry was" . 
-      " crossposted to <strong>LiveJournal</strong>! :D");
+	    echo $tigers->displaySuccess('Your <samp>' . $title . '</samp> entry was' .
+            ' crossposted to <strong>LiveJournal</strong>! :D');
 	   }
     }
 	 } elseif ($_POST['action'] == 'Delete Update') {
@@ -980,21 +976,21 @@ else {
 		 ' delete the <strong>' . $title . '</strong> entry.|Make sure your table' . 
 		 ' exists.', true, $delete);
     } elseif ($true == true) {
-     echo $tigers->displayError('Your <samp>' . $title . "</samp> entry was" . 
-    " deleted from the database! :D");
+     $tigers->displayError('Database Error', 'Your <samp>' . $title . '</samp> entry was' .
+         ' deleted from the database! :D');
 	   if($dw_post == 'y') {
-	    echo $tigers->displayError('Your <samp>' . $title . "</samp> entry was" . 
-      " deleted from <strong>Dreamwidth</strong>! :D");
+	    $tigers->displayError('Database Error', 'Your <samp>' . $title . '</samp> entry was' .
+            ' deleted from <strong>Dreamwidth</strong>! :D');
 	   } if($ij_post == 'y') {
-	    echo $tigers->displaySuccess('Your <samp>' . $title . "</samp> entry was" . 
-      " deleted from <strong>InsaneJournal</strong>! :D");
+	    echo $tigers->displaySuccess('Your <samp>' . $title . '</samp> entry was' .
+            ' deleted from <strong>InsaneJournal</strong>! :D');
 	   } if($lj_post == 'y') {
-	    echo $tigers->displaySuccess('Your <samp>' . $title . "</samp> entry was" . 
-      " deleted from <strong>LiveJournal</strong>! :D");
+	    echo $tigers->displaySuccess('Your <samp>' . $title . '</samp> entry was' .
+            ' deleted from <strong>LiveJournal</strong>! :D');
 	   }
     }
    }
-	 if($_POST['action'] == "Edit Update") {
+	 if($_POST['action'] == 'Edit Update') {
 	  echo $tigers->backLink('updates', $id);
 	 }
    echo $tigers->backLink('updates');
@@ -1013,7 +1009,7 @@ else {
     $delete = "DELETE FROM `$_ST[updates]` WHERE `uID` = '$pm' LIMIT 1";
 	  $true = $scorpions->query($delete);
 	  if($true == true) {
-	   echo $tigers->displaySuccess("The update was deleted!");
+	   echo $tigers->displaySuccess('The update was deleted!');
 	  } 
    }
    echo $tigers->backLink('updates');
@@ -1055,7 +1051,7 @@ current one, click "Edit" or "Delete" by the appropriate update.</p>
  else {
   echo "  <option selected=\"selected\" value=\"0\">Whole Collective</option>\n";
   while($getTion = $scorpions->obj($true)) {
-   echo "  <option value=\"" . $getTion->id . '">' . $getTion->subject . "</option>\n";
+   echo '  <option value="' . $getTion->id . '">' . $getTion->subject . "</option>\n";
   }
  }
 ?>
@@ -1065,8 +1061,8 @@ current one, click "Edit" or "Delete" by the appropriate update.</p>
 </form>
 
 <?php 
-  if(isset($_GET['g']) && $_GET['g'] == 'searchListings') {
-   echo "<h4>Searching the <em>" . $wolves->getSubject($fl_id) . "</em> listing...</h4>\n"; 
+  if(isset($listingid)) {
+   echo '<h4>Searching the <em>' . $wolves->getSubject($listingid) . "</em> listing...</h4>\n";
   }
 ?>
 <form action="updates.php" method="post">
@@ -1083,7 +1079,7 @@ current one, click "Edit" or "Delete" by the appropriate update.</p>
 </tr></tfoot>
 <?php 
    while($getItem = $scorpions->obj($trueList)) {
-	  $q = isset($_GET['listingid']) ? "listing=" . $fl_id . "&#38;" : "";
+	  $q = isset($_GET['listingid']) ? 'listing=' . $listingid . '&#38;' : '';
 ?>
 <tbody><tr>
  <td class="tc"><input name="update[]" type="checkbox" value="<?php echo $getItem->uID; ?>"></td>
@@ -1113,7 +1109,7 @@ current one, click "Edit" or "Delete" by the appropriate update.</p>
    
    for($i = 1; $i <= $pages; $i++) {
     if($page == $i) {
-     echo $i . " ";
+     echo $i . ' ';
     } else {
      $pg = '<a href="updates.php?';
      if(isset($_GET['g']) && $_GET['g'] == 'searchListings') {
@@ -1139,5 +1135,4 @@ else {
 <?php 
 }
 
-require("footer.php");
-?>
+require('footer.php');

@@ -33,7 +33,7 @@ if(class_exists('seahorses') == false) {
    } 
  
    else {
-    echo "<p class=\"successButton\"><span class=\"success\">SUCCESS!</span> Your" . 
+    echo '<p class="successButton"><span class="success">SUCCESS!</span> Your' .
     " <samp>$o</samp> option has been edited! :D</p>\n";
    }
   }
@@ -74,7 +74,7 @@ if(class_exists('seahorses') == false) {
    } 
  
    else {
-    echo "<p class=\"successButton\"><span class=\"success\">SUCCESS!</span>" . 
+    echo '<p class="successButton"><span class="success">SUCCESS!</span>' .
     " Your <samp>$o</samp> listing option has been edited! :D</p>\n";
    }
   }
@@ -162,7 +162,7 @@ if(class_exists('seahorses') == false) {
   public function getCount($c, $y = 'n', $f = 0) {
    global $_ST, $mermaids, $scorpions, $tigers;
 
-   $select = "SELECT * FROM";
+   $select = 'SELECT * FROM';
    if($c == 'cat') {
     $select .= " `$_ST[categories]`";
    } elseif ($c == 'joined') {
@@ -610,7 +610,7 @@ class&#34;top-wishlist&#34;&#62;&#60;br&#62;{desc}&#60;/p&#62;
 	<td class="right"><?php echo str_replace('E-Mail Address:', '', trim($text[1])); ?></td>
  </tr></tbody>
 <?php  
-    if(strstr($text[2], 'URL:') !== false) {
+    if(strpos($text[2], 'URL:') !== false) {
 ?>
  <tbody><tr>
   <td class="left">URL:</td>
@@ -641,9 +641,9 @@ class&#34;top-wishlist&#34;&#62;&#60;br&#62;{desc}&#60;/p&#62;
  </tr></tbody>
 <?php 
 		}
-	 } elseif (strstr($getItem->messType, 'SPAM') !== false) {
+	 } elseif (strpos($getItem->messType, 'SPAM') !== false) {
 	  $class = 'spam';
-		$subj = explode("(", $getItem->messType);
+		$subj = explode('(', $getItem->messType);
 		$text = explode("\n", $getItem->messText);
 ?>
  <tbody><tr>
@@ -663,7 +663,7 @@ class&#34;top-wishlist&#34;&#62;&#60;br&#62;{desc}&#60;/p&#62;
   </td>
  </tr></tbody>
 <?php 
-	 } elseif (strstr($getItem->messType, 'User Log-In') !== false) {
+	 } elseif (strpos($getItem->messType, 'User Log-In') !== false) {
 	  $class = 'user';
 		$text = explode("\n", $getItem->messText);
 ?>
@@ -688,4 +688,3 @@ class&#34;top-wishlist&#34;&#62;&#60;br&#62;{desc}&#60;/p&#62;
 }
 
 $seahorses = new seahorses();
-?>
