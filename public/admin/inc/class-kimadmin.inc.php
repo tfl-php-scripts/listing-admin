@@ -68,7 +68,7 @@ if (!class_exists('kimadmin')) {
             if ($p == 'id') {
                 $select .= " WHERE `mID` = '$i'";
             } elseif ($p == 'email' && in_array($e, $wolves->listingsList())) {
-                $select .= " WHERE TRIM(LOWER(`mEmail`)) = '$i' AND `fNiq` = '$e'";
+                $select .= " WHERE LOWER(`mEmail`) = '$i' AND `fNiq` = '$e'";
             }
             $select .= ' LIMIT 1';
             $true = $scorpions->query($select);
@@ -159,7 +159,7 @@ if (!class_exists('kimadmin')) {
                 'password' => false
             );
 
-            $select = "SELECT * FROM `$_ST[kim]` WHERE TRIM(LOWER(`mEmail`)) = '$e' AND `fNiq`" .
+            $select = "SELECT * FROM `$_ST[kim]` WHERE LOWER(`mEmail`) = '$e' AND `fNiq`" .
                 " = '$s'";
             $count = $scorpions->counts($select);
             if ($count->rows == 1) {
@@ -167,7 +167,7 @@ if (!class_exists('kimadmin')) {
             }
 
             $m = md5($p);
-            $query = "SELECT * FROM `$_ST[kim]` WHERE TRIM(LOWER(`mEmail`)) = '$e' AND `fNiq` =" .
+            $query = "SELECT * FROM `$_ST[kim]` WHERE LOWER(`mEmail`) = '$e' AND `fNiq` =" .
                 " '$s' AND `mPassword` = '$m'";
             $results = $scorpions->counts($query);
             if ($results->rows == 1) {
@@ -212,7 +212,7 @@ if (!class_exists('kimadmin')) {
         {
             global $_ST, $scorpions;
 
-            $select = "SELECT * FROM `$_ST[kim]` WHERE TRIM(LOWER(`mEmail`)) = '$e' AND `fNiq` = '$s'";
+            $select = "SELECT * FROM `$_ST[kim]` WHERE LOWER(`mEmail`) = '$e' AND `fNiq` = '$s'";
             $count = $scorpions->counts($select);
 
             $valid = false;

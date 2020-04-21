@@ -109,7 +109,7 @@
          * Now that we've checked everything: update password, e-mail
          */
         $update = "UPDATE `$_ST[members]` SET `mPassword` = MD5('$password') WHERE" .
-            " `mEmail` = LOWER('$email') AND `fNiq` = '" . $options->listingID . "' LIMIT 1";
+            " LOWER(`mEmail`) = '$email' AND `fNiq` = '" . $options->listingID . "' LIMIT 1";
         $true = $scorpions->query($update);
         if ($true == false) {
             $tigers->displayError('Database Error', 'The script was unable to reset your' .

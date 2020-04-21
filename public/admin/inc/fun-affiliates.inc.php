@@ -270,14 +270,14 @@ if (!class_exists('rabbits')) {
                         if ($p == 'id') {
                             $select .= " WHERE `affiliateid` = '$i'";
                         } elseif ($p == 'email') {
-                            $select .= " WHERE `email` = '$i'";
+                            $select .= " WHERE LOWER(`email`) = '$i'";
                         }
                     } elseif ($listing->dbtype == 'listingadmin') {
                         $select = "SELECT * FROM `$dbaff`";
                         if ($p == 'id') {
                             $select .= " WHERE `aID` = '$i'";
                         } elseif ($p == 'email') {
-                            $select .= " WHERE `aEmail` = '$i'";
+                            $select .= " WHERE LOWER(`aEmail`) = '$i'";
                         }
                     }
                 } else {
@@ -285,7 +285,7 @@ if (!class_exists('rabbits')) {
                     if ($p == 'id') {
                         $select .= " WHERE `aID` = '$i'";
                     } elseif ($p == 'email') {
-                        $select .= " WHERE `aEmail` = '$i'";
+                        $select .= " WHERE LOWER(`aEmail`) = '$i'";
                     }
                 }
                 $select .= ' LIMIT 1';
@@ -297,7 +297,7 @@ if (!class_exists('rabbits')) {
                 if ($p == 'id') {
                     $select .= " WHERE `aID` = '$i'";
                 } elseif ($p == 'email') {
-                    $select .= " WHERE `aEmail` = '$i'";
+                    $select .= " WHERE LOWER(`aEmail`) = '$i'";
                 }
             }
             $true = $scorpions->query($select);

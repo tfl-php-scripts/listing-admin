@@ -70,7 +70,7 @@
         /**
          * See if the KIM member exists~
          */
-        $update = "UPDATE `$_ST[kim]` SET `mPassword` = MD5('$password') WHERE TRIM(LOWER(`mEmail`))" .
+        $update = "UPDATE `$_ST[kim]` SET `mPassword` = MD5('$password') WHERE LOWER(`mEmail`)" .
             " = '$email' AND `fNiq` = '$listingid' LIMIT 1";
         $true = $scorpions->query($update);
 

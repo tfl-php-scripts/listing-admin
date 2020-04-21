@@ -459,7 +459,7 @@ $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
     if(isset($_POST['update_date']) && $_POST['update_date'] == 'y') {
 		 $update .= ', `added` = CURDATE()';
 		}
-		$update .= " WHERE `email` = '$id' LIMIT 1";
+		$update .= " WHERE LOWER(`email`) = '$id' LIMIT 1";
 	 } elseif ($listing->dbtype == 'fanbase') {
 	  $v = $visible == 1 ? 'y' : 'n';
 	  $update = "UPDATE `$dbtable` SET `email` = '$email', `name` = '$name'," . 
@@ -612,7 +612,7 @@ $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
 	  $dbflid  = $getItem->dbflid;
 	  if($getItem->dbtype == 'enth') {
 	   $update = "UPDATE `$dbtable` SET `pending` = '0', `added` = CURDATE()" . 
-		 " WHERE `email` = '$pm' LIMIT 1";
+		 " WHERE LOWER(`email`) = '$pm' LIMIT 1";
 		} elseif ($getItem->dbtype == 'fanupdate') {
 		 $update = "UPDATE `$dbtable` SET `apr` = 'y' WHERE `id` = '$pm' LIMIT 1";
     } elseif ($getItem->dbtype == 'listingadmin') {
@@ -677,7 +677,7 @@ $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
 		
 	  $dbtable = $getItem->dbtabl;
 	  if($getItem->dbtype == 'enth') {
-     $select = "DELETE FROM `$dbtable` WHERE `email` = '$pm' LIMIT 1";
+     $select = "DELETE FROM `$dbtable` WHERE LOWER(`email`) = '$pm' LIMIT 1";
     } elseif ($getItem->dbtype == 'fanbase') {
      $select = "DELETE FROM `$dbtable` WHERE `id` = '$pm' LIMIT 1";
     } elseif ($getItem->dbtype == 'listingadmin') {
@@ -723,7 +723,7 @@ $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
 	  $dbflid  = $getItem->dbflid;
 	  if($getItem->dbtype == 'enth') {
 	   $update = "UPDATE `$dbtable` SET `pending` = '0', `added` = CURDATE()" . 
-		 " WHERE `email` = '$pm' LIMIT 1";
+		 " WHERE LOWER(`email`) = '$pm' LIMIT 1";
 		} elseif ($getItem->dbtype == 'listingadmin') {
 		 $update = "UPDATE `$dbtable` SET `mPending` = '0', `mUpdate` = 'n'," . 
      " `mEdit` = NOW() WHERE `mID` = '$pm' LIMIT 1";

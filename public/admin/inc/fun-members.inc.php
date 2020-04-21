@@ -344,21 +344,21 @@ case 'head':
                 if ($listing->dbtype == 'enth') {
                     $select = "SELECT * FROM `$dbtable`";
                     if ($p == 'id' || $p == 'email') {
-                        $select .= " WHERE `email` = '$i'";
+                        $select .= " WHERE LOWER(`email`) = '$i'";
                     }
                 } elseif ($listing->dbtype == 'fanbase') {
                     $select = "SELECT * FROM `$dbtable`";
                     if ($p == 'id') {
                         $select .= " WHERE `id` = '$i'";
                     } elseif ($p == 'email') {
-                        $select .= " WHERE `email` = '$i'";
+                        $select .= " WHERE LOWER(`email`) = '$i'";
                     }
                 } elseif ($listing->dbtype == 'listingadmin') {
                     $select = "SELECT * FROM `$dbtable` WHERE `fNiq` = '$dbflid'";
                     if ($p == 'id') {
                         $select .= " AND `mID` = '$i'";
                     } elseif ($p == 'email') {
-                        $select .= " AND `mEmail` = '$i'";
+                        $select .= " AND LOWER(`mEmail`) = '$i'";
                     }
                 }
             } else {
@@ -366,7 +366,7 @@ case 'head':
                 if ($p == 'id') {
                     $select .= " WHERE `mID` = '$i'";
                 } elseif ($p == 'email') {
-                    $select .= " WHERE `mEmail` = '$i'";
+                    $select .= " WHERE LOWER(`mEmail`) = '$i'";
                 }
             }
             $select .= ' LIMIT 1';
@@ -901,7 +901,7 @@ case 'head':
         {
             global $_ST, $scorpions, $tigers;
 
-            $select = "SELECT * FROM `$_ST[members]` WHERE TRIM(LOWER(`mEmail`)) =" .
+            $select = "SELECT * FROM `$_ST[members]` WHERE LOWER(`mEmail`) =" .
                 " '$email' AND `fNiq` = '$listingId'";
 
             $true = $scorpions->query($select);
@@ -925,7 +925,7 @@ case 'head':
         {
             global $_ST, $scorpions, $tigers;
 
-            $select = "SELECT * FROM `$_ST[members]` WHERE TRIM(LOWER(`mEmail`)) =" .
+            $select = "SELECT * FROM `$_ST[members]` WHERE LOWER(`mEmail`) =" .
                 " '$email' AND `mPassword` = MD5('$password') AND `fNiq` = '$listingId'";
 
             $true = $scorpions->query($select);
@@ -954,7 +954,7 @@ case 'head':
         {
             global $_ST, $scorpions, $tigers;
 
-            $select = "SELECT * FROM `$_ST[members]` WHERE TRIM(LOWER(`mEmail`)) =" .
+            $select = "SELECT * FROM `$_ST[members]` WHERE LOWER(`mEmail`) =" .
                 " '$e' AND `mPassword` = MD5('$p') AND `fNiq` = '$i'";
 
             $true = $scorpions->query($select);

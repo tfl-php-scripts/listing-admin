@@ -321,7 +321,7 @@ if (!class_exists('cheetahs')) {
             if ($b == 'id') {
                 $select .= " WHERE `dID` = '$i'";
             } elseif ($b == 'email') {
-                $select .= " WHERE TRIM(LOWER(`dEmail`)) = '$i'";
+                $select .= " WHERE LOWER(`dEmail`) = '$i'";
             }
             $select .= ' LIMIT 1';
             $true = $scorpions->query($select);

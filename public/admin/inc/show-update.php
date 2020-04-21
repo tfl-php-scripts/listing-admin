@@ -170,7 +170,7 @@
         if (isset($_POST['new_country']) && !empty($new_country) && $_POST['new_country'] !== 'Choose') {
             $update .= " `mCountry` = '$new_country',";
         }
-        $update .= " `mUpdate` = 'y', `mAdd` = CURDATE() WHERE `mEmail` = '$email'" .
+        $update .= " `mUpdate` = 'y', `mAdd` = CURDATE() WHERE LOWER(`mEmail`) = '$email'" .
             " AND `mPassword` = MD5('$password') AND `fNiq` = '$id' LIMIT 1";
         $true = $scorpions->query($update);
 

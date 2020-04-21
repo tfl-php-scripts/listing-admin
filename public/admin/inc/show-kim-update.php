@@ -108,7 +108,7 @@
         if ($visible != 3) {
             $update .= " `mVisible` = '$visible',";
         }
-        $update .= " `mPending` = '1', `mUpdate` = 'y' WHERE TRIM(LOWER(`mEmail`)) = '$email' AND" .
+        $update .= " `mPending` = '1', `mUpdate` = 'y' WHERE LOWER(`mEmail`) = '$email' AND" .
             " `fNiq` = '$listing' LIMIT 1";
         $scorpions->query("SET NAMES 'utf8';");
         $true = $scorpions->query($update);
