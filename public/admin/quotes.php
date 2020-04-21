@@ -31,7 +31,7 @@ if($seahorses->getOption('quotes_opt') == 'y') {
  <p><label><strong>Author:</strong></label> 
  <input name="author" class="input1" type="text"></p>
  <p><strong>Quote</strong><br>
- <textarea name="quote" cols="50" rows="8" style="height: 200px; marign: 0 1% 0 0; width: 99%;"></textarea></p>
+ <textarea name="quote" cols="50" rows="8" style="height: 200px; margin: 0 1% 0 0; width: 99%;"></textarea></p>
 </fieldset>
 
 <fieldset>

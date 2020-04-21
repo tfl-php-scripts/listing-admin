@@ -21,7 +21,7 @@ h1 {
 }
 
 @font-family {
- font-family: "Bebas Neue";
+ font-family: "Bebas Neue", serif;
  src: url('textBebasNeue.otf');
 }
 
@@ -33,7 +33,7 @@ h2 {
 }
 
 h2 span {
- background: url(img/icons/add.png) 0px -10px no-repeat;
+ background: url(img/icons/add.png) 0 -10px no-repeat;
  display: block;
  float: right;
  padding-left: 60px;
@@ -99,10 +99,7 @@ header {
 
 section#sidebar {
  background: url(img/v6Bg.png) top left repeat;
- border-bottom-left-radius: 15px;
- border-bottom-right-radius: 15px;
- border-top-left-radius: 0;
- border-top-right-radius: 0;
+ border-radius: 0 0 15px 15px;
  display: block;
  float: left;
  margin: 0 10px 0 0;
@@ -113,14 +110,8 @@ section#sidebar {
  -khtml-border-radius-bottomright: 15px;
  -khtml-border-radius-topleft: 0;
  -khtml-border-radius-topright: 0;
- -moz-border-radius-bottomleft: 15px;
- -moz-border-radius-bottomright: 15px;
- -moz-border-radius-topleft: 0;
- -moz-border-radius-topright: 0;
- -webkit-border-bottom-left-radius: 15px;
- -webkit-border-bottom-right-radius: 15px;
- -webkit-border-top-left-radius: 0;
- -webkit-border-top-right-radius: 0;
+ -moz-border-radius: 0 0 15px 15px;
+ -webkit-border-radius: 0 0 15px 15px;
 }
 
 section#sidebar section#img {
@@ -203,7 +194,7 @@ section.clearBottom {
  width: 49%;
 }
 
-#bugfixfeeds meu {
+#bugfixfeeds menu {
  display: block;
  margin: 0 0 5px 0;
  padding: 0 0 0 20px;
@@ -620,12 +611,12 @@ select.input4 {
 }
 
 .joined menu li {
- background: url(img/recent.png) 0px -37px no-repeat;
+ background: url(img/recent.png) 0 -37px no-repeat;
  padding: 10px 10px 10px 40px;
 }
 
 .listings menu li {
- background: url(img/recent.png) 0px 7px no-repeat;
+ background: url(img/recent.png) 0 7px no-repeat;
  padding: 10px 10px 10px 50px;
 }
 
