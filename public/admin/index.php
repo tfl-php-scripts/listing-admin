@@ -51,6 +51,11 @@ if (is_file('install.php') || is_file('upgrade.php')) {
         refresh stop. Navigation is simple, and is as the top of the every page. Have
         fun displaying fanlistings! :D</p>
 
+    <h2>Server info (useful for debugging and reporting issues)</h2>
+    <p>When you're asking for help with the script, please share the following information:</p>
+    <p class="la-version">Listing Admin: <?= $laoptions->version ?></p>
+    <p>PHP: <?= PHP_VERSION ?></p>
+
     <h3>Statistics</h3>
 <?php
 $categories = $seahorses->getCount('cat');
