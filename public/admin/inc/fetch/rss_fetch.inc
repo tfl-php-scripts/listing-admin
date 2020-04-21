@@ -279,6 +279,9 @@ function _fetch_remote_file($url, $headers = '')
     }
 
     @$client->fetch($url);
+    if(is_array($client->results)) {
+        $client->results = reset($client->results);
+    }
     return $client;
 
 }

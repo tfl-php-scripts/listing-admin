@@ -69,7 +69,7 @@ class Snoopy
 	// http accept types
 	var $accept			=	"image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, */*";
 	
-	var $results		=	"";					// where the content is put
+	var $results		=	'';					// where the content is put
 		
 	var $error			=	"";					// error messages sent here
 	var	$response_code	=	"";					// response code returned from server
@@ -532,7 +532,7 @@ class Snoopy
 		}
 
 		# $results = fread($fp, $this->maxlength);
-		$results = "";
+		$results = '';
 		while ( $data = fread($fp, $this->maxlength) ) {
 		    $results .= $data;
 		    if (
@@ -574,7 +574,7 @@ class Snoopy
 		// no framed content
 		else
 			$this->results = $results;
-		
+
 		return true;
 	}
 
