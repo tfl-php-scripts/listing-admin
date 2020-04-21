@@ -7,7 +7,11 @@
  * @since      November 19th, 2011
  * @version    2.3alpha
  */
+
 require('rats.inc.php');
+
+die('Upgrade script is turned off for version ' . $laoptions->version);
+
 require('inc/fun.inc.php');
 require('inc/fun-admin.inc.php');
 
