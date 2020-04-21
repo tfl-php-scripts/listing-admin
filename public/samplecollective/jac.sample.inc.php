@@ -11,7 +11,7 @@
 
 if (basename($_SERVER['PHP_SELF']) === 'jac.inc.php') {
     die('<p>ERROR: <em>Nobody ever told [her] it was the wrong way</em>...<br>' .
-        "Sorry m'dear, you cannot access this file directly!</p>\n");
+        "Sorry m'dear, you cannot access this file directly!</p>");
 }
 
 # ----------------------------------------------------------- 
@@ -64,33 +64,11 @@ $_ST['options'] = $prefix . 'options';
 
 # -- STOP EDITING HERE! -------------------------------------
 # -----------------------------------------------------------
-# 
-#  Below this line are sensitive lines that should NOT be 
+#
+#  Below this line are sensitive lines that should NOT be
 #  messed with unless you know exactly what you're doing.
-# 
+#
 # -----------------------------------------------------------
 # -----------------------------------------------------------
 
-/**
- * Get MySQL link!
- */
-$connect = mysqli_connect($database_host, $database_user, $database_pass, $database_name)
-or die('<p><span class="error">Error:</span> You cannot currently connect to MySQL.' .
-    ' Make sure all variables are correct in <samp>rats.inc.php</samp>; if it is a random' .
-    ' error, wait it out and see if it\'ll magically disappear.</p>');
-$database = mysqli_select_db($connect, $database_name)
-or die('<p><span class="error">Error:</span> You cannot currently connect to your database.' .
-    ' Make sure all variables are correct in <samp>rats.inc.php</samp>; if it is a random' .
-    ' error, wait it out and see if it\'ll magically disappear.</p>');
-
-/**
- * Aaaaaa-aaa-and run query~!
- */
-$select = "SELECT `text` FROM `$_ST[options]` WHERE `name` = 'adm_path' LIMIT 1";
-$query = mysqli_query($connect, $select);
-if ($query === false) {
-    exit('<p class="errorButton"><span class="error">ERROR:</span> Unable to select the specified option.' .
-        " Make sure your options table exists.</p>\n");
-}
-$getItem = mysqli_fetch_array($query);
-define('STPATH', $getItem['text']);
+require_once ('db-connection.inc.php');

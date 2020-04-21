@@ -27,6 +27,9 @@
             <li><a href="updates.php">Updates</a></li>
             <li><a href="joined.php">Joined</a></li>
             <li><a href="wishlist.php">Wishlist</a></li>
+            <li><a href="affiliates.php">Affiliates</a></li>
+            <li><a href="kim.php">KIM</a></li>
+            <li><a href="contact.php">Contact</a></li>
         </menu>
     </nav>
 

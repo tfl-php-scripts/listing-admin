@@ -8,7 +8,7 @@
  * @version    1.0 
  */ 
 
-$affa = $scorpions->escape("Hello,
+$affa = $scorpions->escape('Hello,
 
 This is a notice to let you know that you have been added at the {listing} {type}! You can now see your listing listed at the {type}: <{listing_url}>.
 
@@ -16,21 +16,21 @@ If you need to change your information, you can send in another affiliation requ
 
 --
 {owner}
-{listing_title} <{listing_url}>");
-$affc = $scorpions->escape("Hello,
+{listing_title} <{listing_url}>');
+$affc = $scorpions->escape('Hello,
 
 This is a notice to let you know that the {listing} listing has closed. If you could remove your link(s) as soon as possible, it would be greatly appreciated!
 
 --
 {owner}
-{listing} <{listing_url}>");
-$affm = $scorpions->escape("Hello {name},
+{listing} <{listing_url}>');
+$affm = $scorpions->escape('Hello {name},
 
 This is a notice to let you know that the {listing} listing has closed. If you could remove your links as soon as possible, it would be greatly appreciated!
 
 --
 {owner}
-{listing} <{listing_url}>");
+{listing} <{listing_url}>');
 $kima = $scorpions->escape("Hello {name},
 
 This is a notice to let you know that you have been removed from the pending list at {collective_name}'s KIM list and added to the members list. You can now see your information at the list: <{kim_list}>.
@@ -54,7 +54,7 @@ If this has been an error, or the information listed is wrong, feel more than fr
 --
 {owner}
 {collective_name} <{collective_url}>");
-$mema = $scorpions->escape("Hello {name},
+$mema = $scorpions->escape('Hello {name},
 
 This is a notice to let you know that you have been removed from the pending list at the {listing} listing and added to the members list. You can now see your information at the listing: <{listing_url}>.
 
@@ -62,16 +62,16 @@ If you need to change your information, you can do so at the listing. :D
 
 --
 {owner}
-{title} <{listing_url}>");
-$memc = $scorpions->escape("Hello {name},
+{title} <{listing_url}>');
+$memc = $scorpions->escape('Hello {name},
 
 This is a notice to let you know that the {listing} listing has closed. If you could remove your link(s) (if applicable) as soon as possible, it would be greatly appreciated!
 
 --
 {owner}
-{listing} <{listing_url}>");
-$memd = "";
-$meml = $scorpions->escape("Hello {name},
+{listing} <{listing_url}>');
+$memd = '';
+$meml = $scorpions->escape('Hello {name},
 
 Someone (hopefully you) asked for a renewal of their password at the {listing} listing. Below is an automated alphanumerical password; I strongly recommend you change your password by way of update form at the listing:
 
@@ -81,15 +81,15 @@ If this is in error, simply send in an update form updating your password. If th
 
 --
 {owner}
-{collective_name} <{collective_url}>");
-$memm = $scorpions->escape("Hello {name},
+{collective_name} <{collective_url}>');
+$memm = $scorpions->escape('Hello {name},
 
 This is a notice to let you know that the {listing} listing has closed. If you could remove your links (if applicable) as soon as possible, it would be greatly appreciated!
 
 --
 {owner}
-{listing} <{listing_url}>");
-$memu = $scorpions->escape("Hello {name},
+{listing} <{listing_url}>');
+$memu = $scorpions->escape('Hello {name},
 
 This is a notice to let you know that you have been removed from the pending list at the {listing} listing and your information has been updated at your request. Your information is below: 
 
@@ -102,5 +102,4 @@ If this has been an error, or the information listed is wrong, feel more than fr
 
 --
 {owner}
-{listing_title} <{listing_url}>");
-?>
+{listing_title} <{listing_url}>');

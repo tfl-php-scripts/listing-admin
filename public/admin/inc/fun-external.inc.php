@@ -12,7 +12,7 @@
  * @version          Robotess Fork
  */
 
-if (class_exists('octopus') == false) {
+if (!class_exists('octopus')) {
     class octopus
     {
 
@@ -29,7 +29,7 @@ if (class_exists('octopus') == false) {
         public function writeError($t, $u, $b, $i)
         {
             global $seahorses;
-            return $seahorses->writeMessage(0, $t, $u, $b, $i);
+            $seahorses->writeMessage(0, $t, $u, $b, $i);
         }
 
         /**
@@ -103,7 +103,7 @@ if (class_exists('octopus') == false) {
          */
         public function frontEndLink($p, $i)
         {
-            global $laoptions, $my_updates, $qwebs;
+            global $seahorses, $my_updates, $qwebs;
 
             $myw = strpos($qwebs, '/') !== false ? $qwebs : $qwebs . '/';
             $myw2 = strpos($my_updates, 'index.php') !== false ? $myw : $my_updates;
@@ -130,7 +130,7 @@ if (class_exists('octopus') == false) {
          */
         public function lineBreak($c)
         {
-            $c = $c . "\n";
+            $c .= "\n";
             $c = str_replace(array("\r\n", "\r"), "\n", $c);
             $c = preg_replace('|(?<!<br>)\s*\n\n|', "<br><br>\n", $c);
             return $c;
@@ -178,7 +178,7 @@ if (class_exists('octopus') == false) {
          */
         public function alternate($h, $c = 'html', $e = 0, $d = '')
         {
-            $k = $d != '' && preg_match("/([A-Za-z0-9-_]+)/i", $d) ? " id=\"$d\"" : '';
+            $k = $d != '' && preg_match('/([A-Za-z0-9-_]+)/i', $d) ? " id=\"$d\"" : '';
             $s = '';
             if ($c == 'html' || $c == 'xhtml') {
                 if ($h == 'menu') {
@@ -189,12 +189,10 @@ if (class_exists('octopus') == false) {
             } /**
              * HTML5 markup
              */
-            else {
-                if ($h == 'menu') {
-                    $s = $e == 0 ? "<menu$k>\n" : "</menu>\n";
-                } elseif ($h == 'table') {
-                    $s = $e == 0 ? "<table$k>\n" : "</table>\n";
-                }
+            else if ($h == 'menu') {
+                $s = $e == 0 ? "<menu$k>\n" : "</menu>\n";
+            } elseif ($h == 'table') {
+                $s = $e == 0 ? "<table$k>\n" : "</table>\n";
             }
             return $s;
         }
@@ -283,6 +281,8 @@ if (class_exists('octopus') == false) {
          */
         public function returnURL($l, $text = 'via form')
         {
+            global $wolves;
+
             $g = $wolves->getListings($l, 'object');
             $f = $g->url;
             $s = "<a href=\"$f\">$text</a>";
@@ -312,8 +312,8 @@ if (class_exists('octopus') == false) {
                 }
             }
 
-            $string = "<input name=\"" . $this->cheatCaptcha . "\" type=\"hidden\"" .
-                " value=\"" . $p . "\"" . $mark . ">\n";
+            $string = '<input name="' . $this->cheatCaptcha . '" type="hidden"' .
+                ' value="' . $p . '"' . $mark . ">\n";
             return $string;
         }
 
@@ -340,10 +340,10 @@ if (class_exists('octopus') == false) {
                 }
             }
 
-            $string = "<input name=\"" . $this->cheatAnti . "\" type=\"hidden\"" .
-                " value=\"" . $p . "\"" . $mark . ">\n";
-            $string .= "<input name=\"" . $this->cheatSpam . "\" type=\"hidden\"" .
-                " value=\"" . $r . "\"" . $mark . ">\n";
+            $string = '<input name="' . $this->cheatAnti . '" type="hidden"' .
+                ' value="' . $p . '"' . $mark . ">\n";
+            $string .= '<input name="' . $this->cheatSpam . '" type="hidden"' .
+                ' value="' . $r . '"' . $mark . ">\n";
             return $string;
         }
 
@@ -379,4 +379,3 @@ if (class_exists('octopus') == false) {
 }
 
 $octopus = new octopus();
-?>

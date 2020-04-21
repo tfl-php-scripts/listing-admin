@@ -1,358 +1,354 @@
 <?php
-/** 
- * @copyright  2007 
- * @license    GPL Version 3; BSD Modified 
- * @author     Tess <theirrenegadexxx@gmail.com> 
- * @file       <pro.inc.php> 
- * @since      September 2nd, 2011 
- * @version    1.0   
- */ 
+/**
+ * @project          Listing Admin
+ * @copyright        2007
+ * @license          GPL Version 3; BSD Modified
+ * @author           Tess <theirrenegadexxx@gmail.com>
+ * @contributor      Ekaterina <scripts@robotess.net> http://scripts.robotess.net
+ * @file             <pro.inc.php>
+ * @version          Robotess Fork
+ */
+
 ob_start();
 session_start();
-header("Cache-Control: no-cache, must-revalidate");
+header('Cache-Control: no-cache, must-revalidate');
 
-/** 
- * These files need to be included, as they include the main 
- * functions 8D 
- */ 
-require("rats.inc.php");
-require("inc/fun.inc.php");
-require("inc/fun-addons.inc.php");
-require("inc/fun-admin.inc.php");
-require("inc/fun-misc.inc.php");
-require("inc/fun-utility.inc.php");
-require("inc/class-antispam.inc.php");
+/**
+ * These files need to be included, as they include the main
+ * functions 8D
+ */
+require('rats.inc.php');
+require_once('inc/Robotess/StringUtils.php');
+require('inc/fun.inc.php');
+require('inc/fun-addons.inc.php');
+require('inc/fun-admin.inc.php');
+require('inc/fun-misc.inc.php');
+require('inc/fun-utility.inc.php');
+require('inc/class-antispam.inc.php');
 
-/**  
- * Include necessary files that are *not* mods! 
- */ 
-require("inc/fun-affiliates.inc.php");
-require("inc/fun-categories.inc.php");
-require("inc/fun-emails.inc.php");
-require("inc/fun-external.inc.php");
-require("inc/fun-joined.inc.php");
-require("inc/fun-listings.inc.php");
-require("inc/fun-members.inc.php");
-require("inc/fun-wishlist.inc.php");
+/**
+ * Include necessary files that are *not* mods!
+ */
+require('inc/fun-affiliates.inc.php');
+require('inc/fun-categories.inc.php');
+require('inc/fun-emails.inc.php');
+require('inc/fun-external.inc.php');
+require('inc/fun-joined.inc.php');
+require('inc/fun-listings.inc.php');
+require('inc/fun-members.inc.php');
+require('inc/fun-wishlist.inc.php');
 
-/** 
- * Include classes! 
- */ 
-if($seahorses->getOption('kim_opt') == 'y') {
- require("inc/class-kimadmin.inc.php");
+/**
+ * Include classes!
+ */
+if ($seahorses->getOption('kim_opt') == 'y') {
+    require('inc/class-kimadmin.inc.php');
 }
 
-if($seahorses->getOption('updates_opt') == 'y') {
- require("inc/class-crosspost.inc.php");
- require("inc/class-ixr.inc.php");
- require("inc/fun-updates.inc.php");
+if ($seahorses->getOption('updates_opt') == 'y') {
+    require('inc/class-crosspost.inc.php');
+    require('inc/class-ixr.inc.php');
+    require('inc/fun-updates.inc.php');
 }
 
-/** 
- * Logout! 
- */ 
-if(isset($_GET['g']) && $_GET['g'] == 'logout') {
- setcookie('lalog', '');
- $baseu = str_replace('inc/', '', $seahorses->getOption('adm_http'));
- header("Location: $baseu");
+/**
+ * Logout!
+ */
+if (isset($_GET['g']) && $_GET['g'] == 'logout') {
+    setcookie('lalog', '');
+    $baseu = str_replace('inc/', '', $seahorses->getOption('adm_http'));
+    header("Location: $baseu");
 }
 
-/** 
- * Get any variables we need~ 
- */ 
+/**
+ * Get any variables we need~
+ */
 $loginForm = true;
-$message   = array();
-$userObj   = (object) array(
- 'userHash' => substr(md5($seahorses->getOption('user_salthash')), 0, 5),
- 'userInfo' => "|{$_SERVER['REMOTE_ADDR']}|{$_SERVER['HTTP_USER_AGENT']}|",
- 'userPass' => '',
- 'userUser' => '',
- 'userText' => '',
- 'userURL' => 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['PHP_SELF']
+$message = array();
+$userObj = (object)array(
+    'userHash' => substr(md5($seahorses->getOption('user_salthash')), 0, 5),
+    'userInfo' => "|{$_SERVER['REMOTE_ADDR']}|{$_SERVER['HTTP_USER_AGENT']}|",
+    'userPass' => '',
+    'userUser' => '',
+    'userText' => '',
+    'userURL' => 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['PHP_SELF']
 );
 
-/**  
- * Get "Forgot Password" form! 
- */ 
-if(isset($_GET['forgot'])) {
- $loginForm = false;
+/**
+ * Get "Forgot Password" form!
+ */
+if (isset($_GET['forgot'])) {
+    $loginForm = false;
 
- if(isset($_GET['h']) && preg_match("/([A-Za-z0-9]+)/i", $_GET['h'])) {
-  if($seahorses->getOption('user_passhinthash') == trim($_GET['h'])) {
-   $password = substr(sha1(date("YmdHis")), 0, 8) . substr(sha1(mt_rand(99999, 999999)), 0, 8);
-	 $update = "UPDATE `$_ST[options]` SET `text` = MD5('$password') WHERE `name` =" . 
-   " 'user_password' LIMIT 1";
-   $clarklois->query("SET NAMES 'utf8';");
-	 $clarklois->query($update);
-	
-   $message = "Hello " . $seahorses->getOption('my_name') . ",\n\n";
-   $message .= "You have received this email because you (or someone else)" . 
-	 " filled out the \"Reset Password\" form (with the password hint) at your collective" . 
-	 " admin panel, and reset the link that was sent to your e-mail address. If" . 
-   " this is in error, please make sure to change your password via phpMyAdmin" . 
-   " as soon as you are able.\n\n";
-   $message .= "Your information is below; it is highly recommended you change" . 
-   " your password as soon as you are able. :D\n\n";
+    if (isset($_GET['h']) && preg_match('/([A-Za-z0-9]+)/i', $_GET['h'])) {
+        if ($seahorses->getOption('user_passhinthash') == trim($_GET['h'])) {
+            $password = substr(sha1(date('YmdHis')), 0, 8) . substr(sha1(mt_rand(99999, 999999)), 0, 8);
+            $update = "UPDATE `$_ST[options]` SET `text` = MD5('$password') WHERE `name` =" .
+                " 'user_password' LIMIT 1";
+            $scorpions->query("SET NAMES 'utf8';");
+            $scorpions->query($update);
 
-   $message .= "Password: $password\n\n";
+            $message = 'Hello ' . $seahorses->getOption('my_name') . ",\n\n";
+            $message .= 'You have received this email because you (or someone else)' .
+                ' filled out the "Reset Password" form (with the password hint) at your collective' .
+                ' admin panel, and reset the link that was sent to your e-mail address. If' .
+                ' this is in error, please make sure to change your password via phpMyAdmin' .
+                " as soon as you are able.\n\n";
+            $message .= 'Your information is below; it is highly recommended you change' .
+                " your password as soon as you are able. :D\n\n";
 
-   $message .= "--\n" . $seahorses->getOption('my_name') . 
-	 "\n" . $seahorses->getOption('collective_name') . 
-	 " <" . $seahorses->getOption('my_website') . ">";
+            $message .= "Password: $password\n\n";
 
-   $headers = "From: Listing Admin <" . $seahorses->getOption('my_email') . ">\n";
-   $headers .= "Reply-To: <" . $seahorses->getOption('my_email') . ">";
+            $message .= "--\n" . $seahorses->getOption('my_name') .
+                "\n" . $seahorses->getOption('collective_name') .
+                ' <' . $seahorses->getOption('my_website') . '>';
 
-   $mail = @mail($seahorses->getOption('my_email'), "Reset Password", $message, $headers);
-	
-   if($mail) {
-	  echo "<p><span class=\"success\">Success!</span> Your password was reset and" . 
-    " sent to your e-mail address!</p>\n";
-   } else {
-	  echo "<p><span class=\"error\">Error</span> Your password was reset, but the" . 
-    " the script was unable to send you your password. I would recommend trying" . 
-    " again, and if that fails, you update your password via phpMyAdmin or your" . 
-    " MySQL manager.</p>\n";
-	 }
-  } else {
-	 $tigers->displayError('Script Error', 'The hash in the URL you provided' . 
-   ' does not match the one on file.', false);
-  } 
- }
+            $headers = 'From: Listing Admin <' . $seahorses->getOption('my_email') . ">\n";
+            $headers .= 'Reply-To: <' . $seahorses->getOption('my_email') . '>';
 
- else {
-?>
-<!DOCTYPE html>
+            $mail = @mail($seahorses->getOption('my_email'), 'Reset Password', $message, $headers);
 
-<html lang="en">
+            if ($mail) {
+                echo '<p><span class="success">Success!</span> Your password was reset and' .
+                    " sent to your e-mail address!</p>\n";
+            } else {
+                echo '<p><span class="error">Error</span> Your password was reset, but the' .
+                    ' the script was unable to send you your password. I would recommend trying' .
+                    ' again, and if that fails, you update your password via phpMyAdmin or your' .
+                    " MySQL manager.</p>\n";
+            }
+        } else {
+            $tigers->displayError('Script Error', 'The hash in the URL you provided' .
+                ' does not match the one on file.', false);
+        }
+    } else {
+        ?>
+        <!DOCTYPE html>
 
-<head>
- <meta charset="utf-8">
- <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
- <title> <?php  echo $laoptions->version; ?> &#8212; Log In &#187; Reset Password </title>
- <link href="style.css" rel="stylesheet" type="text/css">
-</head>
+        <html lang="en">
 
-<body>
+        <head>
+            <meta charset="utf-8">
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+            <title> <?php echo $laoptions->version; ?> &#8212; Log In &#187; Reset Password </title>
+            <link href="style.css" rel="stylesheet" type="text/css">
+        </head>
 
-<div id="login">
-<div id="logo">
- <h2>Reset Password</h2>
- <p>Fill in the password hint you provided in your installation of Listing Admin.</p>
-<?php 
-if(isset($_POST['action']) && $_POST['action'] == "Reset Password") {
- $loginForm = false;
- $passwordhint = $tigers->cleanMys($_POST['passwordhint']);
- 
- /**  
-  * Check for SPAM bots in the form, respectively 
-  */
- if(
-  preg_match($loginInfo->logBots, $_SERVER['HTTP_USER_AGENT']) || 
-  empty($_SERVER['HTTP_USER_AGENT'])
- ) {
-  $tigers->displayError('SPAM Error', 'SPAM bots are not allowed.', false);
- }
- 
- /** 
-  * Check if any bad words have been inserted :s 
-  */ 
- foreach($loginInfo->logNots as $b) {
-  if(strpos($_POST, $b) !== false) {
-	 $tigers->displayError('SPAM Error', 'SPAM language is not allowed.', false);
-  }
- }
+        <body>
 
- # -- Now check ze password hint! ----------------------------
- if($seahorses->getOption('user_passhint') === $passwordhint) {
-  $hash = substr(sha1(date("YmdHis")), 0, 12) . substr(sha1(mt_rand(99999, 999999)), 0, 12);
-	$update = "UPDATE `$_ST[options]` SET `text` = '$hash' WHERE `name` =" . 
-  " 'user_passhinthash' LIMIT 1";
-  $clarklois->query("SET NAMES 'utf8';");
-	$clarklois->query($update);
-	
-  $message = "Hello " . $seahorses->getOption('my_name') . ",\n\n";
-  $message .= "You have received this email because you (or someone else) " . 
-	"filled out the \"Reset Password\" form (with the password hint) at your collective " . 
-	"admin panel. If this is in error, please make sure to change your password via " .
-	"phpMyAdmin as soon as you are able.\n\n";
-  $message .= "The link to reset your password is below; click the link (or copy" . 
-  " and paste it into the address bar of your browser) to reset your password.\n\n";
+        <div id="login">
+            <div id="logo">
+                <h2>Reset Password</h2>
+                <p>Fill in the password hint you provided in your installation of Listing Admin.</p>
+                <?php
+                if (isset($_POST['action']) && $_POST['action'] == 'Reset Password') {
+                    $loginForm = false;
+                    $passwordhint = $tigers->cleanMys($_POST['passwordhint']);
 
-  $message .= "Link: <" . str_replace('inc/', '', $seahorses->getOption('admin_http')) . 
-  "?forgot&#38;h=" . $hash . ">\n\n";
+                    /**
+                     * Check for SPAM bots in the form, respectively
+                     */
+                    if (
+                        preg_match($loginInfo->logBots, $_SERVER['HTTP_USER_AGENT']) ||
+                        empty($_SERVER['HTTP_USER_AGENT'])
+                    ) {
+                        $tigers->displayError('SPAM Error', 'SPAM bots are not allowed.', false);
+                    }
 
-  $message .= "--\n" . $seahorses->getOption('my_name') . 
-	"\n" . $seahorses->getOption('collective_name') . 
-	" <" . $seahorses->getOption('my_website') . ">";
+                    /**
+                     * Check if any bad words have been inserted :s
+                     */
+                    foreach ($loginInfo->logNots as $b) {
+                        if (array_key_exists($b, $_POST)) {
+                            $tigers->displayError('SPAM Error', 'SPAM language is not allowed.', false);
+                        }
+                    }
 
-  $headers = "From: Listing Admin <" . $seahorses->getOption('my_email') . ">\n";
-  $headers .= "Reply-To: <" . $seahorses->getOption('my_email') . ">";
+                    # -- Now check ze password hint! ----------------------------
+                    if ($seahorses->getOption('user_passhint') === $passwordhint) {
+                        $hash = substr(sha1(date('YmdHis')), 0, 12) . substr(sha1(mt_rand(99999, 999999)), 0, 12);
+                        $update = "UPDATE `$_ST[options]` SET `text` = '$hash' WHERE `name` =" .
+                            " 'user_passhinthash' LIMIT 1";
+                        $scorpions->query("SET NAMES 'utf8';");
+                        $scorpions->query($update);
 
-  $mail = @mail($seahorses->getOption('my_email'), "Reset Password", $message, $headers);
-	
-  if($mail) {
-	 echo "<p><span class=\"success\">Success!</span> Your lost password form was" . 
-   " processed, and a link was sent to your e-mail address to reset your password." . 
-	 " From there, visit the link in the e-mail sent to you, where your password" . 
-   " will be reset and e-mailed to you.</p>\n";
-  } else {
-	 echo "<p>Your form was processed, however, the script was unable to send you" . 
-   " the link to reset your password. I would recommend trying again, and if" . 
-   " that fails, you update your password via phpMyAdmin or your MySQL manager.</p>\n";
-	}
- } else {
-  $userObj->userText = "Password Hint: $passwordhint";
-  if(isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
-   $userObj->userInfo .= "{$_SERVER['HTTP_REFERER']}|";
-	}
-  $seahorses->writeError(0, 'Reset Password', $userObj->userURL, $userObj->userText, $userObj->userInfo);
-	$tigers->displayError('Form Error', 'The password hint you entered does' . 
-  ' not match the on file.', false);
- }
-}
-?>
-</div>
+                        $message = 'Hello ' . $seahorses->getOption('my_name') . ",\n\n";
+                        $message .= 'You have received this email because you (or someone else) ' .
+                            'filled out the "Reset Password" form (with the password hint) at your collective ' .
+                            'admin panel. If this is in error, please make sure to change your password via ' .
+                            "phpMyAdmin as soon as you are able.\n\n";
+                        $message .= 'The link to reset your password is below; click the link (or copy' .
+                            " and paste it into the address bar of your browser) to reset your password.\n\n";
 
-<div id="form">
-<form action="<?php echo str_replace('inc/', '', $laoptions->getOption('adm_http')); ?>?forgot" method="post">
-<fieldset>
- <legend>Reset Password</legend>
- <p><label><strong>Password Hint:</strong></label> 
- <input name="passwordhint" class="input1" type="password"></p>
- <p class="tc"><input name="action" class="input2" type="submit" value="Reset Password"></p>
-</fieldset>
-</form>
-</div>
+                        $message .= 'Link: <' . str_replace('inc/', '', $seahorses->getOption('admin_http')) .
+                            '?forgot&#38;h=' . $hash . ">\n\n";
 
-<div id="clear-login"></div>
-</div>
+                        $message .= "--\n" . $seahorses->getOption('my_name') .
+                            "\n" . $seahorses->getOption('collective_name') .
+                            ' <' . $seahorses->getOption('my_website') . '>';
 
-</body>
-</html>
-<?php 
- }
+                        $headers = 'From: Listing Admin <' . $seahorses->getOption('my_email') . ">\n";
+                        $headers .= 'Reply-To: <' . $seahorses->getOption('my_email') . '>';
 
- exit();
-}
+                        $mail = @mail($seahorses->getOption('my_email'), 'Reset Password', $message, $headers);
 
-elseif (isset($_POST['action']) && $_POST['action'] == 'Log In') {
- if(preg_match($loginInfo->logBots, $_SERVER['HTTP_USER_AGENT']) || empty($_SERVER['HTTP_USER_AGENT'])) {
-  $message['error'] = '<p class="error tc">Known SPAM bots aren\'t allowed.</p>';
- }
- $userObj->userUser = trim(strip_tags($_POST['username']));
- $userObj->userPass = md5(trim(strip_tags($_POST['password'])));
- $userObj->userText = "Username: "  . $userObj->userUser . 
- "\nPassword: " . $scorpions->escape($_POST['password']);
+                        if ($mail) {
+                            echo '<p><span class="success">Success!</span> Your lost password form was' .
+                                ' processed, and a link was sent to your e-mail address to reset your password.' .
+                                ' From there, visit the link in the e-mail sent to you, where your password' .
+                                " will be reset and e-mailed to you.</p>\n";
+                        } else {
+                            echo '<p>Your form was processed, however, the script was unable to send you' .
+                                ' the link to reset your password. I would recommend trying again, and if' .
+                                " that fails, you update your password via phpMyAdmin or your MySQL manager.</p>\n";
+                        }
+                    } else {
+                        $userObj->userText = "Password Hint: $passwordhint";
+                        if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
+                            $userObj->userInfo .= "{$_SERVER['HTTP_REFERER']}|";
+                        }
+                        $octopus->writeError('Reset Password', $userObj->userURL, $userObj->userText, $userObj->userInfo);
+                        $tigers->displayError('Form Error', 'The password hint you entered does' .
+                            ' not match the on file.', false);
+                    }
+                }
+                ?>
+            </div>
 
- $checker = $leopards->checkUser($userObj->userUser, $userObj->userPass);
- if($checker == 1) {
-  $seahorses->writeMessage(0, 'Failed User Log-In', $userObj->userURL, $userObj->userText, 
-  $userObj->userInfo);
-  $message['error'] = "<p class=\"error tc\">ERROR: The username/password" . 
-  " combination you entered does not match the one on file. Try again, m'love!</p>";
- } 
+            <div id="form">
+                <form action="<?php echo str_replace('inc/', '', $laoptions->getOption('adm_http')); ?>?forgot"
+                      method="post">
+                    <fieldset>
+                        <legend>Reset Password</legend>
+                        <p><label><strong>Password Hint:</strong></label>
+                            <input name="passwordhint" class="input1" type="password"></p>
+                        <p class="tc"><input name="action" class="input2" type="submit" value="Reset Password"></p>
+                    </fieldset>
+                </form>
+            </div>
 
- elseif ($checker == 0) {
-  $loginForm = false;
-  $userNm = $tigers->cleanMys($userObj->userUser);
-  $userPs = $tigers->cleanMys($userObj->userPass);
- 
-  /** 
-   * Diagnostics! Update user login, insert into logs and make sure the 
-   * user isn't locked out! 
-   */ 
-  $leopards->logUser($userNm, $userObj->userUser, $userObj->userInfo);
-  $seahorses->writeMessage(1, 'User Log-In Success', $userObj->userURL, 
-  $userObj->userText, $userObj->userInfo);
+            <div id="clear-login"></div>
+        </div>
 
-  if(isset($_POST['rememberMe']) && $_POST['rememberMe'] == 'y') {
-	 setcookie(
-    'lalog', 
-    sha1($laoptions->saltPass . $userNm . $userPs . $userObj->userHash), 
-    time()+60*60*24*30
-   );
-  } else {
-	 setcookie(
-    'lalog', 
-    sha1($laoptions->saltPass . $userNm . $userPs . $userObj->userHash)
-   );
-  }
-  header("Location: index.php");
-  exit();
- } 
+        </body>
+        </html>
+        <?php
+    }
+
+    exit();
 }
 
-else {
- if(isset($_COOKIE['lalog']) && !empty($_COOKIE['lalog'])) {
-  $userName = $seahorses->getOption('user_username');
-	$userPass = $seahorses->getOption('user_password');
-   
-	$loginForm = false;
-  if($_COOKIE['lalog'] === sha1($laoptions->saltPass . $userName . $userPass . $userObj->userHash)) {
-	 $loginForm = false;
-	} else {
-	 $loginForm = true;
-	}
- } else {
-  $loginForm = true;
- }
+if (isset($_POST['action']) && $_POST['action'] == 'Log In') {
+    if (preg_match($loginInfo->logBots, $_SERVER['HTTP_USER_AGENT']) || empty($_SERVER['HTTP_USER_AGENT'])) {
+        $message['error'] = '<p class="error tc">Known SPAM bots aren\'t allowed.</p>';
+    }
+    $userObj->userUser = trim(strip_tags($_POST['username']));
+    $userObj->userPass = md5(trim(strip_tags($_POST['password'])));
+    $userObj->userText = 'Username: ' . $userObj->userUser .
+        "\nPassword: " . $scorpions->escape($_POST['password']);
+
+    $checker = $leopards->checkUser($userObj->userUser, $userObj->userPass);
+    if ($checker == 1) {
+        $seahorses->writeMessage(0, 'Failed User Log-In', $userObj->userURL, $userObj->userText,
+            $userObj->userInfo);
+        $message['error'] = '<p class="error tc">ERROR: The username/password' .
+            " combination you entered does not match the one on file. Try again, m'love!</p>";
+    } elseif ($checker == 0) {
+        $loginForm = false;
+        $userNm = $tigers->cleanMys($userObj->userUser);
+        $userPs = $tigers->cleanMys($userObj->userPass);
+
+        /**
+         * Diagnostics! Update user login, insert into logs and make sure the
+         * user isn't locked out!
+         */
+        $leopards->logUser($userNm, $userObj->userUser, $userObj->userInfo);
+        $seahorses->writeMessage(1, 'User Log-In Success', $userObj->userURL,
+            $userObj->userText, $userObj->userInfo);
+
+        if (isset($_POST['rememberMe']) && $_POST['rememberMe'] == 'y') {
+            setcookie(
+                'lalog',
+                sha1($laoptions->saltPass . $userNm . $userPs . $userObj->userHash),
+                time() + 60 * 60 * 24 * 30
+            );
+        } else {
+            setcookie(
+                'lalog',
+                sha1($laoptions->saltPass . $userNm . $userPs . $userObj->userHash)
+            );
+        }
+        header('Location: index.php');
+        exit();
+    }
+} else if (isset($_COOKIE['lalog']) && !empty($_COOKIE['lalog'])) {
+    $userName = $seahorses->getOption('user_username');
+    $userPass = $seahorses->getOption('user_password');
+
+    $loginForm = false;
+    if ($_COOKIE['lalog'] === sha1($laoptions->saltPass . $userName . $userPass . $userObj->userHash)) {
+        $loginForm = false;
+    } else {
+        $loginForm = true;
+    }
+} else {
+    $loginForm = true;
 }
 
-if($loginForm) {
-?>
-<!DOCTYPE html>
+if ($loginForm) {
+    ?>
+    <!DOCTYPE html>
 
-<html lang="en">
+    <html lang="en">
 
-<head>
- <meta charset="utf-8">
- <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
- <title> <?php  echo $_ST['version']; ?> &#8212; Log In </title>
- <link href="style.css" rel="stylesheet" type="text/css">
-</head>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title> <?php echo $_ST['version']; ?> &#8212; Log In </title>
+        <link href="style.css" rel="stylesheet" type="text/css">
+    </head>
 
-<body>
+    <body>
 
-<div id="login">
+    <div id="login">
 
-<section id="login-logo">
-<h2>Enter Your Password</h2>
-<p>Fill in the username and password you filled out prior to installation.</p>
-<?php
-if(isset($message['error']) && count($message) > 0) {
- echo "\n<h3>Errors</h3>\n";
- echo "{$message['error']}\n";
- echo "<p><a href=\"" . str_replace('inc/', '', $seahorses->getOption('adm_http')) . 
- "?forgot\">&#171; Forgot Password?</a></p>\n";
+        <section id="login-logo">
+            <h2>Enter Your Password</h2>
+            <p>Fill in the username and password you filled out prior to installation.</p>
+            <?php
+            if (isset($message['error']) && count($message) > 0) {
+                echo "\n<h3>Errors</h3>\n";
+                echo "{$message['error']}\n";
+                echo '<p><a href="' . str_replace('inc/', '', $seahorses->getOption('adm_http')) .
+                    "?forgot\">&#171; Forgot Password?</a></p>\n";
+            }
+            ?>
+        </section>
+
+        <section id="login-form">
+            <form action="<?php echo basename($_SERVER['PHP_SELF']); ?>" method="post">
+                <fieldset>
+                    <legend>Login</legend>
+                    <p><label><strong>Username:</strong></label>
+                        <input name="username" class="input1" type="text"></p>
+                    <p><label><strong>Password:</strong></label>
+                        <input name="password" class="input1" type="password"></p>
+                    <p class="tc">
+                        Remember? <input name="rememberMe" checked="checked" class="input3" type="checkbox"
+                                         value="y"><br>
+                        <input name="action" class="input2" type="submit" value="Log In">
+                    </p>
+                </fieldset>
+            </form>
+        </section>
+
+        <section id="clear"></section>
+
+    </div>
+
+    </body>
+
+    </html>
+    <?php
+    exit();
 }
-?>
-</section>
-
-<section id="login-form">
-<form action="<?php echo basename($_SERVER['PHP_SELF']); ?>" method="post">
-<fieldset>
- <legend>Login</legend>
- <p><label><strong>Username:</strong></label> 
- <input name="username" class="input1" type="text"></p>
- <p><label><strong>Password:</strong></label> 
- <input name="password" class="input1" type="password"></p>
- <p class="tc">
-  Remember? <input name="rememberMe" checked="checked" class="input3" type="checkbox" value="y"><br>
-  <input name="action" class="input2" type="submit" value="Log In">
- </p>
-</fieldset>
-</form>
-</section>
-
-<section id="clear"></section>
-
-</div>
-
-</body>
-
-</html>
-<?php 
- exit();
-}
-?>

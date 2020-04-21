@@ -71,26 +71,4 @@ $_ST['options'] = $prefix . 'options';
 # -----------------------------------------------------------
 # -----------------------------------------------------------
 
-/**
- * Get MySQL link!
- */
-$connect = mysqli_connect($database_host, $database_user, $database_pass, $database_name)
-or die('<p><span class="error">Error:</span> You cannot currently connect to MySQL.' .
-    ' Make sure all variables are correct in <samp>rats.inc.php</samp>; if it is a random' .
-    ' error, wait it out and see if it\'ll magically disappear.</p>');
-$database = mysqli_select_db($connect, $database_name)
-or die('<p><span class="error">Error:</span> You cannot currently connect to your database.' .
-    ' Make sure all variables are correct in <samp>rats.inc.php</samp>; if it is a random' .
-    ' error, wait it out and see if it\'ll magically disappear.</p>');
-
-/**
- * Aaaaaa-aaa-and run query~!
- */
-$select = "SELECT `text` FROM `$_ST[options]` WHERE `name` = 'adm_path' LIMIT 1";
-$query = mysqli_query($connect, $select);
-if ($query === false) {
-    exit('<p class="errorButton"><span class="error">ERROR:</span> Unable to select the specified option.' .
-        " Make sure your options table exists.</p>\n");
-}
-$getItem = mysqli_fetch_array($query);
-define('STPATH', $getItem['text']);
+require_once ('db-connection.inc.php');

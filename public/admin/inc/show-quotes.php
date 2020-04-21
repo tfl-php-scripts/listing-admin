@@ -7,14 +7,14 @@
  * @since      September 2nd, 2010 
  * @version    1.0   
  */ 
-require("b.inc.php");
-require(MAINDIR . "rats.inc.php");
-require_once("fun.inc.php");
-require_once("fun-addons.inc.php");
-require_once("fun-external.inc.php");
-require_once("fun-listings.inc.php");
-require_once("fun-members.inc.php");
-require_once("fun-misc.inc.php");
+require('b.inc.php');
+require(MAINDIR . 'rats.inc.php');
+require_once('fun.inc.php');
+require_once('fun-addons.inc.php');
+require_once('fun-external.inc.php');
+require_once('fun-listings.inc.php');
+require_once('fun-members.inc.php');
+require_once('fun-misc.inc.php');
 
 /** 
  * Get variables and options! 
@@ -57,4 +57,3 @@ if($count > 0) {
 else {
  echo '<p class="tc">No quotes appear to exist under that listing.</p>';
 }
-?>

@@ -7,13 +7,17 @@
  * @since      September 2nd, 2010 
  * @version    1.0  
  */ 
-$getTitle = "Quotes";
-require("pro.inc.php");
-require("vars.inc.php");
-require("header.php");
+$getTitle = 'Quotes';
+require('pro.inc.php');
+require('vars.inc.php');
+require('header.php');
 
-$sp = !isset($_GET['g']) ? "<span><a href=\"quotes.php?g=new\">Add Quote</a>" . 
- "</span>" : '';
+?>
+    <p class="scriptButton"><span class="script"><b>Notice:</b></span> This extension is simply legacy hence is not supported by current version of the LA script. I would recommend turning it off.
+    </p>
+   <?php
+$sp = !isset($_GET['g']) ? '<span><a href="quotes.php?g=new">Add Quote</a>' .
+ '</span>' : '';
 echo "<h2>{$getTitle}$sp</h2>\n";
 
 if(!isset($_GET['p']) || empty($_GET['p']) || !is_numeric($_GET['p'])) {
@@ -31,7 +35,7 @@ if($seahorses->getOption('quotes_opt') == 'y') {
  <p><label><strong>Author:</strong></label> 
  <input name="author" class="input1" type="text"></p>
  <p><strong>Quote</strong><br>
- <textarea name="quote" cols="50" rows="8" style="height: 200px; marign: 0 1% 0 0; width: 99%;"></textarea></p>
+ <textarea name="quote" cols="50" rows="8" style="height: 200px; margin: 0 1% 0 0; width: 99%;"></textarea></p>
 </fieldset>
 
 <fieldset>
@@ -46,7 +50,7 @@ if($seahorses->getOption('quotes_opt') == 'y') {
 	
  else {
   while($getItem = $scorpions->obj($true)) {
-   echo "  <option value=\"" . $getItem->id . '">' . $getItem->subject . "</option>\n";
+   echo '  <option value="' . $getItem->id . '">' . $getItem->subject . "</option>\n";
   }
  }
 ?>
@@ -138,7 +142,7 @@ if($seahorses->getOption('quotes_opt') == 'y') {
  else {
   while($getCat = $scorpions->obj($true)) {
    $cats = $tigers->emptyarray(explode('!', $getItem->fNiq));
-   echo "  <option value=\"" . $getCat->id . '"'; 
+   echo '  <option value="' . $getCat->id . '"';
 	 if(in_array($getCat->id, $cats)) {
 	  echo ' selected="selected"'; 
 	 }
@@ -186,7 +190,7 @@ if($seahorses->getOption('quotes_opt') == 'y') {
    $tigers->displayError('Database Error', 'The script was unable to update' . 
 	 ' the quote.', true, $update);
   } elseif ($true == true) {
-   echo $tigers->displaySuccess("Your quote was updated! :D");
+   echo $tigers->displaySuccess('Your quote was updated! :D');
    echo $tigers->backLink('quotes');
   }
  }
@@ -273,7 +277,7 @@ click "Edit" or "Delete" by the appropriate listing.</p>
 
  else {
   while($getTion = $scorpions->obj($true)) {
-   echo "  <option value=\"" . $getTion->id . '">' . $getTion->subject . "</option>\n";
+   echo '  <option value="' . $getTion->id . '">' . $getTion->subject . "</option>\n";
   }
  }
 ?>
@@ -332,17 +336,17 @@ click "Edit" or "Delete" by the appropriate listing.</p>
    } 
    echo "</table>\n\n<p id=\"pagination\">Pages: ";
 
-   $s     = isset($listingid) ? $listingid : '';
+   $s     = $listingid ?? '';
    $total = count($cheetahs->quotesList($s));
    $pages = ceil($total / $per_page);
 	 
    for($i = 1; $i <= $pages; $i++) {
     if($page == $i) {
-     echo $i . " ";
+     echo $i . ' ';
     } else { 
      $pg = '<a href="quotes.php?';
      if(isset($listingid)) {
-      $pg .= "g=searchListings&#38;listingid=" . $listingid . "&#38;";
+      $pg .= 'g=searchListings&#38;listingid=' . $listingid . '&#38;';
      }
      $pg .= 'p=' . $i . '">' . $i . '</a> ';
      echo $pg;
@@ -364,5 +368,4 @@ else {
 <?php 
 }
 
-require("footer.php");
-?>
+require('footer.php');

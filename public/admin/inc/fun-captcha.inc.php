@@ -7,10 +7,10 @@
  *  @since       September 2nd, 2010 
  *  @version     2.1+     
  */ 
- require("b.inc.php");
- require_once(MAINDIR . "rats.inc.php");
- require_once("fun.inc.php");
- require_once("fun-misc.inc.php");
+ require('b.inc.php');
+ require_once(MAINDIR . 'rats.inc.php');
+ require_once('fun.inc.php');
+ require_once('fun-misc.inc.php');
  
  /** 
   * @desc  Grab captcha text from "v" query in the URL 
@@ -31,18 +31,17 @@
   * $desc  Create actual image background, and apply text 8D 
   */
  imagefilledrectangle($m, 0, 0, 169, 79, $b);
- imagettftext($m, 30, 0, 13, 53, $c, MAINDIR . "textMuseo.otf", $s);
+ imagettftext($m, 30, 0, 13, 53, $c, MAINDIR . 'textMuseo.otf', $s);
  
  /** 
   * $desc  Headers first, image outputting/destorying last~ 
   */ 
- header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); 
- header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT"); 
- header("Cache-Control: no-store, no-cache, must-revalidate"); 
- header("Cache-Control: post-check=0, pre-check=0", false);
- header("Pragma: no-cache"); 
- header("Content-Type: image/png");
+ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+ header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
+ header('Cache-Control: no-store, no-cache, must-revalidate');
+ header('Cache-Control: post-check=0, pre-check=0', false);
+ header('Pragma: no-cache');
+ header('Content-Type: image/png');
 
  imagepng($m);
  imagedestroy($m);
-?>

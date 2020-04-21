@@ -3,10 +3,8 @@ version: '3'
 services:
   apache:
     container_name: ladmin-php-apache
-    image: ladmin-php7.1-apache
-    build:
-      context: .
-      dockerfile: docker/Dockerfile
+    image: ladmin-php7-apache
+    build: docker
     ports:
       - 8041:80
       - 9001:9001

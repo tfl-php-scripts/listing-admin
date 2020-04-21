@@ -10,15 +10,15 @@
      * @version          Robotess Fork
      */
 
-    require("b.inc.php");
-    require(MAINDIR . "rats.inc.php");
-    require_once("fun.inc.php");
-    require_once("fun-external.inc.php");
-    require_once("fun-listings.inc.php");
-    require_once("fun-members.inc.php");
-    require_once("fun-misc.inc.php");
-    require_once("fun-updates.inc.php");
-    require(MAINDIR . "vars.inc.php");
+    require('b.inc.php');
+    require(MAINDIR . 'rats.inc.php');
+    require_once('fun.inc.php');
+    require_once('fun-external.inc.php');
+    require_once('fun-listings.inc.php');
+    require_once('fun-members.inc.php');
+    require_once('fun-misc.inc.php');
+    require_once('fun-updates.inc.php');
+    require(MAINDIR . 'vars.inc.php');
 
     /**
      * Get variables and options!
@@ -61,12 +61,10 @@
         in_array($show_all, array('y', 'n'))
     ) {
         $options->showAll = $show_all;
+    } else if ($fKey == 0 || $fKey == '0') {
+        $options->showAll = 'y';
     } else {
-        if ($fKey == 0 || $fKey == '0') {
-            $options->showAll = 'y';
-        } else {
-            $options->showAll = 'n';
-        }
+        $options->showAll = 'n';
     }
 
     if (
@@ -100,6 +98,8 @@
         $mark = '';
     }
 
+    $options->markup = $mark;
+
     /**
      * Get entry P:
      */
@@ -108,9 +108,9 @@
         if (!empty($e) || in_array($e, $turtles->updatesList())) {
             $getItem = $turtles->getEntry($e);
             echo $turtles->templateEntries(str_replace('{MORE}', '', $e), 'single');
-            if ($getItem->uDisabled == 1) {
+            if ($getItem->uDisabled === '1') {
                 echo "<h3 id=\"comments\">Comments</h3>\n";
-                echo $turtles->comments($e);
+                $turtles->comments($e);
             }
         } else {
             $tigers->displayError('Script Error', 'Invalid entry!', false);
@@ -130,12 +130,12 @@
                 echo $octopus->alternate('menu', $seahorses->getOption('markup'), 0, 'archives');
                 while ($getItem = $scorpions->obj($true)) {
                     if ($seahorses->getOption('updates_prettyurls') == 'y') {
-                        echo " <li><a href=\"" . $turtles->blogURL() . 'e/' . $getItem->uID . '">' .
-                            $getItem->uTitle . "</a> (" . date($seahorses->getTemplate('date_template'),
+                        echo ' <li><a href="' . $turtles->blogURL() . 'e/' . $getItem->uID . '">' .
+                            $getItem->uTitle . '</a> (' . date($seahorses->getTemplate('date_template'),
                                 strtotime($getItem->uAdded)) . ")</li>\n";
                     } else {
-                        echo " <li><a href=\"" . $turtles->blogURL() . '?e=' . $getItem->uID . '">' .
-                            $getItem->uTitle . "</a> (" . date($seahorses->getTemplate('date_template'),
+                        echo ' <li><a href="' . $turtles->blogURL() . '?e=' . $getItem->uID . '">' .
+                            $getItem->uTitle . '</a> (' . date($seahorses->getTemplate('date_template'),
                                 strtotime($getItem->uAdded)) . ")</li>\n";
                     }
                 }
@@ -157,15 +157,15 @@
             " DATE_FORMAT(`uAdded`, '%Y%m') = '$digits' ORDER BY `uAdded` DESC";
         $true = $scorpions->query($select);
         if ($scorpions->total($true) == 0) {
-            echo "<p class=\"tc\">No entries have been posted in this month/year" .
+            echo '<p class="tc">No entries have been posted in this month/year' .
                 " combination.</p>\n";
         } else {
             $db = substr($digits, -2);
-            echo "<h3>" . $get_date_array[$db] . " " . substr($digits, 0, -2) . "</h3>\n";
+            echo '<h3>' . $get_date_array[$db] . ' ' . substr($digits, 0, -2) . "</h3>\n";
             echo $octopus->alternate('menu', $seahorses->getOption('markup'), 0, 'menu');
             while ($getItem = $scorpions->obj($true)) {
                 echo '<li class="indi"><a href="' . $turtles->makeEntryLink($getItem->uID) .
-                    '">' . $getItem->uTitle . "</a> (" . date($seahorses->getTemplate('date_template'),
+                    '">' . $getItem->uTitle . '</a> (' . date($seahorses->getTemplate('date_template'),
                         strtotime($getItem->uAdded)) . ")</li>\n";
             }
             echo $octopus->alternate('menu', $seahorses->getOption('markup'), 1, 'menu');

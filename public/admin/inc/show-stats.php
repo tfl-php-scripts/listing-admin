@@ -7,13 +7,13 @@
  * @since      September 2nd, 2010 
  * @version    1.0   
  */ 
-require("b.inc.php");
-require(MAINDIR . "rats.inc.php");
-require_once("fun.inc.php");
-require_once("fun-affiliates.inc.php");
-require_once("fun-external.inc.php");
-require_once("fun-listings.inc.php");
-require_once("fun-members.inc.php");
+require('b.inc.php');
+require(MAINDIR . 'rats.inc.php');
+require_once('fun.inc.php');
+require_once('fun-affiliates.inc.php');
+require_once('fun-external.inc.php');
+require_once('fun-listings.inc.php');
+require_once('fun-members.inc.php');
 
 /** 
  * Get variables and listing object before we start \o/ 
@@ -31,7 +31,7 @@ if(
 }
 
 if(isset($use_template) && in_array($use_template, array('y', 'n'))) {
- $options->useTemplate = ($use_template == 'y' ? true : false);
+ $options->useTemplate = $use_template == 'y';
 } else {
  $options->useTemplate = true;
 }
@@ -58,4 +58,3 @@ if($options->useTemplate) {
  $la_fl_opened  = date($getItem->date, strtotime($getItem->since));
  $la_fl_updated = $snakes->getUpdated($options->listingID);
 }
-?>
