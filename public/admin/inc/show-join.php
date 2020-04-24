@@ -121,7 +121,10 @@
                 }
             }
         }
-        $visible = $tigers->cleanMys($_POST['visible']);
+        $visible = (int)$tigers->cleanMys($_POST['visible']);
+        if($visible < 0 || $visible > 1) {
+            $visible = 1;
+        }
         $comments = $tigers->cleanMys($_POST['comments']);
         if (preg_match('/(<.*>)/', $_POST['comments'])) {
             $tigers->displayError('Form Error', 'HTML is not allowed in the' .

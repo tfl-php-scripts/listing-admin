@@ -9,7 +9,9 @@
  * @version          Robotess Fork
  */
 
-use Robotess\StringUtils;$getTitle = 'Joined';
+use Robotess\StringUtils;
+$getTitle = 'Joined';
+
 require('pro.inc.php');
 require('vars.inc.php');
 require('header.php');
@@ -37,9 +39,9 @@ if (isset($_GET['g']) && $_GET['g'] == 'new') {
             <p><label><strong>Subject:</strong></label>
                 <input name="subject" class="input1" type="text"></p>
             <p><label><strong>URL:</strong></label>
-                <input name="url" class="input1" type="text"></p>
+                <input name="url" class="input1" type="url"></p>
             <p><label><strong>Status:</strong></label>
-                <input name="current" class="input3" type="radio" value="0"> Current
+                <input name="status" class="input3" type="radio" value="0"> Current
                 <input name="status" checked="checked" class="input3" type="radio" value="1"> Pending</p>
         </fieldset>
 
@@ -268,7 +270,7 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'old') {
                 <p><label><strong>Subject:</strong></label>
                     <input name="subject" class="input1" type="text" value="<?php echo $getItem->jSubject; ?>"></p>
                 <p><label><strong>URI:</strong></label>
-                    <input name="url" class="input1" type="text" value="<?php echo $getItem->jURL; ?>"></p>
+                    <input name="url" class="input1" type="url" value="<?php echo $getItem->jURL; ?>"></p>
                 <p><label><strong>Status:</strong></label>
                     <?php
                     $statusarray = $get_status_array;
@@ -654,11 +656,11 @@ if (isset($_GET['g']) && $_GET['g'] == 'searchJoined') {
     $q = '';
     $b = '';
 }
-$select = $dragons->sortJoined($q, $b, $start);
+$select = $dragons->sortJoined($q, $b);
 $count = count($select);
 
 if ($count > 0) {
-if (isset($_GET['g']) && $_GET['g'] == 'searchJoined') {
+if (isset($s)) {
     $e = isset($_GET['s']) ? " for <strong>$s</strong>..." : '...';
     echo '<h4>Searching for in the <em>' . $lions->getCatName($c) .
         "</em> category$e</h4>\n";

@@ -45,7 +45,7 @@ if (
 $filesize = $seahorses->getOption('codes_filesize');
 $maxsize = !empty($filesize) ? $filesize : 921600;
 $whattext = $fKey == 0 || $fKey == '0' ? 'collective' : 'fanlisting';
-$markup = $getItem->markup == 'xhtml' ? ' /' : '';
+$markup = $seahorses->getOption('markup') == 'xhtml' ? ' /' : '';
 
 /**
  * If the form has been set!
@@ -301,4 +301,3 @@ else {
     </form>
     <?php
 }
-?>
