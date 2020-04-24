@@ -91,7 +91,7 @@ if ($options->showOwned == 'y') {
         $select = "SELECT * FROM `$_ST[main]` WHERE `show` = '0' AND `status` = '0'" .
             ' ORDER BY `since` DESC LIMIT ' . $options->showOwnedNumber;
     } else {
-        $query = "SELECT * FROM `$_ST[main]` WHERE `show` = '0' AND `status` = '0'" .
+        $select = "SELECT * FROM `$_ST[main]` WHERE `show` = '0' AND `status` = '0'" .
             ' ORDER BY RAND() LIMIT ' . $options->showOwnedNumber;
     }
 
