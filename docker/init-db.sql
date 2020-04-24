@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Apr 24, 2020 at 01:19 PM
+-- Generation Time: Apr 24, 2020 at 03:46 PM
 -- Server version: 5.5.62
 -- PHP Version: 7.2.25
 
@@ -509,7 +509,9 @@ INSERT INTO `trex_joined` (`jID`, `jSubject`, `jURL`, `jImage`, `jCategory`, `jM
     (229, 'Subject 147', 'http://147.localhost123456.com', '', '|71|73|75|', 'n', 0, '2021-09-03'),
     (230, 'Subject 148', 'http://148.localhost123456.com', '', '|72|74|0|', 'n', 0, '2021-09-13'),
     (231, 'Subject 149', 'http://149.localhost123456.com', '', '|73|75|1|', 'n', 0, '2021-09-23'),
-    (232, 'Subject 150', 'http://150.localhost123456.com', '', '|74|0|2|', 'n', 0, '2021-10-03');
+    (232, 'Subject 150', 'http://150.localhost123456.com', '', '|74|0|2|', 'n', 0, '2021-10-03'),
+    (233, 'New Pending Joined', 'https://aaaaaaa.com', '', '|80|', 'n', 1, '2020-04-24'),
+    (234, 'Subject Current', 'https://aaaaccccccccc.com', '', '|81|', 'n', 0, '2020-04-24');
 
 -- --------------------------------------------------------
 
@@ -1136,7 +1138,7 @@ INSERT INTO `trex_templates_emails` (`name`, `title`, `template`) VALUES
 -- AUTO_INCREMENT for table `trex_joined`
 --
     ALTER TABLE `trex_joined`
-    MODIFY `jID` mediumint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=233;
+    MODIFY `jID` mediumint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=235;
 
 --
 -- AUTO_INCREMENT for table `trex_kim`

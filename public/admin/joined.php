@@ -41,7 +41,7 @@ if (isset($_GET['g']) && $_GET['g'] == 'new') {
             <p><label><strong>URL:</strong></label>
                 <input name="url" class="input1" type="url"></p>
             <p><label><strong>Status:</strong></label>
-                <input name="current" class="input3" type="radio" value="0"> Current
+                <input name="status" class="input3" type="radio" value="0"> Current
                 <input name="status" checked="checked" class="input3" type="radio" value="1"> Pending</p>
         </fieldset>
 
@@ -656,11 +656,11 @@ if (isset($_GET['g']) && $_GET['g'] == 'searchJoined') {
     $q = '';
     $b = '';
 }
-$select = $dragons->sortJoined($q, $b, $start);
+$select = $dragons->sortJoined($q, $b);
 $count = count($select);
 
 if ($count > 0) {
-if (isset($_GET['g']) && $_GET['g'] == 'searchJoined') {
+if (isset($s)) {
     $e = isset($_GET['s']) ? " for <strong>$s</strong>..." : '...';
     echo '<h4>Searching for in the <em>' . $lions->getCatName($c) .
         "</em> category$e</h4>\n";

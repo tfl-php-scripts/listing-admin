@@ -17,30 +17,34 @@ if (!class_exists('dragons')) {
 
         /**
          * @function  $dragons->joinedList()
-         * @param string $b , string; sorting option (id, all, madeby, et
+         * @param string $filterOption , string; sorting option (id, all, madeby, et
          * al.); optional
-         * @param string $d , int; category ID; optional
-         * @param string $p
+         * @param string $categoryId , int; category ID; optional
+         * @param string $status
+         * @param bool $withSubCategories
+         * @param bool $wholeObj
          * @return array
          * @since     2.3beta
          */
-        public function joinedList($b = 'all', $d = '', $p = ''): array
+        public function joinedList($filterOption = 'all', $categoryId = '', $status = '', bool $withSubCategories = false, bool $wholeObj = false): array
         {
             global $_ST, $scorpions, $tigers;
 
             $select = "SELECT * FROM `$_ST[joined]`";
-            if ($b == 'id' && $d != '') {
-                $select .= " WHERE `jCategory` LIKE '%|$d|%'";
-                if ($p != '' && $p == 0) {
+            if ($filterOption == 'id' && $categoryId != '') {
+                $categoryFilter = $this->getSqlForCategory($categoryId, $withSubCategories);
+                $select .= " WHERE {$categoryFilter}";
+                if ($status !== '' && (int)$status === 0) {
                     $select .= " AND `jStatus` = '0'";
-                } elseif ($p != '' && $p == 1) {
+                } elseif ($status !== '' && (int)$status === 1) {
                     $select .= " AND `jStatus` = '1'";
                 }
-            } elseif ($b == 'madeby' && $d == '') {
+            } elseif ($filterOption == 'madeby' && $categoryId == '') {
                 $select .= " WHERE `jMade` = 'y'";
-            } elseif ($b == 'madeby' && $d != '') {
-                $select .= " WHERE `jCategory` LIKE '%|$d|%' AND `jMade` = 'y'";
-            } elseif ($b == 'pending' && $d == '') {
+            } elseif ($filterOption == 'madeby' && $categoryId != '') {
+                $categoryFilter = $this->getSqlForCategory($categoryId, $withSubCategories);
+                $select .= " WHERE {$categoryFilter} AND `jMade` = 'y'";
+            } elseif ($filterOption == 'pending' && $categoryId == '') {
                 $select .= " WHERE `jStatus` = '1'";
             }
             $select .= ' ORDER BY `jSubject` ASC';
@@ -51,8 +55,8 @@ if (!class_exists('dragons')) {
             }
 
             $all = array();
-            while ($getItem = $scorpions->obj($true)) {
-                $all[] = $getItem->jID;
+            while ($getItem = $scorpions->obj($true, 0)) {
+                $all[] = empty($wholeObj) ? $getItem->jID : $getItem;
             }
 
             return $all;
@@ -66,13 +70,12 @@ if (!class_exists('dragons')) {
          *
          * @param     $s , string; search term; optional
          * @param     $a , array; search contents; optional
-         * @param     $p , int; current page (pagination)
          *
          * @return array
          * @return array
          * @since     2.3beta
          */
-        public function sortJoined($s = '', $a = array(), $p): array
+        public function sortJoined($s = '', $a = array()): array
         {
             global $_ST, $laantispam, $scorpions, $snakes, $tigers;
 
@@ -81,7 +84,7 @@ if (!class_exists('dragons')) {
              */
             $q = '';
             if ($s == 'joined' && (is_array($a) && count($a) > 0)) {
-                $search = false;
+                $search = new stdClass();
                 foreach ($a as $k => $v) {
                     $search->$k = $v;
                 }
@@ -90,7 +93,7 @@ if (!class_exists('dragons')) {
                     $q .= " `jSubject` LIKE '%$subject%' AND";
                 }
                 if (isset($search->searchCategory) && !empty($search->searchCategory)) {
-                    $q .= " `jCategory` LIKE '%|" . $search->searchCategory . "|%' AND";
+                    $q .= $this->getSqlForCategory($search->searchCategory, true) . ' AND';
                 }
             }
 
@@ -417,7 +420,8 @@ if (!class_exists('dragons')) {
                     <fieldset>
                         <legend>Search Joined Fanlistings</legend>
                         <p><label>* <strong>Subject:</strong></label>
-                            <input name="subject" class="input1" type="text"<?php echo $mark; ?>></p>
+                            <input name="subject" class="input1" type="text" required="required"<?php echo $mark; ?>>
+                        </p>
                         <?php
                         if (isset($_GET['getcat'])) {
                             ?>
@@ -537,7 +541,39 @@ if (!class_exists('dragons')) {
             echo "</table>\n";
         }
 
-        # End function list~!
+        /**
+         * @param string $categoryId
+         * @param bool $withSubCategories
+         * @return string
+         */
+        private function getSqlForCategory(string $categoryId, bool $withSubCategories = false): string
+        {
+            $categoryFilter = "`jCategory` LIKE '%%|%s|%%'";
+
+            if (!$withSubCategories) {
+                return sprintf($categoryFilter, $categoryId);
+            }
+
+            $allChildren = $this->getChildrenRecursive($categoryId, $categoryFilter);
+
+            return ' ( ' . implode(' OR ', $allChildren) . ')';
+        }
+
+        private function getChildrenRecursive(string $categoryId, string $categoryFilter): array
+        {
+            global $lions;
+
+            $allChildren = [];
+            foreach ($lions->categoryList('list', 'child', $categoryId) as $childrenCategoryId) {
+                foreach ($this->getChildrenRecursive($childrenCategoryId, $categoryFilter) as $item) {
+                    $allChildren[] = $item;
+                }
+            }
+
+            $allChildren[] = sprintf($categoryFilter, $categoryId);
+
+            return $allChildren;
+        }
     }
 }
 
