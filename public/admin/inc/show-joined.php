@@ -148,7 +148,7 @@
     if (isset($_GET['sort']) && !empty($_GET['sort'])) {
         $sort_category = $tigers->cleanMys($_GET['sort']);
         if (
-            $_GET['sort'] != 'all' && $_GET['sort'] != 'madeby' && $_GET['sort'] != 'pending' && !in_array($sort_category, $lions->categoryList())
+            $sort_category !== 'all' && $sort_category !== 'madeby' && $sort_category !== 'pending' && !in_array($sort_category, $lions->categoryList())
         ) {
             $tigers->displayError('Script Error', 'You chose an incorrect category!', false);
         }
@@ -158,32 +158,25 @@
             'ISO-8859-15'
         );
 
-        $select = "SELECT * FROM `$_ST[joined]`";
-        if (isset($_GET['sort']) && $_GET['sort'] == 'pending') {
-            $select .= " WHERE `jStatus` = '1'";
-        } else {
-            $q = '';
-            if (isset($_GET['sort']) && $_GET['sort'] != 'all' && $_GET['sort'] != 'madeby') {
-                $q .= " `jCategory` LIKE '%|$sort_category|%' AND";
-            } elseif (isset($_GET['sort']) && $_GET['sort'] == 'madeby') {
-                $q .= " `jMade` = 'y' AND";
-            }
-            $q = trim($q, ' AND');
-            $query = ($q == '' ? '' : ' AND ');
-            $select .= ' WHERE ' . $q . $query . " `jStatus` = '0'";
-        }
-        $select .= ' ORDER BY `jSubject` ASC';
-        $true = $scorpions->query($select);
-        $count = $scorpions->total($true);
+        if ($sort_category === 'all') {
+            $select = "SELECT * FROM `$_ST[joined]`";
+            $select .= " WHERE `jStatus` = '0'";
+            $select .= ' ORDER BY `jSubject` ASC';
+            $true = $scorpions->query($select);
+            $count = $scorpions->total($true);
 
-        $name = $lions->getCatName($_GET['sort']);
-        if (isset($_GET['sort']) && $_GET['sort'] == 'all') {
             echo '<p class="tc">You are viewing all categories. There are currently' .
                 " <strong>$count</strong> joined listings listed.</p>\n";
             while ($getItem = $scorpions->obj($true)) {
                 echo $dragons->getTemplate_Joined($getItem->jID) . "\n";
             }
-        } elseif (isset($_GET['sort']) && $_GET['sort'] == 'madeby') {
+        } elseif ($sort_category === 'madeby') {
+            $select = "SELECT * FROM `$_ST[joined]`";
+            $select .= ' WHERE ' . " `jMade` = 'y' AND" . " `jStatus` = '0'";
+            $select .= ' ORDER BY `jSubject` ASC';
+            $true = $scorpions->query($select);
+            $count = $scorpions->total($true);
+
             echo '<p class="tc">You are viewing all joined listing I have made codes for.' .
                 " There are currently <strong>$count</strong> joined listings listed.</p>\n";
 
@@ -202,7 +195,13 @@
                     echo _h($template, 1);
                 }
             }
-        } elseif (isset($_GET['sort']) && $_GET['sort'] == 'pending') {
+        } elseif ($sort_category === 'pending') {
+            $select = "SELECT * FROM `$_ST[joined]`";
+            $select .= " WHERE `jStatus` = '1'";
+            $select .= ' ORDER BY `jSubject` ASC';
+            $true = $scorpions->query($select);
+            $count = $scorpions->total($true);
+
             echo '<p class="tc">You are viewing all pending joined listings. There are' .
                 " currently <strong>$count</strong> pending joined listings listed.</p>\n";
             echo _h($template);
@@ -210,23 +209,25 @@
                 echo $dragons->getTemplate_Joined($getItem->jID) . "\n";
             }
             echo _h($template, 1);
-        } elseif (
-            isset($_GET['sort']) &&
-            $_GET['sort'] != 'all' &&
-            $_GET['sort'] != 'madeby' &&
-            $_GET['sort'] != 'pending'
-        ) {
+        } else {
+            $listings = $dragons->joinedList('id', $sort_category, 0, true, true);
+            $count = count($listings);
+
+            $name = $lions->getCatName($sort_category);
             echo "<p class=\"tc\">You are viewing the <strong>$name</strong> category." .
                 " There are currently <strong>$count</strong> joined listings listed.</p>\n";
 
             $query = $scorpions->query("SELECT * FROM `$_ST[categories]` WHERE `parent`" .
                 " = '$sort_category' ORDER BY `catname` ASC");
-            if ($scorpions->total($query) > 0 && $lions->childrenJoined($sort_category) > 0) {
+            $total = $scorpions->total($query);
+
+            if ($total > 0 && $lions->childrenJoined($sort_category) > 0) {
                 echo '<h3>Subcategories</h3>';
                 echo $octopus->alternate('menu', $options->markup);
                 while ($getItem = $scorpions->obj($query)) {
                     $sql = $scorpions->query("SELECT * FROM `$_ST[joined]` WHERE `jCategory`" .
-                        " LIKE '%|" . $getItem->catid . "|%'");
+                        " LIKE '%|" . $getItem->catid . "|%' AND `jStatus` = '0'");
+
                     if ($scorpions->total($sql) > 0) {
                         echo '<li><a href="' . $options->query . 'sort=' . $getItem->catid .
                             '">' . $lions->getCatName($getItem->parent) .
@@ -234,12 +235,14 @@
                     }
                 }
                 echo $octopus->alternate('menu', $options->markup, 1);
-                echo "\n<h3>Joined Listings</h3>\n";
+                if ($count > 0) {
+                    echo "\n<h3>Joined Listings</h3>\n";
+                }
             }
 
             $jimage = array();
             $jtext = array();
-            while ($getItem = $scorpions->obj($true)) {
+            foreach ($listings as $getItem) {
                 $path = $seahorses->getOption('jnd_path');
                 if (!empty($getItem->jImage) && is_file($path . $getItem->jImage)) {
                     $jimage[] = $getItem->jID;

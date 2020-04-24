@@ -85,10 +85,10 @@
         }
 
         $new_country = $tigers->cleanMys($_POST['new_country']);
-        $visible = $tigers->cleanMys($_POST['visible']);
-        if (!is_numeric($visible) || $visible > 2) {
+        $visible = (int)$tigers->cleanMys($_POST['visible']);
+        if ($visible < 0 || $visible > 2) {
             $tigers->displayError('Form Error', 'The <samp>show email</samp> field needs' .
-                ' to be a number.', false);
+                ' to be a number in range (0-2).', false);
         }
         $password = $tigers->cleanMys($_POST['password'], 'nom');
         if (empty($password)) {
@@ -170,6 +170,9 @@
         if (isset($_POST['new_country']) && !empty($new_country) && $_POST['new_country'] !== 'Choose') {
             $update .= " `mCountry` = '$new_country',";
         }
+        if (isset($visible) && ($visible === 0 || $visible === 1)) {
+            $update .= " `mVisible` = '$visible',";
+        }
         $update .= " `mUpdate` = 'y', `mAdd` = CURDATE() WHERE LOWER(`mEmail`) = '$email'" .
             " AND `mPassword` = MD5('$password') AND `fNiq` = '$id' LIMIT 1";
         $true = $scorpions->query($update);
@@ -179,14 +182,14 @@
          */
         $subject = $getItem->subject . ': Update Member';
 
-        $message = 'You have a received a update form from a member for' .
+        $message = 'You have a received an update form from a member for' .
             ' the ' . $getItem->subject . " listing:\n\nOld E-Mail: " .
             "$email\nNew E-Mail: $new_email\nNew Name: $new_name\nNew Country: $new_country\nNew URL: <$new_url>\n";
-        if ($visible != 3) {
-            if ($visible == 1) {
-                $message .= "Show E-Mail: Yes (0)\n";
-            } else {
+        if ($visible !== 2) {
+            if ($visible === 1) {
                 $message .= "Show E-Mail: No (1)\n\n";
+            } else {
+                $message .= "Show E-Mail: Yes (0)\n";
             }
         } else {
             $message .= "\n";
@@ -229,7 +232,7 @@
                 <p><label>* <strong>E-mail:</strong></label>
                     <input name="email" class="input1" type="email" required="required"<?php echo $mark; ?>></p>
                 <p><label>* <strong>Password:</strong></label>
-                    <input name="password" class="input1" type="password"<?php echo $mark; ?>></p>
+                    <input name="password" class="input1" type="password" required="required"<?php echo $mark; ?>></p>
             </fieldset>
 
             <fieldset>

@@ -475,13 +475,13 @@
                         <p><label>* <strong>E-Mail Address:</strong></label>
                             <input name="email" class="input1" type="email" required="required"<?php echo $mark; ?>></p>
                         <p><label><strong>Site URL:</strong></label>
-                            <input name="url" class="input1" type="text"<?php echo $mark; ?>></p>
+                            <input name="url" class="input1" type="url"<?php echo $mark; ?>></p>
                     </fieldset>
 
                     <fieldset>
                         <legend>Extra</legend>
                         <p><label>* <strong>Reason:</strong></label> <select name="reason" class="input1" required="required">
-                                <option value="Option:">Option:</option>
+                                <option value="">---</option>
                                 <?php
                                 if ($options->turnAff == 1) {
                                     ?>

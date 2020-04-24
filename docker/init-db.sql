@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Apr 20, 2020 at 09:58 PM
+-- Generation Time: Apr 24, 2020 at 03:46 PM
 -- Server version: 5.5.62
 -- PHP Version: 7.2.25
 
@@ -101,7 +101,12 @@ CREATE TABLE `trex` (
 --
 
 INSERT INTO `trex` (`id`, `title`, `subject`, `url`, `image`, `category`, `status`, `show`, `dbhost`, `dbuser`, `dbpass`, `dbname`, `dbtype`, `dbtabl`, `dblist`, `dbaffs`, `dbflid`, `dbhttp`, `dbpath`, `desc`, `stats`, `affiliates`, `wishlist`, `quotes`, `members`, `members_header`, `members_footer`, `updates`, `form_delete`, `form_form`, `form_join`, `form_join_comments`, `form_join_rules`, `form_reset`, `form_update`, `fave_fields`, `previous`, `date`, `since`, `updated`, `granted`, `markup`) VALUES
-    (1, 'Listing1', 'Cool Subject', 'http://localhost:8041/samplefl', '1da3ce569064_', '!3!28!52!', 0, 0, '', '', '', '', 'enth', '', 0, '', 0, '', '', 'DESCRIPTION', '&lt;p class=&quot;details&quot;&gt;\r\n&lt;strong&gt;Members:&lt;/strong&gt; {members} (&lt;em&gt;{pending} Pending &lt;/em&gt;)&lt;br&gt;\r\n&lt;strong&gt;Since:&lt;/strong&gt; {since}&lt;br&gt;\r\n&lt;strong&gt;Last Updated:&lt;/strong&gt; {updated}\r\n&lt;/p&gt;', '', '', '', '<li>{name}<br />\n{email} &middot; {url}</li>', '<ol>', '</ol>', '<div class=\"entry_listingadmin\">\n<span class=\"date\">{date}</span> {entry}\n<p class=\"tc cat\">Filed Under: {categories}</p>\n</div>', 'delete.php', 'site.php', 'join.php', 0, '', 'reset.php', 'update.php', '', 'a:3:{s:17:\"http://google.com\";s:8:\"Previous\";s:30:\"http://localhost:8041/samplefl\";s:11:\"SomeoneElse\";s:18:\"http://google2.com\";s:8:\"Prevous2\";}', 'F j, Y', '2000-02-27', '0000-00-00', 1, 'xhtml');
+    (1, 'Current Listing', 'Cool Current Subject', 'http://localhost:8041/samplefl', '1da3ce569064_', '!3!28!52!', 0, 0, '', '', '', '', 'enth', '', 0, '', 0, '', '', 'DESCRIPTION', '&lt;p class=&quot;details&quot;&gt;\r\n&lt;strong&gt;Members:&lt;/strong&gt; {members} (&lt;em&gt;{pending} Pending &lt;/em&gt;)&lt;br&gt;\r\n&lt;strong&gt;Since:&lt;/strong&gt; {since}&lt;br&gt;\r\n&lt;strong&gt;Last Updated:&lt;/strong&gt; {updated}\r\n&lt;/p&gt;', '', '', '', '<li>{name}<br />\n{email} &middot; {url}</li>', '<ol>', '</ol>', '<div class=\"entry_listingadmin\">\n<span class=\"date\">{date}</span> {entry}\n<p class=\"tc cat\">Filed Under: {categories}</p>\n</div>', 'delete.php', 'site.php', 'join.php', 0, '', 'reset.php', 'update.php', '', 'a:3:{s:17:\"http://google.com\";s:8:\"Previous\";s:30:\"http://localhost:8041/samplefl\";s:11:\"SomeoneElse\";s:18:\"http://google2.com\";s:8:\"Prevous2\";}', 'F j, Y', '2000-02-27', '0000-00-00', 1, 'xhtml'),
+    (2, 'Some Upcoming', 'My Super Upcoming subject', '', 'bc84659a401c_', '!77!9!11!28!35!39!50!51!60!63!', 1, 0, '', '', '', '', 'enth', '', 0, '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', 'F j, Y', '2020-04-24', '0000-00-00', 0, 'xhtml'),
+    (3, 'Animal Feline Upcoming', 'Animal Feline Upcoming Subj', '', '7f8df39e5ee0_', '!78!', 1, 0, '', '', '', '', 'enth', '', 0, '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', 'F j, Y', '2020-04-24', '0000-00-00', 0, 'xhtml'),
+    (4, 'Current Animal Feline', 'Current Animal Feline Subject', '', 'de0cf4372b04_', '!78!', 0, 0, '', '', '', '', 'enth', '', 0, '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', 'F j, Y', '2020-04-11', '0000-00-00', 0, 'xhtml'),
+    (5, 'Current Test Listing', 'Current Test Listing Subj', '', '37ff458d3e90_', '!81!', 0, 0, '', '', '', '', 'enth', '', 0, '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', 'F j, Y', '2020-04-01', '0000-00-00', 0, 'xhtml'),
+    (6, 'Upcoming Test Listing', 'Upcoming Test Listing Subj', '', '04f1be71b54f_', '!80!', 1, 0, '', '', '', '', 'enth', '', 0, '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', 'F j, Y', '2020-04-24', '0000-00-00', 0, 'xhtml');
 
 -- --------------------------------------------------------
 
@@ -222,7 +227,12 @@ INSERT INTO `trex_categories` (`catid`, `catname`, `parent`) VALUES
     (73, 'TV Shows', 0),
     (74, 'TV/Movie/Book Miscellany', 0),
     (75, 'Webmasters', 0),
-    (76, 'Websites', 0);
+    (76, 'Websites', 0),
+    (77, 'Mammals: Canines', 7),
+    (78, 'Mammals: Felines', 7),
+    (79, 'Test Category', 0),
+    (80, 'Upcoming Only', 79),
+    (81, 'Current Only', 79);
 
 -- --------------------------------------------------------
 
@@ -318,6 +328,14 @@ CREATE TABLE `trex_errors` (
     `messInfo` text COLLATE utf8_unicode_ci NOT NULL,
     `messAdded` datetime NOT NULL
     ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `trex_errors`
+--
+
+INSERT INTO `trex_errors` (`messID`, `messType`, `messURL`, `messText`, `messInfo`, `messAdded`) VALUES
+    (1, 'Update Error', 'http://localhost/samplefl/update.php', 'E-Mail Address: joiner+kkkkjoiner@gmaaaaaaail.com\nPassword: password\nNew E-Mail Address: \nNew Name: New Name\nNew URL: \nNew Password: \nNew Country: Choose\nVisible: 2', '|192.168.210.1|Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36|http://localhost:8041/samplefl/update.php|', '2020-04-24 12:14:54'),
+    (2, 'Join Error', 'http://localhost/samplefl/join.php', 'Name: Dsffdfs\nE-mail Address: sdfsdfsfd@jkjlgf.com\nURL: \nVisible: 0\nFave Fields: \nComments: ', '|192.168.210.1|Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36|http://localhost:8041/samplefl/join.php|', '2020-04-24 12:40:13');
 
 -- --------------------------------------------------------
 
@@ -491,7 +509,9 @@ INSERT INTO `trex_joined` (`jID`, `jSubject`, `jURL`, `jImage`, `jCategory`, `jM
     (229, 'Subject 147', 'http://147.localhost123456.com', '', '|71|73|75|', 'n', 0, '2021-09-03'),
     (230, 'Subject 148', 'http://148.localhost123456.com', '', '|72|74|0|', 'n', 0, '2021-09-13'),
     (231, 'Subject 149', 'http://149.localhost123456.com', '', '|73|75|1|', 'n', 0, '2021-09-23'),
-    (232, 'Subject 150', 'http://150.localhost123456.com', '', '|74|0|2|', 'n', 0, '2021-10-03');
+    (232, 'Subject 150', 'http://150.localhost123456.com', '', '|74|0|2|', 'n', 0, '2021-10-03'),
+    (233, 'New Pending Joined', 'https://aaaaaaa.com', '', '|80|', 'n', 1, '2020-04-24'),
+    (234, 'Subject Current', 'https://aaaaccccccccc.com', '', '|81|', 'n', 0, '2020-04-24');
 
 -- --------------------------------------------------------
 
@@ -590,7 +610,10 @@ CREATE TABLE `trex_members` (
 --
 
 INSERT INTO `trex_members` (`mID`, `mEmail`, `fNiq`, `mName`, `mURL`, `mCountry`, `mPassword`, `mExtra`, `mVisible`, `mPending`, `mUpdate`, `mEdit`, `mAdd`) VALUES
-    (1, 'joiner+kkkkjoiner@gmaaaaaaail.com', 1, 'Joiner', 'http://myurl.com', 'El Salvador', '6f55c171fdf2ba21bff9a9f17cb76c65', '', 1, 0, 'n', '2020-04-20 21:29:56', '2020-04-20');
+    (1, 'joiner+kkkkjoiner@gmaaaaaaail.com', 1, 'Joiner', 'http://myurl.com', 'El Salvador', '6f55c171fdf2ba21bff9a9f17cb76c65', '', 1, 0, 'n', '2020-04-20 21:29:56', '2020-04-20'),
+    (2, 'gkhjgffk@ojokhflg.com', 1, 'New Name', 'http://fan123.com', 'Bahrain', '5f4dcc3b5aa765d61d8327deb882cf99', '', 0, 0, 'y', '0000-00-00 00:00:00', '2020-04-24'),
+    (3, 'sdfsdfsfd@jkjlgf.com', 1, 'Dsffdfs', '', 'Australia', 'd8b27a5482e64b2ff7968fe50583b0ed', '', 1, 0, 'n', '0000-00-00 00:00:00', '2020-04-24'),
+    (4, 'sdfsdfsffffdsssss+dddddd@jkjlgf.com', 1, 'Dsffdfs', '', 'Australia', 'f562ddf743b7c2c48ee10e2c3651862c', '', 0, 0, 'n', '0000-00-00 00:00:00', '2020-04-24');
 
 -- --------------------------------------------------------
 
@@ -1067,7 +1090,7 @@ INSERT INTO `trex_templates_emails` (`name`, `title`, `template`) VALUES
 -- AUTO_INCREMENT for table `trex`
 --
     ALTER TABLE `trex`
-    MODIFY `id` mediumint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+    MODIFY `id` mediumint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `trex_affiliates`
@@ -1079,7 +1102,7 @@ INSERT INTO `trex_templates_emails` (`name`, `title`, `template`) VALUES
 -- AUTO_INCREMENT for table `trex_categories`
 --
     ALTER TABLE `trex_categories`
-    MODIFY `catid` smallint(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+    MODIFY `catid` smallint(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT for table `trex_codes`
@@ -1109,13 +1132,13 @@ INSERT INTO `trex_templates_emails` (`name`, `title`, `template`) VALUES
 -- AUTO_INCREMENT for table `trex_errors`
 --
     ALTER TABLE `trex_errors`
-    MODIFY `messID` mediumint(4) NOT NULL AUTO_INCREMENT;
+    MODIFY `messID` mediumint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `trex_joined`
 --
     ALTER TABLE `trex_joined`
-    MODIFY `jID` mediumint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=233;
+    MODIFY `jID` mediumint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=235;
 
 --
 -- AUTO_INCREMENT for table `trex_kim`
@@ -1145,7 +1168,7 @@ INSERT INTO `trex_templates_emails` (`name`, `title`, `template`) VALUES
 -- AUTO_INCREMENT for table `trex_members`
 --
     ALTER TABLE `trex_members`
-    MODIFY `mID` mediumint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+    MODIFY `mID` mediumint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `trex_quotes`

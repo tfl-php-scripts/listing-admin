@@ -6,3 +6,4 @@ Robotess Fork v1.0.0
 * Slightly reworked joined page pagination (in admin console).
 * Fixed #1, #3 - I went through all the pages of admin panel/forms pages to make sure emails with pluses are allowed. Also all emails are being converted to lowercase before comparing/inserting into DB.
 * Fixed #2, #3 - I went through all the pages of admin panel/forms pages to make sure URLs starting with https are allowed. Also all URLs are being converted to lowercase before comparing/inserting into DB.
+* Other changes, including fixing of a huge amount of the found bugs. Thanks to [Joy](http://fan.greenhype.net) for reporting a lot of them.

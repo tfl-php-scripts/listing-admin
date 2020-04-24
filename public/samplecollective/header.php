@@ -23,7 +23,8 @@
 
     <nav>
         <menu>
-            <li><a href="/samplecollective">Home</a></li>
+            <li><a href="/samplecollective">Current</a></li>
+            <li><a href="upcoming.php">Upcoming</a></li>
             <li><a href="updates.php">Updates</a></li>
             <li><a href="joined.php">Joined</a></li>
             <li><a href="wishlist.php">Wishlist</a></li>

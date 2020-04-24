@@ -234,7 +234,7 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'old') {
  <p><label><strong>Subject:</strong></label> 
  <input name="subject" class="input1" type="text" value="<?php echo $getItem->wSubject; ?>"></p>
  <p><label><strong>URL:</strong></label> 
- <input name="url" class="input1" type="text" value="<?php echo $getItem->wURL; ?>"></p>
+ <input name="url" class="input1" type="url" value="<?php echo $getItem->wURL; ?>"></p>
  <p class="tc"><strong>Description:</strong><br>
  <textarea name="desc" cols="50" rows="8" style="width: 100%;"><?php echo $getItem->wDesc; ?></textarea></p>
  <p><label><strong>Type:</strong><br>
