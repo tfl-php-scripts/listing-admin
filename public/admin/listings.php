@@ -9,7 +9,10 @@
  * @version          Robotess Fork
  */
 
-use Robotess\StringUtils;$getTitle = 'Listings';
+use Robotess\StringUtils;
+
+$getTitle = 'Listings';
+
 require('pro.inc.php');
 require('vars.inc.php');
 require('header.php');
@@ -586,7 +589,7 @@ on the <a href="templates.php?g=templates">Templates page</a>.</p>
  <p><label><strong>Subject:</strong></label> 
  <input name="subject" class="input1" type="text" value="<?php echo $getItem->subject; ?>"></p>
  <p><label><strong>URI:</strong></label> 
- <input name="url" class="input1" type="text" value="<?php echo $getItem->url; ?>"></p>
+ <input name="url" class="input1" type="url" value="<?php echo $getItem->url; ?>"></p>
 </fieldset>
 
 <fieldset>
@@ -749,11 +752,8 @@ if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
 	 $newp = serialize($newprevious);
 	 $seahorses->editListing($id, 'previous', $newp);
 	}
-	
-	/** 
-	 * Now change the URL and get back to the details! 
-	 */ 
-	if($seahorses->getVar($id, 'url') != $url) {
+
+	if(!empty($url) && $seahorses->getVar($id, 'url') != $url) {
    $seahorses->editListing($id, 'url', $url);
   }
 

@@ -16,32 +16,33 @@ if (!class_exists('wolves')) {
         /**
          * @function  $wolves->listingsList()
          *
-         * @param     $b , string; sort by subject or ID
-         * @param     $j , string; sort by status (current, upcoming or pending)
-         * @param     $p , string; sort by category or status
-         * @param     $e , string; current listings with status; optional
-         * @param     $c , string
+         * @param string $b , string; sort by subject or ID
+         * @param string $j , string; sort by status (current, upcoming or pending)
+         * @param string $sortBy , string; sort by category or status
+         * @param string $status , string; current listings with status; optional
+         * @param int $withSubCategories , int
+         * @return array
          */
-        public function listingsList($b = 'id', $j = '', $p = 'status', $e = '', $c = 0)
+        public function listingsList($b = 'id', $j = '', $sortBy = 'status', $status = '', $withSubCategories = 0)
         {
             global $_ST, $lions, $scorpions;
 
             $select = "SELECT * FROM `$_ST[main]`";
             if ($j != '') {
-                if ($p == 'categories') {
+                if ($sortBy == 'categories') {
                     $select .= ' WHERE';
-                    if ($e == 'current' || $e == '0') {
+                    if ($status == 'current' || $status == '0') {
                         $select .= " `status` = '0' AND";
-                    } elseif ($e == 'upcoming' || $e == 1) {
+                    } elseif ($status == 'upcoming' || $status == 1) {
                         $select .= " `status` = '1' AND";
-                    } elseif ($e == 'pending' || $e == 2) {
+                    } elseif ($status == 'pending' || $status == 2) {
                         $select .= " `status` = '2' AND";
                     }
-                    if ($j != '' && in_array($j, $lions->categoryList())) {
-                        $select .= " `category` LIKE '%!$j!%' AND";
+                    if (in_array($j, $lions->categoryList())) {
+                        $select .= " (`category` LIKE '%!$j!%' AND";
                     }
                     $select = trim($select, ' AND');
-                    if ($c == 1 && count($lions->categoryList('list', 'child', $j)) > 0) {
+                    if ($withSubCategories == 1 && count($lions->categoryList('list', 'child', $j)) > 0) {
                         $query = '';
                         $childcats = $lions->categoryList('list', 'child', $j);
                         foreach ($childcats as $cc) {
@@ -49,12 +50,15 @@ if (!class_exists('wolves')) {
                         }
                         $select .= rtrim($query, ' OR ');
                     }
-                } elseif ($p == 'status') {
-                    if ($j != '' && ($j == 'current' || $j == '0')) {
+                    if (in_array($j, $lions->categoryList())) {
+                        $select .= ' ) ';
+                    }
+                } elseif ($sortBy == 'status') {
+                    if ($j == 'current' || $j == '0') {
                         $select .= " WHERE `status` = '0'";
-                    } elseif ($j != '' && ($j == 'upcoming' || $j == 1)) {
+                    } elseif ($j == 'upcoming' || $j == 1) {
                         $select .= " WHERE `status` = '1'";
-                    } elseif ($j != '' && ($j == 'pending' || $j == 2)) {
+                    } elseif ($j == 'pending' || $j == 2) {
                         $select .= " WHERE `status` = '2'";
                     }
                 }
@@ -294,7 +298,7 @@ if (!class_exists('wolves')) {
 
             if (strpos($my_updates, 'index.php') !== false) {
                 //@todo is ?s= needed????
-               // $q = $myw . '?s=';
+                // $q = $myw . '?s=';
                 $q = $myw;
             } else {
                 //@todo is ?s= needed????
@@ -512,25 +516,24 @@ if (!class_exists('wolves')) {
             if ($d == 'list') {
                 echo $this->_h('table');
                 if (count($this->listingsList('id', $s, 'status')) > 0) {
-                    foreach ($ids as $id) {
-                        $listingcount = count($this->listingsList('id', $id, 'categories', $s, 1));
+                    foreach ($ids as $catId) {
+                        $listingcount = count($this->listingsList('id', $catId, 'categories', $s, 1));
                         if (
-                            ($this->checkListings($id, $s) == 1) ||
+                            ($this->checkListings($catId, $s) == 1) ||
                             (
-                                $this->checkListings($id, $s) == 0 &&
-                                $lions->countChildren($id) > 0 &&
-                                $lions->childrenListings($id, $s) > 0
+                                $this->checkListings($catId, $s) == 0 &&
+                                $lions->countChildren($catId) > 0 &&
+                                $lions->childrenListings($catId, $s) > 0
                             )
                         ) {
                             echo "<tbody><tr>\n";
-                            echo ' <td class="left"><a href="' . $options->query . 'sort=' . $id .
-                                '">' . $lions->getCatName($id) . "</a></td>\n";
+                            echo ' <td class="left"><a href="' . $options->query . 'sort=' . $catId .
+                                '">' . $lions->getCatName($catId) . "</a></td>\n";
                             echo ' <td class="center">' . $listingcount . "</td>\n";
                             echo "</tr></tbody>\n";
                         }
                         if ($options->sort == 'y') {
-                            // @todo catid?
-                            $lists = $lions->categoryList('default', 'child', $catid);
+                            $lists = $lions->categoryList('default', 'child', $catId);
                             foreach ($lists as $list) {
                                 if ($this->checkListings($list['catid'], $s) == 1) {
                                     echo "<tbody><tr>\n";
@@ -610,24 +613,24 @@ if (!class_exists('wolves')) {
             } elseif ($d == 'table') {
                 echo $this->_h('table');
                 if (count($this->listingsList('id', $s, 'status')) > 0) {
-                    foreach ($ids as $id) {
-                        $listingcount = count($this->listingsList('id', $id, 'categories', $s, 1));
+                    foreach ($ids as $catId) {
+                        $listingcount = count($this->listingsList('id', $catId, 'categories', $s, 1));
                         if (
-                            ($this->checkListings($id, $s) == 1) ||
+                            ($this->checkListings($catId, $s) == 1) ||
                             (
-                                $this->checkListings($id, $s) == 0 &&
-                                $lions->countChildren($id) > 0 &&
-                                $lions->childrenListings($id, $s) > 0
+                                $this->checkListings($catId, $s) == 0 &&
+                                $lions->countChildren($catId) > 0 &&
+                                $lions->childrenListings($catId, $s) > 0
                             )
                         ) {
                             echo "<tbody><tr>\n";
-                            echo ' <td class="left"><a href="' . $options->query . 'sort=' . $id .
-                                '">' . $lions->getCatName($id) . "</a></td>\n";
+                            echo ' <td class="left"><a href="' . $options->query . 'sort=' . $catId .
+                                '">' . $lions->getCatName($catId) . "</a></td>\n";
                             echo ' <td class="center">' . $listingcount . "</td>\n";
                             echo "</tr></tbody>\n";
                         }
                         if ($options->sort == 'y') {
-                            $lists = $lions->categoryList('default', 'child', $catid);
+                            $lists = $lions->categoryList('default', 'child', $catId);
                             foreach ($lists as $list) {
                                 if ($this->checkListings($list['catid'], $s) == 1) {
                                     echo "<tbody><tr>\n";
@@ -644,8 +647,6 @@ if (!class_exists('wolves')) {
                 }
             }
         }
-
-        # End functions~
     }
 }
 

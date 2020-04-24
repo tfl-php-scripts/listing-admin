@@ -21,7 +21,7 @@ if(class_exists('lions') == false) {
 	 * @param     $m, int; category parent ID; optional 
 	 */ 
   public function categoryList($b = 'list', $g = '', $n = '') {
-   global $_ST, $laoptions, $scorpions, $tigers;
+   global $_ST, $scorpions;
 
    $select = "SELECT * FROM `$_ST[categories]`";
    if($g != '' && $g == 'parent') {

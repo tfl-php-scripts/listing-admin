@@ -87,7 +87,7 @@
         $options->query = basename($tigers->cleanMys($_SERVER['PHP_SELF'])) . '?';
     }
 
-    $statusArray = array('current', 'pending', 'upcoming');
+    $statusArray = ['current', 'pending', 'upcoming'];
     if (!isset($status) || empty($status) || !in_array($status, $statusArray)) {
         $tigers->displayError(
             'Script Error',
@@ -102,7 +102,7 @@
      */
     if (isset($_GET['sort']) && !empty($_GET['sort'])) {
         $sort_category = $tigers->cleanMys($_GET['sort']);
-        if (($_GET['sort'] != 'all') && !in_array($sort_category, $lions->categoryList())) {
+        if ($sort_category != 'all' && !in_array($sort_category, $lions->categoryList())) {
             $tigers->displayError(
                 'Script Error',
                 'You chose an incorrect category!',
@@ -110,30 +110,26 @@
             );
         }
 
-        $select = "SELECT * FROM `$_ST[main]` WHERE `show` = '0' AND" .
-            " `status` = '" . $options->statusID . "'";
-        if (isset($_GET['sort']) && $_GET['sort'] != 'all') {
-            $select .= " AND `category` LIKE '%!$sort_category!%'";
-        }
-        $select .= ' ORDER BY `subject` ASC';
-        $true = $scorpions->query($select);
-        $count = $scorpions->total($true);
+        if ($sort_category == 'all') {
+            $flsInCategory = $wolves->listingsList('subject', $options->statusID, 'status', $options->statusID, 1);
+            $count = count($flsInCategory);
 
-        $category = $lions->getCategory($sort_category);
-        $parentcat = $category === false || $category->parent == 0 ? '' : $lions->getCatName($category->parent) .
-            ($seahorses->getOption('markup') == 'html5' ? ' &#187; ' : ' &raquo; ');
-        $name = $parentcat . $lions->getCatName($sort_category);
-        if (isset($_GET['sort']) && $_GET['sort'] == 'all') {
             echo '<p class="tc">You are viewing all categories. There are currently ' .
                 "<strong>$count</strong> listings listed.</p>\n";
             echo "<div class=\"sep\">\n";
-            while ($getItem = $scorpions->obj($true)) {
-                echo $wolves->getTemplate_Listings($getItem->id);
+            foreach ($flsInCategory as $getItemId) {
+                echo $wolves->getTemplate_Listings($getItemId);
             }
             echo "</div>\n";
-        } elseif (
-            isset($_GET['sort']) && $_GET['sort'] != 'all'
-        ) {
+        } else {
+            $flsInCategory = $wolves->listingsList('subject', $sort_category, 'categories', $options->statusID, 1);
+            $count = count($flsInCategory);
+
+            $category = $lions->getCategory($sort_category);
+            $parentcat = $category === false || $category->parent == 0 ? '' : $lions->getCatName($category->parent) .
+                ($seahorses->getOption('markup') == 'html5' ? ' &#187; ' : ' &raquo; ');
+            $name = $parentcat . $lions->getCatName($sort_category);
+
             echo "<p class=\"tc\">You are viewing the <strong>$name</strong> category." .
                 " There are currently <strong>$count</strong> listings listed." .
                 "</p>\n";
@@ -148,8 +144,11 @@
                 echo "<h3>Subcategories</h3>\n";
                 echo $octopus->alternate('menu', $seahorses->getOption('markup'), 0);
                 while ($getItem = $scorpions->obj($query)) {
-                    $sql = $scorpions->query("SELECT * FROM `$_ST[main]` WHERE `category` LIKE" .
-                        " '%!" . $getItem->catid . "!%' AND `show` = '0'");
+                    $categorySql = "SELECT * FROM `$_ST[main]` WHERE `category` LIKE" .
+                        " '%!" . $getItem->catid . "!%' AND " .
+                        "`status` = '" . $options->statusID . "' AND `show` = '0'";
+
+                    $sql = $scorpions->query($categorySql);
                     $num = $scorpions->total($sql);
                     if ($num > 0) {
                         echo '<li><a href="' . $options->query . 'sort=' . $getItem->catid .
@@ -158,14 +157,18 @@
                     }
                 }
                 echo $octopus->alternate('menu', $seahorses->getOption('markup'), 1);
-                echo "\n<h3>Listings</h3>\n";
+                if ($count > 0) {
+                    echo "\n<h3>Listings</h3>\n";
+                }
             }
 
-            echo "<div class=\"sep\">\n";
-            while ($getItem = $scorpions->obj($true)) {
-                echo $wolves->getTemplate_Listings($getItem->id) . "\n";
+            if ($count > 0) {
+                echo "<div class=\"sep\">\n";
+                foreach ($flsInCategory as $id) {
+                    echo $wolves->getTemplate_Listings($id);
+                }
+                echo "</div>\n";
             }
-            echo "</div>\n";
         }
         echo "<p class=\"showBack\"><a href=\"javascript:window.history.back();\">&#171; Go back?</p>\n";
     } /**
