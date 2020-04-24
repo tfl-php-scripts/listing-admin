@@ -65,10 +65,10 @@ of the listing you'd like the member added to.</p>
 
 <fieldset>
  <legend>Member Details</legend>
- <p><label>* <strong>Name:</strong></label> <input name="name" class="input1" type="text"></p>
- <p><label>* <strong>E-Mail:</strong></label> <input name="email" class="input1" type="email"></p>
+ <p><label>* <strong>Name:</strong></label> <input name="name" class="input1" type="text" required="required"></p>
+ <p><label>* <strong>E-Mail:</strong></label> <input name="email" class="input1" type="email" required="required"></p>
  <p><label><strong>URI:</strong></label> <input name="url" class="input1" type="url"></p>
- <p><label>* <strong>Country:</strong></label> <select name="country" class="input1">
+ <p><label>* <strong>Country:</strong></label> <select name="country" class="input1" required="required">
 <?php require('inc/countries.inc.php'); ?>
  </select></p>
  <p><label><strong>Show E-Mail:</strong></label> 
@@ -397,9 +397,10 @@ if(count($favs) != 0 && !empty($fave)) {
 	$idtype    = $tigers->cleanMys($_POST['idtype']);
   $members   = $snakes->getMembers($id, $idtype, 'object', $getlistingid);
   $status    = $tigers->cleanMys($_POST['change_status']);
-  $email_now = $tigers->cleanMys($_POST['email_now']);
+  $email_now = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email_now']));
   $name      = $tigers->cleanMys($_POST['name']);
-  if(empty($name)) { 
+
+  if(empty($name)) {
    $tigers->displayError('Form Error', 'Your <samp>name</samp> field is' . 
    ' empty.', false);
   } elseif (strlen($name) > 20) {
@@ -419,7 +420,7 @@ $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
     $tigers->displayError('Form Error', 'Your <samp>site URL</samp> is' .
         ' not valid. Please supply a valid site URL or empty the field.', false);
 }
-        $tigers->cleanMys($_POST['country']);
+  $country = $tigers->cleanMys($_POST['country']);
   if(empty($country)) { 
    $tigers->displayError('Form Error', 'Your <samp>country</samp> field is' . 
    ' empty.', false);
@@ -444,7 +445,7 @@ $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
  
   $listing = $wolves->getListings($getlistingid, 'object');
 	if($listing->dblist == 1) {
-   $scorpions->scorpions($listing->dbhost, $listing->dbuser, $listing->dbpass, $listing->dbname);
+   $scorpions->initDB($listing->dbhost, $listing->dbuser, $listing->dbpass, $listing->dbname);
 	 if($email_now == 'y') {
     $mail = $jaguars->updateMember($id);
    }
@@ -546,7 +547,7 @@ $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
 	 */  
 	if($getItem->dblist == 1 && $getItem->dbtype == 'listingadmin') {
 	 $scorpions->breach(0);
-   $scorpions->scorpions($getItem->dbhost, $getItem->dbuser, $getItem->dbpass, $getItem->dbname);
+   $scorpions->initDB($getItem->dbhost, $getItem->dbuser, $getItem->dbpass, $getItem->dbname);
    $dbplod = explode('_', $getItem->dbtabl);
 	 $dbtabl = $dbplod[0];
 	 $dbflid = $getItem->dbflid;
@@ -606,7 +607,7 @@ $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
 	foreach($_POST['member'] as $pm) {
 	 if($getItem->dblist == 1) {
 	  $scorpions->breach(0);
-    $scorpions->scorpions($getItem->dbhost, $getItem->dbuser, $getItem->dbpass, $getItem->dbname);
+    $scorpions->initDB($getItem->dbhost, $getItem->dbuser, $getItem->dbpass, $getItem->dbname);
 		
 	  $dbtable = $getItem->dbtabl;
 	  $dbflid  = $getItem->dbflid;
@@ -671,7 +672,7 @@ $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
   foreach($_POST['member'] as $pm) {
    if($getItem->dblist == 1) {
 	  $scorpions->breach(0);
-    $scorpions->scorpions(
+    $scorpions->initDB(
      $getItem->dbhost, $getItem->dbuser, $getItem->dbpass, $getItem->dbname
     );
 		
@@ -717,7 +718,7 @@ $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
   foreach($_POST['member'] as $pm) {
 	 if($getItem->dblist == 1) {
 	  $scorpions->breach(0);
-    $scorpions->scorpions($getItem->dbhost, $getItem->dbuser, $getItem->dbpass, $getItem->dbname);
+    $scorpions->initDB($getItem->dbhost, $getItem->dbuser, $getItem->dbpass, $getItem->dbname);
 		
 	  $dbtable = $getItem->dbtabl;
 	  $dbflid  = $getItem->dbflid;
