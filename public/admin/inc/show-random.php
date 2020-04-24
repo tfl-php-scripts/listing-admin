@@ -14,9 +14,6 @@ require(MAINDIR . 'rats.inc.php');
 require_once('fun.inc.php');
 require_once('fun-misc.inc.php');
 
-/**
- * Get variables and options~!
- */
 $options = new stdClass();
 
 if (isset($show_joined) && !empty($show_joined)) {
@@ -35,6 +32,18 @@ if (isset($show_joined_number) && is_numeric($show_joined_number)) {
     $options->showJoinedNumber = $show_joined_number;
 } else {
     $options->showJoinedNumber = 2;
+}
+
+if (isset($show_joined_rotate) && !empty($show_joined_rotate)) {
+    if ($show_joined_rotate == 'y') {
+        $options->showJoinedRotate = 'y';
+    } elseif ($show_joined_rotate == 'n') {
+        $options->showJoinedRotate = 'n';
+    } else {
+        $options->showJoinedRotate = 'n';
+    }
+} else {
+    $options->showJoinedRotate = 'n';
 }
 
 if (isset($show_owned) && !empty($show_owned)) {
@@ -78,8 +87,14 @@ if ($markup == 'xhtml') {
  * Get the index: owned and joined listings \o/
  */
 if ($options->showOwned == 'y') {
-    $select = "SELECT * FROM `$_ST[main]` WHERE `show` = '0' AND `status` = '0'" .
-        ' ORDER BY `since` DESC LIMIT ' . $options->showOwnedNumber;
+    if($options->showOwnedRotate == 'n') {
+        $select = "SELECT * FROM `$_ST[main]` WHERE `show` = '0' AND `status` = '0'" .
+            ' ORDER BY `since` DESC LIMIT ' . $options->showOwnedNumber;
+    } else {
+        $select = "SELECT * FROM `$_ST[main]` WHERE `show` = '0' AND `status` = '0'" .
+            ' ORDER BY RAND() LIMIT ' . $options->showOwnedNumber;
+    }
+
     $true = $scorpions->query($select);
     if ($true == false) {
         $tigers->displayError('Database Error', 'The script was unable to select' .
@@ -90,45 +105,21 @@ if ($options->showOwned == 'y') {
                 '" alt="' . $getItem->subject . '" title="' . $getItem->subject . "\"$mark></a>\n";
         }
     }
-
-    $query = "SELECT * FROM `$_ST[main]` WHERE `show` = '0' AND `status` = '0'" .
-        ' ORDER BY RAND() LIMIT ' . $options->showOwnedNumber;
-    $sql = $scorpions->query($query);
-    if ($sql == false) {
-        $tigers->displayError('Database Error', 'The script was unable to select' .
-            ' the newest listing(s)!', false);
-    } else {
-        while ($item = $scorpions->obj($sql)) {
-            echo '<a href="' . $item->url . '"><img src="' . $seahorses->getOption('img_http') . $item->image .
-                '" alt="' . $item->subject . '" title="' . $item->subject . "\"$mark></a>\n";
-        }
-    }
 }
 
 if ($options->showJoined == 'y') {
-    $select = "SELECT * FROM `$_ST[joined]` ORDER BY `jAdd` DESC LIMIT " . $options->showJoinedNumber;
+    if($options->showJoinedRotate == 'n') {
+        $select = "SELECT * FROM `$_ST[joined]` ORDER BY `jAdd` DESC LIMIT " . $options->showJoinedNumber;
+    } else {
+        $select = "SELECT * FROM `$_ST[joined]` ORDER BY RAND() LIMIT " . $options->showJoinedNumber;
+    }
+
     $true = $scorpions->query($select);
     if ($true === false) {
         $tigers->displayError('Database Error', 'The script was unable to select' .
             ' the random joined listing(s)!', false);
     } else {
         while ($getItem = $scorpions->obj($true)) {
-            if (!empty($getItem->jImage) && file_exists($seahorses->getOption('jnd_path') . $getItem->jImage)) {
-                echo '<a href="' . $getItem->jURL . '"><img src="' . $seahorses->getOption('jnd_http') . $getItem->jImage .
-                    '" alt="' . $getItem->jSubject . '" title="' . $getItem->jSubject . "\" class=\"joinedRandom\"$mark></a>\n";
-            } else {
-                echo '<a href="' . $getItem->jURL . '">' . $getItem->jSubject . "</a>\n";
-            }
-        }
-    }
-
-    $query = "SELECT * FROM `$_ST[joined]` ORDER BY RAND() LIMIT " . $options->showJoinedNumber;
-    $sql = $scorpions->query($query);
-    if ($sql === false) {
-        $tigers->displayError('Database Error', 'The script was unable to select' .
-            ' the random joined listing(s)!', false);
-    } else {
-        while ($getItem = $scorpions->obj($sql)) {
             if (!empty($getItem->jImage) && file_exists($seahorses->getOption('jnd_path') . $getItem->jImage)) {
                 echo '<a href="' . $getItem->jURL . '"><img src="' . $seahorses->getOption('jnd_http') . $getItem->jImage .
                     '" alt="' . $getItem->jSubject . '" title="' . $getItem->jSubject . "\" class=\"joinedRandom\"$mark></a>\n";

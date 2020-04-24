@@ -412,7 +412,7 @@ if (isset($_GET['g']) && $_GET['g'] == 'collective') {
             <tbody>
             <tr>
                 <td class="t">$show_joined_rotate</td>
-                <td class="d">Set to 'y' if you'd like random joined listing(s) to be displayed.</td>
+                <td class="d">Set to 'y' if you'd like random joined listing(s) to be displayed, set to 'n' if you'd like newest listing(s) to be displayed.</td>
             </tr>
             </tbody>
             <tbody>
@@ -435,7 +435,7 @@ if (isset($_GET['g']) && $_GET['g'] == 'collective') {
             <tbody>
             <tr>
                 <td class="t">$show_owned_rotate</td>
-                <td class="d">Set to 'y' if you'd like random owned listing(s) to be displayed.</td>
+                <td class="d">Set to 'y' if you'd like random owned listing(s) to be displayed, set to 'n' if you'd like newest listing(s) to be displayed.</td>
             </tr>
             </tbody>
         </table>
