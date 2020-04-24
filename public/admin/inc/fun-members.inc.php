@@ -1226,7 +1226,7 @@ case 'head':
 
             if ($m != '') {
                 $member = $this->getMembers($m, $e, 'object', $listing->id);
-                if ($member->mVisible == 0) {
+                if ((int)$member->mVisible === 0) {
                     $email = $octopus->javascriptEmail($member->mEmail);
                 } else {
                     $email = '<del>E-mail</del>';
