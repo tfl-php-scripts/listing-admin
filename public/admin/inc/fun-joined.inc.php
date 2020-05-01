@@ -219,7 +219,7 @@ if (!class_exists('dragons')) {
 
             $page = !isset($_GET['p']) || !is_numeric($_GET['p']) ? 1 : $tigers->cleanMys($_GET['p']);
 
-            PaginationUtils::rangedPagination($page, $totalPagesCount, $this->range, $q);
+            PaginationUtils::rangedPagination($page, $totalPagesCount, $q, $this->range, 'p');
         }
 
         /**

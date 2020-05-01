@@ -9,6 +9,8 @@
  * @version          Robotess Fork
  */
 
+use Robotess\PaginationUtils;
+
 if (!class_exists('turtles')) {
     class turtles
     {
@@ -640,8 +642,6 @@ if (!class_exists('turtles')) {
                     $o = $s == 'y' ? 'y' : $options->listingID;
                     $total = count($this->updatesList($o));
                     $pages = ceil($total / $options->pagination);
-                    $next = $page + 1;
-                    $prev = $page - 1;
 
                     $listing = $wolves->getListings($options->listingID, 'object');
                     $prettyu = in_array($options->listingID, $wolves->listingsList())
@@ -649,24 +649,23 @@ if (!class_exists('turtles')) {
                     $blogurl = in_array($options->listingID, $wolves->listingsList())
                         ? $listing->url : $this->blogURL();
 
-                    if ($page > 1) {
-                        if ($prettyu == 'y') {
+                    if ($prettyu == 'y') {
+                        $next = $page + 1;
+                        $prev = $page - 1;
+
+                        if ($page > 1) {
                             echo '<a class="und" href="' . $blogurl . 'p/' . $prev . '">&#171; Previous</a> ';
                         } else {
-                            echo '<a class="und" href="' . $blogurl . '?p=' . $prev . '">&#171; Previous</a> ';
+                            echo '<span>&#171; Previous</span> ';
                         }
-                    } else {
-                        echo '<span>&#171; Previous</span> ';
-                    }
 
-                    if ($page < $pages) {
-                        if ($prettyu == 'y') {
+                        if ($page < $pages) {
                             echo '<a class="und" href="' . $blogurl . 'p/' . $next . '">Next &#187;</a>';
                         } else {
-                            echo '<a class="und" href="' . $blogurl . '?p=' . $next . '">Next &#187;</a>';
+                            echo '<span>Next &#187;</span>';
                         }
                     } else {
-                        echo '<span>Next &#187;</span>';
+                        PaginationUtils::rangedPagination($page, $pages, $blogurl . '?');
                     }
 
                     echo "\n</p>\n";
@@ -723,7 +722,7 @@ if (!class_exists('turtles')) {
                     if ($seahorses->getOption('updates_gravatar') == 'y') {
                         echo '<p class="i"><img src="' . $gravatar . '" class="commentImage" alt=""' . $mark . "></p>\n";
                     } else {
-                        echo '<p class="i"><img src="' . $default .'" class="commentImage" alt=""' . $mark . "></p>\n";
+                        echo '<p class="i"><img src="' . $default . '" class="commentImage" alt=""' . $mark . "></p>\n";
                     }
                     echo "<p class=\"c$image_class\">{$n}<br$mark>\n";
                     echo '<span class="commentBox">' . date($seahorses->getTemplate('date_template'), strtotime($getItem->cAdded)) .
@@ -823,7 +822,8 @@ if (!class_exists('turtles')) {
                     <legend>Comment</legend>
                     <p>
                         <strong>* Comment:</strong><br<?php echo $mark; ?>>
-                        <textarea name="comment" cols="50" rows="15" style="height: 150px; width: 100%;" required="required"></textarea>
+                        <textarea name="comment" cols="50" rows="15" style="height: 150px; width: 100%;"
+                                  required="required"></textarea>
                     </p>
                     <p class="tc"><input name="action" class="input2" type="submit"
                                          value="Post Comment"<?php echo $mark; ?>></p>
@@ -835,9 +835,9 @@ if (!class_exists('turtles')) {
         /**
          * @access   public
          * @function $turtles->grabEntryDate()
-         * @since    2.1.4
          * @param string $i
          * @return string
+         * @since    2.1.4
          */
         public function grabEntryDate($i = '')
         {
@@ -862,8 +862,8 @@ if (!class_exists('turtles')) {
         /**
          * @access   public
          * @function $turtles->getRSS()
-         * @since    2.1.4
          * @param string $c
+         * @since    2.1.4
          */
         public function getRSS($c = '')
         {

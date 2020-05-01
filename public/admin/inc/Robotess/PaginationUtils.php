@@ -19,13 +19,14 @@ final class PaginationUtils
     /**
      * @param int $currentPage
      * @param int $totalPagesCount
-     * @param int $pagesRangeCount
      * @param string $linkToPage
+     * @param int $pagesRangeCount
+     * @param string $pageQueryParam
      * @return void
      */
-    public static function rangedPagination(int $currentPage, int $totalPagesCount, int $pagesRangeCount, string $linkToPage): void
+    public static function rangedPagination(int $currentPage, int $totalPagesCount, string $linkToPage, int $pagesRangeCount = 3, string $pageQueryParam = 'p'): void
     {
-        if($totalPagesCount === 1) {
+        if ($totalPagesCount === 1) {
             return;
         }
 
@@ -35,7 +36,7 @@ final class PaginationUtils
         $otherPages = [];
 
         if ($currentPage > 1) {
-            $pg = $linkToPage . 'p=' . $prev;
+            $pg = $linkToPage . $pageQueryParam . '=' . $prev;
             echo "<span id=\"prev\"><a href=\"$pg\">&#171; Previous</a></span> ";
             $otherPages[] = 1;
         } else {
@@ -44,6 +45,7 @@ final class PaginationUtils
 
         $otherPages[] = $totalPagesCount;
 
+        $pagesRangeCount = max(3, $pagesRangeCount);
         $showLeftPagesCount = floor($pagesRangeCount / 2);
 
         // if range is even, on the right part there will be 1 link less; otherwise it will be equal
@@ -69,14 +71,14 @@ final class PaginationUtils
 
         $previousPage = null;
         foreach ($otherPages as $i) {
-            if ($previousPage !== null && $previousPage + 1 !== $i) {
+            if ($previousPage !== null && (int)($previousPage + 1) !== (int)$i) {
                 echo ' ... ';
             }
 
-            if ($i === $currentPage) {
+            if ((int)$i === $currentPage) {
                 echo "<span id=\"current\">$i</span> ";
             } else {
-                $pg = $linkToPage . 'p=' . $i;
+                $pg = $linkToPage . $pageQueryParam . '=' . $i;
                 echo "<span class=\"pagi\"><a href=\"$pg\">$i</a></span> ";
             }
 
@@ -84,7 +86,7 @@ final class PaginationUtils
         }
 
         if ($currentPage < $totalPagesCount) {
-            $pg = $linkToPage . 'p=' . $next;
+            $pg = $linkToPage . $pageQueryParam . '=' . $next;
             echo "<span id=\"next\"><a href=\"$pg\">Next &#187;</a></span>";
         } else {
             echo '<span id="current">Next &#187;</span>';
