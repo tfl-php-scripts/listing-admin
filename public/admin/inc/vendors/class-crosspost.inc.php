@@ -1,5 +1,15 @@
 <?php
 /**
+ * @project          Listing Admin
+ * @copyright        2007
+ * @license          GPL Version 3; BSD Modified
+ * @author           Tess <theirrenegadexxx@gmail.com>
+ * @contributor      Ekaterina <scripts@robotess.net> http://scripts.robotess.net
+ * @file             <class-crosspost.inc.php>
+ * @version          Robotess Fork
+ */
+
+/**
  * Copyright (c) 2008 Alis Dee
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -40,10 +50,18 @@ if (!class_exists('crosspost')) {
         public $lj_challenge;
         public $lj_logged;
 
+        /** @var IXR_Client */
+        public $client;
+
+        /**
+         * @var bool
+         */
+        public $loggedin = false;
+
         # -- Get Client Function -----------------------------------------------------
         public function __construct($lj_userid = '', $lj_md5pwd = '', $server = '', $lj_comm = '')
         {
-            global $_ST, $laoptions;
+            global $laoptions;
 
             $this->clientid = 'PHP-Listing Admin/' . $laoptions->version;
             $this->protocol_version = 1;
