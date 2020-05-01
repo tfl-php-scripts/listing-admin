@@ -1,9 +1,7 @@
 <?php
-$feedurl = 'https://scripts.robotess.net/projects/listing-admin/atom.xml';
-define('MAGPIE_CACHE_ON', false);
-require_once('inc/vendors/fetch/rss_fetch.inc');
-$rssEntries = fetch_rss($feedurl);
-if ($rssEntries !== false) {
+require_once('inc/Robotess/Fetcher.php');
+$rssEntries = Robotess\Fetcher::instance()->fetchUrl('https://scripts.robotess.net/projects/listing-admin/atom.xml');
+if (count($rssEntries) > 0) {
     ?>
     <div id="feeds">
         <div id="lafeeds">
@@ -13,14 +11,14 @@ if ($rssEntries !== false) {
             </h4>
             <?php
             echo "  <menu>\n";
-            $items = array_reverse($rssEntries->items);
+            $items = array_reverse($rssEntries);
             $startnumero = 1;
             $maxEntries = 3;
             foreach ($items as $item) {
                 $n = $startnumero === $maxEntries ? ' id="last"' : '';
                 echo '   <li class="block" ' . $n . '><strong>' . $item['title'] . "</strong><br>\n";
                 // echo "   <p>" . substr($item['description'], 0, 200) . "</p>\n";
-                echo '   <a href="' . $item['guid'] . '" title="External Link: ' . $item['guid'] . "\">Read More &#187;</a></li>\n";
+                echo '   <a href="' . $item['guid'] . '" title="External Link: ' . $item['guid'] . "\" target=\"_blank\">Read More &#187;</a></li>\n";
                 if ($startnumero === $maxEntries) {
                     break;
                 }
