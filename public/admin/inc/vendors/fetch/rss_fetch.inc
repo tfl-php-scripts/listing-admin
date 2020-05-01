@@ -27,12 +27,12 @@ if (!defined('MAGPIE_DIR')) {
     define('MAGPIE_DIR', __DIR__ . DIR_SEP);
 }
 
-require_once(MAGPIE_DIR . 'rss_parse.inc');
-require_once(MAGPIE_DIR . 'rss_cache.inc');
+require_once(MAGPIE_DIR . 'class-magpierss.inc.php');
+require_once(MAGPIE_DIR . 'class-rsscache.inc.php');
 
 // for including 3rd party libraries
-define('MAGPIE_EXTLIB', MAGPIE_DIR . 'extlib' . DIR_SEP);
-require_once(MAGPIE_EXTLIB . 'Snoopy.class.inc');
+define('MAGPIE_EXTLIB', MAGPIE_DIR .  'extlib' . DIR_SEP);
+require_once(MAGPIE_EXTLIB . 'class-snoopy.inc.php');
 
 
 /* 
@@ -279,7 +279,7 @@ function _fetch_remote_file($url, $headers = '')
     }
 
     @$client->fetch($url);
-    if(is_array($client->results)) {
+    if (is_array($client->results)) {
         $client->results = reset($client->results);
     }
     return $client;

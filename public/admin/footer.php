@@ -1,7 +1,7 @@
 <?php
 $feedurl = 'https://scripts.robotess.net/projects/listing-admin/atom.xml';
 define('MAGPIE_CACHE_ON', false);
-require_once('inc/fetch/rss_fetch.inc');
+require_once('inc/vendors/fetch/rss_fetch.inc');
 $rssEntries = fetch_rss($feedurl);
 if ($rssEntries !== false) {
     ?>
