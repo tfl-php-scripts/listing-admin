@@ -11,6 +11,7 @@
 namespace Robotess;
 
 use SimplePie;
+use SimplePie_Item;
 use const DIRECTORY_SEPARATOR;
 
 class Fetcher
@@ -19,11 +20,6 @@ class Fetcher
      * @var string
      */
     private $cacheDirectory;
-
-    /**
-     * @var int
-     */
-    private $itemsLimit = 3;
 
     /**
      * @var self
@@ -51,25 +47,8 @@ class Fetcher
     }
 
     /**
-     * @deprecated
-     * @see fetchUrl
      * @param string $feedUrl
-     * @return array
-     */
-    public function fetchUrlMagpie(string $feedUrl): array
-    {
-        define('MAGPIE_CACHE_ON', false);
-        require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'vendors' . DIRECTORY_SEPARATOR . 'fetch' . DIRECTORY_SEPARATOR . 'rss_fetch.inc');
-        $result = fetch_rss($feedUrl);
-        if ($result === false) {
-            return [];
-        }
-        return $result->items;
-    }
-
-    /**
-     * @param string $feedUrl
-     * @return array
+     * @return SimplePie_Item[]
      */
     public function fetchUrl(string $feedUrl): array
     {
@@ -77,10 +56,9 @@ class Fetcher
 
         $feed = new SimplePie();
         $feed->set_feed_url($feedUrl);
-        //@todo remove
-        $feed->enable_cache(false);
+        $feed->enable_cache(true);
         $feed->set_cache_location($this->cacheDirectory);
-        $feed->set_item_limit($this->itemsLimit);
+        $feed->strip_htmltags('a', true);
         $feed->init();
         $feed->handle_content_type();
         return $feed->get_items();
