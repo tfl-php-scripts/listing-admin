@@ -4,7 +4,7 @@
  * @copyright        2020
  * @license          GPL Version 3; BSD Modified
  * @author           Ekaterina <scripts@robotess.net> http://scripts.robotess.net
- * @file             <Utils.php>
+ * @file             <StringUtils.php>
  * @version          Robotess Fork
  */
 
@@ -12,7 +12,11 @@ namespace Robotess;
 
 use function preg_match;
 
-class StringUtils
+/**
+ * Class StringUtils
+ * @package Robotess
+ */
+final class StringUtils
 {
     /**
      * @var self
@@ -47,7 +51,7 @@ class StringUtils
      */
     public function isEmailValid(string $email): bool
     {
-        return (bool)preg_match("/^([A-Za-z0-9-_\.+]+)@(([A-Za-z0-9-_]+\.)+)([a-zA-Z]{2,})$/i", $email);
+        return (bool)preg_match("/^([A-Za-z0-9-_.+]+)@(([A-Za-z0-9-_]+\.)+)([a-zA-Z]{2,})$/i", $email);
     }
 
     /**
