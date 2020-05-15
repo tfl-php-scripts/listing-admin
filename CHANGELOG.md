@@ -1,5 +1,9 @@
 # Changes:
 
+Robotess Fork v1.0.1
+
+* Various code fixes + pagination fixes
+
 Robotess Fork v1.0.0
 
 * Fixed #5 - it's possible now to connect via mysqli or pdo_mysql. In future, it will be possible to use other DBs as well. Please, make sure your config files are consistent with the sample ones (more details in [README.md](README.md)).

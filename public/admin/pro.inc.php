@@ -46,8 +46,8 @@ if ($seahorses->getOption('kim_opt') == 'y') {
 }
 
 if ($seahorses->getOption('updates_opt') == 'y') {
-    require('inc/class-crosspost.inc.php');
-    require('inc/class-ixr.inc.php');
+    require('inc/vendors/class-crosspost.inc.php');
+    require('inc/vendors/class-ixr.inc.php');
     require('inc/fun-updates.inc.php');
 }
 
