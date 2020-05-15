@@ -9,6 +9,8 @@
  * @version          Robotess Fork
  */
 
+use Robotess\PaginationUtils;
+
 if (!class_exists('dragons')) {
 
     class dragons
@@ -216,65 +218,8 @@ if (!class_exists('dragons')) {
             }
 
             $page = !isset($_GET['p']) || !is_numeric($_GET['p']) ? 1 : $tigers->cleanMys($_GET['p']);
-            $prev = $page - 1;
-            $next = $page + 1;
 
-            $otherPages = [];
-
-            if ($page > 1) {
-                $pg = $q . 'p=' . $prev;
-                echo "<span id=\"prev\"><a href=\"$pg\">&#171; Previous</a></span> ";
-            } else {
-                echo '<span id="current">&#171; Previous</span> ';
-            }
-
-            $otherPages[] = 1.0;
-            $otherPages[] = $totalPagesCount;
-
-            $showLeftPagesCount = floor($this->range / 2);
-            // if range is even, on the right part there will be 1 link less; otherwise it will be equal
-            $showRightPagesCount = $this->range % 2 === 0 ? $showLeftPagesCount - 1 : $showLeftPagesCount;
-            $begin = $page - $showLeftPagesCount;
-            $ender = $page + $showRightPagesCount;
-            if ($begin <= 0 && $ender > $totalPagesCount) {
-                // show all the pages
-                $otherPages = array_merge($otherPages, range(1, $totalPagesCount));
-            } else {
-                if ($begin <= 0) {
-                    $ender += abs($begin) + 1;
-                    $begin = 1;
-                } elseif ($ender > $totalPagesCount) {
-                    $begin -= $ender - $totalPagesCount;
-                    $ender = $totalPagesCount;
-                }
-                $otherPages = array_merge($otherPages, range(max(1, $begin), min($ender, $totalPagesCount)));
-            }
-
-            sort($otherPages);
-            $otherPages = array_unique($otherPages);
-
-            $previousPage = null;
-            foreach ($otherPages as $i) {
-                if ($previousPage !== null && $previousPage + 1 !== $i) {
-                    echo ' ... ';
-                }
-
-                if ($i === $page) {
-                    echo "<span id=\"current\">$i</span> ";
-                } else {
-                    $pg = $q . 'p=' . $i;
-                    echo "<span class=\"pagi\"><a href=\"$pg\">$i</a></span> ";
-                }
-
-                $previousPage = $i;
-            }
-
-            if ($page < $totalPagesCount) {
-                $pg = $q . 'p=' . $next;
-                echo "<span id=\"next\"><a href=\"$pg\">Next &#187;</a></span>";
-            } else {
-                echo '<span id="current">Next &#187;</span>';
-            }
+            PaginationUtils::rangedPagination($page, $totalPagesCount, $q, $this->range, 'p');
         }
 
         /**
