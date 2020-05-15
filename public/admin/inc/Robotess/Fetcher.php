@@ -1,10 +1,10 @@
 <?php
 /**
  * @project          Listing Admin
- * @copyright        2007
+ * @copyright        2020
  * @license          GPL Version 3; BSD Modified
  * @author           Ekaterina <scripts@robotess.net> http://scripts.robotess.net
- * @file             <class-fetcher.inc.php>
+ * @file             <Fetcher.php>
  * @version          Robotess Fork
  */
 
@@ -14,7 +14,11 @@ use SimplePie;
 use SimplePie_Item;
 use const DIRECTORY_SEPARATOR;
 
-class Fetcher
+/**
+ * Class Fetcher
+ * @package Robotess
+ */
+final class Fetcher
 {
     /**
      * @var string

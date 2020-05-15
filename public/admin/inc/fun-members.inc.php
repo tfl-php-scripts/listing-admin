@@ -1474,8 +1474,7 @@ case 'head':
          */
         public function membersSort($s, $b, $p)
         {
-            global $_ST, $octopus, $options, $per_page, $scorpions, $start, $tigers,
-                   $wolves;
+            global $_ST, $options, $per_page, $scorpions, $start, $tigers, $wolves;
 
             $countfls = $this->getMemberCount($options->listingID, '0');
             $listing = $wolves->getListings($options->listingID, 'object');
@@ -1600,7 +1599,7 @@ case 'head':
 
             $listing = $wolves->getListings($options->listingID, 'object');
             if (!empty($listing->dbhost) && !empty($listing->dbuser) && !empty($listing->dbname)) {
-                $scorpions->scorpions($listing->dbhost, $listing->dbuser, $listing->dbpass,
+                $scorpions->initDB($listing->dbhost, $listing->dbuser, $listing->dbpass,
                     $listing->dbname);
             }
 
@@ -1637,7 +1636,9 @@ case 'head':
                             echo '<li><a href="' . $listing->url . $options->url . 'country/' .
                                 str_replace(' ', '+', $type) . "\">$type</a></li>\n";
                         } else {
-                            echo '<li><a href="' . $options->url . 'sort=country&amp;name=' .
+                            $url = $options->url;
+                            $url = str_replace(['sort=country&amp;', 'sort=country&#38;'], '', $url);
+                            echo '<li><a href="' . $url . 'sort=country&amp;name=' .
                                 str_replace(' ', '+', $type) . "\">$type</a></li>\n";
                         }
                     }

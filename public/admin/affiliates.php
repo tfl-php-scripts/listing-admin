@@ -9,7 +9,9 @@
  * @version          Robotess Fork
  */
 
-use Robotess\StringUtils;$getTitle = 'Affiliates';
+use Robotess\StringUtils;
+
+$getTitle = 'Affiliates';
 require('pro.inc.php');
 require('vars.inc.php');
 require('header.php');
