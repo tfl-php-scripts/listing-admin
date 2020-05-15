@@ -15,12 +15,12 @@ if (!class_exists('rabbits')) {
 
         /**
          * @function  $rabbits->affiliatesList()
-         * @param     $i , int; listing ID; optional
-         * @param     $o , string; sort by date
-         * @return array
+         * @param string $i , int; listing ID; optional
+         * @param string $o , string; sort by date
+         * @param string $b
          * @return array
          */
-        public function affiliatesList($i = '', $o = '', $b = 'id')
+        public function affiliatesList($i = '', $o = '', $b = 'id'): array
         {
             global $_ST, $scorpions, $tigers, $wolves;
 
@@ -113,19 +113,20 @@ if (!class_exists('rabbits')) {
             return $all;
         }
 
-        public function allAffiliates($i = 'n')
+        public function allAffiliates($i = 'n'): array
         {
             return $this->affiliatesList($i);
         }
 
         # -- Get Member Sort (for <members.php>) --------------------
         /**
-         * $i = Listing ID
-         * $s = Search query (empty by default)
-         * $a = Search query contents~
+         * @param $i Listing ID
+         * @param string $s Search query (empty by default)
+         * @param array $a Search query contents~
+         * @return array
          */
         # -----------------------------------------------------------
-        public function sortAffiliates($i, $s = '', $a = array())
+        public function sortAffiliates($i, $s = '', $a = array()): array
         {
             global $_ST, $scorpions, $get_affsearch_array, $laantispam, $tigers,
                    $snakes, $wolves;
@@ -147,7 +148,7 @@ if (!class_exists('rabbits')) {
                     $findarray = $listing->dblist == 1 ? ($listing->dbtype == 'listingadmin' ?
                         'listingadmin' : 'enth') : 'listingadmin';
                     $typearray = $get_affsearch_array[$findarray];
-                    $search = false;
+                    $search = new stdClass();
                     foreach ($a as $k => $v) {
                         $search->$k = $v;
                     }
@@ -239,7 +240,7 @@ if (!class_exists('rabbits')) {
                 }
             }
 
-            if ($listing->dblist == 1) {
+            if (isset($listing) && $listing->dblist == 1) {
                 $scorpions->breach(0);
                 $scorpions->breach(1);
             }
@@ -337,9 +338,7 @@ if (!class_exists('rabbits')) {
         }
 
         /**
-         * @function   $rabbits->countAffiliates()
          * @param      $i , int; listing ID
-         * @return
          * @return
          */
         public function countAffiliates($i)
