@@ -56,6 +56,6 @@ class StringUtils
      */
     public function isUrlValid(string $url): bool
     {
-        return (bool)preg_match('@^(https?://)([A-Za-z0-9-_./?]+)\.([A-Za-z.]{2,})/?$@i', $url);
+        return (bool)preg_match('@^(https?://)([A-Za-z0-9-_./?]+)\.([A-Za-z.]{2,})/?@i', $url);
     }
 }
