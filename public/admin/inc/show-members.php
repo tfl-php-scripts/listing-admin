@@ -122,20 +122,20 @@
     }
 
     if ($count > 0) {
-        if (isset($_GET['sort']) && $_GET['sort'] == 'all') {
+        if (isset($_GET['sort']) && $_GET['sort'] === 'all') {
             $snakes->membersSort('all', $getItem->dblist, $getItem->dbtype);
             $snakes->membersPagination('all');
-        } elseif (isset($_GET['sort']) && $_GET['sort'] == 'name') {
+        } elseif (isset($_GET['sort']) && $_GET['sort'] === 'name') {
             $snakes->membersSort('name', $getItem->dblist, $getItem->dbtype);
             $snakes->membersPagination('name');
-        } elseif (isset($_GET['sort']) && $_GET['sort'] == 'country') {
+        } elseif (isset($_GET['sort']) && $_GET['sort'] === 'country') {
             $snakes->membersSort('country', $getItem->dblist, $getItem->dbtype);
             if (isset($_GET['name'])) {
                 $snakes->membersPagination('country', str_replace('+', ' ', $tigers->cleanMys($_GET['name'])));
             }
         } else {
             $snakes->membersDefault($options->sort);
-            if ($options->sort !== 'all') {
+            if ($options->sort === 'name') {
                 $snakes->membersPagination($options->sort);
             }
         }
