@@ -9,10 +9,10 @@
  * @version          Robotess Fork
  */
 
-$_ST = array();
+$_ST = [];
 
 if (!defined('LAVERSION')) {
-    define('LAVERSION', '[Robotess Fork] 1.0.0');
+    define('LAVERSION', '[Robotess Fork] 1.0.1');
 }
 
 require_once(__DIR__ . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'Robotess' . DIRECTORY_SEPARATOR . 'autoloader.php');
