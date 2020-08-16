@@ -33,4 +33,4 @@ If you are using Listing Admin 2.4 (old version by Tess) or Listing Admin [Robot
 
 Please follow the instructions carefully. A lot of issues were caused by users having incorrect config files.
 
-That's it! Should you encounter any problems, please create an issue (here: https://gitlab.com/tfl-php-scripts/listing-admin/-/issues), and I will try and solve it if I can. You can also report an issue via contact form: http://contact.robotess.net
+That's it! Should you encounter any problems, please create an issue (here: https://gitlab.com/tfl-php-scripts/listing-admin/-/issues), and I will try and solve it if I can. You can also report an issue via contact form: http://contact.robotess.net?box=scripts&subject=Issue+with+Listing+Admin. Please note that I don't support fresh installations, only those that were upgraded from old version.
