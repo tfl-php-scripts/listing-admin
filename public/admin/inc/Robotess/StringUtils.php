@@ -45,7 +45,7 @@ final class StringUtils
 
     public function normalizeEmail(string $data): string
     {
-        return trim(strtolower($data));
+        return strtolower(trim($data));
     }
 
     public function isEmailValid(string $email): bool

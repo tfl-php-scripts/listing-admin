@@ -12,7 +12,7 @@
 $_ST = [];
 
 if (!defined('LAVERSION')) {
-    define('LAVERSION', '[Robotess Fork] 1.0.1');
+    define('LAVERSION', '[Robotess Fork] 1.0.2 Beta');
 }
 
 require_once(__DIR__ . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'Robotess' . DIRECTORY_SEPARATOR . 'autoloader.php');
@@ -20,11 +20,18 @@ require_once(__DIR__ . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'Robo
 /**
  * Grab login object!
  */
-$loginInfo = (object)array(
+$loginInfo = (object)[
     'logBots' => '/(Indy|Blaiz|Java|libwww-perl|Python|OutfoxBot|User-Agent|PycURL|' .
         'AlphaServer|T8Abot|Syntryx|WinHttp|WebBandit|nicebot|Jakarta|curl|Snoopy|' .
         'PHPcrawl|id-search)/i',
     'logInfo' => '|' . $_SERVER['REMOTE_ADDR'] . '|' . $_SERVER['HTTP_USER_AGENT'] . '|',
-    'logNots' => array('alert', 'bcc:', 'content-type', 'document.cookie',
-        'javascript', 'onclick', 'onload')
-);
+    'logNots' => [
+        'alert',
+        'bcc:',
+        'content-type',
+        'document.cookie',
+        'javascript',
+        'onclick',
+        'onload'
+    ]
+];
