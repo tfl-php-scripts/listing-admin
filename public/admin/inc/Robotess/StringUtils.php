@@ -11,6 +11,8 @@
 namespace Robotess;
 
 use function preg_match;
+use function strtolower;
+use function trim;
 
 /**
  * Class StringUtils
@@ -36,28 +38,21 @@ final class StringUtils
         return self::$instance;
     }
 
-    /**
-     * @param $data
-     * @return string
-     */
-    public function normalize(string $data): string
+    public function normalizeUrl(string $data): string
     {
-        return strtolower($data);
+        return trim($data);
     }
 
-    /**
-     * @param string $email
-     * @return bool
-     */
+    public function normalizeEmail(string $data): string
+    {
+        return trim(strtolower($data));
+    }
+
     public function isEmailValid(string $email): bool
     {
         return (bool)preg_match("/^([A-Za-z0-9-_.+]+)@(([A-Za-z0-9-_]+\.)+)([a-zA-Z]{2,})$/i", $email);
     }
 
-    /**
-     * @param string $url
-     * @return bool
-     */
     public function isUrlValid(string $url): bool
     {
         return (bool)preg_match('@^(https?://)([A-Za-z0-9-_./?]+)\.([A-Za-z.]{2,})/?@i', $url);

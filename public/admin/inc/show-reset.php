@@ -48,7 +48,7 @@
      * The form has been set, so let's check the variables
      */
     if (isset($_POST['action']) && $_POST['action'] == 'Reset Password') {
-        $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
+        $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email']));
         if (empty($email)) {
             $tigers->displayError('Form Error', 'You have not filled out the <samp>email' .
                 '</samp> field.</p>', false);

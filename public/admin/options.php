@@ -52,7 +52,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'Edit Options') {
         if ($seahorses->getOption('my_name') != $my_nameNow) {
             $seahorses->editOption('my_name', $my_nameNow);
         }
-        $my_emailNow = StringUtils::instance()->normalize($tigers->cleanMys($_POST['my_email']));
+        $my_emailNow = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['my_email']));
         if (empty($my_emailNow)) {
             $tigers->displayError('Form Error', 'Your <samp>e-mail address</samp>' .
                 ' is empty. Go back and enter an valid e-mail address.', false);
@@ -67,7 +67,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'Edit Options') {
         if ($seahorses->getOption('my_email') != $my_emailNow) {
             $seahorses->editOption('my_email', $my_emailNow);
         }
-        $my_url = StringUtils::instance()->normalize($tigers->cleanMys($_POST['my_website']));
+        $my_url = StringUtils::instance()->normalizeUrl($tigers->cleanMys($_POST['my_website']));
         if (empty($my_url)) {
             $tigers->displayError('Form Error', 'Your <samp>website</samp>' .
                 ' is empty.', false);

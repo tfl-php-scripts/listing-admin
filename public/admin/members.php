@@ -141,7 +141,7 @@ if(isset($_GET['extend']) && is_numeric($_GET['extend'])) {
    $tigers->displayError('Form Error', 'The <samp>name</samp> is too' . 
 	 ' long. Go back and shorten it.', false);
   } 
-$email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
+$email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email']));
         if (empty($email)) {
             $tigers->displayError('Form Error', 'Your <samp>e-mail</samp> field' .
                 ' is empty.', false);
@@ -397,7 +397,7 @@ if(count($favs) != 0 && !empty($fave)) {
 	$idtype    = $tigers->cleanMys($_POST['idtype']);
   $members   = $snakes->getMembers($id, $idtype, 'object', $getlistingid);
   $status    = $tigers->cleanMys($_POST['change_status']);
-  $email_now = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email_now']));
+  $email_now = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email_now']));
   $name      = $tigers->cleanMys($_POST['name']);
 
   if(empty($name)) {
@@ -407,7 +407,7 @@ if(count($favs) != 0 && !empty($fave)) {
    $tigers->displayError('Form Error', 'Your <samp>name</samp> is too' . 
    ' long. Go back and shorten it.', false);
   }
-$email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
+$email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email']));
         if (empty($email)) {
             $tigers->displayError('Form Error', 'Your <samp>e-mail</samp> field' .
                 ' is empty.', false);
@@ -415,7 +415,7 @@ $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
             $tigers->displayError('Form Error', 'The characters specified in the' .
                 ' <samp>e-mail</samp> field are not allowed.', false);
         }
-        $url = StringUtils::instance()->normalize($tigers->cleanMys($_POST['url']));
+        $url = StringUtils::instance()->normalizeUrl($tigers->cleanMys($_POST['url']));
         if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
     $tigers->displayError('Form Error', 'Your <samp>site URL</samp> is' .
         ' not valid. Please supply a valid site URL or empty the field.', false);

@@ -95,7 +95,7 @@ if (isset($_GET['g']) && $_GET['g'] == 'new') {
         $tigers->displayError('Form Error', 'Your <samp>subject</samp> field' .
             ' is empty.', false);
     }
-    $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
+    $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email']));
     if (empty($email)) {
         $tigers->displayError('Form Error', 'Your <samp>e-mail</samp> field' .
             ' is empty.', false);
@@ -103,7 +103,7 @@ if (isset($_GET['g']) && $_GET['g'] == 'new') {
         $tigers->displayError('Form Error', 'The characters specified in the' .
             ' <samp>e-mail</samp> field are not allowed.', false);
     }
-    $url = StringUtils::instance()->normalize($tigers->cleanMys($_POST['url']));
+    $url = StringUtils::instance()->normalizeUrl($tigers->cleanMys($_POST['url']));
     if (empty($url)) {
         $tigers->displayError('Form Error', 'Your <samp>site URL</samp> field' .
             ' is empty.', false);
@@ -342,12 +342,12 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'old') {
         $tigers->displayError('Form Error', 'Your <samp>subject</samp> field' .
             ' is empty.', false);
     }
-    $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
+    $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email']));
     if (empty($email)) {
         $tigers->displayError('Form Error', 'Your <samp>email</samp> field' .
             ' is empty.', false);
     }
-    $url = StringUtils::instance()->normalize($tigers->cleanMys($_POST['url']));
+    $url = StringUtils::instance()->normalizeUrl($tigers->cleanMys($_POST['url']));
     if (empty($url)) {
         $tigers->displayError('Form Error', 'Your <samp>url</samp> field is' .
             ' empty.', false);
@@ -594,7 +594,7 @@ else {
                     $select = $rabbits->affiliatesList($getlistingid, 'asc');
                     foreach ($select as $obj) {
                         $getTion = $rabbits->getAffiliate($obj, 'id', $getlistingid);
-                        $cleanEmail = StringUtils::instance()->normalize($laantispam->clean($getTion->aEmail, 'n', 'y'));
+                        $cleanEmail = StringUtils::instance()->normalizeEmail($laantispam->clean($getTion->aEmail, 'n', 'y'));
                         echo '<option value="' . $cleanEmail . '">' . $getTion->aEmail . "</option>\n";
                     }
                     ?>

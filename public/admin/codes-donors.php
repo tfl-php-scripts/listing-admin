@@ -51,12 +51,12 @@ if (isset($_GET['g']) && $_GET['g'] == 'new') {
         $tigers->displayError('Form Error', 'The <samp>name</samp> field is empty.',
             false);
     }
-    $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
+    $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email']));
     if (!empty($email) && !StringUtils::instance()->isEmailValid($email)) {
         $tigers->displayError('Form Error', 'The <samp>e-mail</samp> field contains' .
             ' invalid characters. Try again.', false);
     }
-    $url = StringUtils::instance()->normalize($tigers->cleanMys($_POST['url']));
+    $url = StringUtils::instance()->normalizeUrl($tigers->cleanMys($_POST['url']));
     if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
         $tigers->displayError('Form Error', 'The <samp>URL</samp> field does not' .
             ' start with http:// and therefore is not valid. Try again.', false);
@@ -124,12 +124,12 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'old') {
             false);
     }
 
-    $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
+    $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email']));
     if (!empty($email) && !StringUtils::instance()->isEmailValid($email)) {
         $tigers->displayError('Form Error', 'The <samp>e-mail</samp> field contains' .
             ' invalid characters. Try again.', false);
     }
-    $url = StringUtils::instance()->normalize($tigers->cleanMys($_POST['url']));
+    $url = StringUtils::instance()->normalizeUrl($tigers->cleanMys($_POST['url']));
     if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
         $tigers->displayError('Form Error', 'The <samp>URL</samp> field does not' .
             ' start with http:// and therefore is not valid. Try again.', false);

@@ -46,7 +46,7 @@
      * The form has been set, so let's check the variables~
      */
     if (isset($_POST['action']) && $_POST['action'] == 'Delete Me') {
-        $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
+        $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email']));
         if (empty($email)) {
             $tigers->displayError('Form Error', 'The <samp>email</samp> field has not been' .
                 ' filled out.', false);

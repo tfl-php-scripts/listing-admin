@@ -138,14 +138,14 @@ if (isset($_GET['g']) && $_GET['g'] == 'old') {
         $tigers->displayError('Form Error', 'The <samp>name</samp> field is empty.',
             false);
     }
-    $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
+    $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email']));
     if (empty($email)) {
         $tigers->displayError('Form Error', 'Your <samp>email</samp> is empty.', false);
     } elseif (!StringUtils::instance()->isEmailValid($email)) {
         $tigers->displayError('Comment Error', 'The characters specified in the' .
             ' <samp>email</samp> field are not allowed.', false);
     }
-    $url = StringUtils::instance()->normalize($tigers->cleanMys($_POST['url']));
+    $url = StringUtils::instance()->normalizeUrl($tigers->cleanMys($_POST['url']));
     if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
         $tigers->displayError('Form Error', 'Your <samp>site URL</samp> is' .
             ' not valid. Please supply a valid site URL or empty the field.', false);

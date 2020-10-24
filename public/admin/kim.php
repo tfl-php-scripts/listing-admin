@@ -99,7 +99,7 @@ if ($seahorses->getOption('kim_opt') == 'y') {
             $tigers->displayError('Script Error', 'The <samp>name</samp> is too' .
                 ' long. Go back and shorten it.', false);
         }
-        $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
+        $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email']));
         if (empty($email)) {
             $tigers->displayError('Form Error', 'Your <samp>e-mail</samp> field' .
                 ' is empty.', false);
@@ -107,7 +107,7 @@ if ($seahorses->getOption('kim_opt') == 'y') {
             $tigers->displayError('Form Error', 'The characters specified in the' .
                 ' <samp>e-mail</samp> field are not allowed.', false);
         }
-        $url = StringUtils::instance()->normalize($tigers->cleanMys($_POST['url']));
+        $url = StringUtils::instance()->normalizeUrl($tigers->cleanMys($_POST['url']));
         if (empty($url)) {
             $tigers->displayError('Form Error', 'Your <samp>site URL</samp> field' .
                 ' is empty.', false);
@@ -295,7 +295,7 @@ if ($seahorses->getOption('kim_opt') == 'y') {
         if (empty($name)) {
             $tigers->displayError('Form Error', 'The <samp>name</samp> field is empty.', false);
         }
-        $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
+        $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email']));
         if (empty($email)) {
             $tigers->displayError('Form Error', 'Your <samp>e-mail</samp> field' .
                 ' is empty.', false);
@@ -303,7 +303,7 @@ if ($seahorses->getOption('kim_opt') == 'y') {
             $tigers->displayError('Form Error', 'The characters specified in the' .
                 ' <samp>e-mail</samp> field are not allowed.', false);
         }
-        $url = StringUtils::instance()->normalize($tigers->cleanMys($_POST['url']));
+        $url = StringUtils::instance()->normalizeUrl($tigers->cleanMys($_POST['url']));
         if (empty($url)) {
             $tigers->displayError('Form Error', 'Your <samp>site URL</samp> field' .
                 ' is empty.', false);
