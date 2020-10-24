@@ -123,7 +123,7 @@ if (isset($_GET['g']) && $_GET['g'] == 'new') {
         }
     }
 
-    if ($getItem->dblist != 1) {
+    if (!isset($getItem->dblist) || $getItem->dblist != 1) {
         $listing = $_POST['listing'];
         $listing = array_map(array($tigers, 'cleanMys'), $listing);
         $listing = $tigers->collective($listing);
@@ -157,7 +157,7 @@ if (isset($_GET['g']) && $_GET['g'] == 'new') {
         }
     }
 
-    $aff_path = $getItem->dblist == 1 ? ($seahorses->getVar($getlistingid, 'dbpath')
+    $aff_path = (!isset($getItem->dblist) || $getItem->dblist != 1) ? ($seahorses->getVar($getlistingid, 'dbpath')
     != '' ? $seahorses->getVar($getlistingid, 'dbpath') :
         $seahorses->getOption('aff_path')) : $seahorses->getOption('aff_path');
     if (!empty($aff_path)) {
