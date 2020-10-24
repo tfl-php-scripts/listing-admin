@@ -695,7 +695,7 @@ on the <a href="templates.php?g=templates">Templates page</a>.</p>
  }
 }
 
-elseif (isset($_POST['action']) && $_POST['action'] == 'Manage Listing') {
+elseif (isset($_POST['action']) && $_POST['action'] === 'Manage Listing') {
  $id = $tigers->cleanMys($_POST['id']);
  $idArray = $wolves->listingsList();
  if(empty($id) || !is_numeric($id) || !in_array($id, $idArray)) {
@@ -704,8 +704,8 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'Manage Listing') {
 	' trying to access something that doesn\'t exist. Go back and try again.', false);
  }
  $opt = $tigers->cleanMys($_POST['opt']);
- $optArray = array('1', '2', '3', '4');
- $optValue = array('2' => 'crosslist', '3' => 'options', '4' => 'templates');
+ $optArray = ['1', '2', '3', '4'];
+ $optValue = ['2' => 'crosslist', '3' => 'options', '4' => 'templates'];
  if(empty($opt) || !is_numeric($id) || !in_array($opt, $optArray)) {
   $tigers->displayError('Script Error', 'You can only edit listing details,' . 
 	' crosslisting, options and templates!', false);
@@ -729,6 +729,7 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'Manage Listing') {
   if($seahorses->getVar($id, 'subject') != $subject) {
    $seahorses->editListing($id, 'subject', $subject);
   }
+  $url = $tigers->cleanMys($_POST['url']);
 if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
     $tigers->displayError('Form Error', 'Your <samp>site URL</samp> is' .
         ' not valid. Please supply a valid site URL or empty the field.', false);
@@ -740,7 +741,7 @@ if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
 	 */ 
 	$previousnow = $seahorses->getVar($id, 'previous');
 	$previous    = unserialize($previousnow, ['allowed_classes' => true]);
-	$newprevious = (object) array();
+	$newprevious = new stdClass();
 	if(
 	 (!empty($url) && $url != '' && $url != '0') && 
 	 ($seahorses->getVar($id, 'url') != $url)
@@ -762,7 +763,7 @@ if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
    $tigers->displayError('Form Error', 'Your <samp>category</samp> field' . 
 	 ' is empty.', false);
   }
-  $category = array_map(array($tigers, 'cleanMys'), $category);
+  $category = array_map([$tigers, 'cleanMys'], $category);
   $cat = implode('!', $category);
   $cat = '!' . trim($cat, '!') . '!';
   if($seahorses->getVar($id, 'category') != $cat) {
