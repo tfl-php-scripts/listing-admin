@@ -94,7 +94,7 @@ if (isset($_GET['g']) && $_GET['g'] == 'new') {
         $tigers->displayError('Form Error', 'Your <samp>subject</samp> field is' .
             ' empty.', false);
     }
-    $url = StringUtils::instance()->normalize($tigers->cleanMys($_POST['url']));
+    $url = StringUtils::instance()->normalizeUrl($tigers->cleanMys($_POST['url']));
         if (empty($url)) {
             $tigers->displayError('Form Error', 'Your <samp>site URL</samp> field' .
                 ' is empty.', false);

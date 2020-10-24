@@ -122,7 +122,7 @@
             }
         }
         $visible = (int)$tigers->cleanMys($_POST['visible']);
-        if($visible < 0 || $visible > 1) {
+        if ($visible < 0 || $visible > 1) {
             $visible = 1;
         }
         $comments = $tigers->cleanMys($_POST['comments']);
@@ -235,7 +235,9 @@
             $octopus->writeError(
                 'Join Error', $userinfo->url, $userinfo->text, $automated
             );
-            $tigers->displayError('Script Error', 'It appears that email you entered already exists in the system. Please use Update Form if you wish to update your information.', false);
+            $tigers->displayError('Script Error',
+                'It appears that email you entered already exists in the system. Please use Update Form if you wish to update your information.',
+                false);
         }
 
         /**
@@ -404,10 +406,12 @@
                 <?php
                 if (!empty($getItem->fave_fields) && file_exists('joinff.inc.php')) {
                     require('joinff.inc.php');
-                } else if (!empty($getItem->fave_fields) || (!empty($fave_field) && isset($fave_field))) {
-                    $fave_fields_db = $getItem->fave_fields;
-                    echo '<p style="clear: both; margin: 0;"></p>';
-                    echo $snakes->favejoin();
+                } else {
+                    if (!empty($getItem->fave_fields) || (!empty($fave_field) && isset($fave_field))) {
+                        $fave_fields_db = $getItem->fave_fields;
+                        echo '<p style="clear: both; margin: 0;"></p>';
+                        echo $snakes->favejoin();
+                    }
                 }
 
                 if ($options->formComments) {

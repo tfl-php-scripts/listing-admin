@@ -192,7 +192,8 @@ elseif ($true == true) {
 
     $ex = $tigers->emptyarray(explode('!', $entry->uCategory));
     $wh = in_array('0', $ex) ? ' collective' : ' listing(s)';
-    $ad = strpos($my_website, '/') !== false ? $my_website . 'updates-comments.php' : $my_website . '/updates-comments.php';
+    $ad = strpos($my_website,
+        '/') !== false ? $my_website . 'updates-comments.php' : $my_website . '/updates-comments.php';
     if ($seahorses->getOption('updates_comments_notification') == 'y') {
         $subjectLine = $qname . ': New Comment';
         $message = "Hello $qowns,\n\nYou have received a new comment at your$wh:\n\n" .

@@ -10,38 +10,37 @@
 
 namespace Robotess;
 
-spl_autoload_register([new Autoloader(), 'autoload']);
+use function file_exists;
 
-if (!class_exists(AutoloadChecker::class))
-{
-	trigger_error('Robotess Autoloader not registered properly', E_USER_ERROR);
-}
+spl_autoload_register([new autoloader(), 'autoload']);
 
 /**
- * Class Autoloader
+ * Class autoloader
+ *
  * @package Robotess
  */
-final class Autoloader
+final class autoloader
 {
-	/**
-	 * Constructor
-	 */
-	public function __construct()
-	{
-		$this->path = __DIR__ . DIRECTORY_SEPARATOR;
-	}
+    /**
+     * @var string
+     */
+    private $path;
 
-	/**
-	 * @param string $class
-	 */
-	public function autoload(string $class): void
+    public function __construct()
     {
-		if (strpos($class, 'Robotess\\') !== 0)
-		{
-			return;
-		}
+        $this->path = __DIR__ . DIRECTORY_SEPARATOR;
+    }
 
-		$filename = $this->path . DIRECTORY_SEPARATOR . str_replace('Robotess\\', '', $class) . '.php';
-		include $filename;
-	}
+    public function autoload(string $class): void
+    {
+        if (strpos($class, 'Robotess\\') !== 0) {
+            return;
+        }
+
+        $filename = $this->path . DIRECTORY_SEPARATOR . str_replace('Robotess\\', '', $class) . '.php';
+
+        if (file_exists($filename)) {
+            include $filename;
+        }
+    }
 }

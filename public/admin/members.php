@@ -340,11 +340,11 @@ $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email
  } 
 }
 
-else if(!isset($_GET['extend']) && !isset($_GET['count']) && !isset($_POST['fave'])) {
+else {if(!isset($_GET['extend']) && !isset($_GET['count']) && !isset($_POST['fave'])) {
  $q = basename($_SERVER['PHP_SELF']) . '?listing=' . $getlistingid .
  '&#38;g=old&#38;d=' . $id . '&#38;extend=1&#38;count=1#fave';
  echo "<p class=\"tc\"><a href=\"$q\">Add Fave Field(s)?</a></p>\n";
-}
+}}
 
 if(isset($_GET['extend']) && is_numeric($_GET['extend']) && is_numeric($_GET['count'])) {
  $c1 = (int)$tigers->cleanMys($_GET['count']) + 1;
@@ -567,7 +567,7 @@ $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email
 	  echo $tigers->backLink('mem');
 	  echo $tigers->backLink('index');
 	 } 
-	} else if($getItem->dblist == 1 && $getItem->dbtype != 'listingadmin') {
+	} else {if($getItem->dblist == 1 && $getItem->dbtype != 'listingadmin') {
      echo $tigers->displaySuccess('The <em>' . $getItem->subject . '</em> listing' .
    ' is crosslisted to a non-Listing Admin script, and therefore cannot be' .
    " updated this way. Sorry, m'love! :(");
@@ -592,7 +592,7 @@ $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email
       echo $tigers->backLink('mem');
       echo $tigers->backLink('index');
      }
-    }
+    }}
  }
 
  /** 

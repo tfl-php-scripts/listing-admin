@@ -98,7 +98,7 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'Add Wish') {
   $tigers->displayError('Form Error', 'Your <samp>subject</samp> field is' . 
   ' empty.', false);
  } 
-$url = StringUtils::instance()->normalize($tigers->cleanMys($_POST['url']));
+$url = StringUtils::instance()->normalizeUrl($tigers->cleanMys($_POST['url']));
         if (empty($url)) {
             $tigers->displayError('Form Error', 'Your <samp>site URL</samp> field' .
                 ' is empty.', false);
@@ -340,7 +340,7 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'Edit Wish') {
   $tigers->displayError('Form Error', 'Your <samp>subject</samp> field is' . 
   ' empty.', false);
  }
- $url = StringUtils::instance()->normalize($_POST['url']);
+ $url = StringUtils::instance()->normalizeUrl($_POST['url']);
         if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
             $tigers->displayError('Form Error', 'Your <samp>site URL</samp>' .
                 ' appears to be invalid; make sure you haven\'t included any invalid characters' .
