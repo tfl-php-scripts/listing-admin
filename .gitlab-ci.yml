@@ -1,0 +1,17 @@
+image: php:7.1
+
+cache:
+  paths:
+    - vendor/
+
+before_script:
+  - apt-get update -yqq
+  - apt-get install -yqq git zip unzip
+  - curl -sS https://getcomposer.org/installer | php
+  - rm composer.lock
+  - php composer.phar install
+
+static_analysis:
+  stage: static_analysis
+  script:
+    - vendor/bin/phpstan analyse -c phpstan.neon --error-format=gitlab

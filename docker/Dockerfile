@@ -1,11 +1,11 @@
-#FROM composer:1.6
+FROM composer:2.0
 FROM php:7.2-apache
 
 MAINTAINER Scripts.robotess.net
 
 RUN docker-php-ext-install pdo pdo_mysql
 RUN apt-get update &&\
-    apt-get install --no-install-recommends --assume-yes --quiet ca-certificates curl git wget &&\
+    apt-get install --no-install-recommends --assume-yes --quiet ca-certificates curl git wget zip unzip &&\
     rm -rf /var/lib/apt/lists/*
 
 RUN curl -Lsf 'https://storage.googleapis.com/golang/go1.8.3.linux-amd64.tar.gz' | tar -C '/usr/local' -xvzf -
@@ -40,3 +40,7 @@ WORKDIR /app
 
 ENTRYPOINT ["docker-entrypoint"]
 CMD ["apache2-foreground"]
+
+COPY --from=0 /usr/bin/composer /usr/bin/composer
+# https://getcomposer.org/doc/03-cli.md#composer-allow-superuser
+ENV COMPOSER_ALLOW_SUPERUSER 1
