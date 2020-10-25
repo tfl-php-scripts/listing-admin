@@ -15,3 +15,6 @@ static_analysis:
   stage: static_analysis
   script:
     - vendor/bin/phpstan analyse -c phpstan.neon --error-format=gitlab
+
+stages:
+  - static_analysis
