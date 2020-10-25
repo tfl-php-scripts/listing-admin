@@ -14,7 +14,7 @@ before_script:
 static_analysis:
   stage: static_analysis
   script:
-    - vendor/bin/phpstan analyse -c phpstan.neon --error-format=gitlab
+    - vendor/bin/phpstan analyse -c phpstan.neon --error-format=gitlab --memory-limit 1G
 
 stages:
   - static_analysis
