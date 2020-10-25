@@ -1,10 +1,6 @@
 includes:
 	- phpstan-baseline.neon
+	- phpstan.neon
 
 parameters:
-    reportUnmatchedIgnoredErrors: false
-	level: 2
-	excludes_analyse:
-		- public/admin/cache/
-	paths:
-		- public
+	reportUnmatchedIgnoredErrors: false
