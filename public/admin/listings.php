@@ -256,12 +256,12 @@ if(!empty($getItem->fave_fields)) {
  echo "</div>\n";
 }
 
-else if(!isset($_GET['extend']) && !isset($_GET['count']) && !isset($_POST['favefield'])) {
+else {if(!isset($_GET['extend']) && !isset($_GET['count']) && !isset($_POST['favefield'])) {
  $q = basename($tigers->cleanMys($_SERVER['PHP_SELF'])) .
    '?g=manage&#38;d=' . $tigers->cleanMys($_GET['d']) .
    '&#38;o=' . $tigers->cleanMys($_GET['o']) . '&#38;extend=1&#38;count=1#fave';
  echo "<p class=\"tc\"><a href=\"$q\">Add Favourite Field(s)?</a></p>\n";
-}
+}}
 
 if(isset($_GET['extend']) && is_numeric($_GET['extend'])) {
  $c1 = (int)$tigers->cleanMys($_GET['count']) + 1;
@@ -841,7 +841,7 @@ if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
   if($seahorses->getVar($id, 'dbaffs') != $afftable) {
    $seahorses->editListing($id, 'dbaffs', $afftable);
   }
-	$affhttp = StringUtils::instance()->normalize($tigers->cleanMys($_POST['affhttps']));
+	$affhttp = StringUtils::instance()->normalizeUrl($tigers->cleanMys($_POST['affhttps']));
 	$affpath = $tigers->cleanMys($_POST['affpaths']);
 	if($crosslist == 2) {
 	 if (!empty($affhttp) && !StringUtils::instance()->isUrlValid($affhttp)) {
@@ -1011,12 +1011,12 @@ if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
   }
   if(isset($_POST['record']) && $_POST['record'] == 'yes') {
    $favouritefields = '';
-  } else if(count($additional) > 0 && !empty($additional)) {
+  } else {if(count($additional) > 0 && !empty($additional)) {
 $favouritefields = implode('|', $additional);
 $favouritefields = '|' . trim($favouritefields, '|') . '|';
   } else {
    $favouritefields = '';
-  }
+  }}
   if($seahorses->getVar($id, 'fave_fields') != $favouritefields) {
    $seahorses->editListing($id, 'fave_fields', $favouritefields);
   }
@@ -1267,7 +1267,7 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'Add Listing') {
  if(empty($subject)) {
   $tigers->displayError('Form Error', 'Your <samp>subject</samp> field is empty.', false);
  }
-$url = StringUtils::instance()->normalize($tigers->cleanMys($_POST['url']));
+$url = StringUtils::instance()->normalizeUrl($tigers->cleanMys($_POST['url']));
 if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
     $tigers->displayError('Form Error', 'Your <samp>site URL</samp> is' .
         ' not valid. Please supply a valid site URL or empty the field.', false);
@@ -1283,7 +1283,7 @@ if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
   }
  }
 
- $category = $_POST['category'];
+ $category = $_POST['category'] ?? null;
  if(empty($category)) {
   $tigers->displayError('Form Error', 'Your <samp>category</samp> field' . 
 	' is empty.', false);
