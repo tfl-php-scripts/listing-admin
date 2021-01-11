@@ -1,0 +1,4593 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Variable \\$leopards might not be defined\\.$#"
+			count: 1
+			path: public/admin/addons.php
+
+		-
+			message: "#^Variable \\$cheetahs might not be defined\\.$#"
+			count: 8
+			path: public/admin/addons.php
+
+		-
+			message: "#^Variable \\$get_addon_array might not be defined\\.$#"
+			count: 9
+			path: public/admin/addons.php
+
+		-
+			message: "#^Variable \\$notSupportedAddons might not be defined\\.$#"
+			count: 2
+			path: public/admin/addons.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 65
+			path: public/admin/addons.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 133
+			path: public/admin/addons.php
+
+		-
+			message: "#^Variable \\$frogs might not be defined\\.$#"
+			count: 2
+			path: public/admin/addons.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 62
+			path: public/admin/affiliates.php
+
+		-
+			message: "#^Variable \\$per_page might not be defined\\.$#"
+			count: 3
+			path: public/admin/affiliates.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 6
+			path: public/admin/affiliates.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 30
+			path: public/admin/affiliates.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 8
+			path: public/admin/affiliates.php
+
+		-
+			message: "#^Variable \\$jaguars might not be defined\\.$#"
+			count: 2
+			path: public/admin/affiliates.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$dbflid\\.$#"
+			count: 1
+			path: public/admin/affiliates.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 13
+			path: public/admin/affiliates.php
+
+		-
+			message: "#^Variable \\$insert might not be defined\\.$#"
+			count: 2
+			path: public/admin/affiliates.php
+
+		-
+			message: "#^Variable \\$rabbits might not be defined\\.$#"
+			count: 11
+			path: public/admin/affiliates.php
+
+		-
+			message: "#^Variable \\$update might not be defined\\.$#"
+			count: 2
+			path: public/admin/affiliates.php
+
+		-
+			message: "#^Variable \\$listing might not be defined\\.$#"
+			count: 1
+			path: public/admin/affiliates.php
+
+		-
+			message: "#^Variable \\$qname might not be defined\\.$#"
+			count: 1
+			path: public/admin/affiliates.php
+
+		-
+			message: "#^Variable \\$delete might not be defined\\.$#"
+			count: 2
+			path: public/admin/affiliates.php
+
+		-
+			message: "#^Variable \\$laantispam might not be defined\\.$#"
+			count: 1
+			path: public/admin/affiliates.php
+
+		-
+			message: "#^Comparison operation \"\\>\" between \\(array\\|float\\|int\\) and int\\<1, max\\> results in an error\\.$#"
+			count: 1
+			path: public/admin/affiliates.php
+
+		-
+			message: "#^Variable \\$get_affsearch_array might not be defined\\.$#"
+			count: 1
+			path: public/admin/affiliates.php
+
+		-
+			message: "#^Variable \\$per_page might not be defined\\.$#"
+			count: 3
+			path: public/admin/categories.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 24
+			path: public/admin/categories.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 7
+			path: public/admin/categories.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 13
+			path: public/admin/categories.php
+
+		-
+			message: "#^Variable \\$lions might not be defined\\.$#"
+			count: 3
+			path: public/admin/categories.php
+
+		-
+			message: "#^Comparison operation \"\\>\" between \\(array\\|float\\|int\\) and int\\<1, max\\> results in an error\\.$#"
+			count: 1
+			path: public/admin/categories.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 29
+			path: public/admin/codes-categories.php
+
+		-
+			message: "#^Variable \\$per_page might not be defined\\.$#"
+			count: 4
+			path: public/admin/codes-categories.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 23
+			path: public/admin/codes-categories.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 11
+			path: public/admin/codes-categories.php
+
+		-
+			message: "#^Variable \\$cheetahs might not be defined\\.$#"
+			count: 4
+			path: public/admin/codes-categories.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 2
+			path: public/admin/codes-categories.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 31
+			path: public/admin/codes-donors.php
+
+		-
+			message: "#^Variable \\$per_page might not be defined\\.$#"
+			count: 4
+			path: public/admin/codes-donors.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 13
+			path: public/admin/codes-donors.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 6
+			path: public/admin/codes-donors.php
+
+		-
+			message: "#^Variable \\$cheetahs might not be defined\\.$#"
+			count: 1
+			path: public/admin/codes-donors.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 9
+			path: public/admin/codes-sizes.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 4
+			path: public/admin/codes-sizes.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 10
+			path: public/admin/codes-sizes.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 34
+			path: public/admin/codes.php
+
+		-
+			message: "#^Variable \\$per_page might not be defined\\.$#"
+			count: 4
+			path: public/admin/codes.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 47
+			path: public/admin/codes.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 11
+			path: public/admin/codes.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 3
+			path: public/admin/codes.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 19
+			path: public/admin/codes.php
+
+		-
+			message: "#^Variable \\$octopus might not be defined\\.$#"
+			count: 3
+			path: public/admin/codes.php
+
+		-
+			message: "#^Variable \\$cheetahs might not be defined\\.$#"
+			count: 11
+			path: public/admin/codes.php
+
+		-
+			message: "#^Variable \\$deleteImage might not be defined\\.$#"
+			count: 1
+			path: public/admin/codes.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$catName\\.$#"
+			count: 1
+			path: public/admin/codes.php
+
+		-
+			message: "#^Variable \\$_POST in isset\\(\\) always exists and is not nullable\\.$#"
+			count: 1
+			path: public/admin/convert.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 52
+			path: public/admin/convert.php
+
+		-
+			message: "#^Variable \\$get_script_array might not be defined\\.$#"
+			count: 2
+			path: public/admin/convert.php
+
+		-
+			message: "#^Variable \\$get_import_cats_array might not be defined\\.$#"
+			count: 1
+			path: public/admin/convert.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 3
+			path: public/admin/convert.php
+
+		-
+			message: "#^Variable \\$database_host might not be defined\\.$#"
+			count: 1
+			path: public/admin/convert.php
+
+		-
+			message: "#^Variable \\$database_user might not be defined\\.$#"
+			count: 1
+			path: public/admin/convert.php
+
+		-
+			message: "#^Variable \\$dbhost might not be defined\\.$#"
+			count: 2
+			path: public/admin/convert.php
+
+		-
+			message: "#^Variable \\$dbuser might not be defined\\.$#"
+			count: 2
+			path: public/admin/convert.php
+
+		-
+			message: "#^Variable \\$database_name might not be defined\\.$#"
+			count: 1
+			path: public/admin/convert.php
+
+		-
+			message: "#^Variable \\$dbname might not be defined\\.$#"
+			count: 2
+			path: public/admin/convert.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 21
+			path: public/admin/convert.php
+
+		-
+			message: "#^Variable \\$faves might not be defined\\.$#"
+			count: 2
+			path: public/admin/convert.php
+
+		-
+			message: "#^Variable \\$p might not be defined\\.$#"
+			count: 1
+			path: public/admin/convert.php
+
+		-
+			message: "#^Variable \\$dbpass might not be defined\\.$#"
+			count: 1
+			path: public/admin/convert.php
+
+		-
+			message: "#^Comparison operation \"\\=\\=\" between array\\<int, string\\>\\|false and 0 results in an error\\.$#"
+			count: 1
+			path: public/admin/convert.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 12
+			path: public/admin/convert.php
+
+		-
+			message: "#^Variable \\$array might not be defined\\.$#"
+			count: 1
+			path: public/admin/convert.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 6
+			path: public/admin/convert.php
+
+		-
+			message: "#^Variable \\$parents might not be defined\\.$#"
+			count: 1
+			path: public/admin/convert.php
+
+		-
+			message: "#^Variable \\$get_export_cats_array might not be defined\\.$#"
+			count: 1
+			path: public/admin/convert.php
+
+		-
+			message: "#^Variable \\$rabbits might not be defined\\.$#"
+			count: 2
+			path: public/admin/convert.php
+
+		-
+			message: "#^Variable \\$snakes might not be defined\\.$#"
+			count: 2
+			path: public/admin/convert.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 7
+			path: public/admin/display_codes.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 43
+			path: public/admin/emails.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 10
+			path: public/admin/emails.php
+
+		-
+			message: "#^Variable \\$rabbits might not be defined\\.$#"
+			count: 4
+			path: public/admin/emails.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 6
+			path: public/admin/emails.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 12
+			path: public/admin/emails.php
+
+		-
+			message: "#^Variable \\$snakes might not be defined\\.$#"
+			count: 4
+			path: public/admin/emails.php
+
+		-
+			message: "#^Variable \\$jaguars might not be defined\\.$#"
+			count: 9
+			path: public/admin/emails.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 9
+			path: public/admin/errors.php
+
+		-
+			message: "#^Variable \\$per_page might not be defined\\.$#"
+			count: 3
+			path: public/admin/errors.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 5
+			path: public/admin/errors.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 2
+			path: public/admin/errors.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 2
+			path: public/admin/errors.php
+
+		-
+			message: "#^Variable \\$leopards might not be defined\\.$#"
+			count: 1
+			path: public/admin/errors.php
+
+		-
+			message: "#^Variable \\$get_errors_array might not be defined\\.$#"
+			count: 1
+			path: public/admin/errors.php
+
+		-
+			message: "#^Variable \\$laoptions might not be defined\\.$#"
+			count: 2
+			path: public/admin/footer.php
+
+		-
+			message: "#^Variable \\$leopards might not be defined\\.$#"
+			count: 1
+			path: public/admin/footer.php
+
+		-
+			message: "#^Variable \\$getTitle might not be defined\\.$#"
+			count: 1
+			path: public/admin/header.php
+
+		-
+			message: "#^Variable \\$laoptions might not be defined\\.$#"
+			count: 2
+			path: public/admin/header.php
+
+		-
+			message: "#^Variable \\$leopards might not be defined\\.$#"
+			count: 26
+			path: public/admin/header.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 1
+			path: public/admin/header.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$c , string; for encoding and decoding param \\$p\\)\\: Unexpected token \"\\$c\", expected type at offset 375$#"
+			count: 1
+			path: public/admin/inc/class-antispam.inc.php
+
+		-
+			message:
+				"""
+					#^PHPDoc tag @param has invalid value \\(\\$p , character; 'y' for replacing characters with text
+					representations \\(e\\.g\\. \\. for DOTTIE, @ for ATTIE, et al\\.\\)\\)\\: Unexpected token "\\$p", expected type at offset 230$#
+				"""
+			count: 1
+			path: public/admin/inc/class-antispam.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$r , character; 'y' for cleaning SQL queries from\\)\\: Unexpected token \"\\$r\", expected type at offset 132$#"
+			count: 1
+			path: public/admin/inc/class-antispam.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$s , text; text to be cleaned\\)\\: Unexpected token \"\\$s\", expected type at offset 80$#"
+			count: 1
+			path: public/admin/inc/class-antispam.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$vars , array; options\\)\\: Unexpected token \"\\$vars\", expected type at offset 483$#"
+			count: 1
+			path: public/admin/inc/class-antispam.inc.php
+
+		-
+			message: "#^Undefined variable\\: \\$s2$#"
+			count: 1
+			path: public/admin/inc/class-antispam.inc.php
+
+		-
+			message: "#^Binary operation \"\\+\" between string and string results in an error\\.$#"
+			count: 1
+			path: public/admin/inc/class-antispam.inc.php
+
+		-
+			message: "#^Variable \\$mathproblem in isset\\(\\) is never defined\\.$#"
+			count: 1
+			path: public/admin/inc/class-antispam.inc.php
+
+		-
+			message: "#^Undefined variable\\: \\$mathproblem$#"
+			count: 2
+			path: public/admin/inc/class-antispam.inc.php
+
+		-
+			message: "#^Undefined variable\\: \\$s1$#"
+			count: 1
+			path: public/admin/inc/class-antispam.inc.php
+
+		-
+			message: "#^Undefined variable\\: \\$url$#"
+			count: 1
+			path: public/admin/inc/class-antispam.inc.php
+
+		-
+			message: "#^Variable \\$url in isset\\(\\) is never defined\\.$#"
+			count: 1
+			path: public/admin/inc/class-antispam.inc.php
+
+		-
+			message: "#^Undefined variable\\: \\$comments$#"
+			count: 10
+			path: public/admin/inc/class-antispam.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID; optional\\)\\: Unexpected token \"\\$i\", expected type at offset 73$#"
+			count: 1
+			path: public/admin/inc/class-kimadmin.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$p , int; 0 for approved, 1 for all members; optional\\)\\: Unexpected token \"\\$p\", expected type at offset 126$#"
+			count: 1
+			path: public/admin/inc/class-kimadmin.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$e , int; listing ID\\)\\: Unexpected token \"\\$e\", expected type at offset 186$#"
+			count: 1
+			path: public/admin/inc/class-kimadmin.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; member ID\\)\\: Unexpected token \"\\$i\", expected type at offset 82$#"
+			count: 1
+			path: public/admin/inc/class-kimadmin.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$p , string; get member by ID or e\\-mail\\)\\: Unexpected token \"\\$p\", expected type at offset 124$#"
+			count: 1
+			path: public/admin/inc/class-kimadmin.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; member ID\\)\\: Unexpected token \"\\$i\", expected type at offset 69$#"
+			count: 1
+			path: public/admin/inc/class-kimadmin.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$s , boolean; 0 for approved, 1 for pending\\)\\: Unexpected token \"\\$s\", expected type at offset 70$#"
+			count: 1
+			path: public/admin/inc/class-kimadmin.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$e , string; member e\\-mail\\)\\: Unexpected token \"\\$e\", expected type at offset 86$#"
+			count: 1
+			path: public/admin/inc/class-kimadmin.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$p , string; member password\\)\\: Unexpected token \"\\$p\", expected type at offset 135$#"
+			count: 1
+			path: public/admin/inc/class-kimadmin.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$s , int; listing ID\\)\\: Unexpected token \"\\$s\", expected type at offset 186$#"
+			count: 1
+			path: public/admin/inc/class-kimadmin.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; member ID\\)\\: Unexpected token \"\\$i\", expected type at offset 70$#"
+			count: 1
+			path: public/admin/inc/class-kimadmin.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$e , string; member e\\-mail\\)\\: Unexpected token \"\\$e\", expected type at offset 72$#"
+			count: 1
+			path: public/admin/inc/class-kimadmin.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$s , int; listing ID\\)\\: Unexpected token \"\\$s\", expected type at offset 121$#"
+			count: 1
+			path: public/admin/inc/class-kimadmin.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 138$#"
+			count: 1
+			path: public/admin/inc/class-kimadmin.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$t , string; template slug\\)\\: Unexpected token \"\\$t\", expected type at offset 181$#"
+			count: 1
+			path: public/admin/inc/class-kimadmin.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$listingId , int; listing ID\\)\\: Unexpected token \"\\$listingId\", expected type at offset 79$#"
+			count: 1
+			path: public/admin/inc/class-kimadmin.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i\\)\\: Unexpected token \"\\$i\", expected type at offset 128$#"
+			count: 1
+			path: public/admin/inc/class-kimadmin.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$c , string; addon slug\\)\\: Unexpected token \"\\$c\", expected type at offset 158$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$e , boolean; return string or number\\)\\: Unexpected token \"\\$e\", expected type at offset 194$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$p , string; addon slug\\)\\: Unexpected token \"\\$p\", expected type at offset 148$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$b , string; pull by listing; optional\\)\\: Unexpected token \"\\$b\", expected type at offset 71$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 132$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$b , string; return array or multidimensional array\\)\\: Unexpected token \"\\$b\", expected type at offset 71$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$b , string; return ID array or multidimensional array\\)\\: Unexpected token \"\\$b\", expected type at offset 75$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$s , int; listing ID; optional\\)\\: Unexpected token \"\\$s\", expected type at offset 152$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; code ID\\)\\: Unexpected token \"\\$i\", expected type at offset 69$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; code ID\\)\\: Unexpected token \"\\$i\", expected type at offset 74$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @return has invalid value \\(\\)\\: Unexpected token \"\\\\n         \\*\", expected type at offset 110$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; code category ID\\)\\: Unexpected token \"\\$i\", expected type at offset 77$#"
+			count: 2
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @return has invalid value \\(\\)\\: Unexpected token \"\\\\n         \", expected type at offset 141$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @return has invalid value \\(\\)\\: Unexpected token \"\\\\n         \\*\", expected type at offset 122$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; donor ID\\)\\: Unexpected token \"\\$i\", expected type at offset 67$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$b , string; fetch donor name or URL\\)\\: Unexpected token \"\\$b\", expected type at offset 111$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; donor ID\\)\\: Unexpected token \"\\$i\", expected type at offset 70$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; size ID\\)\\: Unexpected token \"\\$i\", expected type at offset 69$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @return has invalid value \\(\\)\\: Unexpected token \"\\\\n         \", expected type at offset 124$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @return has invalid value \\(\\)\\: Unexpected token \"\\\\n         \\*\", expected type at offset 105$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID; optional\\)\\: Unexpected token \"\\$i\", expected type at offset 72$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @return has invalid value \\(\\)\\: Unexpected token \"\\\\n         \", expected type at offset 140$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @return has invalid value \\(\\)\\: Unexpected token \"\\\\n         \\*\", expected type at offset 121$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i\\)\\: Unexpected token \"\\$i\", expected type at offset 123$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$n ,\\)\\: Unexpected token \"\\$n\", expected type at offset 199$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$s , string; order by name or ID\\)\\: Unexpected token \"\\$s\", expected type at offset 226$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 72$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; album ID\\)\\: Unexpected token \"\\$i\", expected type at offset 70$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @return has invalid value \\(\\)\\: Unexpected token \"\\\\n         \", expected type at offset 126$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @return has invalid value \\(\\)\\: Unexpected token \"\\\\n         \\*\", expected type at offset 107$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$a , int; album ID\\)\\: Unexpected token \"\\$a\", expected type at offset 121$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 77$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$s , int; listing ID; optional\\)\\: Unexpected token \"\\$s\", expected type at offset 72$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 83$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$n , int; number of quotes to display\\)\\: Unexpected token \"\\$n\", expected type at offset 233$#"
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message:
+				"""
+					#^PHPDoc tag @param has invalid value \\(\\$r , boolean; 1 \\(true\\) for rotation, 0 \\(false\\) for
+					non\\-rotation of quotes\\)\\: Unexpected token "\\$r", expected type at offset 126$#
+				"""
+			count: 1
+			path: public/admin/inc/fun-addons.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$e , string\\)\\: Unexpected token \"\\$e\", expected type at offset 69$#"
+			count: 1
+			path: public/admin/inc/fun-admin.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$b , string; path or url; optional\\)\\: Unexpected token \"\\$b\", expected type at offset 431$#"
+			count: 1
+			path: public/admin/inc/fun-admin.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$p , string; absolute path; optional\\)\\: Unexpected token \"\\$p\", expected type at offset 544$#"
+			count: 1
+			path: public/admin/inc/fun-admin.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$s , string; optional text to add onto the path\\)\\: Unexpected token \"\\$s\", expected type at offset 604$#"
+			count: 1
+			path: public/admin/inc/fun-admin.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$u , string; URL path; optional\\)\\: Unexpected token \"\\$u\", expected type at offset 489$#"
+			count: 1
+			path: public/admin/inc/fun-admin.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$o , digits; four\\-digit year\\)\\: Unexpected token \"\\$o\", expected type at offset 221$#"
+			count: 1
+			path: public/admin/inc/fun-admin.inc.php
+
+		-
+			message:
+				"""
+					#^PHPDoc tag @param has invalid value \\(\\$n , string; base name for the current page without
+					an extension\\)\\: Unexpected token "\\$n", expected type at offset 214$#
+				"""
+			count: 1
+			path: public/admin/inc/fun-admin.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$p , string; password; encrypted\\)\\: Unexpected token \"\\$p\", expected type at offset 125$#"
+			count: 1
+			path: public/admin/inc/fun-admin.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$u , string; username; optional\\)\\: Unexpected token \"\\$u\", expected type at offset 71$#"
+			count: 1
+			path: public/admin/inc/fun-admin.inc.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$dbpass\\.$#"
+			count: 4
+			path: public/admin/inc/fun-affiliates.inc.php
+
+		-
+			message: "#^Variable \\$select might not be defined\\.$#"
+			count: 6
+			path: public/admin/inc/fun-affiliates.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i Listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 22$#"
+			count: 1
+			path: public/admin/inc/fun-affiliates.inc.php
+
+		-
+			message: "#^Cannot access property \\$searchType on false\\.$#"
+			count: 1
+			path: public/admin/inc/fun-affiliates.inc.php
+
+		-
+			message: "#^Cannot access property \\$searchText on false\\.$#"
+			count: 1
+			path: public/admin/inc/fun-affiliates.inc.php
+
+		-
+			message: "#^Variable \\$listing might not be defined\\.$#"
+			count: 7
+			path: public/admin/inc/fun-affiliates.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 27$#"
+			count: 1
+			path: public/admin/inc/fun-affiliates.inc.php
+
+		-
+			message: "#^PHPDoc tag @return has invalid value \\(\\)\\: Unexpected token \"\\\\n         \", expected type at offset 66$#"
+			count: 1
+			path: public/admin/inc/fun-affiliates.inc.php
+
+		-
+			message: "#^Constant MAINDIR not found\\.$#"
+			count: 2
+			path: public/admin/inc/fun-captcha.inc.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/fun-captcha.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$b , string; return value \\(e\\.g\\. list, array, et al\\.\\)\\)\\: Unexpected token \"\\$b\", expected type at offset 82$#"
+			count: 1
+			path: public/admin/inc/fun-categories.inc.php
+
+		-
+			message:
+				"""
+					#^PHPDoc tag @param has invalid value \\(\\$g , string; choice between choosing a parent
+					category, as well as returning a category ID or name; 'id'
+					by default\\)\\: Unexpected token "\\$g", expected type at offset 157$#
+				"""
+			count: 1
+			path: public/admin/inc/fun-categories.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$m , int; category parent ID; optional\\)\\: Unexpected token \"\\$m\", expected type at offset 317$#"
+			count: 1
+			path: public/admin/inc/fun-categories.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; category ID\\)\\: Unexpected token \"\\$i\", expected type at offset 72$#"
+			count: 1
+			path: public/admin/inc/fun-categories.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; category ID\\)\\: Unexpected token \"\\$i\", expected type at offset 71$#"
+			count: 1
+			path: public/admin/inc/fun-categories.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , text; category IDs inside a string\\)\\: Unexpected token \"\\$i\", expected type at offset 73$#"
+			count: 1
+			path: public/admin/inc/fun-categories.inc.php
+
+		-
+			message:
+				"""
+					#^PHPDoc tag @param has invalid value \\(\\$s , character; character that splits the string into
+					an array\\)\\: Unexpected token "\\$s", expected type at offset 136$#
+				"""
+			count: 1
+			path: public/admin/inc/fun-categories.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$c , int; category parent ID\\)\\: Unexpected token \"\\$c\", expected type at offset 157$#"
+			count: 1
+			path: public/admin/inc/fun-categories.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$c , int; parent category ID\\)\\: Unexpected token \"\\$c\", expected type at offset 75$#"
+			count: 1
+			path: public/admin/inc/fun-categories.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$c , int; parent category ID\\)\\: Unexpected token \"\\$c\", expected type at offset 180$#"
+			count: 1
+			path: public/admin/inc/fun-categories.inc.php
+
+		-
+			message:
+				"""
+					#^PHPDoc tag @param has invalid value \\(\\$b , boolean; on 1, includes joined listings in the
+					category count\\)\\: Unexpected token "\\$b", expected type at offset 76$#
+				"""
+			count: 1
+			path: public/admin/inc/fun-categories.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$database\\)\\: Unexpected token \"\\$database\", expected type at offset 106$#"
+			count: 3
+			path: public/admin/inc/fun-db.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$hostname\\)\\: Unexpected token \"\\$hostname\", expected type at offset 22$#"
+			count: 3
+			path: public/admin/inc/fun-db.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$password\\)\\: Unexpected token \"\\$password\", expected type at offset 78$#"
+			count: 3
+			path: public/admin/inc/fun-db.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$username\\)\\: Unexpected token \"\\$username\", expected type at offset 50$#"
+			count: 3
+			path: public/admin/inc/fun-db.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$e\\)\\: Unexpected token \"\\$e\", expected type at offset 22$#"
+			count: 1
+			path: public/admin/inc/fun-db.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$q\\)\\: Unexpected token \"\\$q\", expected type at offset 22$#"
+			count: 2
+			path: public/admin/inc/fun-db.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$h\\)\\: Unexpected token \"\\$h\", expected type at offset 150$#"
+			count: 1
+			path: public/admin/inc/fun-db.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$n\\)\\: Unexpected token \"\\$n\", expected type at offset 213$#"
+			count: 1
+			path: public/admin/inc/fun-db.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$p\\)\\: Unexpected token \"\\$p\", expected type at offset 192$#"
+			count: 1
+			path: public/admin/inc/fun-db.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$u\\)\\: Unexpected token \"\\$u\", expected type at offset 171$#"
+			count: 1
+			path: public/admin/inc/fun-db.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$h\\)\\: Unexpected token \"\\$h\", expected type at offset 22$#"
+			count: 2
+			path: public/admin/inc/fun-db.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$n\\)\\: Unexpected token \"\\$n\", expected type at offset 85$#"
+			count: 2
+			path: public/admin/inc/fun-db.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$p\\)\\: Unexpected token \"\\$p\", expected type at offset 64$#"
+			count: 2
+			path: public/admin/inc/fun-db.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$u\\)\\: Unexpected token \"\\$u\", expected type at offset 43$#"
+			count: 2
+			path: public/admin/inc/fun-db.inc.php
+
+		-
+			message:
+				"""
+					#^PHPDoc tag @param has invalid value \\(\\$y , boolean; 0 if closing the connection, 1 if opening
+					the connection natively\\)\\: Unexpected token "\\$y", expected type at offset 69$#
+				"""
+			count: 1
+			path: public/admin/inc/fun-db.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$p , text\\)\\: Unexpected token \"\\$p\", expected type at offset 69$#"
+			count: 1
+			path: public/admin/inc/fun-db.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$e , boolean\\)\\: Unexpected token \"\\$e\", expected type at offset 126$#"
+			count: 1
+			path: public/admin/inc/fun-db.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$m , text; predefined error message; optional\\)\\: Unexpected token \"\\$m\", expected type at offset 161$#"
+			count: 1
+			path: public/admin/inc/fun-db.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$q , text; query string\\)\\: Unexpected token \"\\$q\", expected type at offset 80$#"
+			count: 2
+			path: public/admin/inc/fun-db.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$q , string; the query string\\)\\: Unexpected token \"\\$q\", expected type at offset 204$#"
+			count: 1
+			path: public/admin/inc/fun-db.inc.php
+
+		-
+			message:
+				"""
+					#^PHPDoc tag @param has invalid value \\(\\$e , boolean; 0 for returing status, 1 for returning status
+					on success, and error on failure\\)\\: Unexpected token "\\$e", expected type at offset 126$#
+				"""
+			count: 1
+			path: public/admin/inc/fun-db.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$m , boolean; 0 returns the object, 1 returns the array\\)\\: Unexpected token \"\\$m\", expected type at offset 118$#"
+			count: 1
+			path: public/admin/inc/fun-db.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$q , string; the query string\\)\\: Unexpected token \"\\$q\", expected type at offset 66$#"
+			count: 1
+			path: public/admin/inc/fun-db.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$q , string; the query string\\)\\: Unexpected token \"\\$q\", expected type at offset 68$#"
+			count: 1
+			path: public/admin/inc/fun-db.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$q , string; resource\\)\\: Unexpected token \"\\$q\", expected type at offset 217$#"
+			count: 1
+			path: public/admin/inc/fun-db.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$query , string; query\\)\\: Unexpected token \"\\$query\", expected type at offset 80$#"
+			count: 1
+			path: public/admin/inc/fun-db.inc.php
+
+		-
+			message:
+				"""
+					#^PHPDoc tag @param has invalid value \\(\\$returnError , boolean; 1 for displaying the error natively or 0 for
+					handling the error outside of the method\\)\\: Unexpected token "\\$returnError", expected type at offset 125$#
+				"""
+			count: 1
+			path: public/admin/inc/fun-db.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$successText , text; the success/error text to display; optional\\)\\: Unexpected token \"\\$successText\", expected type at offset 268$#"
+			count: 1
+			path: public/admin/inc/fun-db.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i\\)\\: Unexpected token \"\\$i\", expected type at offset 173$#"
+			count: 1
+			path: public/admin/inc/fun-emails.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$p , string; template slug\\)\\: Unexpected token \"\\$p\", expected type at offset 77$#"
+			count: 1
+			path: public/admin/inc/fun-emails.inc.php
+
+		-
+			message: "#^PHPDoc tag @return has invalid value \\(\\)\\: Unexpected token \"\\\\n         \", expected type at offset 122$#"
+			count: 1
+			path: public/admin/inc/fun-emails.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$p , string; template slug\\)\\: Unexpected token \"\\$p\", expected type at offset 74$#"
+			count: 1
+			path: public/admin/inc/fun-emails.inc.php
+
+		-
+			message: "#^PHPDoc tag @return has invalid value \\(\\)\\: Unexpected token \"\\\\n         \", expected type at offset 119$#"
+			count: 1
+			path: public/admin/inc/fun-emails.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$b , string; message subject line\\)\\: Unexpected token \"\\$b\", expected type at offset 238$#"
+			count: 1
+			path: public/admin/inc/fun-emails.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$t , string; template slug\\)\\: Unexpected token \"\\$t\", expected type at offset 81$#"
+			count: 1
+			path: public/admin/inc/fun-emails.inc.php
+
+		-
+			message: "#^Variable \\$glistings might not be defined\\.$#"
+			count: 9
+			path: public/admin/inc/fun-emails.inc.php
+
+		-
+			message: "#^Variable \\$memberfl might not be defined\\.$#"
+			count: 3
+			path: public/admin/inc/fun-emails.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$subjectLine \\= Subject Line\\)\\: Unexpected token \"\\$subjectLine\", expected type at offset 259$#"
+			count: 1
+			path: public/admin/inc/fun-emails.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$templat \\= Template\\)\\: Unexpected token \"\\$templat\", expected type at offset 220$#"
+			count: 1
+			path: public/admin/inc/fun-emails.inc.php
+
+		-
+			message: "#^Variable \\$affiliate might not be defined\\.$#"
+			count: 3
+			path: public/admin/inc/fun-emails.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$h\\)\\: Unexpected token \"\\$h\", expected type at offset 164$#"
+			count: 1
+			path: public/admin/inc/fun-emails.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$m\\)\\: Unexpected token \"\\$m\", expected type at offset 122$#"
+			count: 1
+			path: public/admin/inc/fun-emails.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$s\\)\\: Unexpected token \"\\$s\", expected type at offset 143$#"
+			count: 1
+			path: public/admin/inc/fun-emails.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i\\)\\: Unexpected token \"\\$i\", expected type at offset 66$#"
+			count: 1
+			path: public/admin/inc/fun-emails.inc.php
+
+		-
+			message: "#^Variable \\$u might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/fun-external.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; entry ID\\)\\: Unexpected token \"\\$i\", expected type at offset 113$#"
+			count: 1
+			path: public/admin/inc/fun-external.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$p , string; type\\)\\: Unexpected token \"\\$p\", expected type at offset 73$#"
+			count: 1
+			path: public/admin/inc/fun-external.inc.php
+
+		-
+			message: "#^Variable \\$link might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/fun-external.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$a , array; search contents; optional\\)\\: Unexpected token \"\\$a\", expected type at offset 255$#"
+			count: 1
+			path: public/admin/inc/fun-joined.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$s , string; search term; optional\\)\\: Unexpected token \"\\$s\", expected type at offset 198$#"
+			count: 1
+			path: public/admin/inc/fun-joined.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; joined ID\\)\\: Unexpected token \"\\$i\", expected type at offset 70$#"
+			count: 1
+			path: public/admin/inc/fun-joined.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$c , int; category ID\\)\\: Unexpected token \"\\$c\", expected type at offset 124$#"
+			count: 1
+			path: public/admin/inc/fun-joined.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; joined ID\\)\\: Unexpected token \"\\$i\", expected type at offset 77$#"
+			count: 1
+			path: public/admin/inc/fun-joined.inc.php
+
+		-
+			message: "#^PHPDoc tag @return has invalid value \\(\\)\\: Unexpected token \"\\\\n         \", expected type at offset 115$#"
+			count: 1
+			path: public/admin/inc/fun-joined.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$totalPagesCount , int; pages summed by ceil\\(\\)\\)\\: Unexpected token \"\\$totalPagesCount\", expected type at offset 153$#"
+			count: 1
+			path: public/admin/inc/fun-joined.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; joined ID\\)\\: Unexpected token \"\\$i\", expected type at offset 123$#"
+			count: 1
+			path: public/admin/inc/fun-joined.inc.php
+
+		-
+			message: "#^Variable \\$c might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/fun-joined.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$u\\)\\: Unexpected token \"\\$u\", expected type at offset 112$#"
+			count: 1
+			path: public/admin/inc/fun-joined.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$b , boolean; 1 for selecting neglected listings, 0 for overdue\\)\\: Unexpected token \"\\$b\", expected type at offset 231$#"
+			count: 1
+			path: public/admin/inc/fun-listings.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 70$#"
+			count: 2
+			path: public/admin/inc/fun-listings.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 69$#"
+			count: 1
+			path: public/admin/inc/fun-listings.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; a character\\-separated string of listing ID\\(s\\)\\)\\: Unexpected token \"\\$i\", expected type at offset 72$#"
+			count: 1
+			path: public/admin/inc/fun-listings.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$s , character; splits the string into an array\\)\\: Unexpected token \"\\$s\", expected type at offset 150$#"
+			count: 1
+			path: public/admin/inc/fun-listings.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , string; character\\-separated string of listing IDs\\)\\: Unexpected token \"\\$i\", expected type at offset 206$#"
+			count: 1
+			path: public/admin/inc/fun-listings.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$s , character; character we use to split the \\$i param\\)\\: Unexpected token \"\\$s\", expected type at offset 284$#"
+			count: 1
+			path: public/admin/inc/fun-listings.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 80$#"
+			count: 1
+			path: public/admin/inc/fun-listings.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$t , string; template title\\)\\: Unexpected token \"\\$t\", expected type at offset 124$#"
+			count: 1
+			path: public/admin/inc/fun-listings.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 88$#"
+			count: 1
+			path: public/admin/inc/fun-listings.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$m , string; listing image\\)\\: Unexpected token \"\\$m\", expected type at offset 291$#"
+			count: 1
+			path: public/admin/inc/fun-listings.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$s , string; listing subject\\)\\: Unexpected token \"\\$s\", expected type at offset 239$#"
+			count: 1
+			path: public/admin/inc/fun-listings.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$t , string; listing template title\\)\\: Unexpected token \"\\$t\", expected type at offset 132$#"
+			count: 1
+			path: public/admin/inc/fun-listings.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$u , string; listing URL\\)\\: Unexpected token \"\\$u\", expected type at offset 191$#"
+			count: 1
+			path: public/admin/inc/fun-listings.inc.php
+
+		-
+			message: "#^Variable \\$v might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/fun-listings.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$b , string; template title; optional\\)\\: Unexpected token \"\\$b\", expected type at offset 126$#"
+			count: 1
+			path: public/admin/inc/fun-listings.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 82$#"
+			count: 1
+			path: public/admin/inc/fun-listings.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$s , string; status\\)\\: Unexpected token \"\\$s\", expected type at offset 115$#"
+			count: 1
+			path: public/admin/inc/fun-listings.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$c , boolean; closing tag\\)\\: Unexpected token \"\\$c\", expected type at offset 166$#"
+			count: 1
+			path: public/admin/inc/fun-listings.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$p , string; type\\)\\: Unexpected token \"\\$p\", expected type at offset 126$#"
+			count: 1
+			path: public/admin/inc/fun-listings.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$d , string; display mode\\)\\: Unexpected token \"\\$d\", expected type at offset 114$#"
+			count: 1
+			path: public/admin/inc/fun-listings.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$s , string; status\\)\\: Unexpected token \"\\$s\", expected type at offset 72$#"
+			count: 1
+			path: public/admin/inc/fun-listings.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID; optional\\)\\: Unexpected token \"\\$i\", expected type at offset 58$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$p , int; 0 for approved, 1 for all members; optional\\)\\: Unexpected token \"\\$p\", expected type at offset 103$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$dbpass\\.$#"
+			count: 10
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^Variable \\$select might not be defined\\.$#"
+			count: 15
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^Variable \\$listing might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$a , array; search data; optional\\)\\: Unexpected token \"\\$a\", expected type at offset 143$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 58$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$s , string; search title; optional\\)\\: Unexpected token \"\\$s\", expected type at offset 93$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^Cannot access property \\$searchType on false\\.$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^Cannot access property \\$searchText on false\\.$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 55$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$p , string; page section\\)\\: Unexpected token \"\\$p\", expected type at offset 90$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$b , string; return by object or array\\)\\: Unexpected token \"\\$b\", expected type at offset 196$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$e , int; listing ID; optional\\)\\: Unexpected token \"\\$e\", expected type at offset 257$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int, string; member ID or member e\\-mail\\)\\: Unexpected token \"\\$i\", expected type at offset 81$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$p , string; id or e\\-mail\\)\\: Unexpected token \"\\$p\", expected type at offset 148$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^Variable \\$d might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^Cannot access property \\$mID on false\\.$#"
+			count: 2
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^Cannot access property \\$mName on false\\.$#"
+			count: 2
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^Cannot access property \\$mEmail on false\\.$#"
+			count: 2
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^Cannot access property \\$mURL on false\\.$#"
+			count: 2
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^Cannot access property \\$mCountry on false\\.$#"
+			count: 2
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^Cannot access property \\$mPending on false\\.$#"
+			count: 2
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^Cannot access property \\$mVisible on false\\.$#"
+			count: 2
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^Variable \\$sendArray might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; member ID\\)\\: Unexpected token \"\\$i\", expected type at offset 70$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 72$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$s , int; pull members by approved or pending; optional\\)\\: Unexpected token \"\\$s\", expected type at offset 115$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 74$#"
+			count: 2
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$s , int; status ID; optional\\)\\: Unexpected token \"\\$s\", expected type at offset 117$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 70$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$url\\.$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^Variable \\$array might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^Variable \\$r might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$c , string; member country\\)\\: Unexpected token \"\\$c\", expected type at offset 72$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$email , string; member e\\-mail\\)\\: Unexpected token \"\\$email\", expected type at offset 89$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$listingId , int; listing ID\\)\\: Unexpected token \"\\$listingId\", expected type at offset 142$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$email , string; member e\\-mail\\)\\: Unexpected token \"\\$email\", expected type at offset 84$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$listingId , int; listing ID\\)\\: Unexpected token \"\\$listingId\", expected type at offset 188$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$password , string; password\\)\\: Unexpected token \"\\$password\", expected type at offset 137$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$e , string; member e\\-mail\\)\\: Unexpected token \"\\$e\", expected type at offset 82$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 182$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$p , string; member password\\)\\: Unexpected token \"\\$p\", expected type at offset 131$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^Variable \\$e might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$a , string; favourite fields from members\\)\\: Unexpected token \"\\$a\", expected type at offset 125$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$e , string; favourite field to be deleted\\)\\: Unexpected token \"\\$e\", expected type at offset 190$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$pages , int; basically, the pagination through ceil\\(\\)\\)\\: Unexpected token \"\\$pages\", expected type at offset 889$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^Cannot access property \\$sType on false\\.$#"
+			count: 5
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^Cannot access property \\$sText on false\\.$#"
+			count: 5
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^Variable \\$search might not be defined\\.$#"
+			count: 8
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$e , string; pull member by ID or e\\-mail\\)\\: Unexpected token \"\\$e\", expected type at offset 270$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 136$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$m , int; member ID\\)\\: Unexpected token \"\\$m\", expected type at offset 228$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$t , string; template slug\\)\\: Unexpected token \"\\$t\", expected type at offset 179$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^Variable \\$ffBody might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^Variable \\$member might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^Variable \\$email might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^Variable \\$url might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^Variable \\$ffFoot might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^Variable \\$ffHead might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$q , string; country; optional\\)\\: Unexpected token \"\\$q\", expected type at offset 102$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$s\\)\\: Unexpected token \"\\$s\", expected type at offset 77$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$s , string; sort by all, name or country\\)\\: Unexpected token \"\\$s\", expected type at offset 74$#"
+			count: 1
+			path: public/admin/inc/fun-members.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$e, character; decides if we're escaping the value\\)\\: Unexpected token \"\\$e\", expected type at offset 172$#"
+			count: 1
+			path: public/admin/inc/fun-misc.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$o, string; option value we're updating\\)\\: Unexpected token \"\\$o\", expected type at offset 66$#"
+			count: 1
+			path: public/admin/inc/fun-misc.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$v, text; value we're updating to\\)\\: Unexpected token \"\\$v\", expected type at offset 122$#"
+			count: 1
+			path: public/admin/inc/fun-misc.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$o, string; option we use to return it's value\\)\\: Unexpected token \"\\$o\", expected type at offset 60$#"
+			count: 1
+			path: public/admin/inc/fun-misc.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$e, boolean; decides if we're escaping the value\\)\\: Unexpected token \"\\$e\", expected type at offset 218$#"
+			count: 1
+			path: public/admin/inc/fun-misc.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i, int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 68$#"
+			count: 1
+			path: public/admin/inc/fun-misc.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$o, string; listing option value we're updating\\)\\: Unexpected token \"\\$o\", expected type at offset 104$#"
+			count: 1
+			path: public/admin/inc/fun-misc.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$v, text; value we're updating to\\)\\: Unexpected token \"\\$v\", expected type at offset 168$#"
+			count: 1
+			path: public/admin/inc/fun-misc.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i, int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 58$#"
+			count: 1
+			path: public/admin/inc/fun-misc.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$o, string; listing option we use to return it's value\\)\\: Unexpected token \"\\$o\", expected type at offset 94$#"
+			count: 1
+			path: public/admin/inc/fun-misc.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$b, text; text \\(usually contains escape \\$_POST and\\)\\: Unexpected token \"\\$b\", expected type at offset 228$#"
+			count: 1
+			path: public/admin/inc/fun-misc.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$e, int; 0 for error messages, 1 for success messages\\)\\: Unexpected token \"\\$e\", expected type at offset 75$#"
+			count: 1
+			path: public/admin/inc/fun-misc.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i, text; information, mostly server side\\)\\: Unexpected token \"\\$i\", expected type at offset 332$#"
+			count: 1
+			path: public/admin/inc/fun-misc.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$t, string; message title\\)\\: Unexpected token \"\\$t\", expected type at offset 148$#"
+			count: 1
+			path: public/admin/inc/fun-misc.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$u, string; URL\\)\\: Unexpected token \"\\$u\", expected type at offset 193$#"
+			count: 1
+			path: public/admin/inc/fun-misc.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$c, string; table to pull our count from\\)\\: Unexpected token \"\\$c\", expected type at offset 362$#"
+			count: 1
+			path: public/admin/inc/fun-misc.inc.php
+
+		-
+			message:
+				"""
+					#^PHPDoc tag @param has invalid value \\(\\$f, boolean; 1 for formatting 0 before the appropriate
+					counts and 0 for no formatting\\)\\: Unexpected token "\\$f", expected type at offset 484$#
+				"""
+			count: 1
+			path: public/admin/inc/fun-misc.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$y, string; options associated with each table\\)\\: Unexpected token \"\\$y\", expected type at offset 420$#"
+			count: 1
+			path: public/admin/inc/fun-misc.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$p, int; status\\)\\: Unexpected token \"\\$p\", expected type at offset 64$#"
+			count: 1
+			path: public/admin/inc/fun-misc.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$b, string; return name or title\\)\\: Unexpected token \"\\$b\", expected type at offset 66$#"
+			count: 1
+			path: public/admin/inc/fun-misc.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$n, string; template slug\\)\\: Unexpected token \"\\$n\", expected type at offset 64$#"
+			count: 1
+			path: public/admin/inc/fun-misc.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$r, string; return template object or the template itself\\)\\: Unexpected token \"\\$r\", expected type at offset 107$#"
+			count: 1
+			path: public/admin/inc/fun-misc.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$n, string; template name \\(slug\\)\\)\\: Unexpected token \"\\$n\", expected type at offset 134$#"
+			count: 1
+			path: public/admin/inc/fun-misc.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i, int; message ID; optional\\)\\: Unexpected token \"\\$i\", expected type at offset 62$#"
+			count: 1
+			path: public/admin/inc/fun-misc.inc.php
+
+		-
+			message: "#^Constant MAINDIR not found\\.$#"
+			count: 2
+			path: public/admin/inc/fun-process.inc.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 15
+			path: public/admin/inc/fun-process.inc.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 26
+			path: public/admin/inc/fun-process.inc.php
+
+		-
+			message: "#^Variable \\$turtles might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/fun-process.inc.php
+
+		-
+			message: "#^Variable \\$octopus might not be defined\\.$#"
+			count: 5
+			path: public/admin/inc/fun-process.inc.php
+
+		-
+			message: "#^Variable \\$laantispam might not be defined\\.$#"
+			count: 4
+			path: public/admin/inc/fun-process.inc.php
+
+		-
+			message: "#^Variable \\$badheaders might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/fun-process.inc.php
+
+		-
+			message: "#^Variable \\$automated might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/fun-process.inc.php
+
+		-
+			message: "#^Variable \\$hide_address might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/fun-process.inc.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/fun-process.inc.php
+
+		-
+			message: "#^Variable \\$pending_comment_form might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/fun-process.inc.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/fun-process.inc.php
+
+		-
+			message: "#^Variable \\$my_website might not be defined\\.$#"
+			count: 3
+			path: public/admin/inc/fun-process.inc.php
+
+		-
+			message: "#^Variable \\$qname might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/fun-process.inc.php
+
+		-
+			message: "#^Variable \\$qowns might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/fun-process.inc.php
+
+		-
+			message: "#^Variable \\$my_email might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/fun-process.inc.php
+
+		-
+			message: "#^Variable \\$if_pending might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/fun-process.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$s , int; listing ID; optional\\)\\: Unexpected token \"\\$s\", expected type at offset 72$#"
+			count: 1
+			path: public/admin/inc/fun-updates.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$e , int; entry ID; optional\\)\\: Unexpected token \"\\$e\", expected type at offset 73$#"
+			count: 1
+			path: public/admin/inc/fun-updates.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; update ID\\)\\: Unexpected token \"\\$i\", expected type at offset 69$#"
+			count: 1
+			path: public/admin/inc/fun-updates.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i\\)\\: Unexpected token \"\\$i\", expected type at offset 93$#"
+			count: 1
+			path: public/admin/inc/fun-updates.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i\\)\\: Unexpected token \"\\$i\", expected type at offset 94$#"
+			count: 1
+			path: public/admin/inc/fun-updates.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$r\\)\\: Unexpected token \"\\$r\", expected type at offset 168$#"
+			count: 1
+			path: public/admin/inc/fun-updates.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$post\\)\\: Unexpected token \"\\$post\", expected type at offset 91$#"
+			count: 1
+			path: public/admin/inc/fun-updates.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$c\\)\\: Unexpected token \"\\$c\", expected type at offset 289$#"
+			count: 1
+			path: public/admin/inc/fun-updates.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$k\\)\\: Unexpected token \"\\$k\", expected type at offset 331$#"
+			count: 1
+			path: public/admin/inc/fun-updates.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$n\\)\\: Unexpected token \"\\$n\", expected type at offset 310$#"
+			count: 1
+			path: public/admin/inc/fun-updates.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$s\\)\\: Unexpected token \"\\$s\", expected type at offset 268$#"
+			count: 1
+			path: public/admin/inc/fun-updates.inc.php
+
+		-
+			message: "#^Variable \\$r might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/fun-updates.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$e\\)\\: Unexpected token \"\\$e\", expected type at offset 97$#"
+			count: 1
+			path: public/admin/inc/fun-updates.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i\\)\\: Unexpected token \"\\$i\", expected type at offset 95$#"
+			count: 1
+			path: public/admin/inc/fun-updates.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$p\\)\\: Unexpected token \"\\$p\", expected type at offset 624$#"
+			count: 1
+			path: public/admin/inc/fun-updates.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$d\\)\\: Unexpected token \"\\$d\", expected type at offset 99$#"
+			count: 1
+			path: public/admin/inc/fun-updates.inc.php
+
+		-
+			message: "#^Variable \\$comment_link might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/fun-updates.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$b\\)\\: Unexpected token \"\\$b\", expected type at offset 119$#"
+			count: 1
+			path: public/admin/inc/fun-updates.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$s\\)\\: Unexpected token \"\\$s\", expected type at offset 98$#"
+			count: 1
+			path: public/admin/inc/fun-updates.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i\\)\\: Unexpected token \"\\$i\", expected type at offset 92$#"
+			count: 1
+			path: public/admin/inc/fun-updates.inc.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$cName\\.$#"
+			count: 2
+			path: public/admin/inc/fun-updates.inc.php
+
+		-
+			message: "#^Variable \\$d might not be defined\\.$#"
+			count: 3
+			path: public/admin/inc/fun-updates.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$c, string; addon slug\\)\\: Unexpected token \"\\$c\", expected type at offset 103$#"
+			count: 1
+			path: public/admin/inc/fun-utility.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$c, string; addon slug\\)\\: Unexpected token \"\\$c\", expected type at offset 63$#"
+			count: 1
+			path: public/admin/inc/fun-utility.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$b, string; sort by category or type; optional\\)\\: Unexpected token \"\\$b\", expected type at offset 64$#"
+			count: 1
+			path: public/admin/inc/fun-wishlist.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$c, string; category ID or wishlist type; optional\\)\\: Unexpected token \"\\$c\", expected type at offset 128$#"
+			count: 1
+			path: public/admin/inc/fun-wishlist.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$b, string; sort by category or type; optional\\)\\: Unexpected token \"\\$b\", expected type at offset 63$#"
+			count: 1
+			path: public/admin/inc/fun-wishlist.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$c, string; category ID or wishlist type; optional\\)\\: Unexpected token \"\\$c\", expected type at offset 127$#"
+			count: 1
+			path: public/admin/inc/fun-wishlist.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i, int; wishlist ID\\)\\: Unexpected token \"\\$i\", expected type at offset 57$#"
+			count: 1
+			path: public/admin/inc/fun-wishlist.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i, int; wishlist ID\\)\\: Unexpected token \"\\$i\", expected type at offset 68$#"
+			count: 1
+			path: public/admin/inc/fun-wishlist.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$b, text; template slug\\)\\: Unexpected token \"\\$b\", expected type at offset 107$#"
+			count: 1
+			path: public/admin/inc/fun-wishlist.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$i, int; wishlist ID\\)\\: Unexpected token \"\\$i\", expected type at offset 70$#"
+			count: 1
+			path: public/admin/inc/fun-wishlist.inc.php
+
+		-
+			message: "#^Variable \\$desc might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/fun-wishlist.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$post\\)\\: Unexpected token \"\\$post\", expected type at offset 171$#"
+			count: 1
+			path: public/admin/inc/fun.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$p\\)\\: Unexpected token \"\\$p\", expected type at offset 162$#"
+			count: 1
+			path: public/admin/inc/fun.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$a\\)\\: Unexpected token \"\\$a\", expected type at offset 276$#"
+			count: 1
+			path: public/admin/inc/fun.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$a\\)\\: Unexpected token \"\\$a\", expected type at offset 178$#"
+			count: 1
+			path: public/admin/inc/fun.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$o\\)\\: Unexpected token \"\\$o\", expected type at offset 160$#"
+			count: 1
+			path: public/admin/inc/fun.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$a\\)\\: Unexpected token \"\\$a\", expected type at offset 226$#"
+			count: 1
+			path: public/admin/inc/fun.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$d\\)\\: Unexpected token \"\\$d\", expected type at offset 94$#"
+			count: 1
+			path: public/admin/inc/fun.inc.php
+
+		-
+			message: "#^Variable \\$n might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/fun.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$p\\)\\: Unexpected token \"\\$p\", expected type at offset 94$#"
+			count: 1
+			path: public/admin/inc/fun.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$b\\)\\: Unexpected token \"\\$b\", expected type at offset 231$#"
+			count: 1
+			path: public/admin/inc/fun.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$e\\)\\: Unexpected token \"\\$e\", expected type at offset 210$#"
+			count: 1
+			path: public/admin/inc/fun.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$p\\)\\: Unexpected token \"\\$p\", expected type at offset 97$#"
+			count: 1
+			path: public/admin/inc/fun.inc.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$p\\)\\: Unexpected token \"\\$p\", expected type at offset 159$#"
+			count: 1
+			path: public/admin/inc/fun.inc.php
+
+		-
+			message: "#^Variable \\$link might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/fun.inc.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/func.microakismet.inc.php
+
+		-
+			message: "#^Variable \\$qwebs might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/func.microakismet.inc.php
+
+		-
+			message: "#^Default value of the parameter \\#1 \\$args \\(string\\) of function _akismet_send\\(\\) is incompatible with type array\\.$#"
+			count: 1
+			path: public/admin/inc/func.microakismet.inc.php
+
+		-
+			message: "#^Default value of the parameter \\#3 \\$url \\(string\\) of function _akismet_send\\(\\) is incompatible with type array\\.$#"
+			count: 1
+			path: public/admin/inc/func.microakismet.inc.php
+
+		-
+			message: "#^Part \\$url \\(array\\) of encapsed string cannot be cast to string\\.$#"
+			count: 1
+			path: public/admin/inc/func.microakismet.inc.php
+
+		-
+			message: "#^Constant MAINDIR not found\\.$#"
+			count: 2
+			path: public/admin/inc/show-c-stats.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 7
+			path: public/admin/inc/show-c-stats.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-c-stats.php
+
+		-
+			message: "#^Constant MAINDIR not found\\.$#"
+			count: 2
+			path: public/admin/inc/show-codes-form.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-codes-form.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 28
+			path: public/admin/inc/show-codes-form.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 10
+			path: public/admin/inc/show-codes-form.php
+
+		-
+			message: "#^Variable \\$fKey might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-codes-form.php
+
+		-
+			message: "#^Variable \\$cheetahs might not be defined\\.$#"
+			count: 9
+			path: public/admin/inc/show-codes-form.php
+
+		-
+			message: "#^Variable \\$donor might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-codes-form.php
+
+		-
+			message: "#^Variable \\$octopus might not be defined\\.$#"
+			count: 4
+			path: public/admin/inc/show-codes-form.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-codes-form.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 4
+			path: public/admin/inc/show-codes-form.php
+
+		-
+			message: "#^Variable \\$getItem might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-codes-form.php
+
+		-
+			message: "#^Variable \\$hide_address might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-codes-form.php
+
+		-
+			message: "#^Variable \\$jaguars might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-codes-form.php
+
+		-
+			message: "#^Variable \\$qowns might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-codes-form.php
+
+		-
+			message: "#^Variable \\$my_email might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-codes-form.php
+
+		-
+			message: "#^Variable \\$myadminpath might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-codes-form.php
+
+		-
+			message: "#^Variable \\$my_website might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-codes-form.php
+
+		-
+			message: "#^Constant MAINDIR not found\\.$#"
+			count: 2
+			path: public/admin/inc/show-codes.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-codes.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 7
+			path: public/admin/inc/show-codes.php
+
+		-
+			message: "#^Variable \\$get_yn_array might not be defined\\.$#"
+			count: 4
+			path: public/admin/inc/show-codes.php
+
+		-
+			message: "#^Variable \\$getItem might not be defined\\.$#"
+			count: 3
+			path: public/admin/inc/show-codes.php
+
+		-
+			message: "#^Variable \\$cheetahs might not be defined\\.$#"
+			count: 19
+			path: public/admin/inc/show-codes.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$catName\\.$#"
+			count: 1
+			path: public/admin/inc/show-codes.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 3
+			path: public/admin/inc/show-codes.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 8
+			path: public/admin/inc/show-codes.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 8
+			path: public/admin/inc/show-codes.php
+
+		-
+			message: "#^Variable \\$octopus might not be defined\\.$#"
+			count: 5
+			path: public/admin/inc/show-codes.php
+
+		-
+			message: "#^Constant MAINDIR not found\\.$#"
+			count: 2
+			path: public/admin/inc/show-delete.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-delete.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 11
+			path: public/admin/inc/show-delete.php
+
+		-
+			message: "#^Variable \\$getItem might not be defined\\.$#"
+			count: 3
+			path: public/admin/inc/show-delete.php
+
+		-
+			message: "#^Variable \\$snakes might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-delete.php
+
+		-
+			message: "#^Variable \\$laantispam might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-delete.php
+
+		-
+			message: "#^Variable \\$octopus might not be defined\\.$#"
+			count: 6
+			path: public/admin/inc/show-delete.php
+
+		-
+			message: "#^Variable \\$badheaders might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-delete.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 4
+			path: public/admin/inc/show-delete.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-delete.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-delete.php
+
+		-
+			message: "#^Variable \\$hide_address might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-delete.php
+
+		-
+			message: "#^Constant MAINDIR not found\\.$#"
+			count: 2
+			path: public/admin/inc/show-form.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 18
+			path: public/admin/inc/show-form.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 3
+			path: public/admin/inc/show-form.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 30
+			path: public/admin/inc/show-form.php
+
+		-
+			message: "#^Variable \\$getItem might not be defined\\.$#"
+			count: 16
+			path: public/admin/inc/show-form.php
+
+		-
+			message: "#^Variable \\$get_reason_array might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-form.php
+
+		-
+			message: "#^Variable \\$turnAff might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-form.php
+
+		-
+			message: "#^Variable \\$turnCon might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-form.php
+
+		-
+			message: "#^Variable \\$laantispam might not be defined\\.$#"
+			count: 4
+			path: public/admin/inc/show-form.php
+
+		-
+			message: "#^Variable \\$octopus might not be defined\\.$#"
+			count: 14
+			path: public/admin/inc/show-form.php
+
+		-
+			message: "#^Variable \\$automated might not be defined\\.$#"
+			count: 4
+			path: public/admin/inc/show-form.php
+
+		-
+			message: "#^Variable \\$badheaders might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-form.php
+
+		-
+			message: "#^Variable \\$hide_address might not be defined\\.$#"
+			count: 3
+			path: public/admin/inc/show-form.php
+
+		-
+			message: "#^Variable \\$form_name might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-form.php
+
+		-
+			message: "#^Variable \\$qname might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-form.php
+
+		-
+			message: "#^Variable \\$class might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-form.php
+
+		-
+			message: "#^Variable \\$type might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-form.php
+
+		-
+			message: "#^Variable \\$myadminpath might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-form.php
+
+		-
+			message: "#^Variable \\$my_email might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-form.php
+
+		-
+			message: "#^Variable \\$jaguars might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-form.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$dbpass\\.$#"
+			count: 1
+			path: public/admin/inc/show-form.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 4
+			path: public/admin/inc/show-form.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-form.php
+
+		-
+			message: "#^Variable \\$select might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-form.php
+
+		-
+			message: "#^Variable \\$my_website might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-form.php
+
+		-
+			message: "#^Constant MAINDIR not found\\.$#"
+			count: 2
+			path: public/admin/inc/show-join.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 22
+			path: public/admin/inc/show-join.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-join.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 39
+			path: public/admin/inc/show-join.php
+
+		-
+			message: "#^Variable \\$getItem might not be defined\\.$#"
+			count: 15
+			path: public/admin/inc/show-join.php
+
+		-
+			message: "#^Variable \\$octopus might not be defined\\.$#"
+			count: 12
+			path: public/admin/inc/show-join.php
+
+		-
+			message: "#^Variable \\$laantispam might not be defined\\.$#"
+			count: 4
+			path: public/admin/inc/show-join.php
+
+		-
+			message: "#^Variable \\$badheaders might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-join.php
+
+		-
+			message: "#^Variable \\$automated might not be defined\\.$#"
+			count: 3
+			path: public/admin/inc/show-join.php
+
+		-
+			message: "#^Variable \\$hide_address might not be defined\\.$#"
+			count: 3
+			path: public/admin/inc/show-join.php
+
+		-
+			message: "#^Variable \\$snakes might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-join.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-join.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-join.php
+
+		-
+			message: "#^Variable \\$select might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-join.php
+
+		-
+			message: "#^Variable \\$myadminpath might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-join.php
+
+		-
+			message: "#^Variable \\$my_email might not be defined\\.$#"
+			count: 4
+			path: public/admin/inc/show-join.php
+
+		-
+			message: "#^Variable \\$qowns might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-join.php
+
+		-
+			message: "#^Variable \\$fave_field in isset\\(\\) always exists and is not nullable\\.$#"
+			count: 2
+			path: public/admin/inc/show-join.php
+
+		-
+			message: "#^Variable \\$my_website might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-join.php
+
+		-
+			message: "#^Constant MAINDIR not found\\.$#"
+			count: 2
+			path: public/admin/inc/show-joined.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 3
+			path: public/admin/inc/show-joined.php
+
+		-
+			message: "#^Variable \\$octopus might not be defined\\.$#"
+			count: 5
+			path: public/admin/inc/show-joined.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 3
+			path: public/admin/inc/show-joined.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$p\\)\\: Unexpected token \"\\$p\", expected type at offset 18$#"
+			count: 1
+			path: public/admin/inc/show-joined.php
+
+		-
+			message: "#^Variable \\$lions might not be defined\\.$#"
+			count: 5
+			path: public/admin/inc/show-joined.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 6
+			path: public/admin/inc/show-joined.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 16
+			path: public/admin/inc/show-joined.php
+
+		-
+			message: "#^Variable \\$dragons might not be defined\\.$#"
+			count: 8
+			path: public/admin/inc/show-joined.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$jID\\.$#"
+			count: 1
+			path: public/admin/inc/show-joined.php
+
+		-
+			message: "#^Constant MAINDIR not found\\.$#"
+			count: 2
+			path: public/admin/inc/show-kim-join.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 23
+			path: public/admin/inc/show-kim-join.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 30
+			path: public/admin/inc/show-kim-join.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 3
+			path: public/admin/inc/show-kim-join.php
+
+		-
+			message: "#^Variable \\$laantispam might not be defined\\.$#"
+			count: 3
+			path: public/admin/inc/show-kim-join.php
+
+		-
+			message: "#^Variable \\$badheaders might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-kim-join.php
+
+		-
+			message: "#^Variable \\$octopus might not be defined\\.$#"
+			count: 8
+			path: public/admin/inc/show-kim-join.php
+
+		-
+			message: "#^Variable \\$automated might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-kim-join.php
+
+		-
+			message: "#^Variable \\$hide_address might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-kim-join.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-kim-join.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 4
+			path: public/admin/inc/show-kim-join.php
+
+		-
+			message: "#^Variable \\$qname might not be defined\\.$#"
+			count: 4
+			path: public/admin/inc/show-kim-join.php
+
+		-
+			message: "#^Variable \\$my_website might not be defined\\.$#"
+			count: 4
+			path: public/admin/inc/show-kim-join.php
+
+		-
+			message: "#^Variable \\$myadminpath might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-kim-join.php
+
+		-
+			message: "#^Variable \\$my_email might not be defined\\.$#"
+			count: 5
+			path: public/admin/inc/show-kim-join.php
+
+		-
+			message: "#^Variable \\$qowns might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-kim-join.php
+
+		-
+			message: "#^Variable \\$qwebs might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-kim-join.php
+
+		-
+			message: "#^Constant MAINDIR not found\\.$#"
+			count: 2
+			path: public/admin/inc/show-kim-members.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-kim-members.php
+
+		-
+			message: "#^Variable \\$per_page might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-kim-members.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-kim-members.php
+
+		-
+			message: "#^Variable \\$octopus might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-kim-members.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-kim-members.php
+
+		-
+			message: "#^Variable \\$kimadmin might not be defined\\.$#"
+			count: 4
+			path: public/admin/inc/show-kim-members.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-kim-members.php
+
+		-
+			message: "#^Constant MAINDIR not found\\.$#"
+			count: 2
+			path: public/admin/inc/show-kim-reset.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 8
+			path: public/admin/inc/show-kim-reset.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 9
+			path: public/admin/inc/show-kim-reset.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-kim-reset.php
+
+		-
+			message: "#^Variable \\$kimadmin might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-kim-reset.php
+
+		-
+			message: "#^Variable \\$badheaders might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-kim-reset.php
+
+		-
+			message: "#^Variable \\$octopus might not be defined\\.$#"
+			count: 4
+			path: public/admin/inc/show-kim-reset.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-kim-reset.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 3
+			path: public/admin/inc/show-kim-reset.php
+
+		-
+			message: "#^Variable \\$hide_address might not be defined\\.$#"
+			count: 3
+			path: public/admin/inc/show-kim-reset.php
+
+		-
+			message: "#^Variable \\$qname might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-kim-reset.php
+
+		-
+			message: "#^Variable \\$qwebs might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-kim-reset.php
+
+		-
+			message: "#^Variable \\$qowns might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-kim-reset.php
+
+		-
+			message: "#^Variable \\$my_email might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-kim-reset.php
+
+		-
+			message: "#^Constant MAINDIR not found\\.$#"
+			count: 2
+			path: public/admin/inc/show-kim-stats.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-kim-stats.php
+
+		-
+			message: "#^Variable \\$kimadmin might not be defined\\.$#"
+			count: 3
+			path: public/admin/inc/show-kim-stats.php
+
+		-
+			message: "#^Constant MAINDIR not found\\.$#"
+			count: 2
+			path: public/admin/inc/show-kim-update.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 20
+			path: public/admin/inc/show-kim-update.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-kim-update.php
+
+		-
+			message: "#^Variable \\$kimadmin might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-kim-update.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 7
+			path: public/admin/inc/show-kim-update.php
+
+		-
+			message: "#^Variable \\$my_website might not be defined\\.$#"
+			count: 3
+			path: public/admin/inc/show-kim-update.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-kim-update.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 4
+			path: public/admin/inc/show-kim-update.php
+
+		-
+			message: "#^Variable \\$qname might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-kim-update.php
+
+		-
+			message: "#^Variable \\$myadminpath might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-kim-update.php
+
+		-
+			message: "#^Variable \\$my_email might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-kim-update.php
+
+		-
+			message: "#^Variable \\$hide_address might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-kim-update.php
+
+		-
+			message: "#^Variable \\$octopus might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-kim-update.php
+
+		-
+			message: "#^Constant MAINDIR not found\\.$#"
+			count: 1
+			path: public/admin/inc/show-lyrics.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-lyrics.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 6
+			path: public/admin/inc/show-lyrics.php
+
+		-
+			message: "#^Variable \\$_KY might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-lyrics.php
+
+		-
+			message: "#^Variable \\$cheetahs might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-lyrics.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 3
+			path: public/admin/inc/show-lyrics.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 3
+			path: public/admin/inc/show-lyrics.php
+
+		-
+			message: "#^Variable \\$octopus might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-lyrics.php
+
+		-
+			message: "#^Constant MAINDIR not found\\.$#"
+			count: 2
+			path: public/admin/inc/show-members.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-members.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 7
+			path: public/admin/inc/show-members.php
+
+		-
+			message: "#^Variable \\$per_page might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-members.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 7
+			path: public/admin/inc/show-members.php
+
+		-
+			message: "#^Variable \\$getItem might not be defined\\.$#"
+			count: 12
+			path: public/admin/inc/show-members.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$dbpass\\.$#"
+			count: 2
+			path: public/admin/inc/show-members.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-members.php
+
+		-
+			message: "#^Variable \\$snakes might not be defined\\.$#"
+			count: 8
+			path: public/admin/inc/show-members.php
+
+		-
+			message: "#^Variable \\$octopus might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-members.php
+
+		-
+			message: "#^Constant MAINDIR not found\\.$#"
+			count: 2
+			path: public/admin/inc/show-owned.php
+
+		-
+			message: "#^Variable \\$lions might not be defined\\.$#"
+			count: 7
+			path: public/admin/inc/show-owned.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 5
+			path: public/admin/inc/show-owned.php
+
+		-
+			message: "#^Variable \\$octopus might not be defined\\.$#"
+			count: 5
+			path: public/admin/inc/show-owned.php
+
+		-
+			message: "#^Variable \\$status might not be defined\\.$#"
+			count: 4
+			path: public/admin/inc/show-owned.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 6
+			path: public/admin/inc/show-owned.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 3
+			path: public/admin/inc/show-owned.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-owned.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 5
+			path: public/admin/inc/show-owned.php
+
+		-
+			message: "#^Constant MAINDIR not found\\.$#"
+			count: 1
+			path: public/admin/inc/show-quotes.php
+
+		-
+			message: "#^Cannot access property \\$quoteNumber on false\\.$#"
+			count: 3
+			path: public/admin/inc/show-quotes.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-quotes.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 3
+			path: public/admin/inc/show-quotes.php
+
+		-
+			message: "#^Cannot access property \\$listingID on false\\.$#"
+			count: 4
+			path: public/admin/inc/show-quotes.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-quotes.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-quotes.php
+
+		-
+			message: "#^Variable \\$cheetahs might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-quotes.php
+
+		-
+			message: "#^Constant MAINDIR not found\\.$#"
+			count: 1
+			path: public/admin/inc/show-random.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 4
+			path: public/admin/inc/show-random.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 4
+			path: public/admin/inc/show-random.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 4
+			path: public/admin/inc/show-random.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-random.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$jURL\\.$#"
+			count: 1
+			path: public/admin/inc/show-random.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$jSubject\\.$#"
+			count: 2
+			path: public/admin/inc/show-random.php
+
+		-
+			message: "#^Constant MAINDIR not found\\.$#"
+			count: 2
+			path: public/admin/inc/show-real-stats.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 8
+			path: public/admin/inc/show-real-stats.php
+
+		-
+			message: "#^Variable \\$rabbits might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-real-stats.php
+
+		-
+			message: "#^Variable \\$lions might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-real-stats.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-real-stats.php
+
+		-
+			message: "#^Constant MAINDIR not found\\.$#"
+			count: 2
+			path: public/admin/inc/show-reset.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-reset.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 11
+			path: public/admin/inc/show-reset.php
+
+		-
+			message: "#^Variable \\$getItem might not be defined\\.$#"
+			count: 8
+			path: public/admin/inc/show-reset.php
+
+		-
+			message: "#^Variable \\$snakes might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-reset.php
+
+		-
+			message: "#^Variable \\$laantispam might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-reset.php
+
+		-
+			message: "#^Variable \\$octopus might not be defined\\.$#"
+			count: 6
+			path: public/admin/inc/show-reset.php
+
+		-
+			message: "#^Variable \\$automated might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-reset.php
+
+		-
+			message: "#^Variable \\$badheaders might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-reset.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 4
+			path: public/admin/inc/show-reset.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-reset.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-reset.php
+
+		-
+			message: "#^Variable \\$hide_address might not be defined\\.$#"
+			count: 3
+			path: public/admin/inc/show-reset.php
+
+		-
+			message: "#^Variable \\$qowns might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-reset.php
+
+		-
+			message: "#^Variable \\$my_email might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-reset.php
+
+		-
+			message: "#^Constant MAINDIR not found\\.$#"
+			count: 1
+			path: public/admin/inc/show-stats.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-stats.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-stats.php
+
+		-
+			message: "#^Variable \\$getItem might not be defined\\.$#"
+			count: 5
+			path: public/admin/inc/show-stats.php
+
+		-
+			message: "#^Variable \\$rabbits might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-stats.php
+
+		-
+			message: "#^Variable \\$snakes might not be defined\\.$#"
+			count: 10
+			path: public/admin/inc/show-stats.php
+
+		-
+			message: "#^Constant MAINDIR not found\\.$#"
+			count: 2
+			path: public/admin/inc/show-update.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-update.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 26
+			path: public/admin/inc/show-update.php
+
+		-
+			message: "#^Variable \\$getItem might not be defined\\.$#"
+			count: 9
+			path: public/admin/inc/show-update.php
+
+		-
+			message: "#^Variable \\$snakes might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-update.php
+
+		-
+			message: "#^Variable \\$badheaders might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-update.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 4
+			path: public/admin/inc/show-update.php
+
+		-
+			message: "#^Variable \\$octopus might not be defined\\.$#"
+			count: 9
+			path: public/admin/inc/show-update.php
+
+		-
+			message: "#^Variable \\$automated might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-update.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-update.php
+
+		-
+			message: "#^Variable \\$visible in isset\\(\\) always exists and is not nullable\\.$#"
+			count: 1
+			path: public/admin/inc/show-update.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-update.php
+
+		-
+			message: "#^Variable \\$myadminpath might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-update.php
+
+		-
+			message: "#^Variable \\$my_email might not be defined\\.$#"
+			count: 3
+			path: public/admin/inc/show-update.php
+
+		-
+			message: "#^Variable \\$hide_address might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-update.php
+
+		-
+			message: "#^Constant MAINDIR not found\\.$#"
+			count: 2
+			path: public/admin/inc/show-updates.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 3
+			path: public/admin/inc/show-updates.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 12
+			path: public/admin/inc/show-updates.php
+
+		-
+			message: "#^Variable \\$fKey might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-updates.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 9
+			path: public/admin/inc/show-updates.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 9
+			path: public/admin/inc/show-updates.php
+
+		-
+			message: "#^Variable \\$getItem might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-updates.php
+
+		-
+			message: "#^Variable \\$turtles might not be defined\\.$#"
+			count: 8
+			path: public/admin/inc/show-updates.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 3
+			path: public/admin/inc/show-updates.php
+
+		-
+			message: "#^Variable \\$octopus might not be defined\\.$#"
+			count: 5
+			path: public/admin/inc/show-updates.php
+
+		-
+			message: "#^Variable \\$get_date_array might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-updates.php
+
+		-
+			message: "#^Constant MAINDIR not found\\.$#"
+			count: 1
+			path: public/admin/inc/show-wishlist.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 8
+			path: public/admin/inc/show-wishlist.php
+
+		-
+			message: "#^Variable \\$mermaids might not be defined\\.$#"
+			count: 6
+			path: public/admin/inc/show-wishlist.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 6
+			path: public/admin/inc/show-wishlist.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 14
+			path: public/admin/inc/show-wishlist.php
+
+		-
+			message: "#^Variable \\$status might not be defined\\.$#"
+			count: 4
+			path: public/admin/inc/show-wishlist.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 4
+			path: public/admin/inc/show-wishlist.php
+
+		-
+			message: "#^Variable \\$select might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-wishlist.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-wishlist.php
+
+		-
+			message: "#^Access to an undefined property IXR_Message\\:\\:\\$currentTag\\.$#"
+			count: 1
+			path: public/admin/inc/vendors/class-ixr.inc.php
+
+		-
+			message: "#^Variable \\$value might not be defined\\.$#"
+			count: 3
+			path: public/admin/inc/vendors/class-ixr.inc.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 23
+			path: public/admin/index.php
+
+		-
+			message: "#^Variable \\$laoptions might not be defined\\.$#"
+			count: 2
+			path: public/admin/index.php
+
+		-
+			message: "#^Variable \\$lions might not be defined\\.$#"
+			count: 1
+			path: public/admin/index.php
+
+		-
+			message: "#^Variable \\$cheetahs might not be defined\\.$#"
+			count: 7
+			path: public/admin/index.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 4
+			path: public/admin/index.php
+
+		-
+			message: "#^Variable \\$snakes might not be defined\\.$#"
+			count: 3
+			path: public/admin/index.php
+
+		-
+			message: "#^Variable \\$rabbits might not be defined\\.$#"
+			count: 1
+			path: public/admin/index.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 2
+			path: public/admin/index.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 6
+			path: public/admin/index.php
+
+		-
+			message: "#^Variable \\$laoptions might not be defined\\.$#"
+			count: 2
+			path: public/admin/install.php
+
+		-
+			message: "#^Variable \\$leopards might not be defined\\.$#"
+			count: 1
+			path: public/admin/install.php
+
+		-
+			message: "#^Variable \\$frogs might not be defined\\.$#"
+			count: 7
+			path: public/admin/install.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 14
+			path: public/admin/install.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 16
+			path: public/admin/install.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 36
+			path: public/admin/install.php
+
+		-
+			message: "#^Variable \\$affa might not be defined\\.$#"
+			count: 1
+			path: public/admin/install.php
+
+		-
+			message: "#^Variable \\$affc might not be defined\\.$#"
+			count: 1
+			path: public/admin/install.php
+
+		-
+			message: "#^Variable \\$affm might not be defined\\.$#"
+			count: 1
+			path: public/admin/install.php
+
+		-
+			message: "#^Variable \\$kima might not be defined\\.$#"
+			count: 1
+			path: public/admin/install.php
+
+		-
+			message: "#^Variable \\$kimu might not be defined\\.$#"
+			count: 1
+			path: public/admin/install.php
+
+		-
+			message: "#^Variable \\$mema might not be defined\\.$#"
+			count: 1
+			path: public/admin/install.php
+
+		-
+			message: "#^Variable \\$memc might not be defined\\.$#"
+			count: 1
+			path: public/admin/install.php
+
+		-
+			message: "#^Variable \\$memd might not be defined\\.$#"
+			count: 1
+			path: public/admin/install.php
+
+		-
+			message: "#^Variable \\$meml might not be defined\\.$#"
+			count: 1
+			path: public/admin/install.php
+
+		-
+			message: "#^Variable \\$memm might not be defined\\.$#"
+			count: 1
+			path: public/admin/install.php
+
+		-
+			message: "#^Variable \\$memu might not be defined\\.$#"
+			count: 1
+			path: public/admin/install.php
+
+		-
+			message: "#^Variable \\$get_addon_array might not be defined\\.$#"
+			count: 1
+			path: public/admin/install.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 2
+			path: public/admin/install.php
+
+		-
+			message: "#^Variable \\$per_joined might not be defined\\.$#"
+			count: 3
+			path: public/admin/joined.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 54
+			path: public/admin/joined.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 14
+			path: public/admin/joined.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 27
+			path: public/admin/joined.php
+
+		-
+			message: "#^Variable \\$lions might not be defined\\.$#"
+			count: 10
+			path: public/admin/joined.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 9
+			path: public/admin/joined.php
+
+		-
+			message: "#^Variable \\$dragons might not be defined\\.$#"
+			count: 10
+			path: public/admin/joined.php
+
+		-
+			message: "#^Variable \\$get_status_array might not be defined\\.$#"
+			count: 1
+			path: public/admin/joined.php
+
+		-
+			message: "#^Variable \\$s might not be defined\\.$#"
+			count: 1
+			path: public/admin/joined.php
+
+		-
+			message: "#^Variable \\$c might not be defined\\.$#"
+			count: 4
+			path: public/admin/joined.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 72
+			path: public/admin/kim.php
+
+		-
+			message: "#^Variable \\$per_page might not be defined\\.$#"
+			count: 4
+			path: public/admin/kim.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 24
+			path: public/admin/kim.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 1
+			path: public/admin/kim.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 13
+			path: public/admin/kim.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 8
+			path: public/admin/kim.php
+
+		-
+			message: "#^Variable \\$get_email_array might not be defined\\.$#"
+			count: 1
+			path: public/admin/kim.php
+
+		-
+			message: "#^Variable \\$get_previouso_array might not be defined\\.$#"
+			count: 1
+			path: public/admin/kim.php
+
+		-
+			message: "#^Variable \\$kimadmin might not be defined\\.$#"
+			count: 3
+			path: public/admin/kim.php
+
+		-
+			message: "#^Variable \\$jaguars might not be defined\\.$#"
+			count: 3
+			path: public/admin/kim.php
+
+		-
+			message: "#^Variable \\$listingid might not be defined\\.$#"
+			count: 2
+			path: public/admin/kim.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 118
+			path: public/admin/listings.php
+
+		-
+			message: "#^Variable \\$per_page might not be defined\\.$#"
+			count: 4
+			path: public/admin/listings.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 31
+			path: public/admin/listings.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 7
+			path: public/admin/listings.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 16
+			path: public/admin/listings.php
+
+		-
+			message: "#^Variable \\$get_markup_array might not be defined\\.$#"
+			count: 2
+			path: public/admin/listings.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 92
+			path: public/admin/listings.php
+
+		-
+			message: "#^Variable \\$snakes might not be defined\\.$#"
+			count: 10
+			path: public/admin/listings.php
+
+		-
+			message: "#^Variable \\$fave_fields might not be defined\\.$#"
+			count: 1
+			path: public/admin/listings.php
+
+		-
+			message: "#^Variable \\$lions might not be defined\\.$#"
+			count: 3
+			path: public/admin/listings.php
+
+		-
+			message: "#^Variable \\$get_date_array might not be defined\\.$#"
+			count: 2
+			path: public/admin/listings.php
+
+		-
+			message: "#^Variable \\$result might not be defined\\.$#"
+			count: 1
+			path: public/admin/listings.php
+
+		-
+			message: "#^Variable \\$my_imagesh might not be defined\\.$#"
+			count: 1
+			path: public/admin/listings.php
+
+		-
+			message: "#^Variable \\$catid might not be defined\\.$#"
+			count: 3
+			path: public/admin/listings.php
+
+		-
+			message: "#^Variable \\$statusid might not be defined\\.$#"
+			count: 3
+			path: public/admin/listings.php
+
+		-
+			message: "#^Variable \\$rabbits might not be defined\\.$#"
+			count: 1
+			path: public/admin/listings.php
+
+		-
+			message: "#^Variable \\$p might not be defined\\.$#"
+			count: 1
+			path: public/admin/listings.php
+
+		-
+			message: "#^Variable \\$s might not be defined\\.$#"
+			count: 1
+			path: public/admin/listings.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 75
+			path: public/admin/lyrics.php
+
+		-
+			message: "#^Variable \\$per_page might not be defined\\.$#"
+			count: 6
+			path: public/admin/lyrics.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 37
+			path: public/admin/lyrics.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 1
+			path: public/admin/lyrics.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 18
+			path: public/admin/lyrics.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 6
+			path: public/admin/lyrics.php
+
+		-
+			message: "#^Variable \\$cheetahs might not be defined\\.$#"
+			count: 5
+			path: public/admin/lyrics.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 101
+			path: public/admin/members.php
+
+		-
+			message: "#^Variable \\$per_members might not be defined\\.$#"
+			count: 3
+			path: public/admin/members.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 13
+			path: public/admin/members.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 8
+			path: public/admin/members.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 45
+			path: public/admin/members.php
+
+		-
+			message: "#^Variable \\$fave might not be defined\\.$#"
+			count: 2
+			path: public/admin/members.php
+
+		-
+			message: "#^Variable \\$url might not be defined\\.$#"
+			count: 1
+			path: public/admin/members.php
+
+		-
+			message: "#^Variable \\$snakes might not be defined\\.$#"
+			count: 14
+			path: public/admin/members.php
+
+		-
+			message: "#^Variable \\$jaguars might not be defined\\.$#"
+			count: 6
+			path: public/admin/members.php
+
+		-
+			message: "#^Variable \\$update might not be defined\\.$#"
+			count: 6
+			path: public/admin/members.php
+
+		-
+			message: "#^Variable \\$delete might not be defined\\.$#"
+			count: 2
+			path: public/admin/members.php
+
+		-
+			message: "#^Variable \\$get_type_id_array might not be defined\\.$#"
+			count: 1
+			path: public/admin/members.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 65
+			path: public/admin/options.php
+
+		-
+			message: "#^Variable \\$get_option_array might not be defined\\.$#"
+			count: 4
+			path: public/admin/options.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 95
+			path: public/admin/options.php
+
+		-
+			message: "#^Variable \\$leopards might not be defined\\.$#"
+			count: 11
+			path: public/admin/options.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 1
+			path: public/admin/options.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 1
+			path: public/admin/options.php
+
+		-
+			message: "#^Variable \\$get_markup_array might not be defined\\.$#"
+			count: 2
+			path: public/admin/options.php
+
+		-
+			message: "#^Variable \\$get_option_nav_array might not be defined\\.$#"
+			count: 2
+			path: public/admin/options.php
+
+		-
+			message: "#^Variable \\$sw might not be defined\\.$#"
+			count: 1
+			path: public/admin/options.php
+
+		-
+			message: "#^Variable \\$laoptions might not be defined\\.$#"
+			count: 1
+			path: public/admin/options.php
+
+		-
+			message: "#^Variable \\$get_script_array might not be defined\\.$#"
+			count: 2
+			path: public/admin/options.php
+
+		-
+			message: "#^Variable \\$get_import_cats_array might not be defined\\.$#"
+			count: 1
+			path: public/admin/options.php
+
+		-
+			message: "#^Variable \\$get_export_cats_array might not be defined\\.$#"
+			count: 1
+			path: public/admin/options.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 26
+			path: public/admin/pro.inc.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 2
+			path: public/admin/pro.inc.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 5
+			path: public/admin/pro.inc.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 7
+			path: public/admin/pro.inc.php
+
+		-
+			message: "#^Variable \\$laoptions might not be defined\\.$#"
+			count: 6
+			path: public/admin/pro.inc.php
+
+		-
+			message: "#^Variable \\$loginInfo might not be defined\\.$#"
+			count: 3
+			path: public/admin/pro.inc.php
+
+		-
+			message: "#^Variable \\$octopus might not be defined\\.$#"
+			count: 1
+			path: public/admin/pro.inc.php
+
+		-
+			message: "#^Variable \\$leopards might not be defined\\.$#"
+			count: 2
+			path: public/admin/pro.inc.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 33
+			path: public/admin/quotes.php
+
+		-
+			message: "#^Variable \\$per_page might not be defined\\.$#"
+			count: 4
+			path: public/admin/quotes.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 19
+			path: public/admin/quotes.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 1
+			path: public/admin/quotes.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 9
+			path: public/admin/quotes.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 4
+			path: public/admin/quotes.php
+
+		-
+			message: "#^Variable \\$cheetahs might not be defined\\.$#"
+			count: 1
+			path: public/admin/quotes.php
+
+		-
+			message: "#^Constant LAVERSION not found\\.$#"
+			count: 1
+			path: public/admin/rats.inc.php
+
+		-
+			message: "#^Constant LAVERSION not found\\.$#"
+			count: 1
+			path: public/admin/rats.sample.inc.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 1
+			path: public/admin/rss.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 1
+			path: public/admin/rss.php
+
+		-
+			message: "#^Variable \\$turtles might not be defined\\.$#"
+			count: 1
+			path: public/admin/rss.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 10
+			path: public/admin/templates.inc.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 3
+			path: public/admin/templates.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 11
+			path: public/admin/templates.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 2
+			path: public/admin/templates.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 4
+			path: public/admin/templates.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 9
+			path: public/admin/templates_emails.php
+
+		-
+			message: "#^Variable \\$jaguars might not be defined\\.$#"
+			count: 4
+			path: public/admin/templates_emails.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 2
+			path: public/admin/templates_emails.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 5
+			path: public/admin/templates_emails.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 36
+			path: public/admin/updates-comments.php
+
+		-
+			message: "#^Variable \\$per_page might not be defined\\.$#"
+			count: 4
+			path: public/admin/updates-comments.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 19
+			path: public/admin/updates-comments.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 10
+			path: public/admin/updates-comments.php
+
+		-
+			message: "#^Variable \\$turtles might not be defined\\.$#"
+			count: 9
+			path: public/admin/updates-comments.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 91
+			path: public/admin/updates.php
+
+		-
+			message: "#^Variable \\$per_page might not be defined\\.$#"
+			count: 4
+			path: public/admin/updates.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 21
+			path: public/admin/updates.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 14
+			path: public/admin/updates.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 10
+			path: public/admin/updates.php
+
+		-
+			message: "#^Variable \\$i might not be defined\\.$#"
+			count: 1
+			path: public/admin/updates.php
+
+		-
+			message: "#^Variable \\$get_date_array might not be defined\\.$#"
+			count: 2
+			path: public/admin/updates.php
+
+		-
+			message: "#^Variable \\$turtles might not be defined\\.$#"
+			count: 13
+			path: public/admin/updates.php
+
+		-
+			message: "#^Variable \\$journals might not be defined\\.$#"
+			count: 6
+			path: public/admin/updates.php
+
+		-
+			message: "#^Method crosspost\\:\\:deleteevent\\(\\) invoked with 2 parameters, 1 required\\.$#"
+			count: 3
+			path: public/admin/updates.php
+
+		-
+			message: "#^Variable \\$w might not be defined\\.$#"
+			count: 6
+			path: public/admin/updates.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 2
+			path: public/admin/updates.php
+
+		-
+			message: "#^Variable \\$listingid might not be defined\\.$#"
+			count: 3
+			path: public/admin/updates.php
+
+		-
+			message: "#^Variable \\$laoptions might not be defined\\.$#"
+			count: 1
+			path: public/admin/upgrade.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 1
+			path: public/admin/vars.inc.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 16
+			path: public/admin/vars.inc.php
+
+		-
+			message: "#^Variable \\$tigers might not be defined\\.$#"
+			count: 45
+			path: public/admin/wishlist.php
+
+		-
+			message: "#^Variable \\$per_page might not be defined\\.$#"
+			count: 4
+			path: public/admin/wishlist.php
+
+		-
+			message: "#^Variable \\$scorpions might not be defined\\.$#"
+			count: 25
+			path: public/admin/wishlist.php
+
+		-
+			message: "#^Variable \\$get_wishlist_array might not be defined\\.$#"
+			count: 5
+			path: public/admin/wishlist.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 12
+			path: public/admin/wishlist.php
+
+		-
+			message: "#^Variable \\$lions might not be defined\\.$#"
+			count: 5
+			path: public/admin/wishlist.php
+
+		-
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 9
+			path: public/admin/wishlist.php
+
+		-
+			message: "#^Variable \\$mermaids might not be defined\\.$#"
+			count: 3
+			path: public/admin/wishlist.php
+
+		-
+			message: "#^Variable \\$catid might not be defined\\.$#"
+			count: 3
+			path: public/admin/wishlist.php
+
+		-
+			message: "#^Variable \\$cat_id might not be defined\\.$#"
+			count: 1
+			path: public/admin/wishlist.php
+
+		-
+			message: "#^Variable \\$my_wishess might not be defined\\.$#"
+			count: 1
+			path: public/admin/wishlist.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 1
+			path: public/db-connection.inc.php
+
+		-
+			message: "#^Variable \\$database_host might not be defined\\.$#"
+			count: 1
+			path: public/db-connection.inc.php
+
+		-
+			message: "#^Variable \\$database_name might not be defined\\.$#"
+			count: 1
+			path: public/db-connection.inc.php
+
+		-
+			message: "#^Variable \\$database_pass might not be defined\\.$#"
+			count: 1
+			path: public/db-connection.inc.php
+
+		-
+			message: "#^Variable \\$database_user might not be defined\\.$#"
+			count: 1
+			path: public/db-connection.inc.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 5
+			path: public/header.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 1
+			path: public/samplecollective/affiliates.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 1
+			path: public/samplecollective/contact.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 1
+			path: public/samplecollective/db-connection.inc.php
+
+		-
+			message: "#^Variable \\$database_host might not be defined\\.$#"
+			count: 1
+			path: public/samplecollective/db-connection.inc.php
+
+		-
+			message: "#^Variable \\$database_name might not be defined\\.$#"
+			count: 1
+			path: public/samplecollective/db-connection.inc.php
+
+		-
+			message: "#^Variable \\$database_pass might not be defined\\.$#"
+			count: 1
+			path: public/samplecollective/db-connection.inc.php
+
+		-
+			message: "#^Variable \\$database_user might not be defined\\.$#"
+			count: 1
+			path: public/samplecollective/db-connection.inc.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 1
+			path: public/samplecollective/donate.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 2
+			path: public/samplecollective/index.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 1
+			path: public/samplecollective/joined.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 1
+			path: public/samplecollective/kim-join.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 1
+			path: public/samplecollective/kim-list.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 1
+			path: public/samplecollective/kim-reset.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 1
+			path: public/samplecollective/kim-update.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 1
+			path: public/samplecollective/kim.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 1
+			path: public/samplecollective/owned.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 3
+			path: public/samplecollective/stat.php
+
+		-
+			message: "#^Constant MAINDIR not found\\.$#"
+			count: 1
+			path: public/samplecollective/stat.php
+
+		-
+			message: "#^Variable \\$wolves might not be defined\\.$#"
+			count: 2
+			path: public/samplecollective/stat.php
+
+		-
+			message: "#^Variable \\$snakes might not be defined\\.$#"
+			count: 2
+			path: public/samplecollective/stat.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 1
+			path: public/samplecollective/upcoming.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 1
+			path: public/samplecollective/updates.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 1
+			path: public/samplecollective/wishlist.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 2
+			path: public/samplefl/buttons.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 1
+			path: public/samplefl/db-connection.inc.php
+
+		-
+			message: "#^Variable \\$database_host might not be defined\\.$#"
+			count: 1
+			path: public/samplefl/db-connection.inc.php
+
+		-
+			message: "#^Variable \\$database_name might not be defined\\.$#"
+			count: 1
+			path: public/samplefl/db-connection.inc.php
+
+		-
+			message: "#^Variable \\$database_pass might not be defined\\.$#"
+			count: 1
+			path: public/samplefl/db-connection.inc.php
+
+		-
+			message: "#^Variable \\$database_user might not be defined\\.$#"
+			count: 1
+			path: public/samplefl/db-connection.inc.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 1
+			path: public/samplefl/delete.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 1
+			path: public/samplefl/donate.php
+
+		-
+			message: "#^Variable \\$fanlisting might not be defined\\.$#"
+			count: 1
+			path: public/samplefl/footer.php
+
+		-
+			message: "#^Variable \\$fanlisting might not be defined\\.$#"
+			count: 1
+			path: public/samplefl/header.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 2
+			path: public/samplefl/index.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 1
+			path: public/samplefl/join.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 1
+			path: public/samplefl/members.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$o\\)\\: Unexpected token \"\\$o\", expected type at offset 82$#"
+			count: 1
+			path: public/samplefl/pro.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 1
+			path: public/samplefl/reset.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 2
+			path: public/samplefl/site.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 1
+			path: public/samplefl/update.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 2
+			path: public/samplefl2/buttons.php
+
+		-
+			message: "#^Variable \\$_ST might not be defined\\.$#"
+			count: 1
+			path: public/samplefl2/db-connection.inc.php
+
+		-
+			message: "#^Variable \\$database_host might not be defined\\.$#"
+			count: 1
+			path: public/samplefl2/db-connection.inc.php
+
+		-
+			message: "#^Variable \\$database_name might not be defined\\.$#"
+			count: 1
+			path: public/samplefl2/db-connection.inc.php
+
+		-
+			message: "#^Variable \\$database_pass might not be defined\\.$#"
+			count: 1
+			path: public/samplefl2/db-connection.inc.php
+
+		-
+			message: "#^Variable \\$database_user might not be defined\\.$#"
+			count: 1
+			path: public/samplefl2/db-connection.inc.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 1
+			path: public/samplefl2/delete.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 1
+			path: public/samplefl2/donate.php
+
+		-
+			message: "#^Variable \\$fanlisting might not be defined\\.$#"
+			count: 1
+			path: public/samplefl2/footer.php
+
+		-
+			message: "#^Variable \\$fanlisting might not be defined\\.$#"
+			count: 1
+			path: public/samplefl2/header.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 2
+			path: public/samplefl2/index.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 1
+			path: public/samplefl2/join.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 1
+			path: public/samplefl2/members.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(\\$o\\)\\: Unexpected token \"\\$o\", expected type at offset 82$#"
+			count: 1
+			path: public/samplefl2/pro.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 1
+			path: public/samplefl2/reset.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 2
+			path: public/samplefl2/site.php
+
+		-
+			message: "#^Constant STPATH not found\\.$#"
+			count: 1
+			path: public/samplefl2/update.php
+

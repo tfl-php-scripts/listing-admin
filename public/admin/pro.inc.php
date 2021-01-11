@@ -207,7 +207,8 @@ if (isset($_GET['forgot'])) {
                         if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
                             $userObj->userInfo .= "{$_SERVER['HTTP_REFERER']}|";
                         }
-                        $octopus->writeError('Reset Password', $userObj->userURL, $userObj->userText, $userObj->userInfo);
+                        $octopus->writeError('Reset Password', $userObj->userURL, $userObj->userText,
+                            $userObj->userInfo);
                         $tigers->displayError('Form Error', 'The password hint you entered does' .
                             ' not match the on file.', false);
                     }
@@ -281,18 +282,20 @@ if (isset($_POST['action']) && $_POST['action'] == 'Log In') {
         header('Location: index.php');
         exit();
     }
-} else if (isset($_COOKIE['lalog']) && !empty($_COOKIE['lalog'])) {
-    $userName = $seahorses->getOption('user_username');
-    $userPass = $seahorses->getOption('user_password');
+} else {
+    if (isset($_COOKIE['lalog']) && !empty($_COOKIE['lalog'])) {
+        $userName = $seahorses->getOption('user_username');
+        $userPass = $seahorses->getOption('user_password');
 
-    $loginForm = false;
-    if ($_COOKIE['lalog'] === sha1($laoptions->saltPass . $userName . $userPass . $userObj->userHash)) {
         $loginForm = false;
+        if ($_COOKIE['lalog'] === sha1($laoptions->saltPass . $userName . $userPass . $userObj->userHash)) {
+            $loginForm = false;
+        } else {
+            $loginForm = true;
+        }
     } else {
         $loginForm = true;
     }
-} else {
-    $loginForm = true;
 }
 
 if ($loginForm) {
@@ -304,7 +307,7 @@ if ($loginForm) {
     <head>
         <meta charset="utf-8">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title> <?php echo $_ST['version']; ?> &#8212; Log In </title>
+        <title> <?= $laoptions->version ?> &#8212; Log In </title>
         <link href="style.css" rel="stylesheet" type="text/css">
     </head>
 

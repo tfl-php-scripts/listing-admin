@@ -48,8 +48,8 @@
      */
     if (isset($_POST['action']) && $_POST['action'] == 'Update Information') {
         $id = $getItem->id;
-        $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
-        $new_email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['new_email']));
+        $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email']));
+        $new_email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['new_email']));
         if (empty($email)) {
             $tigers->displayError('Form Error', 'You have not filled out the <samp>email' .
                 '</samp> field.</p>', false);
@@ -78,7 +78,7 @@
         }
         $new_name = ucwords($new_name);
 
-        $new_url = StringUtils::instance()->normalize($tigers->cleanMys($_POST['new_url']));
+        $new_url = StringUtils::instance()->normalizeUrl($tigers->cleanMys($_POST['new_url']));
         if (!empty($new_url) && !StringUtils::instance()->isUrlValid($new_url)) {
             $tigers->displayError('Form Error', 'The <samp>site URL</samp> is not valid.' .
                 ' Please supply a valid site URL or empty the field.', false);

@@ -1,0 +1,8 @@
+{
+  "require-dev": {
+    "phpstan/phpstan": "^0.12.52"
+  },
+  "require": {
+    "php": "^7.2"
+  }
+}

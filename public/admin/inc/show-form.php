@@ -115,7 +115,7 @@
             $tigers->displayError('Form Error', 'The owner currently has the \'Anonymous\'' .
                 ' feature turned off. Please supply a valid name.', false);
         }
-        $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
+        $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email']));
         if (empty($email)) {
             $tigers->displayError('Form Error', 'The <samp>e-mail</samp> field is empty.',
                 false);
@@ -123,7 +123,7 @@
             $tigers->displayError('Form Error', 'The characters specified in the <samp>' .
                 'email</samp> field are not allowed.', false);
         }
-        $url = StringUtils::instance()->normalize($tigers->cleanMys($_POST['url']));
+        $url = StringUtils::instance()->normalizeUrl($tigers->cleanMys($_POST['url']));
         if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
             $tigers->displayError('Form Error', 'The <samp>site URL</samp> is not valid.' .
                 ' Please supply a valid site URL or empty the field.', false);
@@ -362,12 +362,14 @@
             if ($count > 0) {
                 if (empty($pullTemps)) {
                     echo $octopus->alternate('menu', $options->markup);
-                } else if (preg_match('/(<li>)/', $pemp)) {
-                    echo $octopus->alternate('menu', $options->markup);
-                } elseif (preg_match('/(<tbody>|<tr>|<td>)/', $pemp)) {
-                    echo $octopus->alternate('table', $options->markup);
                 } else {
-                    echo "<div class=\"showAffiliates tc\">\n";
+                    if (preg_match('/(<li>)/', $pemp)) {
+                        echo $octopus->alternate('menu', $options->markup);
+                    } elseif (preg_match('/(<tbody>|<tr>|<td>)/', $pemp)) {
+                        echo $octopus->alternate('table', $options->markup);
+                    } else {
+                        echo "<div class=\"showAffiliates tc\">\n";
+                    }
                 }
                 while ($getOb = $scorpions->obj($true)) {
                     if ($options->listingID == '0') {
@@ -382,26 +384,30 @@
                     if (empty($pullTemps)) {
                         echo '<li><a href="' . $urlnow . '" title="' . $subjectnow .
                             '">' . $subjectnow . "</a></li>\n";
-                    } else if ($options->listingID == 0 || $options->listingID == '0') {
-                        $format = html_entity_decode($pullTemps);
-                        $format = str_replace('{subject}', $subjectnow, $format);
-                        $format = str_replace('{url}', $urlnow, $format);
-                        $format = str_replace('{image}', $seahorses->getOption('aff_http') . $imagenow, $format);
-                        echo $format . "\n";
                     } else {
-                        echo $wolves->listingTemplate(
-                            $options->listingID, 'affiliates', $urlnow, $subjectnow, $imagenow
-                        );
+                        if ($options->listingID == 0 || $options->listingID == '0') {
+                            $format = html_entity_decode($pullTemps);
+                            $format = str_replace('{subject}', $subjectnow, $format);
+                            $format = str_replace('{url}', $urlnow, $format);
+                            $format = str_replace('{image}', $seahorses->getOption('aff_http') . $imagenow, $format);
+                            echo $format . "\n";
+                        } else {
+                            echo $wolves->listingTemplate(
+                                $options->listingID, 'affiliates', $urlnow, $subjectnow, $imagenow
+                            );
+                        }
                     }
                 }
                 if (empty($pullTemps)) {
                     echo $octopus->alternate('menu', $options->markup, 1);
-                } else if (preg_match('/(<li>)/', $pemp)) {
-                    echo $octopus->alternate('menu', $options->markup, 1);
-                } elseif (preg_match('/(<tbody>|<tr>|<td>)/', $pemp)) {
-                    echo $octopus->alternate('table', $options->markup, 1);
                 } else {
-                    echo "</div>\n";
+                    if (preg_match('/(<li>)/', $pemp)) {
+                        echo $octopus->alternate('menu', $options->markup, 1);
+                    } elseif (preg_match('/(<tbody>|<tr>|<td>)/', $pemp)) {
+                        echo $octopus->alternate('table', $options->markup, 1);
+                    } else {
+                        echo "</div>\n";
+                    }
                 }
             } else {
                 echo '<p class="tc">Currently no affiliates!</p>' . "\n";
@@ -421,10 +427,12 @@
                 } else {
                     $mark = '';
                 }
-            } else if ($seahorses->getOption('markup') == 'xhtml') {
-                $mark = ' /';
             } else {
-                $mark = '';
+                if ($seahorses->getOption('markup') == 'xhtml') {
+                    $mark = ' /';
+                } else {
+                    $mark = '';
+                }
             }
 
             if ($options->form == 'open') {
@@ -480,7 +488,8 @@
 
                     <fieldset>
                         <legend>Extra</legend>
-                        <p><label>* <strong>Reason:</strong></label> <select name="reason" class="input1" required="required">
+                        <p><label>* <strong>Reason:</strong></label> <select name="reason" class="input1"
+                                                                             required="required">
                                 <option value="">---</option>
                                 <?php
                                 if ($options->turnAff == 1) {

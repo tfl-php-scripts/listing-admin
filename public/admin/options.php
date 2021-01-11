@@ -52,7 +52,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'Edit Options') {
         if ($seahorses->getOption('my_name') != $my_nameNow) {
             $seahorses->editOption('my_name', $my_nameNow);
         }
-        $my_emailNow = StringUtils::instance()->normalize($tigers->cleanMys($_POST['my_email']));
+        $my_emailNow = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['my_email']));
         if (empty($my_emailNow)) {
             $tigers->displayError('Form Error', 'Your <samp>e-mail address</samp>' .
                 ' is empty. Go back and enter an valid e-mail address.', false);
@@ -67,7 +67,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'Edit Options') {
         if ($seahorses->getOption('my_email') != $my_emailNow) {
             $seahorses->editOption('my_email', $my_emailNow);
         }
-        $my_url = StringUtils::instance()->normalize($tigers->cleanMys($_POST['my_website']));
+        $my_url = StringUtils::instance()->normalizeUrl($tigers->cleanMys($_POST['my_website']));
         if (empty($my_url)) {
             $tigers->displayError('Form Error', 'Your <samp>website</samp>' .
                 ' is empty.', false);
@@ -428,9 +428,11 @@ if (isset($_POST['action']) && $_POST['action'] == 'Edit Options') {
                             you in the event they were not created during installation; of course, they
                             can changed to the desired path(s).</label>
                         <input name="jnd_path" class="input1" type="text"
-                               value="<?php echo $leopards->getPaths('path', '', $seahorses->getOption('jnd_path'), 'images/joined/'); ?>"><br>
+                               value="<?php echo $leopards->getPaths('path', '', $seahorses->getOption('jnd_path'),
+                                   'images/joined/'); ?>"><br>
                         <input name="jnd_http" class="input1" type="text"
-                               value="<?php echo $leopards->getPaths('url', $seahorses->getOption('jnd_http'), '', 'images/joined/'); ?>">
+                               value="<?php echo $leopards->getPaths('url', $seahorses->getOption('jnd_http'), '',
+                                   'images/joined/'); ?>">
                     </p>
                 </fieldset>
 
@@ -441,9 +443,11 @@ if (isset($_POST['action']) && $_POST['action'] == 'Edit Options') {
                             for you in the event they were not added during installation; you can, of
                             course, changed them to your desired paths.</label>
                         <input name="wsh_path" class="input1" type="text"
-                               value="<?php echo $leopards->getPaths('path', '', $seahorses->getOption('wsh_path'), 'images/wishlist/'); ?>"><br>
+                               value="<?php echo $leopards->getPaths('path', '', $seahorses->getOption('wsh_path'),
+                                   'images/wishlist/'); ?>"><br>
                         <input name="wsh_http" class="input1" type="text"
-                               value="<?php echo $leopards->getPaths('url', $seahorses->getOption('wsh_http'), '', 'images/wishlist/'); ?>">
+                               value="<?php echo $leopards->getPaths('url', $seahorses->getOption('wsh_http'), '',
+                                   'images/wishlist/'); ?>">
                     </p>
                     <p class="clearBottom"></p>
                     <p><label><strong>Use Listing Images for Granted Wishlist?</strong><br>
@@ -727,25 +731,31 @@ if (isset($_POST['action']) && $_POST['action'] == 'Edit Options') {
                             Admin paths are the absolute path and <abbr title="Uniform Resource Identifier">URI</abbr>
                             path to your admin panel.</label>
                         <input name="adm_path" class="input1" type="text"
-                               value="<?php echo $leopards->getPaths('path', '', $seahorses->getOption('adm_path'), ''); ?>"><br>
+                               value="<?php echo $leopards->getPaths('path', '', $seahorses->getOption('adm_path'),
+                                   ''); ?>"><br>
                         <input name="adm_http" class="input1" type="text"
-                               value="<?php echo $leopards->getPaths('url', $seahorses->getOption('adm_http'), '', ''); ?>">
+                               value="<?php echo $leopards->getPaths('url', $seahorses->getOption('adm_http'), '',
+                                   ''); ?>">
                     </p>
                     <p style="clear: both; margin: 0 0 2% 0;"></p>
                     <p><label><strong>Affiliate Paths:</strong><br>
                             Affiliate paths are the absolute and URL paths for your affiliate images.</label>
                         <input name="aff_path" class="input1" type="text"
-                               value="<?php echo $leopards->getPaths('path', '', $seahorses->getOption('aff_path'), 'images/affiliates/'); ?>"><br>
+                               value="<?php echo $leopards->getPaths('path', '', $seahorses->getOption('aff_path'),
+                                   'images/affiliates/'); ?>"><br>
                         <input name="aff_http" class="input1" type="text"
-                               value="<?php echo $leopards->getPaths('url', $seahorses->getOption('aff_http'), '', 'images/affiliates/'); ?>">
+                               value="<?php echo $leopards->getPaths('url', $seahorses->getOption('aff_http'), '',
+                                   'images/affiliates/'); ?>">
                     </p>
                     <p style="clear: both; margin: 0 0 2% 0;"></p>
                     <p><label><strong>Image Paths:</strong><br>
                             Image paths are the absolute and URL paths to your listing images.</label>
                         <input name="img_path" class="input1" type="text"
-                               value="<?php echo $leopards->getPaths('path', '', $seahorses->getOption('img_path'), 'images/'); ?>"><br>
+                               value="<?php echo $leopards->getPaths('path', '', $seahorses->getOption('img_path'),
+                                   'images/'); ?>"><br>
                         <input name="img_http" class="input1" type="text"
-                               value="<?php echo $leopards->getPaths('url', $seahorses->getOption('img_http'), '', 'images/'); ?>">
+                               value="<?php echo $leopards->getPaths('url', $seahorses->getOption('img_http'), '',
+                                   'images/'); ?>">
                     </p>
                 </fieldset>
 
