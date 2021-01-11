@@ -36,8 +36,8 @@
             $tigers->displayError('Form Error', 'Your <samp>name</samp> is too' .
                 ' long. Go back and shorten it.', false);
         }
-        $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
-        $new_email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['new_email']));
+        $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email']));
+        $new_email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['new_email']));
         if (empty($email)) {
             $tigers->displayError('Form Error', 'You have not filled out the' .
                 ' <samp>email</samp> field.</p>', false);
@@ -49,7 +49,7 @@
             $tigers->displayError('Form Error', 'The characters specified in' .
                 ' the <samp>email</samp> field are not allowed.', false);
         }
-        $new_url = StringUtils::instance()->normalize($_POST['new_url']);
+        $new_url = StringUtils::instance()->normalizeUrl($_POST['new_url']);
         if (!empty($new_url) && !StringUtils::instance()->isUrlValid($new_url)) {
             $tigers->displayError('Form Error', 'Your <samp>site URL</samp>' .
                 ' appears to be invalid; make sure you haven\'t included any invalid characters' .

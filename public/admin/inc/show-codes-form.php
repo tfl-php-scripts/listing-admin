@@ -65,7 +65,7 @@ if (isset($_POST['action'])) {
         if (!empty($name)) {
             $donor = $cheetahs->donor($name);
         }
-        $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
+        $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email']));
         if (
             empty($email) &&
             (empty($name) && (isset($_POST['new_name']) && !empty($_POST['new_name'])))
@@ -83,7 +83,7 @@ if (isset($_POST['action'])) {
             $doadd = 1;
             $donator = $new_name;
         }
-        $url = StringUtils::instance()->normalize($tigers->cleanMys($_POST['url']));
+        $url = StringUtils::instance()->normalizeUrl($tigers->cleanMys($_POST['url']));
         $number = $tigers->cleanMys($_POST['number']);
         if (!is_numeric($number) || $number > 10) {
             $tigers->displayError('Form Error', 'You can only upload 1-10 code buttons' .

@@ -156,7 +156,7 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'E-Mail Affiliate') {
     } else {
         $s = 'n';
     }
-    $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
+    $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email']));
     if (!empty($email)) {
         $b = $email;
     } else {
@@ -188,7 +188,7 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'Email Affiliates') {
         $tigers->displayError('Form Error', 'The <samp>template</samp> field is' .
             ' invalid; go back and try again!', false);
     }
-    $b = isset($_POST['email']) && !empty($_POST['email']) ? StringUtils::instance()->normalize($tigers->cleanMys($_POST['email'])) : 'n';
+    $b = isset($_POST['email']) && !empty($_POST['email']) ? StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email'])) : 'n';
     $s = isset($_POST['subject']) && !empty($_POST['subject']) ? $tigers->cleanMys($_POST['subject']) : 'n';
     $affiliates = $rabbits->affiliatesList($listing);
 
@@ -216,7 +216,7 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'E-Mail Member') {
     $template = $tigers->cleanMys($_POST['template']);
     $subject = $tigers->cleanMys($_POST['subject']);
 
-    $b = empty($email) ? 'n' : StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
+    $b = empty($email) ? 'n' : StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email']));
     $c = isset($_POST['crosslisted']) && $_POST['crosslisted'] == 'y' ? 1 : '';
     $d = isset($_POST['crosslistedtype']) ? $tigers->cleanMys($_POST['crosslistedtype']) : '';
     $e = $d == '' ? 'id' : ($d == 'enth' ? 'email' : 'id');
@@ -251,7 +251,7 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'Email Members') {
     $template = $tigers->cleanMys($_POST['template']);
     $b = $template == 'members_moved' ? (!empty($subject) ? $subject : 'Moved') :
         (!empty($subject) ? $subject : 'n');
-    $e = !isset($_POST['email']) || empty($_POST['email']) ? 'n' : StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
+    $e = !isset($_POST['email']) || empty($_POST['email']) ? 'n' : StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email']));
 
     $members = $snakes->membersList($listingid, 0);
     foreach ($members as $m) {

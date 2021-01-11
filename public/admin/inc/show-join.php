@@ -73,7 +73,7 @@
                 ' long. Go back and shorten it.', false);
         }
         $name = ucwords($name);
-        $email = StringUtils::instance()->normalize($tigers->cleanMys($_POST['email']));
+        $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email']));
         if (empty($email)) {
             $tigers->displayError('Form Error', 'You have not filled out the <samp>' .
                 'email</samp> field.</p>', false);
@@ -81,7 +81,7 @@
             $tigers->displayError('Form Error', 'The characters specified in the' .
                 ' <samp>email</samp> field are not allowed.', false);
         }
-        $url = StringUtils::instance()->normalize($tigers->cleanMys($_POST['url']));
+        $url = StringUtils::instance()->normalizeUrl($tigers->cleanMys($_POST['url']));
         if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
             $tigers->displayError('Form Error', 'Your <samp>site URL</samp> is' .
                 ' not valid. Please supply a valid site URL or empty the field.', false);
@@ -122,7 +122,7 @@
             }
         }
         $visible = (int)$tigers->cleanMys($_POST['visible']);
-        if($visible < 0 || $visible > 1) {
+        if ($visible < 0 || $visible > 1) {
             $visible = 1;
         }
         $comments = $tigers->cleanMys($_POST['comments']);
@@ -235,7 +235,9 @@
             $octopus->writeError(
                 'Join Error', $userinfo->url, $userinfo->text, $automated
             );
-            $tigers->displayError('Script Error', 'It appears that email you entered already exists in the system. Please use Update Form if you wish to update your information.', false);
+            $tigers->displayError('Script Error',
+                'It appears that email you entered already exists in the system. Please use Update Form if you wish to update your information.',
+                false);
         }
 
         /**
@@ -404,10 +406,12 @@
                 <?php
                 if (!empty($getItem->fave_fields) && file_exists('joinff.inc.php')) {
                     require('joinff.inc.php');
-                } else if (!empty($getItem->fave_fields) || (!empty($fave_field) && isset($fave_field))) {
-                    $fave_fields_db = $getItem->fave_fields;
-                    echo '<p style="clear: both; margin: 0;"></p>';
-                    echo $snakes->favejoin();
+                } else {
+                    if (!empty($getItem->fave_fields) || (!empty($fave_field) && isset($fave_field))) {
+                        $fave_fields_db = $getItem->fave_fields;
+                        echo '<p style="clear: both; margin: 0;"></p>';
+                        echo $snakes->favejoin();
+                    }
                 }
 
                 if ($options->formComments) {
