@@ -6,12 +6,12 @@ Original author is [Tess](http://scripts.wyngs.net) / Original readme by Tess is
 
 #### I would highly recommend not to use this script for new installations, please only update it if you have already installed it before.
 
-This version requires at least PHP 7.2 and MySQLi or PDO_MySQL extensions (with MySQL = 5.7).
+This version requires at least PHP 7.3 and MySQLi or PDO_MySQL extensions (with MySQL = 5.7).
 
 | PHP version | Supported until | Supported by Listing Admin |
 |------------------------------------------|--------------------|-------------------------|
-| 7.3 | 6 December 2021 | :grey_question: |
-| 7.4 (recommended, LTS version) | December 2022 | :grey_question: |
+| 7.3 | 6 December 2021 | :white_check_mark: |
+| 7.4 (recommended, LTS version) | December 2022 | :white_check_mark: |
 | 8.0 | Q4 2023 or Q1 2024 | :grey_question: |
 
 **If you have MySQL 8.0 or higher, proper script operation is not guaranteed. For now, I'm not planning to support MySQL
@@ -47,4 +47,5 @@ Please follow the instructions carefully. A lot of issues were caused by users h
 
 That's it! Should you encounter any problems, please create an issue (
 here: https://gitlab.com/tfl-php-scripts/listing-admin/-/issues), and I will try and solve it if I can. You can also
-report an issue via contact form: http://contact.robotess.net?box=scripts&subject=Issue+with+Listing+Admin. Please note that I don't support fresh installations, only those that were upgraded from old version.
+report an issue via contact form: http://contact.robotess.net?box=scripts&subject=Issue+with+Listing+Admin. Please note
+that I don't support fresh installations, only those that were upgraded from old version.
