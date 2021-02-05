@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * @project          Listing Admin
  * @copyright        2020
@@ -21,10 +22,7 @@ spl_autoload_register([new autoloader(), 'autoload']);
  */
 final class autoloader
 {
-    /**
-     * @var string
-     */
-    private $path;
+    private string $path;
 
     public function __construct()
     {

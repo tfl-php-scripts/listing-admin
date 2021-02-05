@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * @project          Listing Admin
  * @copyright        2020
@@ -20,10 +21,7 @@ use function trim;
  */
 final class StringUtils
 {
-    /**
-     * @var self
-     */
-    private static $instance;
+    private static ?StringUtils $instance = null;
 
     private function __construct()
     { /***/

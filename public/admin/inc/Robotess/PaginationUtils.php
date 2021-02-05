@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * @project          Listing Admin
  * @copyright        2020
@@ -16,16 +17,13 @@ namespace Robotess;
  */
 final class PaginationUtils
 {
-    /**
-     * @param int $currentPage
-     * @param int $totalPagesCount
-     * @param string $linkToPage
-     * @param int $pagesRangeCount
-     * @param string $pageQueryParam
-     * @return void
-     */
-    public static function rangedPagination(int $currentPage, int $totalPagesCount, string $linkToPage, int $pagesRangeCount = 3, string $pageQueryParam = 'p'): void
-    {
+    public static function rangedPagination(
+        int $currentPage,
+        int $totalPagesCount,
+        string $linkToPage,
+        int $pagesRangeCount = 3,
+        string $pageQueryParam = 'p'
+    ): void {
         if ($totalPagesCount === 1) {
             return;
         }
