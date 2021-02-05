@@ -378,7 +378,7 @@ else {
         </form>
         <?php
         echo '<p id="pagination">Pages: ';
-        $total = count($turtles->commentsList());
+        $total = is_countable($turtles->commentsList()) ? count($turtles->commentsList()) : 0;
         $pages = ceil($total / $per_page);
 
         for ($i = 1; $i <= $pages; $i++) {

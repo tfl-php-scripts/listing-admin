@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Rector\Core\Configuration\Option;
 use Rector\Php74\Rector\Property\TypedPropertyRector;
 use Rector\Set\ValueObject\DowngradeSetList;
+use Rector\Set\ValueObject\SetList;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
@@ -37,14 +38,19 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         __DIR__ . '/public/admin',
     ]);
 
-    // is there a file you need to skip?
     $parameters->set(Option::SKIP, [
-        // single file
+        __DIR__ . '/public/admin/rats.inc.php',
         __DIR__ . '/public/admin/cache',
+        __DIR__ . '/public/admin/inc/vendors',
     ]);
 
     $parameters->set(Option::SETS, [
-        DowngradeSetList::PHP_74,
-        DowngradeSetList::PHP_73,
+        SetList::PHP_70,
+        SetList::PHP_71,
+        SetList::PHP_72,
+        SetList::PHP_73,
+        SetList::PHP_74,
+//        DowngradeSetList::PHP_74,
+//        DowngradeSetList::PHP_73,
     ]);
 };

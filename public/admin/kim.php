@@ -140,7 +140,7 @@ if ($seahorses->getOption('kim_opt') == 'y') {
             }
         }
         if (empty($password1) && empty($password2)) {
-            $hashy1 = substr(sha1(mt_rand()), 0, 8);
+            $hashy1 = substr(sha1(random_int(0, mt_getrandmax())), 0, 8);
             $hashy2 = substr(sha1(date('YmdHis')), 14, 8);
             $pass = $hashy1 . $hashy2;
         } else {

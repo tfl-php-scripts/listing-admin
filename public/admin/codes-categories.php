@@ -351,7 +351,7 @@ appropriate category.</p>
   echo "</table>\n";
   echo "\n<p id=\"pagination\">Pages: ";
 
-  $total = count($cheetahs->categoryCodes());
+  $total = is_countable($cheetahs->categoryCodes()) ? count($cheetahs->categoryCodes()) : 0;
   $pages = ceil($total / $per_page);
 
   for($i = 1; $i <= $pages; $i++) {

@@ -16,10 +16,10 @@ if (!class_exists('octopus')) {
     class octopus
     {
 
-        public $cheatAnti = 'antispamh';
-        public $cheatSpam = 'antispamb';
-        public $cheatCaptcha = 'captchak';
-        public $cheatJavascript = 'cheatsheetCheat';
+        public string $cheatAnti = 'antispamh';
+        public string $cheatSpam = 'antispamb';
+        public string $cheatCaptcha = 'captchak';
+        public string $cheatJavascript = 'cheatsheetCheat';
 
         /**
          * @access     public

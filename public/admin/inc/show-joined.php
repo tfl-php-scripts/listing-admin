@@ -211,7 +211,7 @@
             echo _h($template, 1);
         } else {
             $listings = $dragons->joinedList('id', $sort_category, 0, true, true);
-            $count = count($listings);
+            $count = is_countable($listings) ? count($listings) : 0;
 
             $name = $lions->getCatName($sort_category);
             echo "<p class=\"tc\">You are viewing the <strong>$name</strong> category." .

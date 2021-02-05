@@ -13,7 +13,7 @@ if (!class_exists('laantispam')) {
     class laantispam
     {
 
-        public $bbcode = array('[b]', '[/b]', '[i]', '[/i]', '[link]', '[/link]', '[link',
+        public array $bbcode = array('[b]', '[/b]', '[i]', '[/i]', '[link]', '[/link]', '[link',
             '[link=', '[url]', '[/url]', '[url', '[url=');
 
         /**
@@ -107,7 +107,7 @@ if (!class_exists('laantispam')) {
         {
             if (is_array($vars)) {
                 foreach ($vars as $k => $v) {
-                    $$k = $v;
+                    ${$k} = $v;
                 }
             }
 
@@ -161,7 +161,7 @@ if (!class_exists('laantispam')) {
                 }
 
                 foreach ($this->spamarray() as $not) {
-                    if (strpos($comments, $not) !== false) {
+                    if (strpos($comments, (string) $not) !== false) {
                         $points -= 2;
                     }
                 }

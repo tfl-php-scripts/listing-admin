@@ -236,11 +236,11 @@ if(!empty($getItem->fave_fields)) {
  $q3 = basename($_SERVER['PHP_SELF']) . '?g=manage&#38;d=' . $tigers->cleanMys($_GET['d']);
  if(isset($_GET['opt'])) { 
   $q3 .= '&#38;opt=' . $tigers->cleanMys($_GET['opt']) . '&#38;extend=1&' .
-  '#38;count=' . (count($fave_fields) + 1) . '#fave';
+  '#38;count=' . ((is_countable($fave_fields) ? count($fave_fields) : 0) + 1) . '#fave';
  } 
 
  echo "<div id=\"fave\">\n";
- for($i = 0,$iMax = count($fave_fields); $i < $iMax; $i++) {
+ for($i = 0,$iMax = is_countable($fave_fields) ? count($fave_fields) : 0; $i < $iMax; $i++) {
 ?>
  <p><input name="numero[]" type="hidden" value="<?php echo $i; ?>">
  <label><strong>Favourite Field <?php echo $i; ?></strong></label>
@@ -271,7 +271,7 @@ if(isset($_GET['extend']) && is_numeric($_GET['extend'])) {
  '&#38;extend=1&#38;count=' . $c1 . '#fave';
  $countQuery = $tigers->cleanMys((int)$_GET['count']);
  echo "<div id=\"fave\">\n";
- $vk = isset($fave_fields) && !empty($getItem->fave_fields) ? count($fave_fields) + 1 : 0;
+ $vk = isset($fave_fields) && !empty($getItem->fave_fields) ? (is_countable($fave_fields) ? count($fave_fields) : 0) + 1 : 0;
  for($n = $vk; $n <= $countQuery; $n++) {
 ?>
  <p><input name="numero[]" type="hidden" value="<?php echo $n - 1; ?>">
@@ -285,7 +285,7 @@ if(isset($_GET['extend']) && is_numeric($_GET['extend'])) {
  echo "</div>\n";
 }
 
-if(!empty($getItem->fave_fields) && count($fave_fields) != 0 && !empty($fave_fields)) {
+if(!empty($getItem->fave_fields) && (is_countable($fave_fields) ? count($fave_fields) : 0) != 0 && !empty($fave_fields)) {
 ?>
 <p><label><strong>Erase Record?</strong></label>
 <input name="record" checked="checked" class="input3" type="radio" value="no"> No
@@ -311,11 +311,11 @@ if(!empty($getItem->fave_fields) && count($fave_fields) != 0 && !empty($fave_fie
   $a = unserialize($getItem->previous, ['allowed_classes' => true]);
  }
 
- if(count($a) > 0) {
+ if((is_countable($a) ? count($a) : 0) > 0) {
   $pn   = 1;
 	$text = '';
   foreach($a as $k => $v) {
-	 $num   = (count($a) + 1) == $pn ? ' <span class="add">[+]</span>' : '';
+	 $num   = ((is_countable($a) ? count($a) : 0) + 1) == $pn ? ' <span class="add">[+]</span>' : '';
 	 $class = 'p' . $pn;
 	 $text .= "  <div class=\"owner\" id=\"$class\">\n   "  . 
 	 "<input name=\"pnumeric[]\" type=\"hidden\" value=\"$pn\">\n   " . 
@@ -999,7 +999,7 @@ if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
   $listingnow = $wolves->getListings($id, 'object');
   $favesfields = explode('|', $listingnow->fave_fields);
   $favesfields = $tigers->emptyarray($favesfields);
-  if((count($additional) > count($favesfields)) && (count($favesfields) > 0)) {
+  if((count($additional) > (is_countable($favesfields) ? count($favesfields) : 0)) && ((is_countable($favesfields) ? count($favesfields) : 0) > 0)) {
    $changemem = $snakes->membersList($id);
    foreach($changemem as $cm) {
 	  $getmem = $snakes->getMembers($cm, 'object');
@@ -1274,7 +1274,7 @@ if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
         ' not valid. Please supply a valid site URL or empty the field.', false);
 }
  $image = $_FILES['image'];
- $image_tag = substr(sha1(date('YmdHis')), mt_rand(0, 15), 12);
+ $image_tag = substr(sha1(date('YmdHis')), random_int(0, 15), 12);
  if(!empty($_FILES['image']['name'])) {
 	$imageinfo = getimagesize($_FILES['image']['tmp_name']);
 	$imagetype = $imageinfo[2];
@@ -1632,7 +1632,7 @@ listing.</p>
 	 $p = '';
 	 $s = '';
 	}
-	$total = count($wolves->listingsList('subject', $s, $p));
+	$total = is_countable($wolves->listingsList('subject', $s, $p)) ? count($wolves->listingsList('subject', $s, $p)) : 0;
   $pages = ceil($total/$per_page);
 	
 	$q = 'listings.php?';

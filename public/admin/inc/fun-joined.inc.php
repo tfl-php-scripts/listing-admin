@@ -15,7 +15,7 @@ if (!class_exists('dragons')) {
 
     class dragons
     {
-        private $range = 10;
+        private int $range = 10;
 
         /**
          * @function  $dragons->joinedList()
@@ -290,11 +290,11 @@ if (!class_exists('dragons')) {
                 }
 
                 foreach ($laantispam->spamarray() as $b) {
-                    if (strpos($s, $b) !== false) {
+                    if (strpos($s, (string) $b) !== false) {
                         $tigers->displayError('SPAM Error', 'SPAM language is not allowed.', false);
                     }
 
-                    if (isset($_GET['cat']) && strpos($c, $b) !== false) {
+                    if (isset($_GET['cat']) && strpos($c, (string) $b) !== false) {
                         $tigers->displayError('SPAM Error', 'SPAM language is not allowed.', false);
                     }
                 }

@@ -14,7 +14,7 @@ if (!class_exists('scorpions')) {
     {
         protected $dbConnect;
 
-        private $errorMsgInit = '<p class="errorButton"><span class="error">ERROR:</span> You cannot' .
+        private string $errorMsgInit = '<p class="errorButton"><span class="error">ERROR:</span> You cannot' .
         ' currently connect to MySQL. Make sure all variables are correct in' .
         ' <samp>rats.inc.php</samp>; if it is a random error, wait it out and see' .
         ' if it\'ll magically disappear.</p>';

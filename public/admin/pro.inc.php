@@ -82,7 +82,7 @@ if (isset($_GET['forgot'])) {
 
     if (isset($_GET['h']) && preg_match('/([A-Za-z0-9]+)/i', $_GET['h'])) {
         if ($seahorses->getOption('user_passhinthash') == trim($_GET['h'])) {
-            $password = substr(sha1(date('YmdHis')), 0, 8) . substr(sha1(mt_rand(99999, 999999)), 0, 8);
+            $password = substr(sha1(date('YmdHis')), 0, 8) . substr(sha1(random_int(99999, 999999)), 0, 8);
             $update = "UPDATE `$_ST[options]` SET `text` = MD5('$password') WHERE `name` =" .
                 " 'user_password' LIMIT 1";
             $scorpions->query("SET NAMES 'utf8';");
@@ -166,7 +166,7 @@ if (isset($_GET['forgot'])) {
 
                     # -- Now check ze password hint! ----------------------------
                     if ($seahorses->getOption('user_passhint') === $passwordhint) {
-                        $hash = substr(sha1(date('YmdHis')), 0, 12) . substr(sha1(mt_rand(99999, 999999)), 0, 12);
+                        $hash = substr(sha1(date('YmdHis')), 0, 12) . substr(sha1(random_int(99999, 999999)), 0, 12);
                         $update = "UPDATE `$_ST[options]` SET `text` = '$hash' WHERE `name` =" .
                             " 'user_passhinthash' LIMIT 1";
                         $scorpions->query("SET NAMES 'utf8';");

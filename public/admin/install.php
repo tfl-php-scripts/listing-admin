@@ -64,7 +64,7 @@ $getTitle = 'Upgrade';
                         $adm_path = $tigers->cleanMys($_POST['adm_path']);
                         $adm_http = $tigers->cleanMys($_POST['adm_http']);
                         $my_name = $tigers->cleanMys($_POST['my_name']);
-                        if (!empty($my_name) && !preg_match("/([A-Za-z-\s]+)/i", $my_name)) {
+                        if (!empty($my_name) && !preg_match("/([A-Za-z\\-\s]+)/i", $my_name)) {
                             $tigers->displayError('Form Error', 'The name you provided can only contain' .
                                 ' letters, spaces and dashes.', false);
                         }
@@ -102,7 +102,7 @@ $getTitle = 'Upgrade';
                         }
 
                         $hashhash_input = sha1(date('YmdHis'));
-                        $javascript_key_input = sha1(mt_rand(9999, 999999));
+                        $javascript_key_input = sha1(random_int(9999, 999999));
                         $insert = "INSERT INTO `$_ST[options]` (`name`, `text`) VALUES
     ('collective_name', '$collname'),
     ('per_joined', '25'), 
@@ -461,7 +461,7 @@ $getTitle = 'Upgrade';
                     elseif (isset($_POST['action']) && $_POST['action'] == 'Finish Installation') {
                         $password = isset($_POST['password']) && !empty($_POST['password']) ?
                             $tigers->cleanMys($_POST['password'], 'y', 'y', 'n') :
-                            substr(mt_rand(99999, 888888), 0, 4) . substr(sha1(date('YmdHis')), 0, 11);
+                            substr(random_int(99999, 888888), 0, 4) . substr(sha1(date('YmdHis')), 0, 11);
                         $update = "UPDATE `$_ST[options]` SET `text` = MD5('$password') WHERE `name`" .
                             " = 'user_password' LIMIT 1";
                         $true = $scorpions->query($update);

@@ -91,7 +91,7 @@ if (isset($_POST['action'])) {
         }
         $postcap = isset($_POST[$octopus->cheatCaptcha]) ? $tigers->cleanMys($_POST[$octopus->cheatCaptcha]) : '';
         if ($seahorses->getOption('captcha_opt') == 'y') {
-            if (!isset($_POST['captcha']) || strpos(sha1($postcap), $_POST['captcha']) !== 0) {
+            if (!isset($_POST['captcha']) || strpos(sha1($postcap), (string) $_POST['captcha']) !== 0) {
                 $tigers->displayError('Form Error', 'The <samp>CAPTCHA</samp> is invalid!', false);
             }
         }
@@ -178,7 +178,7 @@ if (isset($_POST['action'])) {
                 }
                 $imageinfo = getimagesize($_FILES['image']['tmp_name'][$field]);
                 $imagetype = $imageinfo[2];
-                $imagetag = substr(sha1(date('YmdHis')), 0, 7) . substr(sha1(mt_rand()), 0, 7);
+                $imagetag = substr(sha1(date('YmdHis')), 0, 7) . substr(sha1(random_int(0, mt_getrandmax())), 0, 7);
                 if ($imagetype != 1 && $imagetype != 2 && $imagetype != 3) {
                     $tigers->displayError('Form Error', 'Only <samp>.gif</samp>, <samp>.jpg' .
                         '</samp> and <samp>.png</samp> extensions are allowed.', false);
@@ -194,7 +194,7 @@ if (isset($_POST['action'])) {
                     $path = $seahorses->getOption('adm_path');
                 }
 
-                $image_tag = substr(sha1(date('YmdHis')), mt_rand(0, 9), 15);
+                $image_tag = substr(sha1(date('YmdHis')), random_int(0, 9), 15);
                 $string = file_exists($path . $_FILES['image']['name'][$field]) ? $image_tag . '_' : '';
                 $file = $scorpions->escape($string . $_FILES['image']['name'][$field]);
                 $success = @move_uploaded_file($_FILES['image']['tmp_name'][$field], $path . $file);
@@ -232,7 +232,7 @@ if (isset($_POST['action'])) {
  */
 else {
     global $mark;
-    $captcha = sha1(mt_rand(10000, 999999));
+    $captcha = sha1(random_int(10000, 999999));
     ?>
     <form action="<?php echo $seahorses->getOption('codes_formurl'); ?>" method="post">
         <p>

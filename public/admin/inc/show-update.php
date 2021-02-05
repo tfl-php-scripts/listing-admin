@@ -68,7 +68,7 @@
 
         $new_name = $tigers->cleanMys($_POST['new_name']);
         if (!empty($new_name)) {
-            if (!preg_match("/([A-Za-z-\s]+)/i", $new_name)) {
+            if (!preg_match("/([A-Za-z\\-\s]+)/i", $new_name)) {
                 $tigers->displayError('Form Error', 'There are invalid characters in' .
                     ' the <samp>name</samp> field. Please supply a valid new name or empty the field.', false);
             } elseif (strlen($new_name) > 25) {

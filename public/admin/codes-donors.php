@@ -241,7 +241,7 @@ if ($count > 0) {
     }
     echo "</table>\n\n<p id=\"pagination\">Pages: ";
 
-    $total = count($cheetahs->donorsList());
+    $total = is_countable($cheetahs->donorsList()) ? count($cheetahs->donorsList()) : 0;
     $pages = ceil($total / $per_page);
 
     for ($i = 1; $i <= $pages; $i++) {

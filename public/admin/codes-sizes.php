@@ -48,7 +48,7 @@ if(isset($_POST['action'])) {
  }
  
  elseif (isset($_POST['action']) && $_POST['action'] == 'Update') {
-  $count = count($_POST['id']);
+  $count = is_countable($_POST['id']) ? count($_POST['id']) : 0;
 	for($i = 0; $i < $count; $i++) {
 	 $id    = $tigers->cleanMys($_POST['id'][$i]);
 	 $order = $tigers->cleanMys($_POST['order'][$i]);
@@ -72,7 +72,7 @@ if(isset($_POST['action'])) {
  }
  
  elseif (isset($_POST['action']) && $_POST['action'] == 'Delete') {
-  $count = count($_POST['delete']);
+  $count = is_countable($_POST['delete']) ? count($_POST['delete']) : 0;
 	for($i = 0; $i < $count; $i++) {
 	 $id = $tigers->cleanMys($_POST['delete'][$i]);
 	

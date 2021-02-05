@@ -13,9 +13,9 @@ if (!class_exists('snakes')) {
 class snakes {
 
 public $next = '';
-public $page = 1;
+public int $page = 1;
 public $prev = '';
-public $range = 10;
+public int $range = 10;
 
 /**
  * @function  $snakes->membersList()
@@ -1005,14 +1005,14 @@ case 'head':
             $b = explode('|', $e);
             $b = $tigers->emptyarray($b);
             $z = $tigers->emptyarray($a);
-            $c = count($z);
-            if ($c >= count($b)) {
+            $c = is_countable($z) ? count($z) : 0;
+            if ($c >= (is_countable($b) ? count($b) : 0)) {
                 return false;
             }
 
             $i = 0;
             foreach ($b as $d) {
-                if ($i == count($b)) {
+                if ($i == (is_countable($b) ? count($b) : 0)) {
                     break;
                 }
                 $n[] = $d;
@@ -1246,10 +1246,10 @@ case 'head':
                 $fields = $tigers->emptyarray(explode('|', $listing->fave_fields));
                 $answers = $tigers->emptyarray(explode('|', $member->mExtra));
                 $ffHead = "<p class=\"faveField\">\n";
-                if (count($fields) == 1) {
+                if ((is_countable($fields) ? count($fields) : 0) == 1) {
                     $ffBody = '<span class="faveField1"><strong>' . str_replace('_', ' ', $fields[0]) .
                         ':</strong> ' . str_replace('NONE', 'All', $answers[0]) . "\n</span>\n";
-                } elseif (count($fields) > 1) {
+                } elseif ((is_countable($fields) ? count($fields) : 0) > 1) {
                     $n = 0;
                     foreach ($fields as $f) {
                         $n1 = $n + 1;
@@ -1294,11 +1294,11 @@ case 'head':
 
                 if ($fields_db == 0) {
                     return '';
-                } elseif (count($fields_db) == 1) {
+                } elseif ((is_countable($fields_db) ? count($fields_db) : 0) == 1) {
                     echo '<p><label><strong>' . ucwords($this->additional($fields_db[0], 'decode')) .
                         ':</strong></label> <input name="fave[]" class="input1" type="text"' . $mark .
                         '></p>';
-                } elseif (count($fields_db) > 1) {
+                } elseif ((is_countable($fields_db) ? count($fields_db) : 0) > 1) {
                     $n = 0;
                     foreach ($fields_db as $f) {
                         echo '<p><label><strong>' . ucwords($this->additional($f, 'decode')) .
@@ -1313,7 +1313,7 @@ case 'head':
 
                 if ($fields == 0) {
                     return '';
-                } elseif (count($fields) == 1) {
+                } elseif ((is_countable($fields) ? count($fields) : 0) == 1) {
                     if (isset($fave_field_e) && is_array($fave_field_e)) {
                         echo '<p><label><strong>' . ucwords($fields[0]) . ':</strong></label>' .
                             " <select name=\"fave[]\" class=\"input1\">\n";
@@ -1327,7 +1327,7 @@ case 'head':
                         echo '<p><label><strong>' . ucwords($fields[0]) . ':</strong></label>' .
                             ' <input name="fave[]" class="input1" type="text"' . $mark . '></p>';
                     }
-                } elseif (count($fields) > 1) {
+                } elseif ((is_countable($fields) ? count($fields) : 0) > 1) {
                     $n = 0;
                     foreach ($fields as $f) {
                         if (isset($fave_field_e) && is_array($fave_field_e)) {
@@ -1343,7 +1343,7 @@ case 'head':
                             echo '<p><label><strong>' . ucwords($f) . ':</strong></label>' .
                                 ' <input name="fave[]" class="input1" type="text"' . $mark . '></p>';
                         }
-                        if ($n == (count($fields) - 1)) {
+                        if ($n == ((is_countable($fields) ? count($fields) : 0) - 1)) {
                             break;
                         }
                         $n++;

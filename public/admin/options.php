@@ -264,7 +264,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'Edit Options') {
                 ' "On", you need to fill out your Akismet key.', false);
         }
         if (isset($_POST['generate_js']) && $_POST['generate_js'] == 'y') {
-            $javascript_key_input2 = substr(sha1(date('YmdHis')), 0, 15) . substr(sha1(mt_rand(9000, 985999)), 0, 10);
+            $javascript_key_input2 = substr(sha1(date('YmdHis')), 0, 15) . substr(sha1(random_int(9000, 985999)), 0, 10);
         } else {
             $javascript_key_input2 = $javascript_key_input;
         }
@@ -364,7 +364,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'Edit Options') {
                         <?php
                         $_spam_words = explode('|', $seahorses->getOption('antispam_spam_words'));
                         $_spam_words = $tigers->emptyarray($_spam_words);
-                        if (count($_spam_words) > 0) {
+                        if ((is_countable($_spam_words) ? count($_spam_words) : 0) > 0) {
                             foreach ($_spam_words as $sr) {
                                 $rq = substr(md5($sw), 0, 8);
                                 echo '  <input name="spamword[]" class="input1" type="text" value="' . $sr . "\" />\n";
@@ -912,7 +912,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'Edit Options') {
             $in = 0;
             foreach ($optarray as $oa => $ar) {
                 $ur = $oa == 'details' ? 'options.php' : 'options.php?g=' . $oa;
-                $ca = $in == (count($optarray) - 1) ? (isset($_GET['g']) &&
+                $ca = $in == ((is_countable($optarray) ? count($optarray) : 0) - 1) ? (isset($_GET['g']) &&
                 in_array($_GET['g'], array_values($get_option_array)) ?
                     ($oa == $_GET['g'] ? ' class="c last"' : ' class="last"') : ' class="last"') :
                     (isset($_GET['g']) && in_array($_GET['g'], array_values($get_option_array)) ?

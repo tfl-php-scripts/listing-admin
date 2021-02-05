@@ -50,7 +50,7 @@
                 ' listed at this listing. This might be because you are not a member, or' .
                 ' you have chosen the wrong e-mail address.', false);
         }
-        $password = substr(md5(date('YmdHis')), 0, 8) . substr(md5(mt_rand(10000, 999999)), 0, 8);
+        $password = substr(md5(date('YmdHis')), 0, 8) . substr(md5(random_int(10000, 999999)), 0, 8);
 
         if (preg_match($badheaders, $_SERVER['HTTP_USER_AGENT']) || empty($_SERVER['HTTP_USER_AGENT'])) {
             $tigers->displayError('SPAM Error', 'SPAM bots are not allowed.', false);

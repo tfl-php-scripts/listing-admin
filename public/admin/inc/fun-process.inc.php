@@ -41,7 +41,7 @@ $name = $tigers->cleanMys($_POST['name']);
 if (empty($name)) {
     $tigers->displayError('Form Error', 'You have not filled out the <samp>' .
         'name</samp> field.', false);
-} elseif (!preg_match("/([A-Za-z-\s]+)/i", $name)) {
+} elseif (!preg_match("/([A-Za-z\\-\s]+)/i", $name)) {
     $tigers->displayError('Form Error', 'There are invalid characters in' .
         ' the <samp>name</samp> field. Go back and try again.', false);
 } elseif (strlen($name) > 25) {
@@ -89,13 +89,13 @@ $uinfo = (object)array(
  * Akismet, and antispam \o/ First: spam words!
  */
 foreach ($laantispam->spamarray() as $b) {
-    if (strpos($_POST['comment'], $b) !== false) {
+    if (strpos($_POST['comment'], (string) $b) !== false) {
         $tigers->displayError('SPAM Error', 'SPAM language is not allowed.', false);
     }
 }
 
 foreach ($laantispam->bbcode as $h) {
-    if (strpos($_POST['comment'], $h) !== false) {
+    if (strpos($_POST['comment'], (string) $h) !== false) {
         $tigers->displayError('SPAM Error', 'bbCode language is not allowed.', false);
     }
 }
@@ -119,7 +119,7 @@ if ($seahorses->getOption('javascript_opt') == 'y') {
 }
 
 if ($seahorses->getOption('captcha_opt') == 'y') {
-    if (!isset($_POST['captcha']) || strpos(sha1($ck), $_POST['captcha']) !== 0) {
+    if (!isset($_POST['captcha']) || strpos(sha1($ck), (string) $_POST['captcha']) !== 0) {
         $tigers->displayError('Form Error', 'The <samp>CAPTCHA</samp> is invalid!', false);
     }
 }
