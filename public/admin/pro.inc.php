@@ -38,11 +38,23 @@ require('inc/fun-listings.inc.php');
 require('inc/fun-members.inc.php');
 require('inc/fun-wishlist.inc.php');
 
-/**
- * Include classes!
- */
-if ($seahorses->getOption('kim_opt') == 'y') {
-    require('inc/class-kimadmin.inc.php');
+try {
+    /**
+     * Include classes!
+     */
+    if ($seahorses->getOption('kim_opt') == 'y') {
+        require('inc/class-kimadmin.inc.php');
+    }
+} catch (Exception $e) {
+    if(($getTitle ?? 'none') === 'Install') {
+        return;
+    }
+
+    ?>
+    <section><span class="mysql">Notice:</span> there was an error while trying to retrieve Listing Admin options. Please make sure you have installed the script. Error message/code: <?= $scorpions->errno(); ?>. The script stops executing.
+    </section>
+    <?php
+    die;
 }
 
 if ($seahorses->getOption('updates_opt') == 'y') {

@@ -36,6 +36,7 @@ if (!class_exists('scorpions')) {
         abstract protected function initDbConnect($hostname, $username, $password, $database);
 
         abstract public function error(): string;
+        abstract public function errno(): string;
         abstract public function close(): void;
         abstract public function real_escape_string($e): string;
         abstract public function query($q);
@@ -64,6 +65,11 @@ if (!class_exists('scorpions')) {
         public function error(): string
         {
             return $this->dbConnect->error;
+        }
+
+        public function errno(): string
+        {
+            return $this->dbConnect->errno;
         }
 
         public function close(): void
@@ -146,6 +152,11 @@ if (!class_exists('scorpions')) {
             return $this->dbConnect->errorCode();
         }
 
+        public function errno(): string
+        {
+            return $this->dbConnect->errorCode();
+        }
+
         public function close(): void
         {
             $this->dbConnect = null;
@@ -154,8 +165,7 @@ if (!class_exists('scorpions')) {
 
         public function real_escape_string($e): string
         {
-            // no way to real escape
-            return $e;
+            return trim($this->dbConnect->quote($e), '\'');
         }
 
         /**
@@ -266,6 +276,11 @@ if (!class_exists('scorpions')) {
             return $this->database->error();
         }
 
+        public function errno(): string
+        {
+            return $this->database->errno();
+        }
+
         /**
          * @function  $scorpions->breach()
          * @param     $y , boolean; 0 if closing the connection, 1 if opening
@@ -301,9 +316,6 @@ if (!class_exists('scorpions')) {
         public function escape($p): string
         {
             $e = trim($p);
-            if (get_magic_quotes_gpc()) {
-                $e = stripslashes($e);
-            }
             $e = $this->database->real_escape_string($e);
 
             return $e;

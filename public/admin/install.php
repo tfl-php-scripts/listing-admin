@@ -12,9 +12,9 @@ require('inc/fun.inc.php');
 require('inc/fun-admin.inc.php');
 require('inc/fun-misc.inc.php');
 require('inc/fun-utility.inc.php');
+$getTitle = 'Install';
 require('vars.inc.php');
 
-$getTitle = 'Upgrade';
 ?>
 <!DOCTYPE html>
 
@@ -35,15 +35,11 @@ $getTitle = 'Upgrade';
     <header>
         <h1><?php echo $laoptions->version; ?></h1>
     </header>
-    <section id="install"><span class="mysql">Notice:</span> please note that there's no active support for FRESH
-        installations. You might try to install a script, but there's no guarantee it will be working.
-        <ins>If you wish to install a script, you can use original Tess' version.</ins>
-    </section>
 
     <section id="install">
         <?php
         //$steps = $tigers->cleanMys($_GET['step']);var_dump($_GET['step']);
-        $steps = $_GET['step'];
+        $steps = isset($_GET['step']) ? (int)$_GET['step'] : 0;
         switch ($steps) {
             case 1:
                 echo $frogs->installMain();
@@ -371,7 +367,6 @@ $getTitle = 'Upgrade';
                             exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() .
                                 "<br />\n<em>" . $insert . '</em></p>');
                         }
-                        unlink('templates.inc.php');
 
                         echo $tigers->displaySuccess('If you experienced zero errors, your main' .
                             ' functions were created, and the first part of the installation was' .
@@ -438,7 +433,8 @@ $getTitle = 'Upgrade';
                      * Install Addons!
                      */
                     elseif (isset($_POST['action']) && $_POST['action'] == 'Install Addons') {
-                        foreach ($get_addon_array as $k => $v) {
+                        $get_addon_array_for_installation = array_diff_key($get_addon_array, array_flip($notSupportedAddons));
+                        foreach ($get_addon_array_for_installation as $k => $v) {
                             if (isset($_POST[$k]) && $_POST[$k] == 'y') {
                                 $result = $frogs->installAddon($k);
                                 if ($result->status == true) {
