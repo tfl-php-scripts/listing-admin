@@ -621,7 +621,7 @@ $select = $rabbits->sortAffiliates($getlistingid, $s, $b);
 $count = is_countable($select) ? count($select) : 0;
 
 if ($count > 0) {
-if ($ender > $count) {
+if ((int)$ender > $count) {
     $ender = $count;
 }
 

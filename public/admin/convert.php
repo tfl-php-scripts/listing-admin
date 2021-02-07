@@ -520,7 +520,7 @@ if (
         elseif ($usedb == 0) {
             if (isset($_FILES['importfile']) && !empty($_FILES['importfile']['name'])) {
                 $members = file($_FILES['importfile']['tmp_name']);
-                if ((is_countable($members) ? count($members) : 0) == 0 || $members == 0 || $members == false) {
+                if ((is_countable($members) ? count($members) : 0) == 0) {
                     $tigers->displayError('File Error', 'The file you supplied appears' .
                         ' to be empty!', false);
                 }
@@ -564,8 +564,19 @@ if (
                                 'added' => $added
                             );
                         } elseif ($importcat == 'members') {
-                            [$email, $listing, $name, $url, $country, $password, $fave, $visible,
-                                $pending, $update, $added] = explode('__', $m);
+                            [
+                                $email,
+                                $listing,
+                                $name,
+                                $url,
+                                $country,
+                                $password,
+                                $fave,
+                                $visible,
+                                $pending,
+                                $update,
+                                $added
+                            ] = explode('__', $m);
                             $array[$email] = (object)array(
                                 'name' => $name,
                                 'email' => $seahorses->formatExport($email, 'la', 'decode'),
@@ -733,7 +744,8 @@ if (
                 $member = $snakes->getMembers($a, 'id', 'object', $fanlistingid);
                 if ($script == 'bellabuffs') {
                     $favefields = $tigers->emptyarray(explode('|', $listing->fave_fields));
-                    $ff = (is_countable($favefields) ? count($favefields) : 0) == 1 ? str_replace(',', '|', trim(str_replace('|', '', $member->mFave))) : '';
+                    $ff = (is_countable($favefields) ? count($favefields) : 0) == 1 ? str_replace(',', '|',
+                        trim(str_replace('|', '', $member->mFave))) : '';
                     $se = $member->mPending == 0 ? 'yes' : 'no';
                     $str .= $member->mName . ',' . $seahorses->formatExport($member->mEmail) .
                         ',' . $se . ',' . $member->mURL . ',' . $ff . "\n";
