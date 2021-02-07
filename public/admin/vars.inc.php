@@ -80,7 +80,14 @@ try {
     }
 
     ?>
-    <section><span class="mysql">Notice:</span> there was an error while trying to retrieve Listing Admin options. Please make sure you have installed the script. Error message/code: <?= $scorpions->errno(); ?>. The script stops executing.
+    <section><span class="mysql">Notice:</span> there was an error while trying to retrieve Listing Admin options. Please make sure you have installed the script.
+        <?php
+        if(isset($scorpions)) {
+            ?>Error message/code: <?= $scorpions->errno(); ?>.<?php
+    } else {
+            echo 'Check your php logs. ';
+        }
+        ?>The script stops executing.
     </section>
 <?php
     die;
