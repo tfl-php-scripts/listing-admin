@@ -12,22 +12,29 @@ static_analysis:
     - curl -sS https://getcomposer.org/installer | php
     - rm composer.lock
     - rm composer.json
-    - cp composer-gitlab.json composer.json
+    - composer require phpstan/phpstan
     - php composer.phar install
     - vendor/bin/phpstan analyse -c phpstan-gitlab.neon --error-format=gitlab --memory-limit 1G
 
-artifact_php72:
+artifacts_php72:
   stage: artifacts
   only:
     refs:
       - master
       - develop
   script:
-    - composer require rector/rector --dev
+    - apt-get update -yqq
+    - apt-get install -yqq git zip unzip
+    - curl -sS https://getcomposer.org/installer | php
+    - rm composer.lock
+    - rm composer.json
+    - composer require rector/rector
+    - php composer.phar install
     - vendor/bin/rector process --config rector-downgrade-72.php
   artifacts:
+    name: "listing-admin-php72-php-73-$CI_COMMIT_REF_NAME"
     paths:
-      - listing-admin_php72
+      - public
 
 stages:
   - static_analysis
