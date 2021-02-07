@@ -4,26 +4,31 @@ cache:
   paths:
     - vendor/
 
-before_script:
-  - apt-get update -yqq
-  - apt-get install -yqq git zip unzip
-  - curl -sS https://getcomposer.org/installer | php
-  - rm composer.lock
-  - php composer.phar install
-
 static_analysis:
   stage: static_analysis
   script:
+    - apt-get update -yqq
+    - apt-get install -yqq git zip unzip
+    - curl -sS https://getcomposer.org/installer | php
+    - rm composer.lock
+    - rm composer.json
+    - cp composer-gitlab.json composer.json
+    - php composer.phar install
     - vendor/bin/phpstan analyse -c phpstan-gitlab.neon --error-format=gitlab --memory-limit 1G
 
 artifact_php72:
+  image: rector/rector:latest
   stage: artifacts
+  only:
+    refs:
+      - master
+      - develop
   script:
-    - cp -R public artifact_72
+    - composer require rector/rector --dev
     - vendor/bin/rector process --config rector-downgrade-72.php
   artifacts:
     paths:
-      - artifact_72
+      - listing-admin_php72
 
 stages:
   - static_analysis
