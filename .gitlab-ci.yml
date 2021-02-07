@@ -17,7 +17,6 @@ static_analysis:
     - vendor/bin/phpstan analyse -c phpstan-gitlab.neon --error-format=gitlab --memory-limit 1G
 
 artifact_php72:
-  image: rector/rector:latest
   stage: artifacts
   only:
     refs:
