@@ -5,10 +5,11 @@ cache:
     - vendor/
 
 before_script:
-  - apt-get update -yqq
-  - apt-get install -yqq git zip unzip
-  - curl -sS https://getcomposer.org/installer | php
-  - rm composer.lock
+  - wget https://composer.github.io/installer.sig -O - -q | tr -d '\n' > installer.sig
+  - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+  - php -r "if (hash_file('SHA384', 'composer-setup.php') === file_get_contents('installer.sig')) { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+  - php composer-setup.php
+  - php -r "unlink('composer-setup.php'); unlink('installer.sig');"
   - php composer.phar install
 
 static_analysis:
@@ -16,5 +17,16 @@ static_analysis:
   script:
     - vendor/bin/phpstan analyse -c phpstan-gitlab.neon --error-format=gitlab --memory-limit 1G
 
+artifact_php72:
+  stage: artifacts
+  script:
+    - cp -R public artifact_72
+    - vendor/bin/rector process --config rector-downgrade-72.php
+  artifacts:
+    paths:
+      - artifact_72
+
 stages:
   - static_analysis
+  - artifacts
+
