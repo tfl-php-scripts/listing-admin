@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * @project          Listing Admin
  * @copyright        2007
@@ -13,10 +14,15 @@ ob_start();
 session_start();
 header('Cache-Control: no-cache, must-revalidate');
 
-/**
- * These files need to be included, as they include the main
- * functions 8D
- */
+if (!file_exists('rats.inc.php')) {
+    ?>
+    <section><span class="mysql">Notice:</span> there was an error while trying to find file rats.inc.php.
+        Please make sure you have copied rats.sample.inc.php to rats.inc.php and added it to <?= __DIR__; ?>. The script stops executing.
+    </section>
+    <?php
+    die;
+}
+
 require('rats.inc.php');
 require_once('inc/Robotess/autoloader.php');
 require('inc/fun.inc.php');

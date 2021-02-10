@@ -1,12 +1,34 @@
 <?php
+declare(strict_types=1);
 /**
- * @copyright  2007
- * @license    GPL Version 3; BSD Modified
- * @author     Tess <theirrenegadexxx@gmail.com>
- * @file       <install.php>
- * @since      November 19th, 2011
- * @version    2.3alpha
+ * @project          Listing Admin
+ * @copyright        2007
+ * @license          GPL Version 3; BSD Modified
+ * @author           Tess <theirrenegadexxx@gmail.com>
+ * @contributor      Ekaterina <scripts@robotess.net> http://scripts.robotess.net
+ * @file             <install.php>
+ * @version          Robotess Fork
  */
+
+session_start();
+setcookie(
+    'lalog',
+    'blablajustotoseelogsoninstall'
+);
+
+if (!file_exists('rats.inc.php')) {
+    ?>
+    <section><span class="mysql">Notice:</span> there was an error while trying to find file rats.inc.php.
+        Please make sure you have copied rats.sample.inc.php to rats.inc.php and added it to <?= __DIR__; ?>. The script stops executing.
+    </section>
+    <?php
+    die;
+}
+
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+
 require('rats.inc.php');
 require('inc/fun.inc.php');
 require('inc/fun-admin.inc.php');

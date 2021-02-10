@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * @project          Listing Admin
  * @copyright        2007
@@ -289,7 +290,6 @@ if (!class_exists('tigers')) {
 
             echo "<h3>$e</h3>\n";
 
-            $class = '';
             if ($e == 'Database Error') {
                 $class = 'mysql';
             } elseif ($e == 'Script Error') {
