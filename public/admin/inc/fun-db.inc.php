@@ -47,6 +47,8 @@ if (!class_exists('scorpions')) {
 
     class MySQLiConnection extends DBConnection
     {
+        const CODE_TABLE_NOT_FOUND = 1146;
+
         /** @var mysqli */
         protected $dbConnect;
 
@@ -93,7 +95,12 @@ if (!class_exists('scorpions')) {
          */
         public function query($q)
         {
-            return $this->dbConnect->query($q);
+            $r = $this->dbConnect->query($q);
+            if($r === false && (int)$this->errno() === self::CODE_TABLE_NOT_FOUND) {
+                throw new \RuntimeException($this->error());
+            }
+
+            return $r;
         }
 
         /**
@@ -149,7 +156,8 @@ if (!class_exists('scorpions')) {
 
         public function error(): string
         {
-            return $this->dbConnect->errorCode();
+            $errorInfo = $this->dbConnect->errorInfo();
+            return $errorInfo[2] ?? $this->dbConnect->errorCode();
         }
 
         public function errno(): string
@@ -332,11 +340,11 @@ if (!class_exists('scorpions')) {
          */
         public function counts($q, $e = 1, $m = '')
         {
-            $r = (object)array(
+            $r = (object)[
                 'message' => '',
                 'rows' => 0,
                 'status' => false
-            );
+            ];
 
             $select = $q;
             $true = $this->database->query($select);

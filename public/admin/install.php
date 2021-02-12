@@ -120,7 +120,7 @@ require('vars.inc.php');
                         }
 
                         $hashhash_input = sha1(date('YmdHis'));
-                        $javascript_key_input = sha1(random_int(9999, 999999));
+                        $javascript_key_input = sha1((string)random_int(9999, 999999));
                         $insert = "INSERT INTO `$_ST[options]` (`name`, `text`) VALUES
     ('collective_name', '$collname'),
     ('per_joined', '25'), 

@@ -59,7 +59,7 @@ try {
     ?>
     <section><span class="mysql">Notice:</span> there was an error while trying to retrieve Listing Admin options. Please make sure you have installed the script. <?php
         if(isset($scorpions)) {
-            ?>Error message/code: <?= $scorpions->errno(); ?>.<?php
+            ?>Error message/code: <?= $scorpions->error(); ?>. <?php
         } else {
             echo 'Check your php logs. ';
         }
