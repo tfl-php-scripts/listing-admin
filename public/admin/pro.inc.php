@@ -270,7 +270,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'Log In') {
     $userObj->userUser = trim(strip_tags($_POST['username']));
     $userObj->userPass = md5(trim(strip_tags($_POST['password'])));
     $userObj->userText = 'Username: ' . $userObj->userUser .
-        "\nPassword: " . $scorpions->escape($_POST['password']);
+        "\nPassword: [not shown]";
 
     $checker = $leopards->checkUser($userObj->userUser, $userObj->userPass);
     if ($checker == 1) {
@@ -287,7 +287,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'Log In') {
          * Diagnostics! Update user login, insert into logs and make sure the
          * user isn't locked out!
          */
-        $leopards->logUser($userNm, $userObj->userUser, $userObj->userInfo);
+        $leopards->logUser(0, $userObj->userUser, $userObj->userInfo);
         $seahorses->writeMessage(1, 'User Log-In Success', $userObj->userURL,
             $userObj->userText, $userObj->userInfo);
 
