@@ -61,16 +61,6 @@ parameters:
 			path: public/admin/affiliates.php
 
 		-
-			message: "#^Cannot access offset 2 on array\\|false\\.$#"
-			count: 2
-			path: public/admin/affiliates.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of function array_map expects \\(callable\\(\\)\\: mixed\\)\\|null, array\\(mixed, 'cleanMys'\\) given\\.$#"
-			count: 2
-			path: public/admin/affiliates.php
-
-		-
 			message: "#^Variable \\$jaguars might not be defined\\.$#"
 			count: 2
 			path: public/admin/affiliates.php
@@ -93,11 +83,6 @@ parameters:
 		-
 			message: "#^Variable \\$rabbits might not be defined\\.$#"
 			count: 12
-			path: public/admin/affiliates.php
-
-		-
-			message: "#^Parameter \\#1 \\$str of function md5 expects string, int\\<80, 680\\> given\\.$#"
-			count: 1
 			path: public/admin/affiliates.php
 
 		-
@@ -173,11 +158,6 @@ parameters:
 		-
 			message: "#^Variable \\$_ST might not be defined\\.$#"
 			count: 11
-			path: public/admin/codes-categories.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of function array_map expects \\(callable\\(\\)\\: mixed\\)\\|null, array\\(mixed, 'cleanMys'\\) given\\.$#"
-			count: 2
 			path: public/admin/codes-categories.php
 
 		-
@@ -266,11 +246,6 @@ parameters:
 			path: public/admin/codes.php
 
 		-
-			message: "#^Parameter \\#1 \\$str of function sha1 expects string, int\\<0, max\\> given\\.$#"
-			count: 2
-			path: public/admin/codes.php
-
-		-
 			message: "#^Variable \\$cheetahs might not be defined\\.$#"
 			count: 14
 			path: public/admin/codes.php
@@ -308,11 +283,6 @@ parameters:
 		-
 			message: "#^Variable \\$wolves might not be defined\\.$#"
 			count: 3
-			path: public/admin/convert.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of function array_map expects \\(callable\\(\\)\\: mixed\\)\\|null, array\\(mixed, 'cleanMys'\\) given\\.$#"
-			count: 1
 			path: public/admin/convert.php
 
 		-
@@ -362,11 +332,6 @@ parameters:
 
 		-
 			message: "#^Variable \\$dbpass might not be defined\\.$#"
-			count: 1
-			path: public/admin/convert.php
-
-		-
-			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
 			count: 1
 			path: public/admin/convert.php
 
@@ -476,11 +441,6 @@ parameters:
 			path: public/admin/errors.php
 
 		-
-			message: "#^Binary operation \"\\.\" between array\\|string and '\\: ' results in an error\\.$#"
-			count: 1
-			path: public/admin/errors.php
-
-		-
 			message: "#^Variable \\$get_errors_array might not be defined\\.$#"
 			count: 1
 			path: public/admin/errors.php
@@ -516,31 +476,6 @@ parameters:
 			path: public/admin/header.php
 
 		-
-			message: "#^Property laantispam\\:\\:\\$bbcode type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: public/admin/inc/class-antispam.inc.php
-
-		-
-			message: "#^Method laantispam\\:\\:clean\\(\\) has parameter \\$c with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/class-antispam.inc.php
-
-		-
-			message: "#^Method laantispam\\:\\:clean\\(\\) has parameter \\$p with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/class-antispam.inc.php
-
-		-
-			message: "#^Method laantispam\\:\\:clean\\(\\) has parameter \\$r with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/class-antispam.inc.php
-
-		-
-			message: "#^Method laantispam\\:\\:clean\\(\\) has parameter \\$s with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/class-antispam.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$c , string; for encoding and decoding param \\$p\\)\\: Unexpected token \"\\$c\", expected type at offset 375$#"
 			count: 1
 			path: public/admin/inc/class-antispam.inc.php
@@ -565,16 +500,6 @@ parameters:
 			path: public/admin/inc/class-antispam.inc.php
 
 		-
-			message: "#^Method laantispam\\:\\:spamarray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: public/admin/inc/class-antispam.inc.php
-
-		-
-			message: "#^Method laantispam\\:\\:antispam\\(\\) has parameter \\$vars with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/class-antispam.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$vars , array; options\\)\\: Unexpected token \"\\$vars\", expected type at offset 483$#"
 			count: 1
 			path: public/admin/inc/class-antispam.inc.php
@@ -586,11 +511,6 @@ parameters:
 
 		-
 			message: "#^Binary operation \"\\+\" between string and string results in an error\\.$#"
-			count: 1
-			path: public/admin/inc/class-antispam.inc.php
-
-		-
-			message: "#^Result of \\|\\| is always true\\.$#"
 			count: 1
 			path: public/admin/inc/class-antispam.inc.php
 
@@ -610,11 +530,6 @@ parameters:
 			path: public/admin/inc/class-antispam.inc.php
 
 		-
-			message: "#^Result of && is always false\\.$#"
-			count: 1
-			path: public/admin/inc/class-antispam.inc.php
-
-		-
 			message: "#^Undefined variable\\: \\$url$#"
 			count: 1
 			path: public/admin/inc/class-antispam.inc.php
@@ -630,42 +545,12 @@ parameters:
 			path: public/admin/inc/class-antispam.inc.php
 
 		-
-			message: "#^Method kimadmin\\:\\:membersList\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/class-kimadmin.inc.php
-
-		-
-			message: "#^Method kimadmin\\:\\:membersList\\(\\) has parameter \\$p with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/class-kimadmin.inc.php
-
-		-
-			message: "#^Method kimadmin\\:\\:membersList\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: public/admin/inc/class-kimadmin.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID; optional\\)\\: Unexpected token \"\\$i\", expected type at offset 73$#"
 			count: 1
 			path: public/admin/inc/class-kimadmin.inc.php
 
 		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$p , int; 0 for approved, 1 for all members; optional\\)\\: Unexpected token \"\\$p\", expected type at offset 126$#"
-			count: 1
-			path: public/admin/inc/class-kimadmin.inc.php
-
-		-
-			message: "#^Method kimadmin\\:\\:getMember\\(\\) has parameter \\$e with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/class-kimadmin.inc.php
-
-		-
-			message: "#^Method kimadmin\\:\\:getMember\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/class-kimadmin.inc.php
-
-		-
-			message: "#^Method kimadmin\\:\\:getMember\\(\\) has parameter \\$p with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/class-kimadmin.inc.php
 
@@ -685,42 +570,12 @@ parameters:
 			path: public/admin/inc/class-kimadmin.inc.php
 
 		-
-			message: "#^Method kimadmin\\:\\:kimName\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/class-kimadmin.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; member ID\\)\\: Unexpected token \"\\$i\", expected type at offset 69$#"
 			count: 1
 			path: public/admin/inc/class-kimadmin.inc.php
 
 		-
-			message: "#^Method kimadmin\\:\\:kimCount\\(\\) has parameter \\$s with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/class-kimadmin.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$s , boolean; 0 for approved, 1 for pending\\)\\: Unexpected token \"\\$s\", expected type at offset 70$#"
-			count: 1
-			path: public/admin/inc/class-kimadmin.inc.php
-
-		-
-			message: "#^Method kimadmin\\:\\:kimUpdate\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/class-kimadmin.inc.php
-
-		-
-			message: "#^Method kimadmin\\:\\:checkPassword\\(\\) has parameter \\$e with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/class-kimadmin.inc.php
-
-		-
-			message: "#^Method kimadmin\\:\\:checkPassword\\(\\) has parameter \\$p with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/class-kimadmin.inc.php
-
-		-
-			message: "#^Method kimadmin\\:\\:checkPassword\\(\\) has parameter \\$s with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/class-kimadmin.inc.php
 
@@ -740,22 +595,7 @@ parameters:
 			path: public/admin/inc/class-kimadmin.inc.php
 
 		-
-			message: "#^Method kimadmin\\:\\:checkKIM\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/class-kimadmin.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; member ID\\)\\: Unexpected token \"\\$i\", expected type at offset 70$#"
-			count: 1
-			path: public/admin/inc/class-kimadmin.inc.php
-
-		-
-			message: "#^Method kimadmin\\:\\:checkReset\\(\\) has parameter \\$e with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/class-kimadmin.inc.php
-
-		-
-			message: "#^Method kimadmin\\:\\:checkReset\\(\\) has parameter \\$s with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/class-kimadmin.inc.php
 
@@ -770,16 +610,6 @@ parameters:
 			path: public/admin/inc/class-kimadmin.inc.php
 
 		-
-			message: "#^Method kimadmin\\:\\:format\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/class-kimadmin.inc.php
-
-		-
-			message: "#^Method kimadmin\\:\\:format\\(\\) has parameter \\$t with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/class-kimadmin.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 138$#"
 			count: 1
 			path: public/admin/inc/class-kimadmin.inc.php
@@ -790,17 +620,7 @@ parameters:
 			path: public/admin/inc/class-kimadmin.inc.php
 
 		-
-			message: "#^Method kimadmin\\:\\:membersPagination\\(\\) has parameter \\$listingId with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/class-kimadmin.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$listingId , int; listing ID\\)\\: Unexpected token \"\\$listingId\", expected type at offset 79$#"
-			count: 1
-			path: public/admin/inc/class-kimadmin.inc.php
-
-		-
-			message: "#^Method kimadmin\\:\\:membersSort\\(\\) has parameter \\$i with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/class-kimadmin.inc.php
 
@@ -810,37 +630,7 @@ parameters:
 			path: public/admin/inc/class-kimadmin.inc.php
 
 		-
-			message: "#^Binary operation \"\\.\" between string and array\\<string\\>\\|string results in an error\\.$#"
-			count: 1
-			path: public/admin/inc/class-kimadmin.inc.php
-
-		-
-			message: "#^Parameter \\#1 \\(array\\<string\\>\\|string\\) of echo cannot be converted to string\\.$#"
-			count: 2
-			path: public/admin/inc/class-kimadmin.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:isActive\\(\\) has parameter \\$p with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:isInstalled\\(\\) has parameter \\$c with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$c , string; addon slug\\)\\: Unexpected token \"\\$c\", expected type at offset 158$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:stats\\(\\) has parameter \\$e with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:stats\\(\\) has parameter \\$p with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-addons.inc.php
 
@@ -855,21 +645,6 @@ parameters:
 			path: public/admin/inc/fun-addons.inc.php
 
 		-
-			message: "#^Method cheetahs\\:\\:codesList\\(\\) has parameter \\$b with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:codesList\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:codesList\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$b , string; pull by listing; optional\\)\\: Unexpected token \"\\$b\", expected type at offset 71$#"
 			count: 1
 			path: public/admin/inc/fun-addons.inc.php
@@ -880,37 +655,7 @@ parameters:
 			path: public/admin/inc/fun-addons.inc.php
 
 		-
-			message: "#^Method cheetahs\\:\\:donorsList\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:sizesList\\(\\) has parameter \\$b with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:sizesList\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$b , string; return array or multidimensional array\\)\\: Unexpected token \"\\$b\", expected type at offset 71$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:categoryCodes\\(\\) has parameter \\$b with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:categoryCodes\\(\\) has parameter \\$s with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:categoryCodes\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: public/admin/inc/fun-addons.inc.php
 
@@ -925,22 +670,7 @@ parameters:
 			path: public/admin/inc/fun-addons.inc.php
 
 		-
-			message: "#^Method cheetahs\\:\\:getCode\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; code ID\\)\\: Unexpected token \"\\$i\", expected type at offset 69$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:codeFile\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:codeFile\\(\\) has parameter \\$i with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-addons.inc.php
 
@@ -955,23 +685,8 @@ parameters:
 			path: public/admin/inc/fun-addons.inc.php
 
 		-
-			message: "#^Method cheetahs\\:\\:getCodeCategory\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; code category ID\\)\\: Unexpected token \"\\$i\", expected type at offset 77$#"
 			count: 2
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:getCodesCatName\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:getCodesCatName\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
 			path: public/admin/inc/fun-addons.inc.php
 
 		-
@@ -985,22 +700,7 @@ parameters:
 			path: public/admin/inc/fun-addons.inc.php
 
 		-
-			message: "#^Method cheetahs\\:\\:donor\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; donor ID\\)\\: Unexpected token \"\\$i\", expected type at offset 67$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:getDonor\\(\\) has parameter \\$b with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:getDonor\\(\\) has parameter \\$i with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-addons.inc.php
 
@@ -1011,16 +711,6 @@ parameters:
 
 		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; donor ID\\)\\: Unexpected token \"\\$i\", expected type at offset 70$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:getSize\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:getSize\\(\\) has parameter \\$i with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-addons.inc.php
 
@@ -1040,16 +730,6 @@ parameters:
 			path: public/admin/inc/fun-addons.inc.php
 
 		-
-			message: "#^Method cheetahs\\:\\:codeCount\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:codeCount\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID; optional\\)\\: Unexpected token \"\\$i\", expected type at offset 72$#"
 			count: 1
 			path: public/admin/inc/fun-addons.inc.php
@@ -1061,21 +741,6 @@ parameters:
 
 		-
 			message: "#^PHPDoc tag @return has invalid value \\(\\)\\: Unexpected token \"\\\\n         \\*\", expected type at offset 121$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:codesDefault\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:codesDefault\\(\\) has parameter \\$n with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:codesDefault\\(\\) has parameter \\$s with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-addons.inc.php
 
@@ -1095,32 +760,7 @@ parameters:
 			path: public/admin/inc/fun-addons.inc.php
 
 		-
-			message: "#^Method cheetahs\\:\\:lyricsList\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:albumsList\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:albumsList\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 72$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:getAlbum\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:getAlbum\\(\\) has parameter \\$i with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-addons.inc.php
 
@@ -1140,16 +780,6 @@ parameters:
 			path: public/admin/inc/fun-addons.inc.php
 
 		-
-			message: "#^Method cheetahs\\:\\:defaultLyrics\\(\\) has parameter \\$a with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:defaultLyrics\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$a , int; album ID\\)\\: Unexpected token \"\\$a\", expected type at offset 121$#"
 			count: 1
 			path: public/admin/inc/fun-addons.inc.php
@@ -1160,32 +790,7 @@ parameters:
 			path: public/admin/inc/fun-addons.inc.php
 
 		-
-			message: "#^Method cheetahs\\:\\:quotesList\\(\\) has parameter \\$s with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:quotesList\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$s , int; listing ID; optional\\)\\: Unexpected token \"\\$s\", expected type at offset 72$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:pullQuotes\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:pullQuotes\\(\\) has parameter \\$n with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-addons.inc.php
-
-		-
-			message: "#^Method cheetahs\\:\\:pullQuotes\\(\\) has parameter \\$r with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-addons.inc.php
 
@@ -1209,67 +814,7 @@ parameters:
 			path: public/admin/inc/fun-addons.inc.php
 
 		-
-			message: "#^Method leopards\\:\\:isTitle\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-admin.inc.php
-
-		-
-			message: "#^Method leopards\\:\\:isTitle\\(\\) has parameter \\$e with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-admin.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$e , string\\)\\: Unexpected token \"\\$e\", expected type at offset 69$#"
-			count: 1
-			path: public/admin/inc/fun-admin.inc.php
-
-		-
-			message: "#^Method leopards\\:\\:getTitle\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-admin.inc.php
-
-		-
-			message: "#^Method leopards\\:\\:getTitle\\(\\) has parameter \\$e with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-admin.inc.php
-
-		-
-			message: "#^Parameter \\#1 \\$str of function ucwords expects string, array\\|string given\\.$#"
-			count: 1
-			path: public/admin/inc/fun-admin.inc.php
-
-		-
-			message: "#^Method leopards\\:\\:skins\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-admin.inc.php
-
-		-
-			message: "#^Method leopards\\:\\:isPage\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-admin.inc.php
-
-		-
-			message: "#^Method leopards\\:\\:getPaths\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-admin.inc.php
-
-		-
-			message: "#^Method leopards\\:\\:getPaths\\(\\) has parameter \\$b with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-admin.inc.php
-
-		-
-			message: "#^Method leopards\\:\\:getPaths\\(\\) has parameter \\$p with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-admin.inc.php
-
-		-
-			message: "#^Method leopards\\:\\:getPaths\\(\\) has parameter \\$s with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-admin.inc.php
-
-		-
-			message: "#^Method leopards\\:\\:getPaths\\(\\) has parameter \\$u with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-admin.inc.php
 
@@ -1294,32 +839,7 @@ parameters:
 			path: public/admin/inc/fun-admin.inc.php
 
 		-
-			message: "#^Method leopards\\:\\:isYear\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-admin.inc.php
-
-		-
-			message: "#^Method leopards\\:\\:isYear\\(\\) has parameter \\$o with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-admin.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$o , digits; four\\-digit year\\)\\: Unexpected token \"\\$o\", expected type at offset 221$#"
-			count: 1
-			path: public/admin/inc/fun-admin.inc.php
-
-		-
-			message: "#^Method leopards\\:\\:currently\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-admin.inc.php
-
-		-
-			message: "#^Method leopards\\:\\:currently\\(\\) has parameter \\$n with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-admin.inc.php
-
-		-
-			message: "#^Method leopards\\:\\:currently\\(\\) has parameter \\$o with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-admin.inc.php
 
@@ -1329,21 +849,6 @@ parameters:
 					#^PHPDoc tag @param has invalid value \\(\\$n , string; base name for the current page without
 					an extension\\)\\: Unexpected token "\\$n", expected type at offset 214$#
 				"""
-			count: 1
-			path: public/admin/inc/fun-admin.inc.php
-
-		-
-			message: "#^Method leopards\\:\\:checkUser\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-admin.inc.php
-
-		-
-			message: "#^Method leopards\\:\\:checkUser\\(\\) has parameter \\$p with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-admin.inc.php
-
-		-
-			message: "#^Method leopards\\:\\:checkUser\\(\\) has parameter \\$u with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-admin.inc.php
 
@@ -1358,41 +863,6 @@ parameters:
 			path: public/admin/inc/fun-admin.inc.php
 
 		-
-			message: "#^Method leopards\\:\\:logUser\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-admin.inc.php
-
-		-
-			message: "#^Method leopards\\:\\:logUser\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-admin.inc.php
-
-		-
-			message: "#^Method leopards\\:\\:logUser\\(\\) has parameter \\$n with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-admin.inc.php
-
-		-
-			message: "#^Method leopards\\:\\:logUser\\(\\) has parameter \\$u with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-admin.inc.php
-
-		-
-			message: "#^Method leopards\\:\\:gravatar\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-admin.inc.php
-
-		-
-			message: "#^Method leopards\\:\\:buildErrorLog\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-admin.inc.php
-
-		-
-			message: "#^Method rabbits\\:\\:affiliatesList\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: public/admin/inc/fun-affiliates.inc.php
-
-		-
 			message: "#^Access to an undefined property object\\:\\:\\$dbpass\\.$#"
 			count: 4
 			path: public/admin/inc/fun-affiliates.inc.php
@@ -1400,31 +870,6 @@ parameters:
 		-
 			message: "#^Variable \\$select might not be defined\\.$#"
 			count: 6
-			path: public/admin/inc/fun-affiliates.inc.php
-
-		-
-			message: "#^Method rabbits\\:\\:allAffiliates\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-affiliates.inc.php
-
-		-
-			message: "#^Method rabbits\\:\\:allAffiliates\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: public/admin/inc/fun-affiliates.inc.php
-
-		-
-			message: "#^Method rabbits\\:\\:sortAffiliates\\(\\) has parameter \\$a with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: public/admin/inc/fun-affiliates.inc.php
-
-		-
-			message: "#^Method rabbits\\:\\:sortAffiliates\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-affiliates.inc.php
-
-		-
-			message: "#^Method rabbits\\:\\:sortAffiliates\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
 			path: public/admin/inc/fun-affiliates.inc.php
 
 		-
@@ -1448,57 +893,12 @@ parameters:
 			path: public/admin/inc/fun-affiliates.inc.php
 
 		-
-			message: "#^Parameter \\#2 \\$cmp_function of function uasort expects callable\\(mixed, mixed\\)\\: int, array\\(mixed, 'datecompare'\\) given\\.$#"
-			count: 1
-			path: public/admin/inc/fun-affiliates.inc.php
-
-		-
-			message: "#^Method rabbits\\:\\:getAffiliate\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-affiliates.inc.php
-
-		-
-			message: "#^Method rabbits\\:\\:getAffiliate\\(\\) has parameter \\$e with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-affiliates.inc.php
-
-		-
-			message: "#^Method rabbits\\:\\:getAffiliate\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-affiliates.inc.php
-
-		-
-			message: "#^Method rabbits\\:\\:getAffiliate\\(\\) has parameter \\$p with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-affiliates.inc.php
-
-		-
-			message: "#^Method rabbits\\:\\:countAffiliates\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-affiliates.inc.php
-
-		-
-			message: "#^Method rabbits\\:\\:countAffiliates\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-affiliates.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 27$#"
 			count: 1
 			path: public/admin/inc/fun-affiliates.inc.php
 
 		-
 			message: "#^PHPDoc tag @return has invalid value \\(\\)\\: Unexpected token \"\\\\n         \", expected type at offset 66$#"
-			count: 1
-			path: public/admin/inc/fun-affiliates.inc.php
-
-		-
-			message: "#^Method rabbits\\:\\:pullImage_Affiliate\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-affiliates.inc.php
-
-		-
-			message: "#^Method rabbits\\:\\:pullImage_Affiliate\\(\\) has parameter \\$i with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-affiliates.inc.php
 
@@ -1511,61 +911,6 @@ parameters:
 			message: "#^Variable \\$tigers might not be defined\\.$#"
 			count: 1
 			path: public/admin/inc/fun-captcha.inc.php
-
-		-
-			message: "#^Parameter \\#1 \\$im of function imagecolorallocate expects resource, resource\\|false given\\.$#"
-			count: 2
-			path: public/admin/inc/fun-captcha.inc.php
-
-		-
-			message: "#^Parameter \\#1 \\$im of function imagefilledrectangle expects resource, resource\\|false given\\.$#"
-			count: 1
-			path: public/admin/inc/fun-captcha.inc.php
-
-		-
-			message: "#^Parameter \\#6 \\$col of function imagefilledrectangle expects int, int\\|false given\\.$#"
-			count: 1
-			path: public/admin/inc/fun-captcha.inc.php
-
-		-
-			message: "#^Parameter \\#1 \\$im of function imagettftext expects resource, resource\\|false given\\.$#"
-			count: 1
-			path: public/admin/inc/fun-captcha.inc.php
-
-		-
-			message: "#^Parameter \\#6 \\$col of function imagettftext expects int, int\\|false given\\.$#"
-			count: 1
-			path: public/admin/inc/fun-captcha.inc.php
-
-		-
-			message: "#^Parameter \\#1 \\$im of function imagepng expects resource, resource\\|false given\\.$#"
-			count: 1
-			path: public/admin/inc/fun-captcha.inc.php
-
-		-
-			message: "#^Parameter \\#1 \\$im of function imagedestroy expects resource, resource\\|false given\\.$#"
-			count: 1
-			path: public/admin/inc/fun-captcha.inc.php
-
-		-
-			message: "#^Method lions\\:\\:categoryList\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-categories.inc.php
-
-		-
-			message: "#^Method lions\\:\\:categoryList\\(\\) has parameter \\$b with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-categories.inc.php
-
-		-
-			message: "#^Method lions\\:\\:categoryList\\(\\) has parameter \\$g with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-categories.inc.php
-
-		-
-			message: "#^Method lions\\:\\:categoryList\\(\\) has parameter \\$n with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-categories.inc.php
 
 		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$b , string; return value \\(e\\.g\\. list, array, et al\\.\\)\\)\\: Unexpected token \"\\$b\", expected type at offset 82$#"
@@ -1588,52 +933,12 @@ parameters:
 			path: public/admin/inc/fun-categories.inc.php
 
 		-
-			message: "#^Method lions\\:\\:categorySort\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-categories.inc.php
-
-		-
-			message: "#^Method lions\\:\\:getCategory\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-categories.inc.php
-
-		-
-			message: "#^Method lions\\:\\:getCategory\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-categories.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; category ID\\)\\: Unexpected token \"\\$i\", expected type at offset 72$#"
 			count: 1
 			path: public/admin/inc/fun-categories.inc.php
 
 		-
-			message: "#^Method lions\\:\\:getCatName\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-categories.inc.php
-
-		-
-			message: "#^Method lions\\:\\:getCatName\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-categories.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; category ID\\)\\: Unexpected token \"\\$i\", expected type at offset 71$#"
-			count: 1
-			path: public/admin/inc/fun-categories.inc.php
-
-		-
-			message: "#^Method lions\\:\\:pullCatNames\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-categories.inc.php
-
-		-
-			message: "#^Method lions\\:\\:pullCatNames\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-categories.inc.php
-
-		-
-			message: "#^Method lions\\:\\:pullCatNames\\(\\) has parameter \\$s with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-categories.inc.php
 
@@ -1652,27 +957,7 @@ parameters:
 			path: public/admin/inc/fun-categories.inc.php
 
 		-
-			message: "#^Method lions\\:\\:countChildren\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-categories.inc.php
-
-		-
-			message: "#^Method lions\\:\\:countChildren\\(\\) has parameter \\$c with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-categories.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$c , int; category parent ID\\)\\: Unexpected token \"\\$c\", expected type at offset 157$#"
-			count: 1
-			path: public/admin/inc/fun-categories.inc.php
-
-		-
-			message: "#^Method lions\\:\\:childrenJoined\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-categories.inc.php
-
-		-
-			message: "#^Method lions\\:\\:childrenJoined\\(\\) has parameter \\$c with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-categories.inc.php
 
@@ -1682,32 +967,7 @@ parameters:
 			path: public/admin/inc/fun-categories.inc.php
 
 		-
-			message: "#^Method lions\\:\\:childrenListings\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-categories.inc.php
-
-		-
-			message: "#^Method lions\\:\\:childrenListings\\(\\) has parameter \\$c with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-categories.inc.php
-
-		-
-			message: "#^Method lions\\:\\:childrenListings\\(\\) has parameter \\$s with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-categories.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$c , int; parent category ID\\)\\: Unexpected token \"\\$c\", expected type at offset 180$#"
-			count: 1
-			path: public/admin/inc/fun-categories.inc.php
-
-		-
-			message: "#^Method lions\\:\\:countCategories\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-categories.inc.php
-
-		-
-			message: "#^Method lions\\:\\:countCategories\\(\\) has parameter \\$b with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-categories.inc.php
 
@@ -1719,31 +979,6 @@ parameters:
 				"""
 			count: 1
 			path: public/admin/inc/fun-categories.inc.php
-
-		-
-			message: "#^Property DBConnection\\:\\:\\$dbConnect has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method DBConnection\\:\\:__construct\\(\\) has parameter \\$database with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method DBConnection\\:\\:__construct\\(\\) has parameter \\$hostname with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method DBConnection\\:\\:__construct\\(\\) has parameter \\$password with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method DBConnection\\:\\:__construct\\(\\) has parameter \\$username with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
 
 		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$database\\)\\: Unexpected token \"\\$database\", expected type at offset 106$#"
@@ -1766,188 +1001,13 @@ parameters:
 			path: public/admin/inc/fun-db.inc.php
 
 		-
-			message: "#^Method DBConnection\\:\\:initDbConnect\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method DBConnection\\:\\:initDbConnect\\(\\) has parameter \\$database with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method DBConnection\\:\\:initDbConnect\\(\\) has parameter \\$hostname with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method DBConnection\\:\\:initDbConnect\\(\\) has parameter \\$password with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method DBConnection\\:\\:initDbConnect\\(\\) has parameter \\$username with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method DBConnection\\:\\:real_escape_string\\(\\) has parameter \\$e with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method DBConnection\\:\\:query\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method DBConnection\\:\\:query\\(\\) has parameter \\$q with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method DBConnection\\:\\:num_rows\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method DBConnection\\:\\:num_rows\\(\\) has parameter \\$result with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method DBConnection\\:\\:fetch_object\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method DBConnection\\:\\:fetch_object\\(\\) has parameter \\$result with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method DBConnection\\:\\:fetch_array\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method DBConnection\\:\\:fetch_array\\(\\) has parameter \\$result with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method MySQLiConnection\\:\\:initDbConnect\\(\\) has parameter \\$database with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method MySQLiConnection\\:\\:initDbConnect\\(\\) has parameter \\$hostname with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method MySQLiConnection\\:\\:initDbConnect\\(\\) has parameter \\$password with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method MySQLiConnection\\:\\:initDbConnect\\(\\) has parameter \\$username with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method MySQLiConnection\\:\\:real_escape_string\\(\\) has parameter \\$e with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$e\\)\\: Unexpected token \"\\$e\", expected type at offset 22$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method MySQLiConnection\\:\\:query\\(\\) has parameter \\$q with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method MySQLiConnection\\:\\:query\\(\\) return type has no value type specified in iterable type mysqli_result\\.$#"
 			count: 1
 			path: public/admin/inc/fun-db.inc.php
 
 		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$q\\)\\: Unexpected token \"\\$q\", expected type at offset 22$#"
 			count: 2
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method MySQLiConnection\\:\\:num_rows\\(\\) has parameter \\$result with no value type specified in iterable type mysqli_result\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method MySQLiConnection\\:\\:fetch_object\\(\\) has parameter \\$result with no value type specified in iterable type mysqli_result\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method MySQLiConnection\\:\\:fetch_array\\(\\) has parameter \\$result with no value type specified in iterable type mysqli_result\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method PDOMySQLConnection\\:\\:initDbConnect\\(\\) has parameter \\$database with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method PDOMySQLConnection\\:\\:initDbConnect\\(\\) has parameter \\$hostname with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method PDOMySQLConnection\\:\\:initDbConnect\\(\\) has parameter \\$password with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method PDOMySQLConnection\\:\\:initDbConnect\\(\\) has parameter \\$username with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Property PDOMySQLConnection\\:\\:\\$dbConnect \\(PDO\\) does not accept null\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method PDOMySQLConnection\\:\\:real_escape_string\\(\\) has parameter \\$e with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method PDOMySQLConnection\\:\\:query\\(\\) has parameter \\$q with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method scorpions\\:\\:__construct\\(\\) has parameter \\$h with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method scorpions\\:\\:__construct\\(\\) has parameter \\$n with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method scorpions\\:\\:__construct\\(\\) has parameter \\$p with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method scorpions\\:\\:__construct\\(\\) has parameter \\$u with no typehint specified\\.$#"
-			count: 1
 			path: public/admin/inc/fun-db.inc.php
 
 		-
@@ -1967,26 +1027,6 @@ parameters:
 
 		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$u\\)\\: Unexpected token \"\\$u\", expected type at offset 171$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method scorpions\\:\\:scorpions\\(\\) has parameter \\$h with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method scorpions\\:\\:scorpions\\(\\) has parameter \\$n with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method scorpions\\:\\:scorpions\\(\\) has parameter \\$p with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method scorpions\\:\\:scorpions\\(\\) has parameter \\$u with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-db.inc.php
 
@@ -2011,31 +1051,6 @@ parameters:
 			path: public/admin/inc/fun-db.inc.php
 
 		-
-			message: "#^Method scorpions\\:\\:initDB\\(\\) has parameter \\$h with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method scorpions\\:\\:initDB\\(\\) has parameter \\$n with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method scorpions\\:\\:initDB\\(\\) has parameter \\$p with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method scorpions\\:\\:initDB\\(\\) has parameter \\$u with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method scorpions\\:\\:breach\\(\\) has parameter \\$y with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
 			message:
 				"""
 					#^PHPDoc tag @param has invalid value \\(\\$y , boolean; 0 if closing the connection, 1 if opening
@@ -2045,27 +1060,7 @@ parameters:
 			path: public/admin/inc/fun-db.inc.php
 
 		-
-			message: "#^Method scorpions\\:\\:escape\\(\\) has parameter \\$p with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$p , text\\)\\: Unexpected token \"\\$p\", expected type at offset 69$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method scorpions\\:\\:counts\\(\\) has parameter \\$e with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method scorpions\\:\\:counts\\(\\) has parameter \\$m with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method scorpions\\:\\:counts\\(\\) has parameter \\$q with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-db.inc.php
 
@@ -2085,32 +1080,7 @@ parameters:
 			path: public/admin/inc/fun-db.inc.php
 
 		-
-			message: "#^Method scorpions\\:\\:fetch\\(\\) has parameter \\$q with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$q , string; the query string\\)\\: Unexpected token \"\\$q\", expected type at offset 204$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Access to an undefined property object\\:\\:\\$rows\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Else branch is unreachable because ternary operator condition is always true\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method scorpions\\:\\:insert\\(\\) has parameter \\$e with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method scorpions\\:\\:insert\\(\\) has parameter \\$q with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-db.inc.php
 
@@ -2120,16 +1090,6 @@ parameters:
 					#^PHPDoc tag @param has invalid value \\(\\$e , boolean; 0 for returing status, 1 for returning status
 					on success, and error on failure\\)\\: Unexpected token "\\$e", expected type at offset 126$#
 				"""
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method scorpions\\:\\:obj\\(\\) has parameter \\$m with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method scorpions\\:\\:obj\\(\\) has parameter \\$q with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-db.inc.php
 
@@ -2144,42 +1104,12 @@ parameters:
 			path: public/admin/inc/fun-db.inc.php
 
 		-
-			message: "#^Method scorpions\\:\\:query\\(\\) has parameter \\$q with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method scorpions\\:\\:query\\(\\) return type has no value type specified in iterable type mysqli_result\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$q , string; the query string\\)\\: Unexpected token \"\\$q\", expected type at offset 68$#"
 			count: 1
 			path: public/admin/inc/fun-db.inc.php
 
 		-
-			message: "#^Method scorpions\\:\\:total\\(\\) has parameter \\$q with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$q , string; resource\\)\\: Unexpected token \"\\$q\", expected type at offset 217$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method scorpions\\:\\:update\\(\\) has parameter \\$query with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method scorpions\\:\\:update\\(\\) has parameter \\$returnError with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-db.inc.php
-
-		-
-			message: "#^Method scorpions\\:\\:update\\(\\) has parameter \\$successText with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-db.inc.php
 
@@ -2203,42 +1133,7 @@ parameters:
 			path: public/admin/inc/fun-db.inc.php
 
 		-
-			message: "#^Method jaguars\\:\\:emailList\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-emails.inc.php
-
-		-
-			message: "#^Method jaguars\\:\\:approveKIM\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-emails.inc.php
-
-		-
-			message: "#^Method jaguars\\:\\:approveKIM\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-emails.inc.php
-
-		-
-			message: "#^Parameter \\#3 \\$message of function mail expects string, array\\|string given\\.$#"
-			count: 4
-			path: public/admin/inc/fun-emails.inc.php
-
-		-
-			message: "#^Method jaguars\\:\\:approveMember\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-emails.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i\\)\\: Unexpected token \"\\$i\", expected type at offset 173$#"
-			count: 1
-			path: public/admin/inc/fun-emails.inc.php
-
-		-
-			message: "#^Method jaguars\\:\\:getEmailTemplate\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-emails.inc.php
-
-		-
-			message: "#^Method jaguars\\:\\:getEmailTemplate\\(\\) has parameter \\$p with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-emails.inc.php
 
@@ -2253,32 +1148,12 @@ parameters:
 			path: public/admin/inc/fun-emails.inc.php
 
 		-
-			message: "#^Method jaguars\\:\\:getEmailTitle\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-emails.inc.php
-
-		-
-			message: "#^Method jaguars\\:\\:getEmailTitle\\(\\) has parameter \\$p with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-emails.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$p , string; template slug\\)\\: Unexpected token \"\\$p\", expected type at offset 74$#"
 			count: 1
 			path: public/admin/inc/fun-emails.inc.php
 
 		-
 			message: "#^PHPDoc tag @return has invalid value \\(\\)\\: Unexpected token \"\\\\n         \", expected type at offset 119$#"
-			count: 1
-			path: public/admin/inc/fun-emails.inc.php
-
-		-
-			message: "#^Method jaguars\\:\\:sendEmail\\(\\) has parameter \\$b with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-emails.inc.php
-
-		-
-			message: "#^Method jaguars\\:\\:sendEmail\\(\\) has parameter \\$t with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-emails.inc.php
 
@@ -2303,16 +1178,6 @@ parameters:
 			path: public/admin/inc/fun-emails.inc.php
 
 		-
-			message: "#^Method jaguars\\:\\:sendAffEmail\\(\\) has parameter \\$subjectLine with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-emails.inc.php
-
-		-
-			message: "#^Method jaguars\\:\\:sendAffEmail\\(\\) has parameter \\$templat with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-emails.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$subjectLine \\= Subject Line\\)\\: Unexpected token \"\\$subjectLine\", expected type at offset 259$#"
 			count: 1
 			path: public/admin/inc/fun-emails.inc.php
@@ -2325,21 +1190,6 @@ parameters:
 		-
 			message: "#^Variable \\$affiliate might not be defined\\.$#"
 			count: 3
-			path: public/admin/inc/fun-emails.inc.php
-
-		-
-			message: "#^Method jaguars\\:\\:sendMeMail\\(\\) has parameter \\$h with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-emails.inc.php
-
-		-
-			message: "#^Method jaguars\\:\\:sendMeMail\\(\\) has parameter \\$m with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-emails.inc.php
-
-		-
-			message: "#^Method jaguars\\:\\:sendMeMail\\(\\) has parameter \\$s with no typehint specified\\.$#"
-			count: 1
 			path: public/admin/inc/fun-emails.inc.php
 
 		-
@@ -2358,87 +1208,12 @@ parameters:
 			path: public/admin/inc/fun-emails.inc.php
 
 		-
-			message: "#^Method jaguars\\:\\:updateKIM\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-emails.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i\\)\\: Unexpected token \"\\$i\", expected type at offset 66$#"
 			count: 1
 			path: public/admin/inc/fun-emails.inc.php
 
 		-
-			message: "#^Method jaguars\\:\\:updateMember\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-emails.inc.php
-
-		-
-			message: "#^Method jaguars\\:\\:updateMember\\(\\) has parameter \\$d with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-emails.inc.php
-
-		-
-			message: "#^Method jaguars\\:\\:updateMember\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-emails.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:writeError\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:writeError\\(\\) has parameter \\$b with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:writeError\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:writeError\\(\\) has parameter \\$t with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:writeError\\(\\) has parameter \\$u with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:formURL\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:formURL\\(\\) has parameter \\$g with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:formURL\\(\\) has parameter \\$s with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
 			message: "#^Variable \\$u might not be defined\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:frontEndLink\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:frontEndLink\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:frontEndLink\\(\\) has parameter \\$p with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-external.inc.php
 
@@ -2458,191 +1233,6 @@ parameters:
 			path: public/admin/inc/fun-external.inc.php
 
 		-
-			message: "#^Method octopus\\:\\:lineBreak\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:lineBreak\\(\\) has parameter \\$c with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:getLineBreakers\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:getLineBreakers\\(\\) has parameter \\$p with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:shortURL\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:shortURL\\(\\) has parameter \\$u with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Parameter \\#2 \\$str of function explode expects string, array\\|string given\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:alternate\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:alternate\\(\\) has parameter \\$c with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:alternate\\(\\) has parameter \\$d with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:alternate\\(\\) has parameter \\$e with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:alternate\\(\\) has parameter \\$h with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:ampersand\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:ampersand\\(\\) has parameter \\$a with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:ampersand\\(\\) has parameter \\$q with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:entities\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:entities\\(\\) has parameter \\$s with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:javascriptEmail\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:javascriptEmail\\(\\) has parameter \\$e with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:javascriptCheat\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:javascriptCheat\\(\\) has parameter \\$p with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:javascriptFunc\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:returnURL\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:returnURL\\(\\) has parameter \\$l with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:returnURL\\(\\) has parameter \\$text with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:captchaCheat\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:captchaCheat\\(\\) has parameter \\$b with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:captchaCheat\\(\\) has parameter \\$p with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:antispamCheat\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:antispamCheat\\(\\) has parameter \\$b with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:antispamCheat\\(\\) has parameter \\$p with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:antispamCheat\\(\\) has parameter \\$r with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method octopus\\:\\:formatCredit\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^Method dragons\\:\\:joinedList\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: public/admin/inc/fun-joined.inc.php
-
-		-
-			message: "#^Method dragons\\:\\:sortJoined\\(\\) has parameter \\$a with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-joined.inc.php
-
-		-
-			message: "#^Method dragons\\:\\:sortJoined\\(\\) has parameter \\$s with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-joined.inc.php
-
-		-
-			message: "#^Method dragons\\:\\:sortJoined\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: public/admin/inc/fun-joined.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$a , array; search contents; optional\\)\\: Unexpected token \"\\$a\", expected type at offset 255$#"
 			count: 1
 			path: public/admin/inc/fun-joined.inc.php
@@ -2653,37 +1243,12 @@ parameters:
 			path: public/admin/inc/fun-joined.inc.php
 
 		-
-			message: "#^Parameter \\#2 \\$cmp_function of function uasort expects callable\\(mixed, mixed\\)\\: int, array\\(mixed, 'datecompare'\\) given\\.$#"
-			count: 1
-			path: public/admin/inc/fun-joined.inc.php
-
-		-
-			message: "#^Method dragons\\:\\:getJoined\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-joined.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; joined ID\\)\\: Unexpected token \"\\$i\", expected type at offset 70$#"
 			count: 1
 			path: public/admin/inc/fun-joined.inc.php
 
 		-
-			message: "#^Method dragons\\:\\:checkJoined\\(\\) has parameter \\$c with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-joined.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$c , int; category ID\\)\\: Unexpected token \"\\$c\", expected type at offset 124$#"
-			count: 1
-			path: public/admin/inc/fun-joined.inc.php
-
-		-
-			message: "#^Method dragons\\:\\:pullImage_Joined\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-joined.inc.php
-
-		-
-			message: "#^Method dragons\\:\\:pullImage_Joined\\(\\) has parameter \\$i with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-joined.inc.php
 
@@ -2698,17 +1263,7 @@ parameters:
 			path: public/admin/inc/fun-joined.inc.php
 
 		-
-			message: "#^Method dragons\\:\\:paginate\\(\\) has parameter \\$totalPagesCount with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-joined.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$totalPagesCount , int; pages summed by ceil\\(\\)\\)\\: Unexpected token \"\\$totalPagesCount\", expected type at offset 153$#"
-			count: 1
-			path: public/admin/inc/fun-joined.inc.php
-
-		-
-			message: "#^Method dragons\\:\\:getTemplate_Joined\\(\\) has parameter \\$i with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-joined.inc.php
 
@@ -2723,67 +1278,12 @@ parameters:
 			path: public/admin/inc/fun-joined.inc.php
 
 		-
-			message: "#^Method dragons\\:\\:showJoined\\(\\) has parameter \\$u with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-joined.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$u\\)\\: Unexpected token \"\\$u\", expected type at offset 112$#"
 			count: 1
 			path: public/admin/inc/fun-joined.inc.php
 
 		-
-			message: "#^Parameter \\#3 \\$status of method dragons\\:\\:joinedList\\(\\) expects string, int given\\.$#"
-			count: 2
-			path: public/admin/inc/fun-joined.inc.php
-
-		-
-			message: "#^Method dragons\\:\\:getChildrenRecursive\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: public/admin/inc/fun-joined.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:listingsList\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:indexListings\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:indexListings\\(\\) has parameter \\$b with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$b , boolean; 1 for selecting neglected listings, 0 for overdue\\)\\: Unexpected token \"\\$b\", expected type at offset 231$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:getListings\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:getListings\\(\\) has parameter \\$b with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:getListings\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:getSubject\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:getSubject\\(\\) has parameter \\$i with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-listings.inc.php
 
@@ -2793,52 +1293,7 @@ parameters:
 			path: public/admin/inc/fun-listings.inc.php
 
 		-
-			message: "#^Method wolves\\:\\:checkListings\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:checkListings\\(\\) has parameter \\$c with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:checkListings\\(\\) has parameter \\$s with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:getNewest\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:pullImage\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:pullImage\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 69$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:pullSubjects\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:pullSubjects\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:pullSubjects\\(\\) has parameter \\$s with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-listings.inc.php
 
@@ -2853,21 +1308,6 @@ parameters:
 			path: public/admin/inc/fun-listings.inc.php
 
 		-
-			message: "#^Method wolves\\:\\:pullSubjects_Links\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:pullSubjects_Links\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:pullSubjects_Links\\(\\) has parameter \\$s with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i , string; character\\-separated string of listing IDs\\)\\: Unexpected token \"\\$i\", expected type at offset 206$#"
 			count: 1
 			path: public/admin/inc/fun-listings.inc.php
@@ -2878,62 +1318,12 @@ parameters:
 			path: public/admin/inc/fun-listings.inc.php
 
 		-
-			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:getListingTemplate\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:getListingTemplate\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:getListingTemplate\\(\\) has parameter \\$t with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 80$#"
 			count: 1
 			path: public/admin/inc/fun-listings.inc.php
 
 		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$t , string; template title\\)\\: Unexpected token \"\\$t\", expected type at offset 124$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:listingTemplate\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:listingTemplate\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:listingTemplate\\(\\) has parameter \\$m with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:listingTemplate\\(\\) has parameter \\$s with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:listingTemplate\\(\\) has parameter \\$t with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:listingTemplate\\(\\) has parameter \\$u with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-listings.inc.php
 
@@ -2968,26 +1358,6 @@ parameters:
 			path: public/admin/inc/fun-listings.inc.php
 
 		-
-			message: "#^Method wolves\\:\\:getTemplate_Listings\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:getTemplate_Listings\\(\\) has parameter \\$b with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:getTemplate_Listings\\(\\) has parameter \\$f with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:getTemplate_Listings\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$b , string; template title; optional\\)\\: Unexpected token \"\\$b\", expected type at offset 126$#"
 			count: 1
 			path: public/admin/inc/fun-listings.inc.php
@@ -2998,37 +1368,7 @@ parameters:
 			path: public/admin/inc/fun-listings.inc.php
 
 		-
-			message: "#^Method wolves\\:\\:dropdown\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:dropdown\\(\\) has parameter \\$a with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:dropdown\\(\\) has parameter \\$s with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$s , string; status\\)\\: Unexpected token \"\\$s\", expected type at offset 115$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:_h\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:_h\\(\\) has parameter \\$c with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:_h\\(\\) has parameter \\$p with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-listings.inc.php
 
@@ -3043,21 +1383,6 @@ parameters:
 			path: public/admin/inc/fun-listings.inc.php
 
 		-
-			message: "#^Method wolves\\:\\:showListings\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:showListings\\(\\) has parameter \\$d with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Method wolves\\:\\:showListings\\(\\) has parameter \\$s with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-listings.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$d , string; display mode\\)\\: Unexpected token \"\\$d\", expected type at offset 114$#"
 			count: 1
 			path: public/admin/inc/fun-listings.inc.php
@@ -3066,41 +1391,6 @@ parameters:
 			message: "#^PHPDoc tag @param has invalid value \\(\\$s , string; status\\)\\: Unexpected token \"\\$s\", expected type at offset 72$#"
 			count: 1
 			path: public/admin/inc/fun-listings.inc.php
-
-		-
-			message: "#^Property snakes\\:\\:\\$next has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Property snakes\\:\\:\\$prev has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:membersList\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:membersList\\(\\) has parameter \\$b with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:membersList\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:membersList\\(\\) has parameter \\$p with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:membersList\\(\\) has parameter \\$s with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
 
 		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID; optional\\)\\: Unexpected token \"\\$i\", expected type at offset 58$#"
@@ -3124,41 +1414,6 @@ parameters:
 
 		-
 			message: "#^Variable \\$listing might not be defined\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:allMembers\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:allMembers\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:allMembers\\(\\) has parameter \\$p with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:sortMembers\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:sortMembers\\(\\) has parameter \\$a with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:sortMembers\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:sortMembers\\(\\) has parameter \\$s with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-members.inc.php
 
@@ -3188,52 +1443,12 @@ parameters:
 			path: public/admin/inc/fun-members.inc.php
 
 		-
-			message: "#^Method snakes\\:\\:membersPage\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:membersPage\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:membersPage\\(\\) has parameter \\$p with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 55$#"
 			count: 1
 			path: public/admin/inc/fun-members.inc.php
 
 		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$p , string; page section\\)\\: Unexpected token \"\\$p\", expected type at offset 90$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:getMembers\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:getMembers\\(\\) has parameter \\$b with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:getMembers\\(\\) has parameter \\$e with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:getMembers\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:getMembers\\(\\) has parameter \\$p with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-members.inc.php
 
@@ -3303,42 +1518,7 @@ parameters:
 			path: public/admin/inc/fun-members.inc.php
 
 		-
-			message: "#^Method snakes\\:\\:memberName\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:memberName\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; member ID\\)\\: Unexpected token \"\\$i\", expected type at offset 70$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:pullMembers\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:pullMembers\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:countMembers\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:countMembers\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:countMembers\\(\\) has parameter \\$s with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-members.inc.php
 
@@ -3353,21 +1533,6 @@ parameters:
 			path: public/admin/inc/fun-members.inc.php
 
 		-
-			message: "#^Method snakes\\:\\:getMemberCount\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:getMemberCount\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:getMemberCount\\(\\) has parameter \\$s with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 74$#"
 			count: 2
 			path: public/admin/inc/fun-members.inc.php
@@ -3378,52 +1543,12 @@ parameters:
 			path: public/admin/inc/fun-members.inc.php
 
 		-
-			message: "#^Method snakes\\:\\:newestFans\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:newestFans\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 70$#"
 			count: 1
 			path: public/admin/inc/fun-members.inc.php
 
 		-
-			message: "#^Method snakes\\:\\:formatPrevious\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:formatPrevious\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
 			message: "#^Access to an undefined property object\\:\\:\\$url\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:getUpdated\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:getUpdated\\(\\) has parameter \\$b with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:getUpdated\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:getUpdated\\(\\) has parameter \\$s with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-members.inc.php
 
@@ -3438,42 +1563,7 @@ parameters:
 			path: public/admin/inc/fun-members.inc.php
 
 		-
-			message: "#^Method snakes\\:\\:datecompare\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:datecompare\\(\\) has parameter \\$a with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:datecompare\\(\\) has parameter \\$b with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:checkMembers\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:checkMembers\\(\\) has parameter \\$c with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$c , string; member country\\)\\: Unexpected token \"\\$c\", expected type at offset 72$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:checkIfEmailExists\\(\\) has parameter \\$email with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:checkIfEmailExists\\(\\) has parameter \\$listingId with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-members.inc.php
 
@@ -3484,21 +1574,6 @@ parameters:
 
 		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$listingId , int; listing ID\\)\\: Unexpected token \"\\$listingId\", expected type at offset 142$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:getMemberInfo\\(\\) has parameter \\$email with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:getMemberInfo\\(\\) has parameter \\$listingId with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:getMemberInfo\\(\\) has parameter \\$password with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-members.inc.php
 
@@ -3518,26 +1593,6 @@ parameters:
 			path: public/admin/inc/fun-members.inc.php
 
 		-
-			message: "#^Method snakes\\:\\:validateMember\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:validateMember\\(\\) has parameter \\$e with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:validateMember\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:validateMember\\(\\) has parameter \\$p with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$e , string; member e\\-mail\\)\\: Unexpected token \"\\$e\", expected type at offset 82$#"
 			count: 1
 			path: public/admin/inc/fun-members.inc.php
@@ -3553,52 +1608,7 @@ parameters:
 			path: public/admin/inc/fun-members.inc.php
 
 		-
-			message: "#^Method snakes\\:\\:additional\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:additional\\(\\) has parameter \\$b with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:additional\\(\\) has parameter \\$n with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
 			message: "#^Variable \\$e might not be defined\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:addtoFave\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:addtoFave\\(\\) has parameter \\$a with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:addtoFave\\(\\) has parameter \\$e with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:eraseFave\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:eraseFave\\(\\) has parameter \\$a with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:eraseFave\\(\\) has parameter \\$e with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-members.inc.php
 
@@ -3609,16 +1619,6 @@ parameters:
 
 		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$e , string; favourite field to be deleted\\)\\: Unexpected token \"\\$e\", expected type at offset 190$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:paginate\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:paginate\\(\\) has parameter \\$pages with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-members.inc.php
 
@@ -3640,31 +1640,6 @@ parameters:
 		-
 			message: "#^Variable \\$search might not be defined\\.$#"
 			count: 8
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:format\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:format\\(\\) has parameter \\$e with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:format\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:format\\(\\) has parameter \\$m with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:format\\(\\) has parameter \\$t with no typehint specified\\.$#"
-			count: 1
 			path: public/admin/inc/fun-members.inc.php
 
 		-
@@ -3718,36 +1693,6 @@ parameters:
 			path: public/admin/inc/fun-members.inc.php
 
 		-
-			message: "#^Method snakes\\:\\:favejoin\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:faveDisplay\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:faveDisplay\\(\\) has parameter \\$e with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:membersPagination\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:membersPagination\\(\\) has parameter \\$q with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:membersPagination\\(\\) has parameter \\$s with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$q , string; country; optional\\)\\: Unexpected token \"\\$q\", expected type at offset 102$#"
 			count: 1
 			path: public/admin/inc/fun-members.inc.php
@@ -3758,59 +1703,9 @@ parameters:
 			path: public/admin/inc/fun-members.inc.php
 
 		-
-			message: "#^Method snakes\\:\\:membersSort\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:membersSort\\(\\) has parameter \\$b with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:membersSort\\(\\) has parameter \\$p with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:membersSort\\(\\) has parameter \\$s with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:membersDefault\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method snakes\\:\\:membersDefault\\(\\) has parameter \\$s with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$s , string; sort by all, name or country\\)\\: Unexpected token \"\\$s\", expected type at offset 74$#"
 			count: 1
 			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:editOption\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:editOption\\(\\) has parameter \\$e with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:editOption\\(\\) has parameter \\$o with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:editOption\\(\\) has parameter \\$v with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
 
 		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$e, character; decides if we're escaping the value\\)\\: Unexpected token \"\\$e\", expected type at offset 172$#"
@@ -3828,42 +1723,7 @@ parameters:
 			path: public/admin/inc/fun-misc.inc.php
 
 		-
-			message: "#^Method seahorses\\:\\:getOption\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:getOption\\(\\) has parameter \\$o with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$o, string; option we use to return it's value\\)\\: Unexpected token \"\\$o\", expected type at offset 60$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:editListing\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:editListing\\(\\) has parameter \\$e with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:editListing\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:editListing\\(\\) has parameter \\$o with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:editListing\\(\\) has parameter \\$v with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-misc.inc.php
 
@@ -3888,57 +1748,12 @@ parameters:
 			path: public/admin/inc/fun-misc.inc.php
 
 		-
-			message: "#^Method seahorses\\:\\:getVar\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:getVar\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:getVar\\(\\) has parameter \\$o with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i, int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 58$#"
 			count: 1
 			path: public/admin/inc/fun-misc.inc.php
 
 		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$o, string; listing option we use to return it's value\\)\\: Unexpected token \"\\$o\", expected type at offset 94$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:writeMessage\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:writeMessage\\(\\) has parameter \\$b with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:writeMessage\\(\\) has parameter \\$e with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:writeMessage\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:writeMessage\\(\\) has parameter \\$t with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:writeMessage\\(\\) has parameter \\$u with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-misc.inc.php
 
@@ -3968,46 +1783,6 @@ parameters:
 			path: public/admin/inc/fun-misc.inc.php
 
 		-
-			message: "#^Method seahorses\\:\\:formatExport\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:formatExport\\(\\) has parameter \\$b with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:formatExport\\(\\) has parameter \\$c with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:formatExport\\(\\) has parameter \\$s with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:getCount\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:getCount\\(\\) has parameter \\$c with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:getCount\\(\\) has parameter \\$f with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:getCount\\(\\) has parameter \\$y with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$c, string; table to pull our count from\\)\\: Unexpected token \"\\$c\", expected type at offset 362$#"
 			count: 1
 			path: public/admin/inc/fun-misc.inc.php
@@ -4027,47 +1802,12 @@ parameters:
 			path: public/admin/inc/fun-misc.inc.php
 
 		-
-			message: "#^Method seahorses\\:\\:memberCount\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:memberCount\\(\\) has parameter \\$p with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$p, int; status\\)\\: Unexpected token \"\\$p\", expected type at offset 64$#"
 			count: 1
 			path: public/admin/inc/fun-misc.inc.php
 
 		-
-			message: "#^Method seahorses\\:\\:templatesList\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:templatesList\\(\\) has parameter \\$b with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$b, string; return name or title\\)\\: Unexpected token \"\\$b\", expected type at offset 66$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:getTemplate\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:getTemplate\\(\\) has parameter \\$n with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:getTemplate\\(\\) has parameter \\$r with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-misc.inc.php
 
@@ -4082,27 +1822,7 @@ parameters:
 			path: public/admin/inc/fun-misc.inc.php
 
 		-
-			message: "#^Method seahorses\\:\\:templates\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:templates\\(\\) has parameter \\$n with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$n, string; template name \\(slug\\)\\)\\: Unexpected token \"\\$n\", expected type at offset 134$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:errorView\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-misc.inc.php
-
-		-
-			message: "#^Method seahorses\\:\\:errorView\\(\\) has parameter \\$i with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-misc.inc.php
 
@@ -4197,27 +1917,7 @@ parameters:
 			path: public/admin/inc/fun-process.inc.php
 
 		-
-			message: "#^Method turtles\\:\\:updatesList\\(\\) has parameter \\$s with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
-			message: "#^Method turtles\\:\\:updatesList\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$s , int; listing ID; optional\\)\\: Unexpected token \"\\$s\", expected type at offset 72$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
-			message: "#^Method turtles\\:\\:commentsList\\(\\) has parameter \\$e with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
-			message: "#^Method turtles\\:\\:commentsList\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: public/admin/inc/fun-updates.inc.php
 
@@ -4227,22 +1927,7 @@ parameters:
 			path: public/admin/inc/fun-updates.inc.php
 
 		-
-			message: "#^Method turtles\\:\\:grabID\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
-			message: "#^Method turtles\\:\\:getEntry\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; update ID\\)\\: Unexpected token \"\\$i\", expected type at offset 69$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
-			message: "#^Method turtles\\:\\:entryName\\(\\) has parameter \\$i with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-updates.inc.php
 
@@ -4252,17 +1937,7 @@ parameters:
 			path: public/admin/inc/fun-updates.inc.php
 
 		-
-			message: "#^Method turtles\\:\\:getComment\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i\\)\\: Unexpected token \"\\$i\", expected type at offset 94$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
-			message: "#^Method turtles\\:\\:strip_characters\\(\\) has parameter \\$r with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-updates.inc.php
 
@@ -4272,32 +1947,7 @@ parameters:
 			path: public/admin/inc/fun-updates.inc.php
 
 		-
-			message: "#^Method turtles\\:\\:cleanLJ\\(\\) has parameter \\$post with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$post\\)\\: Unexpected token \"\\$post\", expected type at offset 91$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
-			message: "#^Method turtles\\:\\:formatEntry\\(\\) has parameter \\$c with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
-			message: "#^Method turtles\\:\\:formatEntry\\(\\) has parameter \\$k with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
-			message: "#^Method turtles\\:\\:formatEntry\\(\\) has parameter \\$n with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
-			message: "#^Method turtles\\:\\:formatEntry\\(\\) has parameter \\$s with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-updates.inc.php
 
@@ -4327,22 +1977,7 @@ parameters:
 			path: public/admin/inc/fun-updates.inc.php
 
 		-
-			message: "#^Method turtles\\:\\:blogURL\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
-			message: "#^Method turtles\\:\\:makeEntryLink\\(\\) has parameter \\$e with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$e\\)\\: Unexpected token \"\\$e\", expected type at offset 97$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
-			message: "#^Method turtles\\:\\:makeExcerpt\\(\\) has parameter \\$i with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-updates.inc.php
 
@@ -4352,31 +1987,7 @@ parameters:
 			path: public/admin/inc/fun-updates.inc.php
 
 		-
-			message: "#^Method turtles\\:\\:cleanText\\(\\) has parameter \\$p with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$p\\)\\: Unexpected token \"\\$p\", expected type at offset 624$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
-			message:
-				"""
-					#^Binary operation "\\.\\=" between array\\|string and '
-					' results in an error\\.$#
-				"""
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
-			message: "#^Parameter \\#1 \\$haystack of function strpos expects string, array\\|string given\\.$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
-			message: "#^Method turtles\\:\\:templateEntries\\(\\) has parameter \\$d with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-updates.inc.php
 
@@ -4391,70 +2002,12 @@ parameters:
 			path: public/admin/inc/fun-updates.inc.php
 
 		-
-			message: "#^Cannot access offset 2 on array\\<int, string\\>\\|false\\.$#"
-			count: 2
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
-			message:
-				"""
-					#^Binary operation "\\." between '\\<div class\\="entry"\\>
-					' and array\\<string\\>\\|string\\|null results in an error\\.$#
-				"""
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
-			message:
-				"""
-					#^Binary operation "\\." between '\\<div class\\=\\\\'post\\\\'\\>
-					' and array\\<string\\>\\|string\\|null results in an error\\.$#
-				"""
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function html_entity_decode expects string, array\\|string given\\.$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
-			message: "#^Method turtles\\:\\:updatesDefault\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
-			message: "#^Method turtles\\:\\:updatesDefault\\(\\) has parameter \\$b with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
-			message: "#^Method turtles\\:\\:updatesDefault\\(\\) has parameter \\$s with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$b\\)\\: Unexpected token \"\\$b\", expected type at offset 119$#"
 			count: 1
 			path: public/admin/inc/fun-updates.inc.php
 
 		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$s\\)\\: Unexpected token \"\\$s\", expected type at offset 98$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
-			message: "#^Parameter \\#2 \\$totalPagesCount of static method Robotess\\\\PaginationUtils\\:\\:rangedPagination\\(\\) expects int, float given\\.$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
-			message: "#^Method turtles\\:\\:comments\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
-			message: "#^Method turtles\\:\\:comments\\(\\) has parameter \\$i with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-updates.inc.php
 
@@ -4469,47 +2022,7 @@ parameters:
 			path: public/admin/inc/fun-updates.inc.php
 
 		-
-			message: "#^Method turtles\\:\\:getRSS\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
-			message: "#^Parameter \\#1 \\$str of function strip_tags expects string, array\\<string\\>\\|string given\\.$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
-			message: "#^Binary operation \"\\.\" between array\\<string\\>\\|string\\|null and '\\<a href\\=\"' results in an error\\.$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
-			message: "#^Part \\$raw \\(array\\<string\\>\\|string\\) of encapsed string cannot be cast to string\\.$#"
-			count: 1
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
-			message: "#^Method frogs\\:\\:installAddon\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-utility.inc.php
-
-		-
-			message: "#^Method frogs\\:\\:installAddon\\(\\) has parameter \\$c with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-utility.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$c, string; addon slug\\)\\: Unexpected token \"\\$c\", expected type at offset 103$#"
-			count: 1
-			path: public/admin/inc/fun-utility.inc.php
-
-		-
-			message: "#^Method frogs\\:\\:uninstallAddon\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-utility.inc.php
-
-		-
-			message: "#^Method frogs\\:\\:uninstallAddon\\(\\) has parameter \\$c with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-utility.inc.php
 
@@ -4519,62 +2032,12 @@ parameters:
 			path: public/admin/inc/fun-utility.inc.php
 
 		-
-			message: "#^Method frogs\\:\\:installCategories\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-utility.inc.php
-
-		-
-			message: "#^Method frogs\\:\\:showWelcome\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-utility.inc.php
-
-		-
-			message: "#^Method frogs\\:\\:installMain\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-utility.inc.php
-
-		-
-			message: "#^Method frogs\\:\\:installFeatures\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-utility.inc.php
-
-		-
-			message: "#^Method frogs\\:\\:installAddons\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-utility.inc.php
-
-		-
-			message: "#^Method frogs\\:\\:showFinished\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-utility.inc.php
-
-		-
-			message: "#^Method mermaids\\:\\:wishlistList\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-wishlist.inc.php
-
-		-
-			message: "#^Method mermaids\\:\\:wishlistList\\(\\) has parameter \\$b with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-wishlist.inc.php
-
-		-
-			message: "#^Method mermaids\\:\\:wishlistList\\(\\) has parameter \\$c with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-wishlist.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$b, string; sort by category or type; optional\\)\\: Unexpected token \"\\$b\", expected type at offset 64$#"
 			count: 1
 			path: public/admin/inc/fun-wishlist.inc.php
 
 		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$c, string; category ID or wishlist type; optional\\)\\: Unexpected token \"\\$c\", expected type at offset 128$#"
-			count: 1
-			path: public/admin/inc/fun-wishlist.inc.php
-
-		-
-			message: "#^Method mermaids\\:\\:countWishes\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-wishlist.inc.php
 
@@ -4589,47 +2052,12 @@ parameters:
 			path: public/admin/inc/fun-wishlist.inc.php
 
 		-
-			message: "#^Method mermaids\\:\\:getWish\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-wishlist.inc.php
-
-		-
-			message: "#^Method mermaids\\:\\:getWish\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-wishlist.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i, int; wishlist ID\\)\\: Unexpected token \"\\$i\", expected type at offset 57$#"
 			count: 1
 			path: public/admin/inc/fun-wishlist.inc.php
 
 		-
-			message: "#^Method mermaids\\:\\:pullImage_Wishlist\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-wishlist.inc.php
-
-		-
-			message: "#^Method mermaids\\:\\:pullImage_Wishlist\\(\\) has parameter \\$i with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-wishlist.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i, int; wishlist ID\\)\\: Unexpected token \"\\$i\", expected type at offset 68$#"
-			count: 1
-			path: public/admin/inc/fun-wishlist.inc.php
-
-		-
-			message: "#^Method mermaids\\:\\:getTemplate_Wishlist\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-wishlist.inc.php
-
-		-
-			message: "#^Method mermaids\\:\\:getTemplate_Wishlist\\(\\) has parameter \\$b with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun-wishlist.inc.php
-
-		-
-			message: "#^Method mermaids\\:\\:getTemplate_Wishlist\\(\\) has parameter \\$i with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun-wishlist.inc.php
 
@@ -4649,17 +2077,7 @@ parameters:
 			path: public/admin/inc/fun-wishlist.inc.php
 
 		-
-			message: "#^Method tigers\\:\\:cleanMys\\(\\) has parameter \\$post with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$post\\)\\: Unexpected token \"\\$post\", expected type at offset 171$#"
-			count: 1
-			path: public/admin/inc/fun.inc.php
-
-		-
-			message: "#^Method tigers\\:\\:replaceArray\\(\\) has parameter \\$p with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun.inc.php
 
@@ -4669,27 +2087,7 @@ parameters:
 			path: public/admin/inc/fun.inc.php
 
 		-
-			message: "#^Method tigers\\:\\:emptyarray\\(\\) has parameter \\$a with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun.inc.php
-
-		-
-			message: "#^Method tigers\\:\\:emptyarray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: public/admin/inc/fun.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$a\\)\\: Unexpected token \"\\$a\", expected type at offset 276$#"
-			count: 1
-			path: public/admin/inc/fun.inc.php
-
-		-
-			message: "#^Method tigers\\:\\:emptymulti\\(\\) has parameter \\$a with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun.inc.php
-
-		-
-			message: "#^Method tigers\\:\\:emptymulti\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: public/admin/inc/fun.inc.php
 
@@ -4699,37 +2097,12 @@ parameters:
 			path: public/admin/inc/fun.inc.php
 
 		-
-			message: "#^Method tigers\\:\\:emptyobject\\(\\) has parameter \\$o with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$o\\)\\: Unexpected token \"\\$o\", expected type at offset 160$#"
 			count: 1
 			path: public/admin/inc/fun.inc.php
 
 		-
-			message: "#^Method tigers\\:\\:collective\\(\\) has parameter \\$a with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$a\\)\\: Unexpected token \"\\$a\", expected type at offset 226$#"
-			count: 1
-			path: public/admin/inc/fun.inc.php
-
-		-
-			message: "#^Method tigers\\:\\:buildCollective\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun.inc.php
-
-		-
-			message: "#^Method tigers\\:\\:logout\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun.inc.php
-
-		-
-			message: "#^Method tigers\\:\\:formDefault\\(\\) has parameter \\$d with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun.inc.php
 
@@ -4744,27 +2117,7 @@ parameters:
 			path: public/admin/inc/fun.inc.php
 
 		-
-			message: "#^Method tigers\\:\\:replaceSpec\\(\\) has parameter \\$p with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$p\\)\\: Unexpected token \"\\$p\", expected type at offset 94$#"
-			count: 1
-			path: public/admin/inc/fun.inc.php
-
-		-
-			message: "#^Method tigers\\:\\:displayError\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun.inc.php
-
-		-
-			message: "#^Method tigers\\:\\:displayError\\(\\) has parameter \\$b with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun.inc.php
-
-		-
-			message: "#^Method tigers\\:\\:displayError\\(\\) has parameter \\$e with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun.inc.php
 
@@ -4779,17 +2132,7 @@ parameters:
 			path: public/admin/inc/fun.inc.php
 
 		-
-			message: "#^Method tigers\\:\\:displaySuccess\\(\\) has parameter \\$p with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/fun.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$p\\)\\: Unexpected token \"\\$p\", expected type at offset 97$#"
-			count: 1
-			path: public/admin/inc/fun.inc.php
-
-		-
-			message: "#^Method tigers\\:\\:backLink\\(\\) has parameter \\$p with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/fun.inc.php
 
@@ -4814,26 +2157,6 @@ parameters:
 			path: public/admin/inc/func.microakismet.inc.php
 
 		-
-			message: "#^Function akismet_check\\(\\) has parameter \\$vars with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: public/admin/inc/func.microakismet.inc.php
-
-		-
-			message: "#^Parameter \\#3 \\$url of function _akismet_send expects array, string given\\.$#"
-			count: 4
-			path: public/admin/inc/func.microakismet.inc.php
-
-		-
-			message: "#^Function akismet_spam\\(\\) has parameter \\$vars with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: public/admin/inc/func.microakismet.inc.php
-
-		-
-			message: "#^Function akismet_ham\\(\\) has parameter \\$vars with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: public/admin/inc/func.microakismet.inc.php
-
-		-
 			message: "#^Default value of the parameter \\#1 \\$args \\(string\\) of function _akismet_send\\(\\) is incompatible with type array\\.$#"
 			count: 1
 			path: public/admin/inc/func.microakismet.inc.php
@@ -4844,22 +2167,7 @@ parameters:
 			path: public/admin/inc/func.microakismet.inc.php
 
 		-
-			message: "#^Function _akismet_send\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: public/admin/inc/func.microakismet.inc.php
-
-		-
-			message: "#^Function _akismet_send\\(\\) has parameter \\$url with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: public/admin/inc/func.microakismet.inc.php
-
-		-
 			message: "#^Part \\$url \\(array\\) of encapsed string cannot be cast to string\\.$#"
-			count: 1
-			path: public/admin/inc/func.microakismet.inc.php
-
-		-
-			message: "#^Offset 1 does not exist on ''\\|\\(array\\<int, string\\>&nonEmpty\\)\\.$#"
 			count: 1
 			path: public/admin/inc/func.microakismet.inc.php
 
@@ -4934,16 +2242,6 @@ parameters:
 			path: public/admin/inc/show-codes-form.php
 
 		-
-			message: "#^Cannot access offset 2 on array\\|false\\.$#"
-			count: 1
-			path: public/admin/inc/show-codes-form.php
-
-		-
-			message: "#^Parameter \\#1 \\$str of function sha1 expects string, int\\<0, max\\> given\\.$#"
-			count: 1
-			path: public/admin/inc/show-codes-form.php
-
-		-
 			message: "#^Variable \\$hide_address might not be defined\\.$#"
 			count: 1
 			path: public/admin/inc/show-codes-form.php
@@ -4965,11 +2263,6 @@ parameters:
 
 		-
 			message: "#^Variable \\$myadminpath might not be defined\\.$#"
-			count: 1
-			path: public/admin/inc/show-codes-form.php
-
-		-
-			message: "#^Parameter \\#1 \\$str of function sha1 expects string, int\\<10000, 999999\\> given\\.$#"
 			count: 1
 			path: public/admin/inc/show-codes-form.php
 
@@ -5139,11 +2432,6 @@ parameters:
 			path: public/admin/inc/show-form.php
 
 		-
-			message: "#^Strict comparison using \\=\\=\\= between int\\<0, max\\>\\|false and true will always evaluate to false\\.$#"
-			count: 2
-			path: public/admin/inc/show-form.php
-
-		-
 			message: "#^Variable \\$octopus might not be defined\\.$#"
 			count: 14
 			path: public/admin/inc/show-form.php
@@ -5219,11 +2507,6 @@ parameters:
 			path: public/admin/inc/show-form.php
 
 		-
-			message: "#^Parameter \\#1 \\$str of function sha1 expects string, int\\<10000, 999999\\> given\\.$#"
-			count: 1
-			path: public/admin/inc/show-form.php
-
-		-
 			message: "#^Variable \\$my_website might not be defined\\.$#"
 			count: 1
 			path: public/admin/inc/show-form.php
@@ -5251,16 +2534,6 @@ parameters:
 		-
 			message: "#^Variable \\$getItem might not be defined\\.$#"
 			count: 15
-			path: public/admin/inc/show-join.php
-
-		-
-			message: "#^Parameter \\#1 \\$str of function sha1 expects string, int\\<9999, 999999\\> given\\.$#"
-			count: 1
-			path: public/admin/inc/show-join.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of function array_map expects \\(callable\\(\\)\\: mixed\\)\\|null, array\\(mixed, 'replaceArray'\\) given\\.$#"
-			count: 1
 			path: public/admin/inc/show-join.php
 
 		-
@@ -5324,11 +2597,6 @@ parameters:
 			path: public/admin/inc/show-join.php
 
 		-
-			message: "#^Parameter \\#1 \\$str of function sha1 expects string, int\\<10000, 999999\\> given\\.$#"
-			count: 1
-			path: public/admin/inc/show-join.php
-
-		-
 			message: "#^Variable \\$fave_field in isset\\(\\) always exists and is not nullable\\.$#"
 			count: 2
 			path: public/admin/inc/show-join.php
@@ -5356,11 +2624,6 @@ parameters:
 		-
 			message: "#^Variable \\$seahorses might not be defined\\.$#"
 			count: 3
-			path: public/admin/inc/show-joined.php
-
-		-
-			message: "#^Function _h\\(\\) has parameter \\$p with no typehint specified\\.$#"
-			count: 1
 			path: public/admin/inc/show-joined.php
 
 		-
@@ -5411,11 +2674,6 @@ parameters:
 		-
 			message: "#^Variable \\$wolves might not be defined\\.$#"
 			count: 3
-			path: public/admin/inc/show-kim-join.php
-
-		-
-			message: "#^Parameter \\#1 \\$str of function md5 expects string, int\\<99999, 999999\\> given\\.$#"
-			count: 1
 			path: public/admin/inc/show-kim-join.php
 
 		-
@@ -5484,16 +2742,6 @@ parameters:
 			path: public/admin/inc/show-kim-join.php
 
 		-
-			message: "#^Negated boolean expression is always true\\.$#"
-			count: 1
-			path: public/admin/inc/show-kim-join.php
-
-		-
-			message: "#^Parameter \\#1 \\$str of function sha1 expects string, int\\<10000, 999999\\> given\\.$#"
-			count: 1
-			path: public/admin/inc/show-kim-join.php
-
-		-
 			message: "#^Constant MAINDIR not found\\.$#"
 			count: 2
 			path: public/admin/inc/show-kim-members.php
@@ -5510,11 +2758,6 @@ parameters:
 
 		-
 			message: "#^Variable \\$scorpions might not be defined\\.$#"
-			count: 1
-			path: public/admin/inc/show-kim-members.php
-
-		-
-			message: "#^Binary operation \"\\.\\=\" between '\\?' and array\\|string results in an error\\.$#"
 			count: 1
 			path: public/admin/inc/show-kim-members.php
 
@@ -5561,11 +2804,6 @@ parameters:
 		-
 			message: "#^Variable \\$kimadmin might not be defined\\.$#"
 			count: 2
-			path: public/admin/inc/show-kim-reset.php
-
-		-
-			message: "#^Parameter \\#1 \\$str of function md5 expects string, int\\<10000, 999999\\> given\\.$#"
-			count: 1
 			path: public/admin/inc/show-kim-reset.php
 
 		-
@@ -5759,11 +2997,6 @@ parameters:
 			path: public/admin/inc/show-members.php
 
 		-
-			message: "#^Binary operation \"\\.\" between '\\?' and array\\|string results in an error\\.$#"
-			count: 1
-			path: public/admin/inc/show-members.php
-
-		-
 			message: "#^Variable \\$getItem might not be defined\\.$#"
 			count: 12
 			path: public/admin/inc/show-members.php
@@ -5874,11 +3107,6 @@ parameters:
 			path: public/admin/inc/show-quotes.php
 
 		-
-			message: "#^Parameter \\#1 \\(array\\|string\\) of echo cannot be converted to string\\.$#"
-			count: 1
-			path: public/admin/inc/show-quotes.php
-
-		-
 			message: "#^Constant MAINDIR not found\\.$#"
 			count: 1
 			path: public/admin/inc/show-random.php
@@ -5961,11 +3189,6 @@ parameters:
 		-
 			message: "#^Variable \\$snakes might not be defined\\.$#"
 			count: 2
-			path: public/admin/inc/show-reset.php
-
-		-
-			message: "#^Parameter \\#1 \\$str of function sha1 expects string, int\\<80, 850\\> given\\.$#"
-			count: 1
 			path: public/admin/inc/show-reset.php
 
 		-
@@ -6224,773 +3447,13 @@ parameters:
 			path: public/admin/inc/show-wishlist.php
 
 		-
-			message: "#^Property crosspost\\:\\:\\$clientid has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Property crosspost\\:\\:\\$protocol_version has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Property crosspost\\:\\:\\$strict_utf8 has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Property crosspost\\:\\:\\$lineendings has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Property crosspost\\:\\:\\$rpc_timeout has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Property crosspost\\:\\:\\$journal_url has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Property crosspost\\:\\:\\$lj_srvr has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Property crosspost\\:\\:\\$lj_port has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Property crosspost\\:\\:\\$lj_xmlrpcuri has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Property crosspost\\:\\:\\$lj_userid has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Property crosspost\\:\\:\\$lj_md5pwd has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Property crosspost\\:\\:\\$lj_comm has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Property crosspost\\:\\:\\$lj_challenge has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Property crosspost\\:\\:\\$lj_logged has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Method crosspost\\:\\:__construct\\(\\) has parameter \\$lj_comm with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Method crosspost\\:\\:__construct\\(\\) has parameter \\$lj_md5pwd with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Method crosspost\\:\\:__construct\\(\\) has parameter \\$lj_userid with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Method crosspost\\:\\:__construct\\(\\) has parameter \\$server with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Method crosspost\\:\\:login\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Method crosspost\\:\\:postevent\\(\\) has parameter \\$d with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Method crosspost\\:\\:postevent\\(\\) has parameter \\$m with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Method crosspost\\:\\:postevent\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Method crosspost\\:\\:editevent\\(\\) has parameter \\$d with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Method crosspost\\:\\:editevent\\(\\) has parameter \\$m with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Method crosspost\\:\\:editevent\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Method crosspost\\:\\:deleteevent\\(\\) has parameter \\$itemid with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Method crosspost\\:\\:deleteevent\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Method crosspost\\:\\:getevents\\(\\) has parameter \\$itemid with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Method crosspost\\:\\:getevents\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Method crosspost\\:\\:get_challenge\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Method crosspost\\:\\:do_the_thing\\(\\) has parameter \\$method with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Method crosspost\\:\\:do_the_thing\\(\\) has parameter \\$params with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Method crosspost\\:\\:encodeRecurse\\(\\) has parameter \\$a with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Method crosspost\\:\\:fixEncoding\\(\\) has parameter \\$in_str with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-crosspost.inc.php
-
-		-
-			message: "#^Property IXR_Value\\:\\:\\$data has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Value\\:\\:\\$type has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Value\\:\\:__construct\\(\\) has parameter \\$data with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Value\\:\\:__construct\\(\\) has parameter \\$type with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Value\\:\\:calculateType\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Value\\:\\:getXml\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Unreachable statement \\- code above always terminates\\.$#"
-			count: 7
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Value\\:\\:isStruct\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Value\\:\\:isStruct\\(\\) has parameter \\$array with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Message\\:\\:\\$message has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Message\\:\\:\\$messageType has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Message\\:\\:\\$faultCode has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Message\\:\\:\\$faultString has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Message\\:\\:\\$methodName has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Message\\:\\:\\$params has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Message\\:\\:\\$_arraystructs has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Message\\:\\:\\$_arraystructstypes has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Message\\:\\:\\$_currentStructName has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Message\\:\\:\\$_param has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Message\\:\\:\\$_value has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Message\\:\\:\\$_currentTag has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Message\\:\\:\\$_currentTagContents has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Message\\:\\:\\$_parser has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Message\\:\\:__construct\\(\\) has parameter \\$message with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Message\\:\\:parse\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Parameter \\#2 \\$shdl of function xml_set_element_handler expects callable\\(\\)\\: mixed, 'tag_open' given\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Parameter \\#3 \\$ehdl of function xml_set_element_handler expects callable\\(\\)\\: mixed, 'tag_close' given\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Parameter \\#2 \\$hdl of function xml_set_character_data_handler expects callable\\(\\)\\: mixed, 'cdata' given\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Message\\:\\:tag_open\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Message\\:\\:tag_open\\(\\) has parameter \\$attr with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Message\\:\\:tag_open\\(\\) has parameter \\$parser with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Message\\:\\:tag_open\\(\\) has parameter \\$tag with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
 			message: "#^Access to an undefined property IXR_Message\\:\\:\\$currentTag\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Message\\:\\:cdata\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Message\\:\\:cdata\\(\\) has parameter \\$cdata with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Message\\:\\:cdata\\(\\) has parameter \\$parser with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Message\\:\\:tag_close\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Message\\:\\:tag_close\\(\\) has parameter \\$parser with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Message\\:\\:tag_close\\(\\) has parameter \\$tag with no typehint specified\\.$#"
 			count: 1
 			path: public/admin/inc/vendors/class-ixr.inc.php
 
 		-
 			message: "#^Variable \\$value might not be defined\\.$#"
 			count: 3
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Server\\:\\:\\$data has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Server\\:\\:\\$callbacks has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Server\\:\\:\\$message has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Server\\:\\:\\$capabilities has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Server\\:\\:__construct\\(\\) has parameter \\$callbacks with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Server\\:\\:__construct\\(\\) has parameter \\$data with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Server\\:\\:serve\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Server\\:\\:serve\\(\\) has parameter \\$data with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Server\\:\\:call\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Server\\:\\:call\\(\\) has parameter \\$args with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Server\\:\\:call\\(\\) has parameter \\$methodname with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Server\\:\\:error\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Server\\:\\:error\\(\\) has parameter \\$error with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Server\\:\\:error\\(\\) has parameter \\$message with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Server\\:\\:output\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Server\\:\\:output\\(\\) has parameter \\$xml with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Server\\:\\:hasMethod\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Server\\:\\:hasMethod\\(\\) has parameter \\$method with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Server\\:\\:setCapabilities\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Server\\:\\:getCapabilities\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Server\\:\\:getCapabilities\\(\\) has parameter \\$args with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Server\\:\\:setCallbacks\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Server\\:\\:listMethods\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Server\\:\\:listMethods\\(\\) has parameter \\$args with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Server\\:\\:multiCall\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Server\\:\\:multiCall\\(\\) has parameter \\$methodcalls with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Request\\:\\:\\$method has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Request\\:\\:\\$args has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Request\\:\\:\\$xml has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Request\\:\\:__construct\\(\\) has parameter \\$args with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Request\\:\\:__construct\\(\\) has parameter \\$method with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Request\\:\\:getLength\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Request\\:\\:getXml\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Client\\:\\:\\$server has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Client\\:\\:\\$port has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Client\\:\\:\\$path has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Client\\:\\:\\$useragent has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Client\\:\\:\\$headers has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Client\\:\\:\\$response has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Client\\:\\:\\$message has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Client\\:\\:\\$debug has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Client\\:\\:\\$timeout has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Client\\:\\:\\$error has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Client\\:\\:__construct\\(\\) has parameter \\$path with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Client\\:\\:__construct\\(\\) has parameter \\$port with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Client\\:\\:__construct\\(\\) has parameter \\$server with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Client\\:\\:__construct\\(\\) has parameter \\$timeout with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Cannot access offset 'host' on array\\(\\?'scheme' \\=\\> string, \\?'host' \\=\\> string, \\?'port' \\=\\> int, \\?'user' \\=\\> string, \\?'pass' \\=\\> string, \\?'path' \\=\\> string, \\?'query' \\=\\> string, \\?'fragment' \\=\\> string\\)\\|false\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Cannot access offset 'port' on array\\(\\?'scheme' \\=\\> string, \\?'host' \\=\\> string, \\?'port' \\=\\> int, \\?'user' \\=\\> string, \\?'pass' \\=\\> string, \\?'path' \\=\\> string, \\?'query' \\=\\> string, \\?'fragment' \\=\\> string\\)\\|false\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Cannot access offset 'path' on array\\(\\?'scheme' \\=\\> string, \\?'host' \\=\\> string, \\?'port' \\=\\> int, \\?'user' \\=\\> string, \\?'pass' \\=\\> string, \\?'path' \\=\\> string, \\?'query' \\=\\> string, \\?'fragment' \\=\\> string\\)\\|false\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Client\\:\\:query\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Parameter \\#1 \\$haystack of function strpos expects string, string\\|false given\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Parameter \\#1 \\$str of function trim expects string, string\\|false given\\.$#"
-			count: 2
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Client\\:\\:getResponse\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Client\\:\\:isError\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Client\\:\\:getErrorCode\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Client\\:\\:getErrorMessage\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Error\\:\\:\\$code has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Error\\:\\:\\$message has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Error\\:\\:__construct\\(\\) has parameter \\$code with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Error\\:\\:__construct\\(\\) has parameter \\$message with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Error\\:\\:getXml\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Date\\:\\:\\$year has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Date\\:\\:\\$month has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Date\\:\\:\\$day has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Date\\:\\:\\$hour has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Date\\:\\:\\$minute has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Date\\:\\:\\$second has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Date\\:\\:\\$timezone has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Date\\:\\:__construct\\(\\) has parameter \\$time with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Date\\:\\:parseTimestamp\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Date\\:\\:parseTimestamp\\(\\) has parameter \\$timestamp with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Date\\:\\:parseIso\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Date\\:\\:parseIso\\(\\) has parameter \\$iso with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Date\\:\\:getIso\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Date\\:\\:getXml\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Date\\:\\:getTimestamp\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Property IXR_Base64\\:\\:\\$data has no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Base64\\:\\:__construct\\(\\) has parameter \\$data with no typehint specified\\.$#"
-			count: 1
-			path: public/admin/inc/vendors/class-ixr.inc.php
-
-		-
-			message: "#^Method IXR_Base64\\:\\:getXml\\(\\) has no return typehint specified\\.$#"
-			count: 1
 			path: public/admin/inc/vendors/class-ixr.inc.php
 
 		-
@@ -7069,11 +3532,6 @@ parameters:
 			path: public/admin/install.php
 
 		-
-			message: "#^Parameter \\#1 \\$str of function sha1 expects string, int\\<9999, 999999\\> given\\.$#"
-			count: 1
-			path: public/admin/install.php
-
-		-
 			message: "#^Variable \\$affa might not be defined\\.$#"
 			count: 1
 			path: public/admin/install.php
@@ -7134,13 +3592,13 @@ parameters:
 			path: public/admin/install.php
 
 		-
-			message: "#^Variable \\$seahorses might not be defined\\.$#"
-			count: 2
+			message: "#^Variable \\$notSupportedAddons might not be defined\\.$#"
+			count: 1
 			path: public/admin/install.php
 
 		-
-			message: "#^Parameter \\#1 \\$string of function substr expects string, int\\<99999, 888888\\> given\\.$#"
-			count: 1
+			message: "#^Variable \\$seahorses might not be defined\\.$#"
+			count: 2
 			path: public/admin/install.php
 
 		-
@@ -7166,21 +3624,6 @@ parameters:
 		-
 			message: "#^Variable \\$lions might not be defined\\.$#"
 			count: 10
-			path: public/admin/joined.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, float\\|int\\<min, 1\\>\\|string given\\.$#"
-			count: 2
-			path: public/admin/joined.php
-
-		-
-			message: "#^Cannot access offset 2 on array\\|false\\.$#"
-			count: 2
-			path: public/admin/joined.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of function array_map expects \\(callable\\(\\)\\: mixed\\)\\|null, array\\(mixed, 'cleanMys'\\) given\\.$#"
-			count: 2
 			path: public/admin/joined.php
 
 		-
@@ -7236,16 +3679,6 @@ parameters:
 		-
 			message: "#^Variable \\$wolves might not be defined\\.$#"
 			count: 8
-			path: public/admin/kim.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, float\\|int\\<min, 1\\>\\|string given\\.$#"
-			count: 3
-			path: public/admin/kim.php
-
-		-
-			message: "#^Parameter \\#1 \\$str of function sha1 expects string, int\\<0, max\\> given\\.$#"
-			count: 1
 			path: public/admin/kim.php
 
 		-
@@ -7325,21 +3758,6 @@ parameters:
 
 		-
 			message: "#^Variable \\$get_date_array might not be defined\\.$#"
-			count: 2
-			path: public/admin/listings.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of function array_map expects \\(callable\\(\\)\\: mixed\\)\\|null, array\\(mixed, 'cleanMys'\\) given\\.$#"
-			count: 2
-			path: public/admin/listings.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, float\\|int\\|string given\\.$#"
-			count: 8
-			path: public/admin/listings.php
-
-		-
-			message: "#^Cannot access offset 2 on array\\|false\\.$#"
 			count: 2
 			path: public/admin/listings.php
 
@@ -7439,21 +3857,6 @@ parameters:
 			path: public/admin/members.php
 
 		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, float\\|int\\<min, 1\\>\\|string given\\.$#"
-			count: 2
-			path: public/admin/members.php
-
-		-
-			message: "#^Parameter \\#1 \\$str of function sha1 expects string, int\\<1990, 16770\\> given\\.$#"
-			count: 1
-			path: public/admin/members.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of function array_map expects \\(callable\\(\\)\\: mixed\\)\\|null, array\\(mixed, 'replaceArray'\\) given\\.$#"
-			count: 2
-			path: public/admin/members.php
-
-		-
 			message: "#^Variable \\$fave might not be defined\\.$#"
 			count: 2
 			path: public/admin/members.php
@@ -7519,23 +3922,8 @@ parameters:
 			path: public/admin/options.php
 
 		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, float\\|int\\|string given\\.$#"
-			count: 3
-			path: public/admin/options.php
-
-		-
 			message: "#^Variable \\$get_markup_array might not be defined\\.$#"
 			count: 2
-			path: public/admin/options.php
-
-		-
-			message: "#^Parameter \\#1 \\$str of function sha1 expects string, int\\<9000, 985999\\> given\\.$#"
-			count: 1
-			path: public/admin/options.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of function array_map expects \\(callable\\(\\)\\: mixed\\)\\|null, array\\(mixed, 'cleanMys'\\) given\\.$#"
-			count: 1
 			path: public/admin/options.php
 
 		-
@@ -7574,11 +3962,6 @@ parameters:
 			path: public/admin/pro.inc.php
 
 		-
-			message: "#^Parameter \\#1 \\$str of function sha1 expects string, int\\<99999, 999999\\> given\\.$#"
-			count: 2
-			path: public/admin/pro.inc.php
-
-		-
 			message: "#^Variable \\$_ST might not be defined\\.$#"
 			count: 2
 			path: public/admin/pro.inc.php
@@ -7611,11 +3994,6 @@ parameters:
 		-
 			message: "#^Variable \\$leopards might not be defined\\.$#"
 			count: 2
-			path: public/admin/pro.inc.php
-
-		-
-			message: "#^Comparison operation \"\\>\" between 1 and 0 is always true\\.$#"
-			count: 1
 			path: public/admin/pro.inc.php
 
 		-
@@ -7789,28 +4167,8 @@ parameters:
 			path: public/admin/updates.php
 
 		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, float\\|int\\|string given\\.$#"
-			count: 10
-			path: public/admin/updates.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of function array_map expects \\(callable\\(\\)\\: mixed\\)\\|null, array\\(mixed, 'cleanMys'\\) given\\.$#"
-			count: 4
-			path: public/admin/updates.php
-
-		-
 			message: "#^Variable \\$journals might not be defined\\.$#"
 			count: 6
-			path: public/admin/updates.php
-
-		-
-			message: "#^Comparison operation \"\\<\" between int\\<0, max\\> and 0 is always false\\.$#"
-			count: 2
-			path: public/admin/updates.php
-
-		-
-			message: "#^Result of && is always false\\.$#"
-			count: 2
 			path: public/admin/updates.php
 
 		-
@@ -7830,11 +4188,6 @@ parameters:
 
 		-
 			message: "#^Variable \\$laoptions might not be defined\\.$#"
-			count: 1
-			path: public/admin/upgrade.php
-
-		-
-			message: "#^Unreachable statement \\- code above always terminates\\.$#"
 			count: 1
 			path: public/admin/upgrade.php
 
@@ -7879,16 +4232,6 @@ parameters:
 			path: public/admin/wishlist.php
 
 		-
-			message: "#^Cannot access offset 2 on array\\|false\\.$#"
-			count: 2
-			path: public/admin/wishlist.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of function array_map expects \\(callable\\(\\)\\: mixed\\)\\|null, array\\(mixed, 'cleanMys'\\) given\\.$#"
-			count: 2
-			path: public/admin/wishlist.php
-
-		-
 			message: "#^Variable \\$seahorses might not be defined\\.$#"
 			count: 9
 			path: public/admin/wishlist.php
@@ -7912,51 +4255,6 @@ parameters:
 			message: "#^Variable \\$my_wishess might not be defined\\.$#"
 			count: 1
 			path: public/admin/wishlist.php
-
-		-
-			message: "#^Function getLAPath\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/db-connection.inc.php
-
-		-
-			message: "#^Function getLAPath\\(\\) has parameter \\$dbHost with no typehint specified\\.$#"
-			count: 1
-			path: public/db-connection.inc.php
-
-		-
-			message: "#^Function getLAPath\\(\\) has parameter \\$dbName with no typehint specified\\.$#"
-			count: 1
-			path: public/db-connection.inc.php
-
-		-
-			message: "#^Function getLAPath\\(\\) has parameter \\$dbPass with no typehint specified\\.$#"
-			count: 1
-			path: public/db-connection.inc.php
-
-		-
-			message: "#^Function getLAPath\\(\\) has parameter \\$dbUser with no typehint specified\\.$#"
-			count: 1
-			path: public/db-connection.inc.php
-
-		-
-			message: "#^Function getLAPath\\(\\) has parameter \\$settings with no typehint specified\\.$#"
-			count: 1
-			path: public/db-connection.inc.php
-
-		-
-			message: "#^Cannot call method query\\(\\) on mysqli\\|PDO\\|false\\.$#"
-			count: 1
-			path: public/db-connection.inc.php
-
-		-
-			message: "#^Function wrapFetchArray\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/db-connection.inc.php
-
-		-
-			message: "#^Function wrapFetchArray\\(\\) has parameter \\$result with no typehint specified\\.$#"
-			count: 1
-			path: public/db-connection.inc.php
 
 		-
 			message: "#^Variable \\$_ST might not be defined\\.$#"
@@ -7997,51 +4295,6 @@ parameters:
 			message: "#^Constant STPATH not found\\.$#"
 			count: 1
 			path: public/samplecollective/contact.php
-
-		-
-			message: "#^Function getLAPath\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/samplecollective/db-connection.inc.php
-
-		-
-			message: "#^Function getLAPath\\(\\) has parameter \\$dbHost with no typehint specified\\.$#"
-			count: 1
-			path: public/samplecollective/db-connection.inc.php
-
-		-
-			message: "#^Function getLAPath\\(\\) has parameter \\$dbName with no typehint specified\\.$#"
-			count: 1
-			path: public/samplecollective/db-connection.inc.php
-
-		-
-			message: "#^Function getLAPath\\(\\) has parameter \\$dbPass with no typehint specified\\.$#"
-			count: 1
-			path: public/samplecollective/db-connection.inc.php
-
-		-
-			message: "#^Function getLAPath\\(\\) has parameter \\$dbUser with no typehint specified\\.$#"
-			count: 1
-			path: public/samplecollective/db-connection.inc.php
-
-		-
-			message: "#^Function getLAPath\\(\\) has parameter \\$settings with no typehint specified\\.$#"
-			count: 1
-			path: public/samplecollective/db-connection.inc.php
-
-		-
-			message: "#^Cannot call method query\\(\\) on mysqli\\|PDO\\|false\\.$#"
-			count: 1
-			path: public/samplecollective/db-connection.inc.php
-
-		-
-			message: "#^Function wrapFetchArray\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/samplecollective/db-connection.inc.php
-
-		-
-			message: "#^Function wrapFetchArray\\(\\) has parameter \\$result with no typehint specified\\.$#"
-			count: 1
-			path: public/samplecollective/db-connection.inc.php
 
 		-
 			message: "#^Variable \\$_ST might not be defined\\.$#"
@@ -8134,51 +4387,6 @@ parameters:
 			path: public/samplefl/buttons.php
 
 		-
-			message: "#^Function getLAPath\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/samplefl/db-connection.inc.php
-
-		-
-			message: "#^Function getLAPath\\(\\) has parameter \\$dbHost with no typehint specified\\.$#"
-			count: 1
-			path: public/samplefl/db-connection.inc.php
-
-		-
-			message: "#^Function getLAPath\\(\\) has parameter \\$dbName with no typehint specified\\.$#"
-			count: 1
-			path: public/samplefl/db-connection.inc.php
-
-		-
-			message: "#^Function getLAPath\\(\\) has parameter \\$dbPass with no typehint specified\\.$#"
-			count: 1
-			path: public/samplefl/db-connection.inc.php
-
-		-
-			message: "#^Function getLAPath\\(\\) has parameter \\$dbUser with no typehint specified\\.$#"
-			count: 1
-			path: public/samplefl/db-connection.inc.php
-
-		-
-			message: "#^Function getLAPath\\(\\) has parameter \\$settings with no typehint specified\\.$#"
-			count: 1
-			path: public/samplefl/db-connection.inc.php
-
-		-
-			message: "#^Cannot call method query\\(\\) on mysqli\\|PDO\\|false\\.$#"
-			count: 1
-			path: public/samplefl/db-connection.inc.php
-
-		-
-			message: "#^Function wrapFetchArray\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/samplefl/db-connection.inc.php
-
-		-
-			message: "#^Function wrapFetchArray\\(\\) has parameter \\$result with no typehint specified\\.$#"
-			count: 1
-			path: public/samplefl/db-connection.inc.php
-
-		-
 			message: "#^Variable \\$_ST might not be defined\\.$#"
 			count: 1
 			path: public/samplefl/db-connection.inc.php
@@ -8239,11 +4447,6 @@ parameters:
 			path: public/samplefl/members.php
 
 		-
-			message: "#^Method fanlisting\\:\\:isYear\\(\\) has parameter \\$o with no typehint specified\\.$#"
-			count: 1
-			path: public/samplefl/pro.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$o\\)\\: Unexpected token \"\\$o\", expected type at offset 82$#"
 			count: 1
 			path: public/samplefl/pro.php
@@ -8267,51 +4470,6 @@ parameters:
 			message: "#^Constant STPATH not found\\.$#"
 			count: 2
 			path: public/samplefl2/buttons.php
-
-		-
-			message: "#^Function getLAPath\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/samplefl2/db-connection.inc.php
-
-		-
-			message: "#^Function getLAPath\\(\\) has parameter \\$dbHost with no typehint specified\\.$#"
-			count: 1
-			path: public/samplefl2/db-connection.inc.php
-
-		-
-			message: "#^Function getLAPath\\(\\) has parameter \\$dbName with no typehint specified\\.$#"
-			count: 1
-			path: public/samplefl2/db-connection.inc.php
-
-		-
-			message: "#^Function getLAPath\\(\\) has parameter \\$dbPass with no typehint specified\\.$#"
-			count: 1
-			path: public/samplefl2/db-connection.inc.php
-
-		-
-			message: "#^Function getLAPath\\(\\) has parameter \\$dbUser with no typehint specified\\.$#"
-			count: 1
-			path: public/samplefl2/db-connection.inc.php
-
-		-
-			message: "#^Function getLAPath\\(\\) has parameter \\$settings with no typehint specified\\.$#"
-			count: 1
-			path: public/samplefl2/db-connection.inc.php
-
-		-
-			message: "#^Cannot call method query\\(\\) on mysqli\\|PDO\\|false\\.$#"
-			count: 1
-			path: public/samplefl2/db-connection.inc.php
-
-		-
-			message: "#^Function wrapFetchArray\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: public/samplefl2/db-connection.inc.php
-
-		-
-			message: "#^Function wrapFetchArray\\(\\) has parameter \\$result with no typehint specified\\.$#"
-			count: 1
-			path: public/samplefl2/db-connection.inc.php
 
 		-
 			message: "#^Variable \\$_ST might not be defined\\.$#"
@@ -8372,11 +4530,6 @@ parameters:
 			message: "#^Constant STPATH not found\\.$#"
 			count: 1
 			path: public/samplefl2/members.php
-
-		-
-			message: "#^Method fanlisting\\:\\:isYear\\(\\) has parameter \\$o with no typehint specified\\.$#"
-			count: 1
-			path: public/samplefl2/pro.php
 
 		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$o\\)\\: Unexpected token \"\\$o\", expected type at offset 82$#"
