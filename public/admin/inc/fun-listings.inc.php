@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * @project          Listing Admin
  * @copyright        2007
@@ -16,19 +17,25 @@ if (!class_exists('wolves')) {
         /**
          * @function  $wolves->listingsList()
          *
-         * @param string $b , string; sort by subject or ID
-         * @param string $j , string; sort by status (current, upcoming or pending)
+         * @param string $sortBySubjectOrId , string; sort by subject or ID
+         * @param string $filterByStatus , string; sort by status (current, upcoming or pending)
          * @param string $sortBy , string; sort by category or status
          * @param string $status , string; current listings with status; optional
          * @param int $withSubCategories , int
+         *
          * @return array
          */
-        public function listingsList($b = 'id', $j = '', $sortBy = 'status', $status = '', $withSubCategories = 0)
-        {
+        public function listingsList(
+            $sortBySubjectOrId = 'id',
+            $filterByStatus = '',
+            $sortBy = 'status',
+            $status = '',
+            $withSubCategories = 0
+        ) {
             global $_ST, $lions, $scorpions;
 
             $select = "SELECT * FROM `$_ST[main]`";
-            if ($j != '') {
+            if ($filterByStatus != '') {
                 if ($sortBy == 'categories') {
                     $select .= ' WHERE';
                     if ($status == 'current' || $status == '0') {
@@ -38,32 +45,35 @@ if (!class_exists('wolves')) {
                     } elseif ($status == 'pending' || $status == 2) {
                         $select .= " `status` = '2' AND";
                     }
-                    if (in_array($j, $lions->categoryList())) {
-                        $select .= " (`category` LIKE '%!$j!%' AND";
+                    if (in_array($filterByStatus, $lions->categoryList())) {
+                        $select .= " (`category` LIKE '%!$filterByStatus!%' AND";
                     }
                     $select = trim($select, ' AND');
-                    if ($withSubCategories == 1 && count($lions->categoryList('list', 'child', $j)) > 0) {
+                    if ($withSubCategories == 1 && (is_countable($lions->categoryList('list', 'child', $filterByStatus)) ? count($lions->categoryList('list', 'child', $filterByStatus)) : 0) > 0) {
                         $query = '';
-                        $childcats = $lions->categoryList('list', 'child', $j);
+                        $childcats = $lions->categoryList('list', 'child', $filterByStatus);
                         foreach ($childcats as $cc) {
                             $query .= " OR `category` LIKE '%!$cc!%'";
                         }
                         $select .= rtrim($query, ' OR ');
                     }
-                    if (in_array($j, $lions->categoryList())) {
+                    if (in_array($filterByStatus, $lions->categoryList())) {
                         $select .= ' ) ';
                     }
                 } elseif ($sortBy == 'status') {
-                    if ($j == 'current' || $j == '0') {
+                    if ($filterByStatus == 'current' || $filterByStatus == '0') {
                         $select .= " WHERE `status` = '0'";
-                    } elseif ($j == 'upcoming' || $j == 1) {
+                    } elseif ($filterByStatus == 'upcoming' || $filterByStatus == 1) {
                         $select .= " WHERE `status` = '1'";
-                    } elseif ($j == 'pending' || $j == 2) {
+                    } elseif ($filterByStatus == 'pending' || $filterByStatus == 2) {
                         $select .= " WHERE `status` = '2'";
                     }
                 }
             }
-            if ($b == 'id' || $b == 'subject') {
+            if ($sortBySubjectOrId == 'id') {
+                $select .= ' ORDER BY `id` ASC';
+            }
+            if ($sortBySubjectOrId == 'subject') {
                 $select .= ' ORDER BY `subject` ASC';
             }
             $true = $scorpions->query($select);
@@ -71,8 +81,8 @@ if (!class_exists('wolves')) {
                 echo $scorpions->database->error();
             }
 
-            $all = array();
-            while ($getItem = $scorpions->obj($true, 0)) {
+            $all = [];
+            while ($getItem = $scorpions->obj($true)) {
                 $all[] = $getItem->id;
             }
 
@@ -85,6 +95,7 @@ if (!class_exists('wolves')) {
          *
          * @function  $wolves->indexListings()
          * @param     $b , boolean; 1 for selecting neglected listings, 0 for overdue
+         *
          * @version   2.3beta
          */
         public function indexListings($b = 1)
@@ -97,7 +108,7 @@ if (!class_exists('wolves')) {
                 $listings = $this->listingsList('subject', 'upcoming');
             }
 
-            $a = array();
+            $a = [];
             foreach ($listings as $i) {
                 $p = $this->getListings($i, 'object');
                 if ($b == 1) {
@@ -107,7 +118,7 @@ if (!class_exists('wolves')) {
                     ) {
                         $a[] = $i;
                     }
-                } else if ($p->since <= date("Y-m-d", strtotime("-1 month"))) {
+                } elseif ($p->since <= date("Y-m-d", strtotime("-1 month"))) {
                     $a[] = $i;
                 }
             }
@@ -246,6 +257,7 @@ if (!class_exists('wolves')) {
          * @function  $wolves->pullSubjects()
          * @param     $i , int; a character-separated string of listing ID(s)
          * @param     $s , character; splits the string into an array
+         *
          * @since     1.9
          */
         public function pullSubjects($i, $s)
@@ -324,6 +336,7 @@ if (!class_exists('wolves')) {
          * @function   $wolves->getListingTemplate()
          * @param      $i , int; listing ID
          * @param      $t , string; template title
+         *
          * @since      2.3alpha
          */
         public function getListingTemplate($i, $t)
@@ -386,6 +399,7 @@ if (!class_exists('wolves')) {
          * @function   $wolves->getTemplate_Listings()
          * @param      $i , int; listing ID
          * @param      $b , string; template title; optional
+         *
          * @since      1.9
          */
         public function getTemplate_Listings($i, $b = '', $f = '')
@@ -420,7 +434,7 @@ if (!class_exists('wolves')) {
             $format = str_replace('{url}', $getItem->url, $format);
             $format = str_replace('{desc}', html_entity_decode($getItem->desc), $format);
             $format = str_replace(
-                array('{category}', '{categories}'), $lions->pullCatNames($getItem->category, '!'), $format
+                ['{category}', '{categories}'], $lions->pullCatNames($getItem->category, '!'), $format
             );
             $format = str_replace('{image}', $seahorses->getOption('img_http') . $getItem->image, $format);
             $format = str_replace('{approved}', $approved, $format);

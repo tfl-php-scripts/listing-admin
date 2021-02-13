@@ -175,7 +175,7 @@ $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email
 	 }
   } 
   if(empty($password1) && empty($password2)) {
-   $hashy1 = substr(sha1(mt_rand(1990, 16770)), 0, 8);
+   $hashy1 = substr(sha1(random_int(1990, 16770)), 0, 8);
 	 $hashy2 = substr(sha1(date('YmdHis')), 0, 8);
 	 $pass = $hashy1 . $hashy2;
   } else {
@@ -194,7 +194,7 @@ $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email
 	  } else {
      $dbadditional = explode('|', $dbentry->fave_fields);
      $dbfields = $tigers->emptyarray($dbadditional);
-	   for($i = 0,$iMax = count($dbfields); $i < $iMax; $i++) {
+	   for($i = 0,$iMax = is_countable($dbfields) ? count($dbfields) : 0; $i < $iMax; $i++) {
 	    $fave[] = 'NONE';
 	   }
 	   $ff = implode('|', $fave);
@@ -208,7 +208,7 @@ $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email
 	 } else {
     $dbadditional = explode('|', $dbentry->fave_fields);
     $dbfields = $tigers->emptyarray($dbadditional);
-	  for($i = 0,$iMax = count($dbfields); $i < $iMax; $i++) {
+	  for($i = 0,$iMax = is_countable($dbfields) ? count($dbfields) : 0; $i < $iMax; $i++) {
 	   $fave[] = 'NONE';
 	  }
 	  $ff = implode('|', $fave);
@@ -319,14 +319,14 @@ $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email
   $num = 0;
 
   if(!empty($fave)) {
-   if(count($favs) == 1) {
+   if((is_countable($favs) ? count($favs) : 0) == 1) {
 ?>
  <p><label><strong>Fave Field 1:</strong></label> 
  <input name="fave[]" class="input1" type="text" value="<?php echo $favs[0]; ?>"></p>
 <?php
  }
 
- elseif (count($favs) > 1) {
+ elseif ((is_countable($favs) ? count($favs) : 0) > 1) {
   foreach($favs as $f) {
    $nm = $num + 1;
    if(!empty($f)) {
@@ -340,11 +340,11 @@ $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email
  } 
 }
 
-else if(!isset($_GET['extend']) && !isset($_GET['count']) && !isset($_POST['fave'])) {
+else {if(!isset($_GET['extend']) && !isset($_GET['count']) && !isset($_POST['fave'])) {
  $q = basename($_SERVER['PHP_SELF']) . '?listing=' . $getlistingid .
  '&#38;g=old&#38;d=' . $id . '&#38;extend=1&#38;count=1#fave';
  echo "<p class=\"tc\"><a href=\"$q\">Add Fave Field(s)?</a></p>\n";
-}
+}}
 
 if(isset($_GET['extend']) && is_numeric($_GET['extend']) && is_numeric($_GET['count'])) {
  $c1 = (int)$tigers->cleanMys($_GET['count']) + 1;
@@ -365,7 +365,7 @@ if(isset($_GET['extend']) && is_numeric($_GET['extend']) && is_numeric($_GET['co
  echo " </div>\n";
 }
 
-if(count($favs) != 0 && !empty($fave)) {
+if((is_countable($favs) ? count($favs) : 0) != 0 && !empty($fave)) {
 ?>
  <p><label><strong>Erase Record?</strong></label> 
   <input name="record" class="input3" type="radio" value="yes"> Yes 
@@ -567,7 +567,7 @@ $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email
 	  echo $tigers->backLink('mem');
 	  echo $tigers->backLink('index');
 	 } 
-	} else if($getItem->dblist == 1 && $getItem->dbtype != 'listingadmin') {
+	} else {if($getItem->dblist == 1 && $getItem->dbtype != 'listingadmin') {
      echo $tigers->displaySuccess('The <em>' . $getItem->subject . '</em> listing' .
    ' is crosslisted to a non-Listing Admin script, and therefore cannot be' .
    " updated this way. Sorry, m'love! :(");
@@ -592,7 +592,7 @@ $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email
       echo $tigers->backLink('mem');
       echo $tigers->backLink('index');
      }
-    }
+    }}
  }
 
  /** 
@@ -792,7 +792,7 @@ Below is the list of your members; to edit or delete a member, click "Edit" or
 	 $b = '';
 	}
   $select = $snakes->sortMembers($getlistingid, $s, $b);
-  $count  = count($select);
+  $count  = is_countable($select) ? count($select) : 0;
 	
   if($count > 0) {
 	 if($ender > $count) {
@@ -858,13 +858,15 @@ Below is the list of your members; to edit or delete a member, click "Edit" or
    if(
     isset($_GET['g'], $_GET['s']) && $_GET['g'] == 'searchMembers' && array_key_exists($_GET['s'], $sa)
    ) {
-    $members_pagination = count(
+    $members_pagination = is_countable($snakes->membersList(
+     $getlistingid, 1, $tigers->cleanMys($_GET['s']), $tigers->cleanMys($_GET['q'])
+    )) ? count(
      $snakes->membersList(
       $getlistingid, 1, $tigers->cleanMys($_GET['s']), $tigers->cleanMys($_GET['q'])
      )
-    );
+    ) : 0;
    } else {
-    $members_pagination = count($snakes->membersList($getlistingid));
+    $members_pagination = is_countable($snakes->membersList($getlistingid)) ? count($snakes->membersList($getlistingid)) : 0;
    }
  
    echo '<p id="pagination">';
@@ -888,7 +890,7 @@ Below is the list of your members; to edit or delete a member, click "Edit" or
  * Show index of listings~ 
  */ 
 else {
- $counter = count($wolves->listingsList());
+ $counter = is_countable($wolves->listingsList()) ? count($wolves->listingsList()) : 0;
  $select  = "SELECT * FROM `$_ST[main]` ORDER BY `subject` ASC LIMIT $counter";
  $true    = $scorpions->query($select);
  $count   = $scorpions->total($true);

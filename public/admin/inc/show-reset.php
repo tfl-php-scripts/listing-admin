@@ -61,7 +61,7 @@
                 ' this listing. This might be because you are not a member, or you have' .
                 ' chosen the wrong e-mail address.', false);
         }
-        $password = substr(sha1(date('YmdHis')), 0, 8) . substr(sha1(mt_rand(80, 850)), 0, 8);
+        $password = substr(sha1(date('YmdHis')), 0, 8) . substr(sha1(random_int(80, 850)), 0, 8);
 
         /**
          * Grab user information so we can log messages
@@ -78,7 +78,7 @@
          */
         foreach ($laantispam->spamarray() as $b) {
             foreach ($_POST as $po) {
-                if (strpos($po, $b) !== false) {
+                if (strpos($po, (string) $b) !== false) {
                     $octopus->writeError(
                         'SPAM Error: SPAM Language', $userinfo->url, $userinfo->text, $automated
                     );

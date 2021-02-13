@@ -329,7 +329,7 @@ if (isset($_GET['g']) && $_GET['g'] == 'new') {
         foreach ($_POST['numeric'] as $field => $value) {
             if (!empty($_FILES['image']['name'][$field])) {
                 $name = $tigers->cleanMys($_POST['name'][$field]);
-                $image_tag = substr(sha1(date('YmdHis')), 0, 7) . substr(sha1(mt_rand()), 0, 7);
+                $image_tag = substr(sha1(date('YmdHis')), 0, 7) . substr(sha1(random_int(0, mt_getrandmax())), 0, 7);
                 if (
                     $_FILES['image']['type'][$field] != 'image/jpeg' &&
                     $_FILES['image']['type'][$field] != 'image/png' &&
@@ -390,7 +390,7 @@ if (isset($_GET['g']) && $_GET['g'] == 'new') {
             $tigers->displayError('Form Error', 'You can only add, edit and' .
                 ' delete an image.', false);
         }
-        $image_tag = substr(sha1(date('YmdHis')), 0, 7) . substr(sha1(mt_rand()), 0, 7);
+        $image_tag = substr(sha1(date('YmdHis')), 0, 7) . substr(sha1(random_int(0, mt_getrandmax())), 0, 7);
         if (($change == 'edit') && $_FILES['image']['type'] != 'image/jpeg' &&
             $_FILES['image']['type'] != 'image/png' &&
             $_FILES['image']['type'] != 'image/gif') {
@@ -592,7 +592,7 @@ if ($count > 0) {
         echo "</table>\n</form>\n\n";
 
         echo "\n<p id=\"pagination\">Pages: ";
-        $total = count($cheetahs->codesList('listing', $tigers->cleanMys($_GET['listing'])));
+        $total = is_countable($cheetahs->codesList('listing', $tigers->cleanMys($_GET['listing']))) ? count($cheetahs->codesList('listing', $tigers->cleanMys($_GET['listing']))) : 0;
         $pages = ceil($total / $per_page);
 
         for ($i = 1; $i <= $pages; $i++) {
@@ -612,7 +612,7 @@ if ($count > 0) {
         }
 
         else {
-        $countListings = count($wolves->listingsList());
+        $countListings = is_countable($wolves->listingsList()) ? count($wolves->listingsList()) : 0;
         $select = "SELECT * FROM `$_ST[main]` ORDER BY `subject` ASC LIMIT $countListings";
         $true = $scorpions->query($select);
         if ($true == false) {
@@ -638,7 +638,7 @@ if ($count > 0) {
             <tbody class="collective">
             <tr>
                 <td class="tc" colspan="2">Whole Collective</td>
-                <td class="tc"><?php echo count($cheetahs->codesList('listing', '0')); ?></td>
+                <td class="tc"><?php echo is_countable($cheetahs->codesList('listing', '0')) ? count($cheetahs->codesList('listing', '0')) : 0; ?></td>
                 <td class="tc"><a href="codes.php?listing=0">Manage Codes</a></td>
             </tr>
             </tbody>
@@ -649,7 +649,7 @@ if ($count > 0) {
                 <tr>
                     <td class="tc"><?php echo $getItem->id; ?></td>
                     <td class="tc"><?php echo $getItem->subject; ?></td>
-                    <td class="tc"><?php echo count($cheetahs->codesList('listing', $getItem->id)); ?></td>
+                    <td class="tc"><?php echo is_countable($cheetahs->codesList('listing', $getItem->id)) ? count($cheetahs->codesList('listing', $getItem->id)) : 0; ?></td>
                     <td class="tc"><a href="codes.php?listing=<?php echo $getItem->id; ?>">Manage Codes</a></td>
                 </tr>
                 </tbody>

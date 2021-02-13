@@ -112,7 +112,7 @@
 
         if ($sort_category == 'all') {
             $flsInCategory = $wolves->listingsList('subject', $options->statusID, 'status', $options->statusID, 1);
-            $count = count($flsInCategory);
+            $count = is_countable($flsInCategory) ? count($flsInCategory) : 0;
 
             echo '<p class="tc">You are viewing all categories. There are currently ' .
                 "<strong>$count</strong> listings listed.</p>\n";
@@ -123,7 +123,7 @@
             echo "</div>\n";
         } else {
             $flsInCategory = $wolves->listingsList('subject', $sort_category, 'categories', $options->statusID, 1);
-            $count = count($flsInCategory);
+            $count = is_countable($flsInCategory) ? count($flsInCategory) : 0;
 
             $category = $lions->getCategory($sort_category);
             $parentcat = $category === false || $category->parent == 0 ? '' : $lions->getCatName($category->parent) .

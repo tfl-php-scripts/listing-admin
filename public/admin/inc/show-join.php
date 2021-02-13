@@ -65,7 +65,7 @@
         if (empty($name)) {
             $tigers->displayError('Form Error', 'You have not filled out the <samp>' .
                 'name</samp> field.', false);
-        } elseif (!preg_match("/([A-Za-z-\s]+)/i", $name)) {
+        } elseif (!preg_match("/([A-Za-z\\-\s]+)/i", $name)) {
             $tigers->displayError('Form Error', 'There are invalid characters in' .
                 ' the <samp>name</samp> field. Go back and try again.', false);
         } elseif (strlen($name) > 25) {
@@ -101,7 +101,7 @@
             }
         }
         if (empty($password1) && empty($password2)) {
-            $hashy1 = substr(sha1(mt_rand(9999, 999999)), 0, 8);
+            $hashy1 = substr(sha1(random_int(9999, 999999)), 0, 8);
             $hashy2 = substr(sha1(date('YmdHis')), 0, 8);
             $pass = $hashy1 . $hashy2;
         } else {
@@ -110,7 +110,7 @@
         $fav = '';
         if (isset($_POST['fave']) && !empty($getItem->fave_fields) || !empty($fave_field)) {
             $faves = $_POST['fave'];
-            if (count($faves) > 0 && !empty($_POST['fave'])) {
+            if ((is_countable($faves) ? count($faves) : 0) > 0 && !empty($_POST['fave'])) {
                 $faves = array_map(array($tigers, 'replaceArray'), $faves);
                 $faves = str_replace('+', '', $faves);
                 $faves = str_replace('+ ', '', $faves);
@@ -122,7 +122,7 @@
             }
         }
         $visible = (int)$tigers->cleanMys($_POST['visible']);
-        if($visible < 0 || $visible > 1) {
+        if ($visible < 0 || $visible > 1) {
             $visible = 1;
         }
         $comments = $tigers->cleanMys($_POST['comments']);
@@ -151,13 +151,13 @@
          * Akismet, and antispam \o/ First: spam words!
          */
         foreach ($laantispam->spamarray() as $b) {
-            if (strpos($_POST['comments'], $b) !== false) {
+            if (strpos($_POST['comments'], (string) $b) !== false) {
                 $tigers->displayError('SPAM Error', 'SPAM language is not allowed.', false);
             }
         }
 
         foreach ($laantispam->bbcode as $h) {
-            if (strpos($_POST['comments'], $h) !== false) {
+            if (strpos($_POST['comments'], (string) $h) !== false) {
                 $tigers->displayError('SPAM Error', 'bbCode language is not allowed.', false);
             }
         }
@@ -181,7 +181,7 @@
         }
 
         if ($seahorses->getOption('captcha_opt') == 'y') {
-            if (!isset($_POST['captcha']) || strpos(sha1($ck), $_POST['captcha']) !== 0) {
+            if (!isset($_POST['captcha']) || strpos(sha1($ck), (string) $_POST['captcha']) !== 0) {
                 $tigers->displayError('Form Error', 'The <samp>CAPTCHA</samp> is invalid!', false);
             }
         }
@@ -235,7 +235,9 @@
             $octopus->writeError(
                 'Join Error', $userinfo->url, $userinfo->text, $automated
             );
-            $tigers->displayError('Script Error', 'It appears that email you entered already exists in the system. Please use Update Form if you wish to update your information.', false);
+            $tigers->displayError('Script Error',
+                'It appears that email you entered already exists in the system. Please use Update Form if you wish to update your information.',
+                false);
         }
 
         /**
@@ -318,9 +320,9 @@
     } else {
         $symb = $getItem->markup === 'html5' ? '&#187;' : '&raquo;';
         $mark = $getItem->markup === 'xhtml' ? ' /' : '';
-        $a2 = sha1(mt_rand(10000, 999999));
-        $b1 = mt_rand(1, 10);
-        $b2 = mt_rand(1, 10);
+        $a2 = sha1(random_int(10000, 999999));
+        $b1 = random_int(1, 10);
+        $b2 = random_int(1, 10);
         $b3 = $b1 + $b2;
         $b4 = $b1 . ' + ' . $b2;
         $f3 = !empty($fave_field) && isset($fave_field) ? 'enctype="multipart/form-data" ' : '';
@@ -404,10 +406,12 @@
                 <?php
                 if (!empty($getItem->fave_fields) && file_exists('joinff.inc.php')) {
                     require('joinff.inc.php');
-                } else if (!empty($getItem->fave_fields) || (!empty($fave_field) && isset($fave_field))) {
-                    $fave_fields_db = $getItem->fave_fields;
-                    echo '<p style="clear: both; margin: 0;"></p>';
-                    echo $snakes->favejoin();
+                } else {
+                    if (!empty($getItem->fave_fields) || (!empty($fave_field) && isset($fave_field))) {
+                        $fave_fields_db = $getItem->fave_fields;
+                        echo '<p style="clear: both; margin: 0;"></p>';
+                        echo $snakes->favejoin();
+                    }
                 }
 
                 if ($options->formComments) {

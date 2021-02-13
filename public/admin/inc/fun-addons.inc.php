@@ -108,8 +108,8 @@ if (!class_exists('cheetahs')) {
                     $r .= $seahorses->getCount('updates') .
                         ' updates, with ' . $seahorses->getCount('updates', 'c') . ' collective updates';
                 } elseif ($p == 'updates') {
-                    $r .= count($turtles->updatesList()) .
-                        ' updates, with ' . count($turtles->updatesList('0')) . ' collective updates';
+                    $r .= (is_countable($turtles->updatesList()) ? count($turtles->updatesList()) : 0) .
+                        ' updates, with ' . (is_countable($turtles->updatesList('0')) ? count($turtles->updatesList('0')) : 0) . ' collective updates';
                 }
             }
 

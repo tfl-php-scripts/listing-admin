@@ -10,7 +10,7 @@
 
 if(class_exists('mermaids') == false) {
  class mermaids {
- 
+
   /** 
    * @function  $mermaids->wishlistList() 
    * @param     $b, string; sort by category or type; optional 
@@ -39,7 +39,7 @@ if(class_exists('mermaids') == false) {
 
    return $all;
   }
-	
+
 	/** 
    * @function  $mermaids->countWishes() 
    * @param     $b, string; sort by category or type; optional 
@@ -47,7 +47,7 @@ if(class_exists('mermaids') == false) {
    */ 
   public function countWishes() {
 	 global $_ST, $scorpions, $tigers;
-	 
+
 	 $select = "SELECT * FROM `$_ST[main]` WHERE `granted` = '1'";
 	 $true = $scorpions->query($select);
 	 if($true == false) {
@@ -55,10 +55,10 @@ if(class_exists('mermaids') == false) {
 		' wishes from the listing database.', false);
 	 }
 	 $count = $scorpions->total($true);
-	 
+
 	 return $count;
 	}
-	
+
 	/** 
 	 * @function  $mermaids->getWish() 
 	 * @param     $i, int; wishlist ID 
@@ -105,7 +105,7 @@ if(class_exists('mermaids') == false) {
 
    $getItem  = $this->getWish($i);
    $template = $seahorses->getTemplate($b);
- 
+
    if(strpos($getItem->wDesc, '{MORE}') !== false) {
     if($b == 'wishlist_query_template') {
 	   $ex   = explode('{MORE}', $getItem->wDesc);

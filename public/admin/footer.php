@@ -1,31 +1,21 @@
 <?php
-require_once('inc/Robotess/Fetcher.php');
-$rssEntries = Robotess\Fetcher::instance()->fetchUrl('https://scripts.robotess.net/projects/listing-admin/atom.xml');
-if (count($rssEntries) > 0) {
-    ?>
-    <div id="feeds">
-        <div id="lafeeds">
-            <h4>
-                <ins><?= $laoptions->version ?></ins>
-                Feed
-            </h4>
-            <?php
-            echo "  <menu>\n";
-            $currentIndex = 1;
-            foreach ($rssEntries as $item) {
-                echo '   <li class="block"><strong>' . $item->get_title() . '</strong> [' . $item->get_date() . "]<br>\n";
-                echo '   <p>' . substr($item->get_description(), 0, 200) . "</p>\n";
-                echo '   <a href="' . $item->get_permalink() . '" title="External Link: ' . $item->get_permalink() . "\" target=\"_blank\">Read More &#187;</a></li>\n";
-                if ($currentIndex++ >= 3) {
-                    break;
-                }
-            }
-            echo "  </menu>\n";
-            ?>
-        </div>
-        <section class="clear"></section>
+$feedUrl = 'https://scripts.robotess.net/projects/listing-admin/atom.xml';
+?>
+<script>
+    const RSS_URL = `<?= $feedUrl?>`;
+</script>
+<div id="feeds">
+    <div id="lafeeds">
+        <h4>
+            <ins><?= $laoptions->version ?></ins>
+            Feed
+        </h4>
+        <menu>
+            Nothing here yet. Please check <a href="<?= $feedUrl; ?>" target="_blank">feed</a> manually.
+        </menu>
     </div>
-<?php } ?>
+    <section class="clear"></section>
+</div>
 </section>
 
 </div>
@@ -44,7 +34,7 @@ if (count($rssEntries) > 0) {
 
 <script src="js.js" type="text/javascript"></script>
 <script src="jquery.js" type="text/javascript"></script>
-<script src="jquery-custom.js" type="text/javascript"></script>
+<script src="jquery-custom.js?v=3" type="text/javascript"></script>
 
 </body>
 </html>

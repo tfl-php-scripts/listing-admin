@@ -603,7 +603,7 @@ if (!class_exists('turtles')) {
 
                 echo "<div class=\"archives bylisting\">\n<h3>By Listing</h3>\n";
                 $listings = $wolves->listingsList('id', '0', 'status');
-                if (count($listings) > 0) {
+                if ((is_countable($listings) ? count($listings) : 0) > 0) {
                     echo $octopus->alternate('menu', $seahorses->getOption('markup'));
                     foreach ($listings as $id) {
                         $listing = $wolves->getListings($id, 'object');
@@ -740,9 +740,9 @@ if (!class_exists('turtles')) {
             }
 
             $w = $seahorses->getOption('adm_http') . 'fun-process.inc.php';
-            $a2 = mt_rand(10000, 99999);
-            $b1 = mt_rand(1, 10);
-            $b2 = mt_rand(1, 10);
+            $a2 = random_int(10000, 99999);
+            $b1 = random_int(1, 10);
+            $b2 = random_int(1, 10);
             $b3 = $b1 + $b2;
             $b4 = $b1 . ' + ' . $b2;
             ?>

@@ -31,7 +31,7 @@ if(class_exists('seahorses') == false) {
     $tigers->displayError('Database Error', 'The script was unable to' . 
     ' update the specified option.|Make sure your table exists.', true, $update);
    } 
- 
+
    else {
     echo '<p class="successButton"><span class="success">SUCCESS!</span> Your' .
     " <samp>$o</samp> option has been edited! :D</p>\n";
@@ -72,7 +72,7 @@ if(class_exists('seahorses') == false) {
     $tigers->displayError('Database Error', 'The script was unable to' . 
     ' update the specified listing variable.', true, $update);
    } 
- 
+
    else {
     echo '<p class="successButton"><span class="success">SUCCESS!</span>' .
     " Your <samp>$o</samp> listing option has been edited! :D</p>\n";
@@ -92,7 +92,7 @@ if(class_exists('seahorses') == false) {
 
    return $r;
   } 
- 
+
   /** 
    * @function    $seahorses->writeMessage() 
    * 
@@ -113,7 +113,7 @@ if(class_exists('seahorses') == false) {
    " `messAdded`) VALUES ('$t', '$u', '$b', '$i', NOW())";
    $true = $scorpions->query($insert);
   }
- 
+
   /** 
    * @function  $seahorses->formatExport() 
    * @desc      Format e-mails and URLs 
@@ -192,7 +192,7 @@ if(class_exists('seahorses') == false) {
     if($y == 'n') {
 		 $select .= " `$_ST[wishlist]`";
 		} elseif ($y == 'y') {
-		 if(count($mermaids->wishlistList('type', 'granted')) > 0) {
+		 if((is_countable($mermaids->wishlistList('type', 'granted')) ? count($mermaids->wishlistList('type', 'granted')) : 0) > 0) {
 		  $select .= " `$_ST[wishlist]` WHERE `wType` = 'granted'";
 		 } elseif ($mermaids->countWishes() > 0) {
       $select .= " `$_ST[main]` WHERE `granted` = '1'";
@@ -243,7 +243,7 @@ if(class_exists('seahorses') == false) {
 
    return $c;
   }
-	
+
 	/** 
    * @function  $seahorses->memberCount() 
    * @param     $p, int; status 
@@ -260,10 +260,10 @@ if(class_exists('seahorses') == false) {
 		 $count += $c;
 		}
    }
-	 
+
    return $count;
   }
-  
+
   /** 
    * @function  $seahorses->templatesList() 
    * @param     $b, string; return name or title 
@@ -306,7 +306,7 @@ if(class_exists('seahorses') == false) {
 
    return ($r == 'object' ? $getItem : $getItem->template);
   }
-	
+
 	/** 
    * Return variable list and example based on template slug :D  
    * 
@@ -346,7 +346,7 @@ title=&#34;{subject}&#34; /&#62;&#60;/a&#62;
 </code>
 <?php 
 		break;
-		
+
 		case 'collective_stats_template':
 ?>
 <h4>Variables</h4>
@@ -392,7 +392,7 @@ title=&#34;{subject}&#34; /&#62;&#60;/a&#62;
 </code>
 <?php 
 		break;
-		
+
 		case 'joined_template':
 ?>
 <h4>Variables</h4>
@@ -426,7 +426,7 @@ title=&#34;{subject}&#34; class=&#34;joined&#34; /&#62;&#60;/a&#62;
 </code>
 <?php 
 		break;
-		
+
 		case 'kim_stats_template': 
 ?>
 <h4>Variables</h4>
@@ -457,7 +457,7 @@ title=&#34;{subject}&#34; class=&#34;joined&#34; /&#62;&#60;/a&#62;
 </code>
 <?php 
 		break;
-		
+
 		case 'listings_template':
 ?>
 <h4>Variables</h4>
@@ -515,7 +515,7 @@ class=&#34;current&#34;&#62;&#60;/a&#62;&#60;/p&#62;<br>
 </code>
 <?php 
 		break;
-		
+
 		case 'wishlist_template':
 		case 'wishlist_query_template':
 		case 'wishlist_granted_template':
@@ -568,20 +568,20 @@ class&#34;top-wishlist&#34;&#62;&#60;br&#62;{desc}&#60;/p&#62;
 </code>
 <?php 
 		break;
-		
+
 		default:
-		
+
 		break;
 	 }
 	}
-	
+
 	/** 
    * @function  $seahorses->errorView() 
    * @param     $i, int; message ID; optional 
    */ 
 	public function errorView($i) {
 	 global $_ST, $scorpions, $get_errors_array, $tigers;
-	 
+
 	 $select = "SELECT * FROM `$_ST[errors]` WHERE `messID` = '$i' LIMIT 1";
 	 $true = $scorpions->query($select);
 	 if($true == false) {
@@ -589,7 +589,7 @@ class&#34;top-wishlist&#34;&#62;&#60;br&#62;{desc}&#60;/p&#62;
 		' appears to not exist in the database.', true, $select);
 	 }
 	 $getItem = $scorpions->obj($true, 0);
-	
+
 	 $class = '';
 	 if($getItem->messType == 'Join Error' || $getItem->messType == 'Update Error') {
 	  $class = 'forms';
@@ -682,7 +682,7 @@ class&#34;top-wishlist&#34;&#62;&#60;br&#62;{desc}&#60;/p&#62;
 <?php 
 	 }
 	}
-	
+
 	# End options~ 
  }
 }

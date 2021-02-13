@@ -337,7 +337,7 @@ click "Edit" or "Delete" by the appropriate listing.</p>
    echo "</table>\n\n<p id=\"pagination\">Pages: ";
 
    $s     = $listingid ?? '';
-   $total = count($cheetahs->quotesList($s));
+   $total = is_countable($cheetahs->quotesList($s)) ? count($cheetahs->quotesList($s)) : 0;
    $pages = ceil($total / $per_page);
 	 
    for($i = 1; $i <= $pages; $i++) {

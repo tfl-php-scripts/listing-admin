@@ -210,7 +210,7 @@ if ($cheetahs->isInstalled('updates') == true) {
             $no11 = 0;
             $there = $wolves->indexListings(1);
             foreach ($there as $a) {
-                $c11 = $no11 == (count($there) - 1) ? ' class="last"' : '';
+                $c11 = $no11 == ((is_countable($there) ? count($there) : 0) - 1) ? ' class="last"' : '';
                 $g = $wolves->getListings($a, 'object');
                 echo " <li{$c11}><strong>" . $g->subject . '</strong> &#8211; <a href="members' .
                     '.php?listing=' . $g->id . "&#38;action=update\">Update Listing</a><br>\n";
@@ -221,7 +221,7 @@ if ($cheetahs->isInstalled('updates') == true) {
                 $no11++;
             }
 
-            if (count($there) == 0) {
+            if ((is_countable($there) ? count($there) : 0) == 0) {
                 echo " <li class=\"last\">None Found!</li>\n";
             }
             ?>
@@ -239,7 +239,7 @@ if ($cheetahs->isInstalled('updates') == true) {
                 echo ' <li><strong>' . $h->subject . "</strong></li>\n";
             }
 
-            if (count($coming) == 0) {
+            if ((is_countable($coming) ? count($coming) : 0) == 0) {
                 echo " <li class=\"last\">None Found!</li>\n";
             }
             ?>

@@ -1,20 +1,36 @@
 <?php
+declare(strict_types=1);
 /**
- * @copyright  2007
- * @license    GPL Version 3; BSD Modified
- * @author     Tess <theirrenegadexxx@gmail.com>
- * @file       <install.php>
- * @since      November 19th, 2011
- * @version    2.3alpha
+ * @project          Listing Admin
+ * @copyright        2007
+ * @license          GPL Version 3; BSD Modified
+ * @author           Tess <theirrenegadexxx@gmail.com>
+ * @contributor      Ekaterina <scripts@robotess.net> http://scripts.robotess.net
+ * @file             <install.php>
+ * @version          Robotess Fork
  */
+
+if (!file_exists('rats.inc.php')) {
+    ?>
+    <section><span class="mysql">Notice:</span> there was an error while trying to find file rats.inc.php.
+        Please make sure you have copied rats.sample.inc.php to rats.inc.php and added it to <?= __DIR__; ?>. The script stops executing.
+    </section>
+    <?php
+    die;
+}
+
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+
 require('rats.inc.php');
 require('inc/fun.inc.php');
 require('inc/fun-admin.inc.php');
 require('inc/fun-misc.inc.php');
 require('inc/fun-utility.inc.php');
+$getTitle = 'Install';
 require('vars.inc.php');
 
-$getTitle = 'Upgrade';
 ?>
 <!DOCTYPE html>
 
@@ -35,15 +51,11 @@ $getTitle = 'Upgrade';
     <header>
         <h1><?php echo $laoptions->version; ?></h1>
     </header>
-    <section id="install"><span class="mysql">Notice:</span> please note that there's no active support for FRESH
-        installations. You might try to install a script, but there's no guarantee it will be working.
-        <ins>If you wish to install a script, you can use original Tess' version.</ins>
-    </section>
 
     <section id="install">
         <?php
         //$steps = $tigers->cleanMys($_GET['step']);var_dump($_GET['step']);
-        $steps = $_GET['step'];
+        $steps = isset($_GET['step']) ? (int)$_GET['step'] : 0;
         switch ($steps) {
             case 1:
                 echo $frogs->installMain();
@@ -64,7 +76,7 @@ $getTitle = 'Upgrade';
                         $adm_path = $tigers->cleanMys($_POST['adm_path']);
                         $adm_http = $tigers->cleanMys($_POST['adm_http']);
                         $my_name = $tigers->cleanMys($_POST['my_name']);
-                        if (!empty($my_name) && !preg_match("/([A-Za-z-\s]+)/i", $my_name)) {
+                        if (!empty($my_name) && !preg_match("/([A-Za-z\\-\s]+)/i", $my_name)) {
                             $tigers->displayError('Form Error', 'The name you provided can only contain' .
                                 ' letters, spaces and dashes.', false);
                         }
@@ -102,7 +114,7 @@ $getTitle = 'Upgrade';
                         }
 
                         $hashhash_input = sha1(date('YmdHis'));
-                        $javascript_key_input = sha1(mt_rand(9999, 999999));
+                        $javascript_key_input = sha1((string)random_int(9999, 999999));
                         $insert = "INSERT INTO `$_ST[options]` (`name`, `text`) VALUES
     ('collective_name', '$collname'),
     ('per_joined', '25'), 
@@ -371,7 +383,6 @@ $getTitle = 'Upgrade';
                             exit('<p><span class="mysql">Error:</span> ' . $scorpions->error() .
                                 "<br />\n<em>" . $insert . '</em></p>');
                         }
-                        unlink('templates.inc.php');
 
                         echo $tigers->displaySuccess('If you experienced zero errors, your main' .
                             ' functions were created, and the first part of the installation was' .
@@ -438,7 +449,8 @@ $getTitle = 'Upgrade';
                      * Install Addons!
                      */
                     elseif (isset($_POST['action']) && $_POST['action'] == 'Install Addons') {
-                        foreach ($get_addon_array as $k => $v) {
+                        $get_addon_array_for_installation = array_diff_key($get_addon_array, array_flip($notSupportedAddons));
+                        foreach ($get_addon_array_for_installation as $k => $v) {
                             if (isset($_POST[$k]) && $_POST[$k] == 'y') {
                                 $result = $frogs->installAddon($k);
                                 if ($result->status == true) {
@@ -461,7 +473,7 @@ $getTitle = 'Upgrade';
                     elseif (isset($_POST['action']) && $_POST['action'] == 'Finish Installation') {
                         $password = isset($_POST['password']) && !empty($_POST['password']) ?
                             $tigers->cleanMys($_POST['password'], 'y', 'y', 'n') :
-                            substr(mt_rand(99999, 888888), 0, 4) . substr(sha1(date('YmdHis')), 0, 11);
+                            substr(random_int(99999, 888888), 0, 4) . substr(sha1(date('YmdHis')), 0, 11);
                         $update = "UPDATE `$_ST[options]` SET `text` = MD5('$password') WHERE `name`" .
                             " = 'user_password' LIMIT 1";
                         $true = $scorpions->query($update);

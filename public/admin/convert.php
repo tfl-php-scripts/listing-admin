@@ -110,7 +110,7 @@ if (
             'n' : $tigers->cleanMys($_POST['importjoined']);
         if (isset($_POST['toggle']) && $_POST['toggle'] == 'y') {
             $favefield = 1;
-            if (isset($_POST['fave']) && count($_POST['fave']) > 0) {
+            if (isset($_POST['fave']) && (is_countable($_POST['fave']) ? count($_POST['fave']) : 0) > 0) {
                 $faves = $_POST['fave'];
                 $faves = array_map(array($tigers, 'cleanMys'), $faves);
             }
@@ -520,7 +520,7 @@ if (
         elseif ($usedb == 0) {
             if (isset($_FILES['importfile']) && !empty($_FILES['importfile']['name'])) {
                 $members = file($_FILES['importfile']['tmp_name']);
-                if (count($members) == 0 || $members == 0 || $members == false) {
+                if ((is_countable($members) ? count($members) : 0) == 0) {
                     $tigers->displayError('File Error', 'The file you supplied appears' .
                         ' to be empty!', false);
                 }
@@ -564,8 +564,19 @@ if (
                                 'added' => $added
                             );
                         } elseif ($importcat == 'members') {
-                            [$email, $listing, $name, $url, $country, $password, $fave, $visible,
-                                $pending, $update, $added] = explode('__', $m);
+                            [
+                                $email,
+                                $listing,
+                                $name,
+                                $url,
+                                $country,
+                                $password,
+                                $fave,
+                                $visible,
+                                $pending,
+                                $update,
+                                $added
+                            ] = explode('__', $m);
                             $array[$email] = (object)array(
                                 'name' => $name,
                                 'email' => $seahorses->formatExport($email, 'la', 'decode'),
@@ -733,7 +744,8 @@ if (
                 $member = $snakes->getMembers($a, 'id', 'object', $fanlistingid);
                 if ($script == 'bellabuffs') {
                     $favefields = $tigers->emptyarray(explode('|', $listing->fave_fields));
-                    $ff = count($favefields) == 1 ? str_replace(',', '|', trim(str_replace('|', '', $member->mFave))) : '';
+                    $ff = (is_countable($favefields) ? count($favefields) : 0) == 1 ? str_replace(',', '|',
+                        trim(str_replace('|', '', $member->mFave))) : '';
                     $se = $member->mPending == 0 ? 'yes' : 'no';
                     $str .= $member->mName . ',' . $seahorses->formatExport($member->mEmail) .
                         ',' . $se . ',' . $member->mURL . ',' . $ff . "\n";
@@ -744,7 +756,7 @@ if (
                     if ($listing->fave_fields != '') {
                         $ff = $tigers->emptyarray(explode('|', $listing->fave_fields));
                         $mm = $tigers->emptyarray(explode('|', $member->mExtra));
-                        if (!empty($mm) && count($mm) > 0) {
+                        if (!empty($mm) && (is_countable($mm) ? count($mm) : 0) > 0) {
                             foreach ($mm as $k) {
                                 $str .= " '" . str_replace('NONE', '', $k) . "',";
                             }

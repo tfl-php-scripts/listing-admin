@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * @project          Listing Admin
  * @copyright        2020
@@ -20,10 +21,7 @@ use function trim;
  */
 final class StringUtils
 {
-    /**
-     * @var self
-     */
-    private static $instance;
+    private static ?StringUtils $instance = null;
 
     private function __construct()
     { /***/
@@ -65,6 +63,6 @@ final class StringUtils
 
     public function isUrlValid(string $url): bool
     {
-        return (bool)preg_match('@^(https?://)([A-Za-z0-9-_./?]+)\.([A-Za-z.]{2,})/?@i', $url ?? '');
+        return (bool)preg_match('@^(https?://)([A-Za-z0-9-_./?]+)@i', $url);
     }
 }

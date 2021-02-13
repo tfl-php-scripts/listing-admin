@@ -216,7 +216,7 @@ cannot be undone!</em> To proceed, click the "Delete Album" button.</p>
    } 
    echo "</table>\n\n";
    echo '<p id="pagination">Pages: ';
-   $total = count($cheetahs->lyricsList('', 'albums'));
+   $total = is_countable($cheetahs->lyricsList('', 'albums')) ? count($cheetahs->lyricsList('', 'albums')) : 0;
    $pages = ceil($total / $per_page);
 
    for($i = 1; $i <= $pages; $i++) {
@@ -452,7 +452,7 @@ cannot be undone!</em> To proceed, click the "Delete Song" button.</p>
 <?php 
    } 
    echo "</table>\n\n<p id=\"pagination\">Pages: ";
-   $total = count($cheetahs->lyricsList());
+   $total = is_countable($cheetahs->lyricsList()) ? count($cheetahs->lyricsList()) : 0;
    $pages = ceil($total / $per_page);
 
    for($i = 1; $i <= $pages; $i++) {
