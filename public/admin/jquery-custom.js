@@ -42,7 +42,7 @@ $(document).ready(function () {
      * Add previous owner through listings.php
      */
     if (tess.getURL() == 'listings.php') {
-        $('div.owner span.add').click(function () {
+        $('div.owner span.add').live("click",function () {
             var uno = $(this).parent().parent().attr('id');
             var dos = uno.split('p');
             var tres = dos[1] + 1;

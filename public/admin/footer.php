@@ -34,7 +34,7 @@ $feedUrl = 'https://scripts.robotess.net/projects/listing-admin/atom.xml';
 
 <script src="js.js" type="text/javascript"></script>
 <script src="jquery.js" type="text/javascript"></script>
-<script src="jquery-custom.js?v=2.0" type="text/javascript"></script>
+<script src="jquery-custom.js?v=3" type="text/javascript"></script>
 
 </body>
 </html>
