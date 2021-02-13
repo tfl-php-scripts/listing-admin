@@ -1292,7 +1292,7 @@ if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
   }
  }
 
- $category = $_POST['category'];
+ $category = $_POST['category'] ?? null;
  if(empty($category)) {
   $tigers->displayError('Form Error', 'Your <samp>category</samp> field' . 
 	' is empty.', false);
