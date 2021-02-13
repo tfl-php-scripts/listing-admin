@@ -36,19 +36,29 @@ final class StringUtils
         return self::$instance;
     }
 
-    public function normalizeUrl(string $data): string
+    /**
+     * @param string $data
+     * @return string
+     * @deprecated
+     */
+    public function normalize(?string $data): string
     {
-        return trim($data);
+        return $this->normalizeUrl($data ?? '');
     }
 
-    public function normalizeEmail(string $data): string
+    public function normalizeUrl(?string $data): string
     {
-        return strtolower(trim($data));
+        return trim($data ?? '');
+    }
+
+    public function normalizeEmail(?string $data): string
+    {
+        return trim(strtolower($data ?? ''));
     }
 
     public function isEmailValid(string $email): bool
     {
-        return (bool)preg_match("/^([A-Za-z0-9-_.+]+)@(([A-Za-z0-9-_]+\.)+)([a-zA-Z]{2,})$/i", $email);
+        return (bool)preg_match("/^([A-Za-z0-9-_.+]+)@(([A-Za-z0-9-_]+\.)+)([a-zA-Z]{2,})$/i", $email ?? '');
     }
 
     public function isUrlValid(string $url): bool
