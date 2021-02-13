@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * @project          Listing Admin
  * @copyright        2007
@@ -13,10 +14,15 @@ ob_start();
 session_start();
 header('Cache-Control: no-cache, must-revalidate');
 
-/**
- * These files need to be included, as they include the main
- * functions 8D
- */
+if (!file_exists('rats.inc.php')) {
+    ?>
+    <section><span class="mysql">Notice:</span> there was an error while trying to find file rats.inc.php.
+        Please make sure you have copied rats.sample.inc.php to rats.inc.php and added it to <?= __DIR__; ?>. The script stops executing.
+    </section>
+    <?php
+    die;
+}
+
 require('rats.inc.php');
 require_once('inc/Robotess/autoloader.php');
 require('inc/fun.inc.php');
@@ -38,11 +44,29 @@ require('inc/fun-listings.inc.php');
 require('inc/fun-members.inc.php');
 require('inc/fun-wishlist.inc.php');
 
-/**
- * Include classes!
- */
-if ($seahorses->getOption('kim_opt') == 'y') {
-    require('inc/class-kimadmin.inc.php');
+try {
+    /**
+     * Include classes!
+     */
+    if ($seahorses->getOption('kim_opt') == 'y') {
+        require('inc/class-kimadmin.inc.php');
+    }
+} catch (Exception $e) {
+    if(($getTitle ?? 'none') === 'Install') {
+        return;
+    }
+
+    ?>
+    <section><span class="mysql">Notice:</span> there was an error while trying to retrieve Listing Admin options. Please make sure you have installed the script. <?php
+        if(isset($scorpions)) {
+            ?>Error message/code: <?= $scorpions->error(); ?>. <?php
+        } else {
+            echo 'Check your php logs. ';
+        }
+        ?>The script stops executing.
+    </section>
+    <?php
+    die;
 }
 
 if ($seahorses->getOption('updates_opt') == 'y') {
