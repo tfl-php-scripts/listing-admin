@@ -227,7 +227,7 @@ if (isset($_GET['forgot'])) {
                                 " that fails, you update your password via phpMyAdmin or your MySQL manager.</p>\n";
                         }
                     } else {
-                        $userObj->userText = "Password Hint: $passwordhint";
+                        $userObj->userText = "Password Hint: [not shown]";
                         if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
                             $userObj->userInfo .= "{$_SERVER['HTTP_REFERER']}|";
                         }

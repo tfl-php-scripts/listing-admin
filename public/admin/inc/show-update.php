@@ -113,8 +113,8 @@
             'url' => $tigers->cleanMys(
                 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['PHP_SELF']
             ),
-            'text' => "E-Mail Address: $email\nPassword: $password\nNew" .
-                " E-Mail Address: $new_email\nNew Name: $new_name\nNew URL: $new_url\nNew Password: $password1\n" .
+            'text' => "E-Mail Address: $email\nPassword: [not shown]\nNew" .
+                " E-Mail Address: $new_email\nNew Name: $new_name\nNew URL: $new_url\nNew Password: [not shown]\n" .
                 "New Country: $new_country\nVisible: $visible"
         );
 
