@@ -10,12 +10,15 @@
  */
 
 use Robotess\StringUtils;
+use Robotess\Templates;
 
 $getTitle = 'Listings';
 
 require('pro.inc.php');
 require('vars.inc.php');
 require('header.php');
+
+$templatesExamples = new Templates();
 
 $sp = !isset($_GET['g']) 
 || (isset($_GET['g']) && preg_match('/^(search)([A-Za-z]+)/', $_GET['g'])) ?
@@ -1104,6 +1107,9 @@ $favouritefields = '|' . trim($favouritefields, '|') . '|';
    $seahorses->editListing($id, 'desc', $desc);
   }
   $stats = trim(htmlentities($_POST['stats'], ENT_QUOTES));
+  if(empty($stats)) {
+   $stats = trim($templatesExamples->stats);
+  }
   if($seahorses->getVar($id, 'stats') != $stats) {
    $seahorses->editListing($id, 'stats', $stats);
   }
@@ -1112,41 +1118,43 @@ $favouritefields = '|' . trim($favouritefields, '|') . '|';
    $seahorses->editListing($id, 'quotes', $quotes);
   }
   $affiliates = trim(htmlentities($_POST['affiliates'], ENT_QUOTES));
+  if(empty($affiliates)) {
+   $affiliates = trim($templatesExamples->affiliates);
+  }
   if($seahorses->getVar($id, 'affiliates') != $affiliates) { 
    $seahorses->editListing($id, 'affiliates', $affiliates);
   }
   $wishlist = trim(htmlentities($_POST['wishlist'], ENT_QUOTES));
+  if(empty($wishlist)) {
+   $wishlist = trim($templatesExamples->wishlist);
+  }
   if($seahorses->getVar($id, 'wishlist') != $wishlist) {
    $seahorses->editListing($id, 'wishlist', $wishlist);
   }
   $updates = trim(htmlentities($_POST['updates'], ENT_QUOTES));
   if(empty($updates)) {
-   $updates = trim('<div class="entry_listingadmin">
-<span class="date">{date}</span> {entry}
-<p class="tc cat">Filed Under: {categories}</p>
-</div>');
+   $updates = trim($templatesExamples->updates);
   }
   if($seahorses->getVar($id, 'updates') != $updates) {
    $seahorses->editListing($id, 'updates', $updates);
   }
   $member = trim($_POST['mem']);
   if(empty($member)) {
-   $member = trim('<li>{name}<br />
-{email} &middot; {url}</li>');
+   $member = trim($templatesExamples->members);
   }
   if($seahorses->getVar($id, 'members') != $member) {
    $seahorses->editListing($id, 'members', $member);
   }
   $member_header = trim(htmlentities($_POST['mem-head'], ENT_QUOTES));
   if(empty($member_header)) {
-   $member_header = trim('<ol>');
+   $member_header = trim($templatesExamples->members_header);
   } 
   if($seahorses->getVar($id, 'members_header') != $member_header) {
    $seahorses->editListing($id, 'members_header', $member_header);
   }
   $member_footer = trim(htmlentities($_POST['mem-foot'], ENT_QUOTES));
   if(empty($member_footer)) {
-   $member_footer = trim('</ol>');
+   $member_footer = trim($templatesExamples->members_footer);
   }
   if($seahorses->getVar($id, 'members_footer') != $member_footer) {
    $seahorses->editListing($id, 'members_footer', $member_footer);
@@ -1168,7 +1176,7 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'new') {
 <fieldset>
  <legend>Details</legend>
  <p><label><strong>Title:</strong></label> <input name="title" class="input1" type="text"></p>
- <p><label><strong>Subject:</strong></label> <input name="subject" class="input1" type="text"></p>
+ <p><label><strong>Subject:</strong></label> <input name="subject" class="input1" type="text" required></p>
  <p><label><strong><abbr title="Uniform Resource Indentifier">URI</abbr>:</strong>
  </label> <input name="url" class="input1" type="url"></p>
  <p><label><strong>Status:</strong></label> 
@@ -1204,13 +1212,13 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'new') {
  <p><strong>Description:</strong><br>
  <textarea name="desc" cols="50" rows="8" style="height: 150px; margin: 0 1% 0 0; width: 99%;"></textarea></p>
  <p><strong>Stats Template:</strong><br>
- <textarea name="stats" cols="50" rows="8" style="height: 150px; margin: 0 1% 0 0; width: 99%;"></textarea></p>
+ <textarea name="stats" cols="50" rows="8" style="height: 150px; margin: 0 1% 0 0; width: 99%;"><?=$templatesExamples->stats;?></textarea></p>
 </fieldset>
 
 <fieldset>
  <legend>Categories and Opened Date</legend>
  <p><label><strong>Categor(y|ies):</strong></label> 
- <select name="category[]" class="input1" multiple="multiple" size="10">
+ <select name="category[]" class="input1" multiple="multiple" size="10" required>
 <?php 
  $select = "SELECT * FROM `$_ST[categories]` WHERE `parent` = '0' ORDER BY `catname` ASC";
  $true = $scorpions->query($select);
@@ -1345,18 +1353,17 @@ if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
  $cat = implode('!', $category);
  $cat = '!' . trim($cat, '!') . '!';
 
- $insert = "INSERT INTO `$_ST[main]` (`title`, `subject`, `url`, `image`," . 
+ $insert = "INSERT INTO `$_ST[main]` (`title`, `subject`, `url`, `image`," .
  ' `category`, `status`, `show`, `dbhost`, `dbuser`, `dbpass`, `dbname`,' .
  ' `dbtype`, `dbtabl`, `dblist`, `dbaffs`, `dbflid`, `dbhttp`, `dbpath`,' .
  ' `desc`, `stats`, `affiliates`, `wishlist`, `quotes`, `members`,' .
  ' `members_header`, `members_footer`, `updates`, `form_delete`, `form_form`,' .
  ' `form_join`, `form_join_rules`, `form_reset`, `form_update`, `fave_fields`,' .
- " `date`, `since`, `updated`, `granted`, `markup`) VALUES ('$title', '$subject'," . 
- " '$url', '$file', '$cat', '$status', 0, '', '', '', '', 'enth', '', 0, '', ''," . 
- " '', '', '$desc', '$stats', '', '', '', '', '', '', '', '', '', '', '', '', ''," . 
- " '', '$df', '$date', '0000-00-00', '$granted', '$markup')";
+ " `date`, `since`, `updated`, `granted`, `markup`, `previous`) VALUES ('$title', '$subject'," .
+ " '$url', '$file', '$cat', '$status', 0, '', '', '', '', 'enth', '', 0, '', 0," .
+ " '', '', '$desc', '$stats', '$templatesExamples->affiliates', '$templatesExamples->wishlist', '', '$templatesExamples->members', '$templatesExamples->members_header', '$templatesExamples->members_footer', '$templatesExamples->updates', '', '', '', '', '', ''," .
+ " '', '$df', '$date', '1970-01-01', '$granted', '$markup', '')";
  $true = $scorpions->insert($insert);
-
  if($true == false) {
   $tigers->displayError('Database Error', 'The script was unable to add' . 
 	' the listing to the database.|Make sure your listings table exists.', 
@@ -1466,7 +1473,7 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'Delete Listing') {
   echo '<p class="successButton"><span class="success">SUCCESS!</span> Your' .
 	" listing was deleted!</p>\n";
  }
- if($result == true) {
+ if(isset($result) && $result === true) {
   echo '<p class="successButton"><span class="success">SUCCESS!</span> The' .
 	" members from the deleted listing were deleted!</p>\n";
  }

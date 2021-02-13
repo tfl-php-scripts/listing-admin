@@ -3762,11 +3762,6 @@ parameters:
 			path: public/admin/listings.php
 
 		-
-			message: "#^Variable \\$result might not be defined\\.$#"
-			count: 1
-			path: public/admin/listings.php
-
-		-
 			message: "#^Variable \\$my_imagesh might not be defined\\.$#"
 			count: 1
 			path: public/admin/listings.php
