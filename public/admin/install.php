@@ -10,12 +10,6 @@ declare(strict_types=1);
  * @version          Robotess Fork
  */
 
-session_start();
-setcookie(
-    'lalog',
-    'blablajustotoseelogsoninstall'
-);
-
 if (!file_exists('rats.inc.php')) {
     ?>
     <section><span class="mysql">Notice:</span> there was an error while trying to find file rats.inc.php.
