@@ -29,6 +29,8 @@ if (!class_exists('tigers')) {
         {
             global $scorpions;
 
+            $post = (string)$post;
+
             if ($p == 'y') {
                 $post = strip_tags($post);
             }
