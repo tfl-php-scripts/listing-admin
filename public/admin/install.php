@@ -271,7 +271,7 @@ require('vars.inc.php');
 		`previous` text NOT NULL,
     `date` varchar(255) NOT NULL,
     `since` date NOT NULL,
-    `updated` date NOT NULL DEFAULT '0000-00-00',
+    `updated` date NOT NULL DEFAULT '1970-01-01',
     `granted` TINYINT(1) NOT NULL DEFAULT '0',
     `markup` enum('html', 'xhtml') NOT NULL DEFAULT 'xhtml',
      PRIMARY KEY (`id`),
@@ -295,7 +295,7 @@ require('vars.inc.php');
     `mVisible` tinyint(1) NOT NULL DEFAULT '0',
     `mPending` tinyint(1) NOT NULL DEFAULT '0',
     `mUpdate` enum('y', 'n') NOT NULL DEFAULT 'n',
-    `mEdit` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+    `mEdit` datetime NOT NULL DEFAULT '1970-01-01 00:00:00',
     `mAdd` date NOT NULL,
      PRIMARY KEY (`mID`),
      UNIQUE KEY `mName` (`fNiq`, `mEmail`)
