@@ -82,7 +82,7 @@ if($seahorses->getOption('quotes_opt') == 'y') {
   } 
 
   $insert = "INSERT INTO `$_ST[quotes]` (`fNiq`, `qAuthor`, `qQuote`, `qUpdated`," . 
-  " `qAdded`) VALUES ('$listing', '$author', '$quote', '0000-00-00 00:00:00', NOW())";
+  " `qAdded`) VALUES ('$listing', '$author', '$quote', '1970-01-01 00:00:00', NOW())";
   $scorpions->query("SET NAMES 'utf8';");
   $true = $scorpions->query($insert);
   if($true == false) {

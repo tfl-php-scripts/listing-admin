@@ -791,7 +791,7 @@ if (
  `title` varchar(255) NOT NULL default '',
  `imagefile` varchar(255) default NULL,
  `email` varchar(255) NOT NULL default '',
- `added` date NOT NULL default '0000-00-00',
+ `added` date NOT NULL default '1970-01-01',
  PRIMARY KEY (`affiliateid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
