@@ -219,7 +219,7 @@ $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email
   $insert = "INSERT INTO `$_ST[members]` (`mEmail`, `fNiq`, `mName`, `mURL`," . 
 	' `mCountry`, `mPassword`, `mExtra`, `mVisible`, `mPending`, `mUpdate`,' .
   " `mEdit`, `mAdd`) VALUES ('$email', '$listing', '$name', '$url', '$country'," . 
-	" MD5('$pass'), '$ff', '$visible', '0', 'n', '0000-00-00 00:00:00', CURDATE())";
+	" MD5('$pass'), '$ff', '$visible', '0', 'n', '1970-01-01 00:00:00', CURDATE())";
   $true = $scorpions->insert($insert);
 
   if($true == false) {

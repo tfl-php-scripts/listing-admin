@@ -99,7 +99,7 @@ if (isset($_POST['action'])) {
         if ($doadd) {
             $insert = "INSERT INTO `$_ST[codes_donors]` (`dName`, `dEmail`, `dURL`," .
                 " `dPending`, `dUpdated`, `dAdded`) VALUES ('$new_name', '$email', '$url'," .
-                " 0, '0000-00-00 00:00:00', NOW())";
+                " 0, '1970-01-01 00:00:00', NOW())";
             $true = $scorpions->query($insert);
             if ($true == false) {
                 $tigers->displayError('Database Error', 'There was an error inserting you' .

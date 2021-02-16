@@ -80,7 +80,7 @@ if(class_exists('frogs') == false) {
  `dEmail` varchar(255) NOT NULL,
  `dURL` varchar(255) NOT NULL,
  `dPending` tinyint(1) NOT NULL DEFAULT '1',
- `dUpdated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+ `dUpdated` datetime NOT NULL DEFAULT '1970-01-01 00:00:00',
  `dAdded` datetime NOT NULL,
  PRIMARY KEY (`dID`),
  UNIQUE KEY `dName` (`dName`(25), `dEmail`(80), `dURL`(90))
@@ -120,7 +120,7 @@ if(class_exists('frogs') == false) {
  `mPending` tinyint(1) NOT NULL DEFAULT '0',
  `mPrevious` tinyint(1) NOT NULL DEFAULT '0',
  `mUpdate` enum('y', 'n') NOT NULL DEFAULT 'n',
- `mEdit` datetime NOT NULL DEFAULT '0000-00-00',
+ `mEdit` datetime NOT NULL DEFAULT '1970-01-01',
  `mAdd` date NOT NULL,
 PRIMARY KEY (`mID`),
 UNIQUE KEY `mName` (`fNiq`, `mEmail`)
@@ -174,7 +174,7 @@ UNIQUE KEY `mName` (`fNiq`, `mEmail`)
  `fNiq` mediumint(6) unsigned NOT NULL,
  `qQuote` text NOT NULL,
  `qAuthor` varchar(255) NOT NULL,
- `qUpdated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00', 
+ `qUpdated` datetime NOT NULL DEFAULT '1970-01-01 00:00:00', 
  `qAdded` datetime NOT NULL,
  PRIMARY KEY (`qID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
