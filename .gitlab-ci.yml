@@ -25,16 +25,18 @@ artifacts_php72:
   script:
     - apt-get update -yqq
     - apt-get install -yqq git zip unzip
+    - zip -r php74-$CI_COMMIT_REF_NAME.zip public
     - curl -sS https://getcomposer.org/installer | php
     - rm composer.lock
     - rm composer.json
     - php composer.phar require rector/rector
     - php composer.phar install
     - vendor/bin/rector process --config rector-downgrade-72.php
-    - zip -r listing-admin-php72-php-73-$CI_COMMIT_REF_NAME.zip public
+    - zip -r php72-php-73-$CI_COMMIT_REF_NAME.zip public
   artifacts:
     paths:
-      - listing-admin-php72-php-73-$CI_COMMIT_REF_NAME.zip
+      - php72-php-73-$CI_COMMIT_REF_NAME.zip
+      - php74-$CI_COMMIT_REF_NAME.zip
 
 deploy_artifacts:
   stage: deploy_artifacts
@@ -52,7 +54,7 @@ deploy_artifacts:
     - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
   script:
-    - ssh -o StrictHostKeyChecking=no $SSH_USER_NAME@$SSH_SERVER "ls -lah; touch test.txt"
+    - ssh -vo StrictHostKeyChecking=no $SSH_USER_NAME@$SSH_SERVER "ls -lah; touch test.txt"
 
 stages:
   - static_analysis
