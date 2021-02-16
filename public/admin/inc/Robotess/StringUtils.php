@@ -37,31 +37,29 @@ final class StringUtils
     }
 
     /**
-     * @param string $data
-     * @return string
      * @deprecated
      */
-    public function normalize(?string $data): string
+    public function normalize(?string $data = null): string
     {
         return $this->normalizeUrl($data ?? '');
     }
 
-    public function normalizeUrl(?string $data): string
+    public function normalizeUrl(?string $data = null): string
     {
         return trim($data ?? '');
     }
 
-    public function normalizeEmail(?string $data): string
+    public function normalizeEmail(?string $data = null): string
     {
-        return trim(strtolower($data ?? ''));
+        return strtolower(trim($data ?? ''));
     }
 
-    public function isEmailValid(string $email): bool
+    public function isEmailValid(?string $email = null): bool
     {
         return (bool)preg_match("/^([A-Za-z0-9-_.+]+)@(([A-Za-z0-9-_]+\.)+)([a-zA-Z]{2,})$/i", $email ?? '');
     }
 
-    public function isUrlValid(string $url): bool
+    public function isUrlValid(?string $url = null): bool
     {
         return (bool)preg_match('@^(https?://)([A-Za-z0-9-_./?]+)@i', $url);
     }

@@ -202,7 +202,7 @@ section.clearBottom {
 #lafeeds {
     float: left;
     margin: 0 2% 0 0;
-    width: 48%;
+    width: 100%;
 }
 
 #lafeeds menu {
@@ -213,10 +213,12 @@ section.clearBottom {
 
 #lafeeds menu li {
     border-bottom: 1px solid #D0D0D0;
-    display: block;
+    display: inline-block;
     list-style-type: none;
     margin: 0;
     padding: 8px 0;
+    width: 48%;
+    vertical-align: top;
 }
 
 #lafeeds menu li#last {

@@ -960,9 +960,9 @@ if (
     $number = 0;
     $addonsarray = $get_addon_array;
     foreach ($addonsarray as $k => $v) {
-        $n = $number == 4 ? ' class="last"' : '';
+        $n = $number === count($addonsarray) - 1 ? ' class="last"' : '';
         echo "<div class=\"addonStatistics\">\n";
-        if ($cheetahs->isInstalled($k) == false) {
+        if ($cheetahs->isInstalled($k) === false) {
             echo "<p$n>The <strong>$v</strong> addon is not installed, m'love. /dramatic tear</p>\n";
         } else {
             echo "<p$n>The <strong>$v</strong> addon currently has " . $cheetahs->stats($k, 1) . ".</p>\n";

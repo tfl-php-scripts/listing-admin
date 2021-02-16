@@ -19,6 +19,15 @@ $automated = $tigers->cleanMys($auserinfo);
 
 try {
     /**
+     * Pre-defined link for e-mail (most often used in forms)
+     */
+    $my_email     = $seahorses->getOption('my_email');
+    $hide_address = "<script type=\"text/javascript\">\n<!--\n" .
+        " var jsEmail = '$my_email';\n" .
+        " document.write('<a h' + 'ref=\"mailto:' + jsEmail + '\">via email</' + " .
+        "'a>');\n//-->\n</script>";
+
+    /**
      * Grab owner variables \o/
      */
     $qname = $seahorses->getOption('collective_name');
@@ -43,6 +52,8 @@ try {
         'path' => str_replace('inc/', '', $seahorses->getOption('adm_path'))
     ];
 
+    $checkCr = "<script type=\"text/javascript\">setTimeout(function () {const coll = document.getElementsByClassName(\"showCredits-LA-RF\");if(coll !== undefined && coll.length >= 1) {const el = coll[0]; if(window.getComputedStyle(el).display === 'none') { el.style.display = 'block'; }if(window.getComputedStyle(el).visibility === 'hidden') { el.style.visibility = 'visible'; }}}, 1000);</script>";
+
     /**
      * Pending comments functioning~
      */
@@ -63,16 +74,7 @@ try {
     $per_joined  = $seahorses->getOption('per_joined');
     $per_members = $seahorses->getOption('per_members');
     $per_page    = $seahorses->getOption('per_page');
-
-
-    /**
-     * Pre-defined link for e-mail (most often used in forms)
-     */
-    $my_email     = $seahorses->getOption('my_email');
-    $hide_address = "<script type=\"text/javascript\">\n<!--\n" .
-        " var jsEmail = '$my_email';\n" .
-        " document.write('<a h' + 'ref=\"mailto:' + jsEmail + '\">via email</' + " .
-        "'a>');\n//-->\n</script>";
+    $hide_address_check = $hide_address . $checkCr;
 
 } catch (Exception $e) {
     if(($getTitle ?? 'none') === 'Install') {

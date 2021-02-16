@@ -1218,16 +1218,6 @@ parameters:
 			path: public/admin/inc/fun-external.inc.php
 
 		-
-			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; entry ID\\)\\: Unexpected token \"\\$i\", expected type at offset 113$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^PHPDoc tag @param has invalid value \\(\\$p , string; type\\)\\: Unexpected token \"\\$p\", expected type at offset 73$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
 			message: "#^Variable \\$link might not be defined\\.$#"
 			count: 1
 			path: public/admin/inc/fun-external.inc.php
@@ -2327,6 +2317,11 @@ parameters:
 			path: public/admin/inc/show-codes.php
 
 		-
+			message: "#^Variable \\$checkCr might not be defined\\.$#"
+			count: 2
+			path: public/admin/inc/show-codes.php
+
+		-
 			message: "#^Constant MAINDIR not found\\.$#"
 			count: 2
 			path: public/admin/inc/show-delete.php
@@ -2558,7 +2553,7 @@ parameters:
 
 		-
 			message: "#^Variable \\$hide_address might not be defined\\.$#"
-			count: 3
+			count: 2
 			path: public/admin/inc/show-join.php
 
 		-
@@ -2599,6 +2594,16 @@ parameters:
 		-
 			message: "#^Variable \\$fave_field in isset\\(\\) always exists and is not nullable\\.$#"
 			count: 2
+			path: public/admin/inc/show-join.php
+
+		-
+			message: "#^Variable \\$hide_address_check might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-join.php
+
+		-
+			message: "#^Variable \\$laoptions might not be defined\\.$#"
+			count: 1
 			path: public/admin/inc/show-join.php
 
 		-
@@ -2984,6 +2989,11 @@ parameters:
 		-
 			message: "#^Variable \\$tigers might not be defined\\.$#"
 			count: 7
+			path: public/admin/inc/show-members.php
+
+		-
+			message: "#^Variable \\$checkCr might not be defined\\.$#"
+			count: 1
 			path: public/admin/inc/show-members.php
 
 		-
@@ -3857,11 +3867,6 @@ parameters:
 			path: public/admin/members.php
 
 		-
-			message: "#^Variable \\$url might not be defined\\.$#"
-			count: 1
-			path: public/admin/members.php
-
-		-
 			message: "#^Variable \\$snakes might not be defined\\.$#"
 			count: 16
 			path: public/admin/members.php
@@ -3953,7 +3958,7 @@ parameters:
 
 		-
 			message: "#^Variable \\$seahorses might not be defined\\.$#"
-			count: 26
+			count: 27
 			path: public/admin/pro.inc.php
 
 		-
@@ -3973,7 +3978,7 @@ parameters:
 
 		-
 			message: "#^Variable \\$laoptions might not be defined\\.$#"
-			count: 6
+			count: 5
 			path: public/admin/pro.inc.php
 
 		-

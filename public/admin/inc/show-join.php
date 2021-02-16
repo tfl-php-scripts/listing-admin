@@ -331,12 +331,12 @@
         ?>
         <p>Please use the form below for joining only. Hit the submit button only once,
             as your application is entered into the database, and ready for approval. If you
-            have any problems, feel more than free to contact me <?php echo $hide_address; ?>.
+            have any problems, feel more than free to contact me <?php echo $hide_address_check; ?>.
             If you would like to update your information, you can
             <a href="<?php echo $u2; ?>">do so here</a>. The asterisks (*) are
             required fields.</p>
 
-        <form action="<?php echo $j2; ?>" <?php echo $f3; ?>method="post">
+        <form action="<?= $j2; ?>" <?= $f3; ?>method="post">
             <?php
             if (
                 $seahorses->getOption('javascript_opt') == 'y' ||
@@ -346,6 +346,7 @@
                 echo "<p style=\"margin: 0;\">\n";
             }
 
+            echo '<!-- Listing Admin ' . $laoptions->version . ' Join Form -->';
             if ($seahorses->getOption('javascript_opt') == 'y') {
                 echo $octopus->javascriptCheat(sha1($seahorses->getOption('javascript_key')));
             }
@@ -470,17 +471,17 @@
                 <legend>Submit</legend>
                 <p class="tc">
                     <input name="emailMe" checked="checked" class="input3" type="checkbox"
-                           value="y"<?php echo $mark; ?>> Send me my details!
+                           value="y"<?= $mark; ?>> Send me my details!
                 </p>
                 <p class="tc">
-                    <input name="action" class="input2" type="submit" value="Join Listing"<?php echo $mark; ?>>
-                    <input class="input2" type="reset" value="Reset"<?php echo $mark; ?>>
+                    <input name="action" class="input2" type="submit" value="Join Listing"<?= $mark; ?>>
+                    <input class="input2" type="reset" value="Reset"<?= $mark; ?>>
                 </p>
             </fieldset>
         </form>
 
-        <p class="showCredit" style="text-align: center;">
-            Powered by <?php echo $octopus->formatCredit(); ?>
+        <p class="showCredits-LA-RF" style="text-align: center;">
+            Powered by <?= $octopus->formatCredit(); ?>
         </p>
         <?php
     }

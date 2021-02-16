@@ -232,7 +232,7 @@ if ($cheetahs->isInstalled('updates') == true) {
         <h4>Overdue Listings</h4>
         <menu>
             <?php
-            $no2 = array();
+            $no2 = [];
             $coming = $wolves->indexListings(0);
             foreach ($coming as $b) {
                 $h = $wolves->getListings($b, 'object');

@@ -179,7 +179,7 @@
     }
     ?>
 
-    <p class="showCredit" style="text-align: center;">
+    <p class="showCredits-LA-RF" style="text-align: center;">
         Powered by <?php echo $octopus->formatCredit(); ?>
     </p>
 </div>

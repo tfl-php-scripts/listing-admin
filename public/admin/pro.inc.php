@@ -241,12 +241,12 @@ if (isset($_GET['forgot'])) {
             </div>
 
             <div id="form">
-                <form action="<?php echo str_replace('inc/', '', $laoptions->getOption('adm_http')); ?>?forgot"
+                <form action="<?php echo str_replace('inc/', '', $seahorses->getOption('adm_http')); ?>?forgot"
                       method="post">
                     <fieldset>
                         <legend>Reset Password</legend>
                         <p><label><strong>Password Hint:</strong></label>
-                            <input name="passwordhint" class="input1" type="password"></p>
+                            <input name="passwordhint" class="input1" type="password" required></p>
                         <p class="tc"><input name="action" class="input2" type="submit" value="Reset Password"></p>
                     </fieldset>
                 </form>

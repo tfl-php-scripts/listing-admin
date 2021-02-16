@@ -126,7 +126,6 @@ if(isset($_GET['extend']) && is_numeric($_GET['extend'])) {
  }
 
  elseif (isset($_POST['action']) && $_POST['action'] == 'Add Member') {
-  $email_now = $tigers->cleanMys($_POST['email_now']);
   $listing = $tigers->cleanMys($_POST['listing']);
   $listingArray = $wolves->listingsList();
   if(empty($listing) || !is_numeric($listing) || !in_array($listing, $listingArray)) {
@@ -149,6 +148,7 @@ $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email
             $tigers->displayError('Form Error', 'The characters specified in the' .
                 ' <samp>e-mail</samp> field are not allowed.', false);
         }
+  $url = StringUtils::instance()->normalizeUrl($tigers->cleanMys($_POST['url']));
         if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
     $tigers->displayError('Form Error', 'Your <samp>site URL</samp> is' .
         ' not valid. Please supply a valid site URL or empty the field.', false);

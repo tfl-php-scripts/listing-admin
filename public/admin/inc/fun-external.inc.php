@@ -15,28 +15,17 @@
 if (!class_exists('octopus')) {
     class octopus
     {
-
         public string $cheatAnti = 'antispamh';
         public string $cheatSpam = 'antispamb';
         public string $cheatCaptcha = 'captchak';
         public string $cheatJavascript = 'cheatsheetCheat';
 
-        /**
-         * @access     public
-         * @function   $octopus->writeError()
-         * @deprecated 2.3alpha
-         */
         public function writeError($t, $u, $b, $i)
         {
             global $seahorses;
             $seahorses->writeMessage(0, $t, $u, $b, $i);
         }
 
-        /**
-         * @access   public
-         * @function $octopus->formURL()
-         * @since    2.2
-         */
         public function formURL($s, $g)
         {
             global $contact_form, $delete_form, $join_form, $reset_form, $update_form;
@@ -96,11 +85,6 @@ if (!class_exists('octopus')) {
             return $u;
         }
 
-        /**
-         * @function  $octopus->frontEndLink()
-         * @param     $p , string; type
-         * @param     $i , int; entry ID
-         */
         public function frontEndLink($p, $i)
         {
             global $seahorses, $my_updates, $qwebs;
@@ -136,11 +120,6 @@ if (!class_exists('octopus')) {
             return $c;
         }
 
-        /**
-         * @access   public
-         * @function $octopus->getLineBreakers()
-         * @since    2.1.4
-         */
         public function getLineBreakers($p)
         {
             $e = $p . "\n";
@@ -197,11 +176,6 @@ if (!class_exists('octopus')) {
             return $s;
         }
 
-        /**
-         * @access   public
-         * @function $octopus->ampersand()
-         * @since    2.3alpha
-         */
         public function ampersand($q, $a = 0)
         {
             global $seahorses;
@@ -215,11 +189,6 @@ if (!class_exists('octopus')) {
             return ($a == 1 ? $p . $m : $p);
         }
 
-        /**
-         * @access   public
-         * @function $octopus->entities()
-         * @since    2.3beta
-         */
         public function entities($s)
         {
             $p = $s;
@@ -228,11 +197,6 @@ if (!class_exists('octopus')) {
             $p = str_replace('laquo;', '#171;', $p);
         }
 
-        /**
-         * @access   public
-         * @function $octopus->javascriptEmail()
-         * @since    2.1.8
-         */
         public function javascriptEmail($e)
         {
             $s = "<script type=\"text/javascript\">\n<!--\n" .
@@ -242,11 +206,6 @@ if (!class_exists('octopus')) {
             return $s;
         }
 
-        /**
-         * @access   public
-         * @function $octopus->javascriptCheat()
-         * @since    1.0
-         */
         public function javascriptCheat($p)
         {
             global $options, $seahorses;
@@ -289,11 +248,6 @@ if (!class_exists('octopus')) {
             return $s;
         }
 
-        /**
-         * @access   public
-         * @function $octopus->captchaCheat()
-         * @since    2.3beta
-         */
         public function captchaCheat($p, $b = 'join')
         {
             global $mark, $seahorses;
@@ -317,11 +271,6 @@ if (!class_exists('octopus')) {
             return $string;
         }
 
-        /**
-         * @access   public
-         * @function $octopus->antispamCheat()
-         * @since    2.1.9
-         */
         public function antispamCheat($p, $r, $b = 'join')
         {
             global $mark, $seahorses;
@@ -347,13 +296,6 @@ if (!class_exists('octopus')) {
             return $string;
         }
 
-        /**
-         * Format link of credit for footers
-         *
-         * @access   public
-         * @function $octopus->formatCredit()
-         * @since    2.4
-         */
         public function formatCredit()
         {
             global $laoptions, $seahorses;
@@ -363,7 +305,7 @@ if (!class_exists('octopus')) {
             $link = '<a href="' . $laoptions->versionURI .
                 '" title="External Link: ' . $this->shortURL($laoptions->versionURI) .
                 "\" target=\"_blank\"''>Tess $point</a>";
-            return $this->newLinkFormatCredit() . ' (original author: ' . $link . ')';
+            return $this->newLinkFormatCredit() . ' (originally by ' . $link . ')';
         }
 
         public function newLinkFormatCredit(): string

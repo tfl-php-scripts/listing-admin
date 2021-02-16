@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="Author" content="Tess, Ekaterina (http://scripts.robotess.net)">
     <title> <?php echo $laoptions->version; ?> &#8212; <?php echo $leopards->isTitle($getTitle); ?> </title>
-    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="style.css?v=2" rel="stylesheet" type="text/css">
 </head>
 
 <body>
