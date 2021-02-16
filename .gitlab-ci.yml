@@ -31,12 +31,29 @@ artifacts_php72:
     - php composer.phar require rector/rector
     - php composer.phar install
     - vendor/bin/rector process --config rector-downgrade-72.php
+    - zip -r listing-admin-php72-php-73-$CI_COMMIT_REF_NAME.zip public
   artifacts:
-    name: "listing-admin-php72-php-73-$CI_COMMIT_REF_NAME"
     paths:
-      - public
+      - listing-admin-php72-php-73-$CI_COMMIT_REF_NAME.zip
+
+deploy_artifacts:
+  image: ubuntu
+  only:
+    refs:
+      - master
+      - develop
+  before_script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client git -y )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts'
+    - chmod 644 ~/.ssh/known_hosts
+  script:
+    - ssh -o StrictHostKeyChecking=no $SSH_USER_NAME@$SSH_SERVER "cd ~; touch test.txt"
 
 stages:
   - static_analysis
   - artifacts
-
+  - deploy_artifacts
