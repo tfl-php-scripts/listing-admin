@@ -138,7 +138,7 @@ if (!class_exists('kimadmin')) {
             }
             $getItem = $scorpions->obj($true);
 
-            return empty($getItem->mAdd) || $getItem->mAdd == '0000-00-00' ?
+            return empty($getItem->mAdd) || $getItem->mAdd == '0000-00-00' || $getItem->mAdd == '1970-01-01' ?
                 'Date Unavailable' : date('F jS, Y', strtotime($getItem->mAdd));
         }
 

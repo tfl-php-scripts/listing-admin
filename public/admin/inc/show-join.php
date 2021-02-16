@@ -247,7 +247,7 @@
             ' `mCountry`, `mPassword`, `mExtra`, `mVisible`, `mPending`, `mUpdate`,' .
             " `mEdit`, `mAdd`) VALUES ('$email', '" . $options->listingID .
             "', '$name', '$url', '$country', MD5('$pass'), '$fav', '$visible', 1, 'n'," .
-            " '0000-00-00 00:00:00', CURDATE())";
+            " '1970-01-01 00:00:00', CURDATE())";
         $true = $scorpions->insert($insert);
         if ($true == false) {
             echo '<p>' . $scorpions->error() . "</p>\n";

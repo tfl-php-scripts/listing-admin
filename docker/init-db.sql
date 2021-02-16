@@ -111,7 +111,7 @@ CREATE TABLE `trex` (
     `previous` text COLLATE utf8_unicode_ci NOT NULL,
     `date` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
     `since` date NOT NULL,
-    `updated` date NOT NULL DEFAULT '0000-00-00',
+    `updated` date NOT NULL DEFAULT '1970-01-01',
     `granted` tinyint(1) NOT NULL DEFAULT '0',
     `markup` enum('html','xhtml') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'xhtml'
     ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -121,12 +121,12 @@ CREATE TABLE `trex` (
 --
 
 INSERT INTO `trex` (`id`, `title`, `subject`, `url`, `image`, `category`, `status`, `show`, `dbhost`, `dbuser`, `dbpass`, `dbname`, `dbtype`, `dbtabl`, `dblist`, `dbaffs`, `dbflid`, `dbhttp`, `dbpath`, `desc`, `stats`, `affiliates`, `wishlist`, `quotes`, `members`, `members_header`, `members_footer`, `updates`, `form_delete`, `form_form`, `form_join`, `form_join_comments`, `form_join_rules`, `form_reset`, `form_update`, `fave_fields`, `previous`, `date`, `since`, `updated`, `granted`, `markup`) VALUES
-    (1, 'Current Listing', 'Cool Current Subject', 'http://localhost:8041/samplefl', '1da3ce569064_', '!3!28!52!', 0, 0, '', '', '', '', 'enth', '', 0, '', 0, '', '', 'DESCRIPTION', '&lt;p class=&quot;details&quot;&gt;\r\n&lt;strong&gt;Members:&lt;/strong&gt; {members} (&lt;em&gt;{pending} Pending &lt;/em&gt;)&lt;br&gt;\r\n&lt;strong&gt;Since:&lt;/strong&gt; {since}&lt;br&gt;\r\n&lt;strong&gt;Last Updated:&lt;/strong&gt; {updated}\r\n&lt;/p&gt;', '', '', '', '<li>{name}<br />\n{email} &middot; {url}</li>', '<ol>', '</ol>', '<div class=\"entry_listingadmin\">\n<span class=\"date\">{date}</span> {entry}\n<p class=\"tc cat\">Filed Under: {categories}</p>\n</div>', 'delete.php', 'site.php', 'join.php', 0, '', 'reset.php', 'update.php', '', 'a:3:{s:17:\"http://google.com\";s:8:\"Previous\";s:30:\"http://localhost:8041/samplefl\";s:11:\"SomeoneElse\";s:18:\"http://google2.com\";s:8:\"Prevous2\";}', 'F j, Y', '2000-02-27', '0000-00-00', 1, 'xhtml'),
-    (2, 'Some Upcoming', 'My Super Upcoming subject', '', 'bc84659a401c_', '!77!9!11!28!35!39!50!51!60!63!', 1, 0, '', '', '', '', 'enth', '', 0, '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', 'F j, Y', '2020-04-24', '0000-00-00', 0, 'xhtml'),
-    (3, 'Animal Feline Upcoming', 'Animal Feline Upcoming Subj', '', '7f8df39e5ee0_', '!78!', 1, 0, '', '', '', '', 'enth', '', 0, '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', 'F j, Y', '2020-04-24', '0000-00-00', 0, 'xhtml'),
-    (4, 'Current Animal Feline', 'Current Animal Feline Subject', '', 'de0cf4372b04_', '!78!', 0, 0, '', '', '', '', 'enth', '', 0, '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', 'F j, Y', '2020-04-11', '0000-00-00', 0, 'xhtml'),
-    (5, 'Current Test Listing', 'Current Test Listing Subj', '', '37ff458d3e90_', '!81!', 0, 0, '', '', '', '', 'enth', '', 0, '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', 'F j, Y', '2020-04-01', '0000-00-00', 0, 'xhtml'),
-    (6, 'Upcoming Test Listing', 'Upcoming Test Listing Subj', '', '04f1be71b54f_', '!80!', 1, 0, '', '', '', '', 'enth', '', 0, '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', 'F j, Y', '2020-04-24', '0000-00-00', 0, 'xhtml');
+    (1, 'Current Listing', 'Cool Current Subject', 'http://localhost:8041/samplefl', '1da3ce569064_', '!3!28!52!', 0, 0, '', '', '', '', 'enth', '', 0, '', 0, '', '', 'DESCRIPTION', '&lt;p class=&quot;details&quot;&gt;\r\n&lt;strong&gt;Members:&lt;/strong&gt; {members} (&lt;em&gt;{pending} Pending &lt;/em&gt;)&lt;br&gt;\r\n&lt;strong&gt;Since:&lt;/strong&gt; {since}&lt;br&gt;\r\n&lt;strong&gt;Last Updated:&lt;/strong&gt; {updated}\r\n&lt;/p&gt;', '', '', '', '<li>{name}<br />\n{email} &middot; {url}</li>', '<ol>', '</ol>', '<div class=\"entry_listingadmin\">\n<span class=\"date\">{date}</span> {entry}\n<p class=\"tc cat\">Filed Under: {categories}</p>\n</div>', 'delete.php', 'site.php', 'join.php', 0, '', 'reset.php', 'update.php', '', 'a:3:{s:17:\"http://google.com\";s:8:\"Previous\";s:30:\"http://localhost:8041/samplefl\";s:11:\"SomeoneElse\";s:18:\"http://google2.com\";s:8:\"Prevous2\";}', 'F j, Y', '2000-02-27', '1970-01-01', 1, 'xhtml'),
+    (2, 'Some Upcoming', 'My Super Upcoming subject', '', 'bc84659a401c_', '!77!9!11!28!35!39!50!51!60!63!', 1, 0, '', '', '', '', 'enth', '', 0, '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', 'F j, Y', '2020-04-24', '1970-01-01', 0, 'xhtml'),
+    (3, 'Animal Feline Upcoming', 'Animal Feline Upcoming Subj', '', '7f8df39e5ee0_', '!78!', 1, 0, '', '', '', '', 'enth', '', 0, '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', 'F j, Y', '2020-04-24', '1970-01-01', 0, 'xhtml'),
+    (4, 'Current Animal Feline', 'Current Animal Feline Subject', '', 'de0cf4372b04_', '!78!', 0, 0, '', '', '', '', 'enth', '', 0, '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', 'F j, Y', '2020-04-11', '1970-01-01', 0, 'xhtml'),
+    (5, 'Current Test Listing', 'Current Test Listing Subj', '', '37ff458d3e90_', '!81!', 0, 0, '', '', '', '', 'enth', '', 0, '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', 'F j, Y', '2020-04-01', '1970-01-01', 0, 'xhtml'),
+    (6, 'Upcoming Test Listing', 'Upcoming Test Listing Subj', '', '04f1be71b54f_', '!80!', 1, 0, '', '', '', '', 'enth', '', 0, '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', 'F j, Y', '2020-04-24', '1970-01-01', 0, 'xhtml');
 
 -- --------------------------------------------------------
 
@@ -304,7 +304,7 @@ CREATE TABLE `trex_codes_donors` (
     `dEmail` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
     `dURL` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
     `dPending` tinyint(1) NOT NULL DEFAULT '1',
-    `dUpdated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+    `dUpdated` datetime NOT NULL DEFAULT '1970-01-01 00:00:00',
     `dAdded` datetime NOT NULL
     ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -550,7 +550,7 @@ CREATE TABLE `trex_kim` (
     `mPending` tinyint(1) NOT NULL DEFAULT '0',
     `mPrevious` tinyint(1) NOT NULL DEFAULT '0',
     `mUpdate` enum('y','n') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'n',
-    `mEdit` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+    `mEdit` datetime NOT NULL DEFAULT '1970-01-01 00:00:00',
     `mAdd` date NOT NULL
     ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -559,7 +559,7 @@ CREATE TABLE `trex_kim` (
 --
 
 INSERT INTO `trex_kim` (`mID`, `mEmail`, `fNiq`, `mName`, `mURL`, `mPassword`, `mVisible`, `mPending`, `mPrevious`, `mUpdate`, `mEdit`, `mAdd`) VALUES
-    (1, 'kimmm+someone@gmail.com', 1, 'Kimmer', 'https://myurl.com', 'ff33c53a4ca55a21e8ea44f79b728260', 1, 0, 0, 'y', '0000-00-00 00:00:00', '2020-04-20');
+    (1, 'kimmm+someone@gmail.com', 1, 'Kimmer', 'https://myurl.com', 'ff33c53a4ca55a21e8ea44f79b728260', 1, 0, 0, 'y', '1970-01-01 00:00:00', '2020-04-20');
 
 -- --------------------------------------------------------
 
@@ -628,7 +628,7 @@ CREATE TABLE `trex_members` (
     `mVisible` tinyint(1) NOT NULL DEFAULT '0',
     `mPending` tinyint(1) NOT NULL DEFAULT '0',
     `mUpdate` enum('y','n') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'n',
-    `mEdit` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+    `mEdit` datetime NOT NULL DEFAULT '1970-01-01 00:00:00',
     `mAdd` date NOT NULL
     ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -638,9 +638,9 @@ CREATE TABLE `trex_members` (
 
 INSERT INTO `trex_members` (`mID`, `mEmail`, `fNiq`, `mName`, `mURL`, `mCountry`, `mPassword`, `mExtra`, `mVisible`, `mPending`, `mUpdate`, `mEdit`, `mAdd`) VALUES
     (1, 'joiner+kkkkjoiner@gmaaaaaaail.com', 1, 'Joiner', 'http://myurl.com', 'El Salvador', '6f55c171fdf2ba21bff9a9f17cb76c65', '', 1, 0, 'n', '2020-04-20 21:29:56', '2020-04-20'),
-    (2, 'gkhjgffk@ojokhflg.com', 1, 'New Name', 'http://fan123.com', 'Bahrain', '5f4dcc3b5aa765d61d8327deb882cf99', '', 0, 0, 'y', '0000-00-00 00:00:00', '2020-04-24'),
-    (3, 'sdfsdfsfd@jkjlgf.com', 1, 'Dsffdfs', '', 'Australia', 'd8b27a5482e64b2ff7968fe50583b0ed', '', 1, 0, 'n', '0000-00-00 00:00:00', '2020-04-24'),
-    (4, 'sdfsdfsffffdsssss+dddddd@jkjlgf.com', 1, 'Dsffdfs', '', 'Australia', 'f562ddf743b7c2c48ee10e2c3651862c', '', 0, 0, 'n', '0000-00-00 00:00:00', '2020-04-24'),
+    (2, 'gkhjgffk@ojokhflg.com', 1, 'New Name', 'http://fan123.com', 'Bahrain', '5f4dcc3b5aa765d61d8327deb882cf99', '', 0, 0, 'y', '1970-01-01 00:00:00', '2020-04-24'),
+    (3, 'sdfsdfsfd@jkjlgf.com', 1, 'Dsffdfs', '', 'Australia', 'd8b27a5482e64b2ff7968fe50583b0ed', '', 1, 0, 'n', '1970-01-01 00:00:00', '2020-04-24'),
+    (4, 'sdfsdfsffffdsssss+dddddd@jkjlgf.com', 1, 'Dsffdfs', '', 'Australia', 'f562ddf743b7c2c48ee10e2c3651862c', '', 0, 0, 'n', '1970-01-01 00:00:00', '2020-04-24'),
     (5, '1@localhost123456.com', 1, '1 Joined', 'https://1.localhost123456.com', 'United States', '5f4dcc3b5aa765d61d8327deb882cf99', '', 1, 0, 'n', '2020-04-20 21:29:56', '2000-09-04'),
     (6, '2@localhost123456.com', 1, '2 Joined', 'https://2.localhost123456.com', 'United States', '5f4dcc3b5aa765d61d8327deb882cf99', '', 1, 0, 'n', '2020-04-20 21:29:56', '2000-09-14'),
     (7, '3@localhost123456.com', 1, '3 Joined', 'https://3.localhost123456.com', 'United States', '5f4dcc3b5aa765d61d8327deb882cf99', '', 1, 0, 'n', '2020-04-20 21:29:56', '2000-09-24'),
@@ -1749,7 +1749,7 @@ CREATE TABLE `trex_quotes` (
     `fNiq` mediumint(6) UNSIGNED NOT NULL,
     `qQuote` text COLLATE utf8_unicode_ci NOT NULL,
     `qAuthor` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-    `qUpdated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+    `qUpdated` datetime NOT NULL DEFAULT '1970-01-01 00:00:00',
     `qAdded` datetime NOT NULL
     ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

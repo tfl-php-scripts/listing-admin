@@ -64,7 +64,7 @@ if (isset($_GET['g']) && $_GET['g'] == 'new') {
 
     $insert = "INSERT INTO `$_ST[codes_donors]` (`dName`, `dEmail`, `dURL`," .
         " `dPending`, `dUpdated`, `dAdded`) VALUES ('$name', '$email', '$url', 0," .
-        " '0000-00-00 00:00:00', NOW())";
+        " '1970-01-01 00:00:00', NOW())";
     $scorpions->query("SET NAMES 'utf8';");
     $true = $scorpions->query($insert);
 
