@@ -37,6 +37,7 @@ artifacts_php72:
       - listing-admin-php72-php-73-$CI_COMMIT_REF_NAME.zip
 
 deploy_artifacts:
+  stage: deploy_artifacts
   image: ubuntu
   only:
     refs:
@@ -51,7 +52,7 @@ deploy_artifacts:
     - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts'
     - chmod 644 ~/.ssh/known_hosts
   script:
-    - ssh -o StrictHostKeyChecking=no $SSH_USER_NAME@$SSH_SERVER "cd ~; touch test.txt"
+    - ssh -o StrictHostKeyChecking=no $SSH_USER_NAME@$SSH_SERVER "ls -lah; touch test.txt"
 
 stages:
   - static_analysis
