@@ -93,13 +93,13 @@ of the listing you'd like the member added to.</p>
  <legend>Fave Field Options</legend>
 <?php
 if(!isset($_GET['extend']) && !isset($_GET['count']) && !isset($_POST['fave'])) {
- $q = basename($_SERVER['PHP_SELF']) . '?g=new&#38;extend=1&#38;count=1#fave'; 
+ $q = basename($_SERVER['PHP_SELF']) . '?g=new&#38;listing=' . $getlistingid .'&#38;extend=1&#38;count=1#fave';
  echo "<p class=\"tc\"><a href=\"$q\">Add Fave Field(s)?</a></p>\n";
 }
 
 if(isset($_GET['extend']) && is_numeric($_GET['extend'])) {
  $c1 = (int)$tigers->cleanMys($_GET['count']) + 1;
- $q2 = basename($_SERVER['PHP_SELF']) . '?g=old&#38;id=' . $_GET['id'] . 
+ $q2 = basename($_SERVER['PHP_SELF']) . '?g=new&#38;listing=' . $getlistingid .
  '&#38;extend=1&#38;count=' . $c1 . '#fave'; 
  $countQuery = $tigers->cleanMys((int)$_GET['count'], 'y', 'y', 'n');
  echo "<div id=\"fave\">\n";
@@ -312,39 +312,28 @@ $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email
 ?>
 <fieldset>
  <legend>Fave Field Options</legend>
-<?php 
+<?php
   $fave = $getItem->mExtra;
   $favs = explode('|', $fave);
   $favs = $tigers->emptyarray($favs);
   $num = 0;
-
-  if(!empty($fave)) {
-   if((is_countable($favs) ? count($favs) : 0) == 1) {
-?>
- <p><label><strong>Fave Field 1:</strong></label> 
- <input name="fave[]" class="input1" type="text" value="<?php echo $favs[0]; ?>"></p>
-<?php
- }
-
- elseif ((is_countable($favs) ? count($favs) : 0) > 1) {
+  if(!empty($fave) && is_countable($favs) && count($favs) > 0) {
   foreach($favs as $f) {
-   $nm = $num + 1;
-   if(!empty($f)) {
+   if(strcasecmp($f, '') !== 0) {
 ?>
- <p><label><strong>Fave Field <?php echo $nm; ?>:</strong></label> 
- <input name="fave[]" class="input1" type="text" value="<?php echo $f; ?>"></p>
+ <p><label><strong>Fave Field <?= $num; ?>:</strong></label>
+ <input name="fave[]" class="input1" type="text" value="<?= $f; ?>"></p>
 <?php 
    }
  	 $num++;
   }
- } 
 }
 
-else {if(!isset($_GET['extend']) && !isset($_GET['count']) && !isset($_POST['fave'])) {
+elseif(!isset($_GET['extend']) && !isset($_GET['count']) && !isset($_POST['fave'])) {
  $q = basename($_SERVER['PHP_SELF']) . '?listing=' . $getlistingid .
  '&#38;g=old&#38;d=' . $id . '&#38;extend=1&#38;count=1#fave';
  echo "<p class=\"tc\"><a href=\"$q\">Add Fave Field(s)?</a></p>\n";
-}}
+}
 
 if(isset($_GET['extend']) && is_numeric($_GET['extend']) && is_numeric($_GET['count'])) {
  $c1 = (int)$tigers->cleanMys($_GET['count']) + 1;
@@ -353,9 +342,8 @@ if(isset($_GET['extend']) && is_numeric($_GET['extend']) && is_numeric($_GET['co
  $countQuery = $tigers->cleanMys((int)$_GET['count']);
  echo " <div id=\"fave\">\n";
  for($i = 0; $i < $countQuery; $i++) {
-  $in = $i + 1;
 ?>
- <p><label><strong>Fave Field <?php echo $in; ?>:</strong></label> 
+ <p><label><strong>Fave Field <?= $i; ?>:</strong></label>
  <input name="fave[]" class="input1" type="text"></p>
 <?php 
  }

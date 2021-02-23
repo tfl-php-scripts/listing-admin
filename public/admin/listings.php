@@ -270,7 +270,7 @@ if(isset($_GET['extend']) && is_numeric($_GET['extend'])) {
  $c1 = (int)$tigers->cleanMys($_GET['count']) + 1;
  $q2 = basename($_SERVER['PHP_SELF']) . 
  '?g=manage&#38;d=' . $tigers->cleanMys($_GET['d']) .
- '&#38;opt=' . $tigers->cleanMys($_GET['opt']) .
+ '&#38;opt=' . $tigers->cleanMys($_GET['opt'] ?? "") .
  '&#38;extend=1&#38;count=' . $c1 . '#fave';
  $countQuery = $tigers->cleanMys((int)$_GET['count']);
  echo "<div id=\"fave\">\n";
@@ -981,7 +981,7 @@ if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
     if(empty($_POST['favefield'][$field])) {
 	   $members = $snakes->membersList($id);
 	   foreach($members as $mid) {
-	    $member = $snakes->getMembers($mid, 'object');
+        $member = $snakes->getMembers($mid, 'id', 'object', $id);
 	    $erase  = $snakes->eraseFave($member->mExtra, $value);
 		  if(isset($_POST['record']) && $_POST['record'] == 'yes') {
 	     $update = "UPDATE `$_ST[members]` SET `mExtra` = '' WHERE `mID` = '$mid' LIMIT 1";
