@@ -140,8 +140,7 @@ if($getItem->dblist == 1 && $getItem->dbtype != 'listingadmin') {
 <fieldset>
  <legend>Submit</legend>
  <p class="tc">
-  <input name="action" class="input2" type="submit" value="Manage Listing"> 
-  <input class="input2" type="reset" value="Reset Form">
+  <input name="action" class="input2" type="submit" value="Manage Listing">
  </p>
 </fieldset>
 </form>
@@ -568,8 +567,7 @@ on the <a href="templates.php?g=templates">Templates page</a>.</p>
 <fieldset>
  <legend>Submit</legend>
  <p class="tc">
-  <input name="action" class="input2" type="submit" value="Manage Listing"> 
-  <input class="input2" type="reset" value="Reset Form">
+  <input name="action" class="input2" type="submit" value="Manage Listing">
  </p>
 </fieldset>
 </form>
@@ -643,9 +641,9 @@ on the <a href="templates.php?g=templates">Templates page</a>.</p>
 ?>
  </select></p>
  <p><label><strong>Day:</strong></label> 
- <input name="day" class="input1" type="text" value="<?php echo date('d', strtotime($getItem->since)); ?>"></p>
+ <input name="day" class="input1" type="number" value="<?php echo date('d', strtotime($getItem->since)); ?>" min="1" max="31"></p>
  <p><label><strong>Year:</strong></label> 
- <input name="year" class="input1" type="text" value="<?php echo date('Y', strtotime($getItem->since)); ?>"></p>
+ <input name="year" class="input1" type="number" value="<?php echo date('Y', strtotime($getItem->since)); ?>"></p>
 </fieldset>
 
 <fieldset>
@@ -1241,7 +1239,7 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'new') {
  }
 ?>
  </select></p>
- <p><label><strong>Date Opened:</strong></label> <select name="month" class="input1">
+ <p><label><strong>Date Opened *:</strong></label> <select name="month" class="input1" required>
 <?php 
  $dateArray = $get_date_array;
  $dateNow1 = date('m');
@@ -1254,10 +1252,10 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'new') {
  }
 ?>
  </select></p>
- <p class="tc"><label><strong>Day:</strong></label> 
- <input name="day" class="input1" type="text" value="<?php echo date('d'); ?>"></p>
- <p class="tc"><label><strong>Year:</strong></label> 
- <input name="year" class="input1" type="text" value="<?php echo date('Y'); ?>"></p>
+ <p class="tc"><label><strong>Day *:</strong></label>
+ <input name="day" class="input1" type="number" value="<?php echo date('d'); ?>" min="1" max="31" required></p>
+ <p class="tc"><label><strong>Year *:</strong></label>
+ <input name="year" class="input1" type="number" value="<?php echo date('Y'); ?>" required></p>
 </fieldset>
 
 <fieldset>
@@ -1324,6 +1322,8 @@ if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
  } elseif (strlen($month) > 2 || strlen($day) > 2) {
   $tigers->displayError('Form Error', 'The <samp>month or day</samp> field' . 
 	' needs to be the length of 2 digits.', false);
+ } elseif(!checkdate($month, $day, $year)) {
+  $tigers->displayError('Form Error', 'The combination of day, month and year is incorrect, please check the date you entered.', false);
  }
  $date = $tigers->cleanMys($year . '-' . $month . '-' . $day, 'y', 'n');
  $granted = $tigers->cleanMys($_POST['granted']);
