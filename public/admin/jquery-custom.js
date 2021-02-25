@@ -38,10 +38,10 @@ $(document).ready(function () {
         return false;
     });
 
-    /**
-     * Add previous owner through listings.php
-     */
-    if (tess.getURL() == 'listings.php') {
+    if (tess.getURL() === 'listings.php') {
+        /**
+         * Add previous owner through listings.php
+         */
         $('div.owner span.add').live("click",function () {
             var uno = $(this).parent().parent().attr('id');
             var dos = uno.split('p');

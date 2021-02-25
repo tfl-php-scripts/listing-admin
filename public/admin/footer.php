@@ -11,7 +11,7 @@ $feedUrl = 'https://scripts.robotess.net/projects/listing-admin/atom.xml';
             Feed
         </h4>
         <menu>
-            Nothing here yet. Please check <a href="<?= $feedUrl; ?>" target="_blank">feed</a> manually.
+            Please wait until the feed loads via JavaScript or <a href="<?= $feedUrl; ?>" target="_blank">check manually</a>.
         </menu>
     </div>
     <section class="clear"></section>
@@ -32,7 +32,7 @@ $feedUrl = 'https://scripts.robotess.net/projects/listing-admin/atom.xml';
 
 </div>
 
-<script src="js.js" type="text/javascript"></script>
+<script src="js.js?v=2" type="text/javascript"></script>
 <script src="jquery.js" type="text/javascript"></script>
 <script src="jquery-custom.js?v=3" type="text/javascript"></script>
 
