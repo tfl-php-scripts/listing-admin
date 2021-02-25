@@ -147,8 +147,7 @@ public function allMembers($i = 'n', $p = 1)
  */
 public function sortMembers($i, $s = '', $a = array())
 {
-    global $_ST, $get_type_id_array, $laantispam, $per_members, $scorpions,
-           $tigers, $wolves;
+    global $_ST, $get_type_id_array, $laantispam, $scorpions, $tigers, $wolves;
 
     /*
      *  Are we crosslisting to another script/database? Let's seeee~
@@ -695,7 +694,7 @@ case 'head':
          */
         public function formatPrevious($i)
         {
-            global $_ST, $scorpions, $octopus, $tigers, $wolves;
+            global $octopus, $wolves;
 
             $listing = $wolves->getListings($i, 'object');
             if (empty($listing->previous)) {
@@ -725,8 +724,7 @@ case 'head':
          */
         public function getUpdated($i, $b = 'format', $s = '')
         {
-            global $_ST, $database_host, $database_user, $database_pass, $database_name,
-                   $scorpions, $tigers, $wolves;
+            global $_ST, $scorpions, $tigers, $wolves;
 
             $listing = $wolves->getListings($i, 'object');
             if (!empty($listing->dbhost) && !empty($listing->dbuser) && !empty($listing->dbname)) {
@@ -1079,7 +1077,7 @@ case 'head':
          */
         public function paginate($pages)
         {
-            global $fl_id, $count, $start, $tigers;
+            global $tigers;
 
             $this->page = !isset($_GET['p']) || !is_numeric($_GET['p']) ? 1 : $tigers->cleanMys($_GET['p']);
             $this->next = $this->page + 1;
@@ -1186,12 +1184,12 @@ case 'head':
          *
          * @param     $i , int; listing ID
          * @param     $t , string; template slug
-         * @param     $m , int; member ID
+         * @param     $memberId , int; member ID
          * @param     $e , string; pull member by ID or e-mail
          */
-        public function format($i, $t, $m = '', $e = 'id')
+        public function format($i, $t, $memberId = '', $e = 'id')
         {
-            global $_ST, $_KY, $octopus, $options, $scorpions, $tigers, $wolves;
+            global $_ST, $octopus, $scorpions, $tigers, $wolves;
 
             $scorpions->breach(1);
             $listing = $wolves->getListings($i, 'object');
@@ -1224,8 +1222,8 @@ case 'head':
                     break;
             }
 
-            if ($m != '') {
-                $member = $this->getMembers($m, $e, 'object', $listing->id);
+            if ($memberId != '') {
+                $member = $this->getMembers($memberId, $e, 'object', $listing->id);
                 if ((int)$member->mVisible === 0) {
                     $email = $octopus->javascriptEmail($member->mEmail);
                 } else {
@@ -1239,32 +1237,28 @@ case 'head':
                     { $url = "<del>URL</del>"; }
             }
 
-            /**
-             * Favourite fields are bitches, I tell you, BITCHES!
-             */
             if (!empty($member->mExtra)) {
+                $ffBody = '';
                 $fields = $tigers->emptyarray(explode('|', $listing->fave_fields));
                 $answers = $tigers->emptyarray(explode('|', $member->mExtra));
                 $ffHead = "<p class=\"faveField\">\n";
-                if ((is_countable($fields) ? count($fields) : 0) == 1) {
-                    $ffBody = '<span class="faveField1"><strong>' . str_replace('_', ' ', $fields[0]) .
-                        ':</strong> ' . str_replace('NONE', 'All', $answers[0]) . "\n</span>\n";
-                } elseif ((is_countable($fields) ? count($fields) : 0) > 1) {
                     $n = 0;
                     foreach ($fields as $f) {
-                        $n1 = $n + 1;
-                        $ffBody = "<span class=\"faveField$n1\"><strong>" . str_replace('_', ' ', $f) .
+                        $ffBody .= "<span class=\"faveField$n\"><strong>" . str_replace('_', ' ', $f) .
                             ':</strong> ' . str_replace('NONE', 'All', $answers[$n]) .
                             "</span> <br$mark>\n";
                         $n++;
                     }
                     $ffBody = rtrim($ffBody, "<br$mark>\n") . ">\n";
-                }
                 $ffFoot = "\n</p>\n";
+            } else {
+                $ffHead ='';
+                $ffBody ='';
+                $ffFoot ='';
             }
 
             $format = html_entity_decode($getItem->$t);
-            if ($m != '') {
+            if ($memberId != '') {
                 $format = str_replace('{name}', $member->mName, str_replace('&amp;', '&', $format));
                 $format = str_replace('{email}', $email, $format);
                 $format = str_replace('{url}', $url, $format);
