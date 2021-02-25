@@ -1633,7 +1633,7 @@ parameters:
 			path: public/admin/inc/fun-members.inc.php
 
 		-
-			message: "#^PHPDoc tag @param has invalid value \\(\\$e , string; pull member by ID or e\\-mail\\)\\: Unexpected token \"\\$e\", expected type at offset 270$#"
+			message: "#^PHPDoc tag @param has invalid value \\(\\$e , string; pull member by ID or e\\-mail\\)\\: Unexpected token \"\\$e\", expected type at offset 277$#"
 			count: 1
 			path: public/admin/inc/fun-members.inc.php
 
@@ -1643,18 +1643,13 @@ parameters:
 			path: public/admin/inc/fun-members.inc.php
 
 		-
-			message: "#^PHPDoc tag @param has invalid value \\(\\$m , int; member ID\\)\\: Unexpected token \"\\$m\", expected type at offset 228$#"
+			message: "#^PHPDoc tag @param has invalid value \\(\\$memberId , int; member ID\\)\\: Unexpected token \"\\$memberId\", expected type at offset 228$#"
 			count: 1
 			path: public/admin/inc/fun-members.inc.php
 
 		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$t , string; template slug\\)\\: Unexpected token \"\\$t\", expected type at offset 179$#"
 			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Variable \\$ffBody might not be defined\\.$#"
-			count: 2
 			path: public/admin/inc/fun-members.inc.php
 
 		-
@@ -1669,16 +1664,6 @@ parameters:
 
 		-
 			message: "#^Variable \\$url might not be defined\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Variable \\$ffFoot might not be defined\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Variable \\$ffHead might not be defined\\.$#"
 			count: 1
 			path: public/admin/inc/fun-members.inc.php
 
@@ -3718,7 +3703,7 @@ parameters:
 
 		-
 			message: "#^Variable \\$tigers might not be defined\\.$#"
-			count: 118
+			count: 119
 			path: public/admin/listings.php
 
 		-
