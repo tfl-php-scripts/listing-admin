@@ -12,7 +12,7 @@
 $_ST = [];
 
 if (!defined('LAVERSION')) {
-    define('LAVERSION', '[Robotess Fork] 1.0.2 RC');
+    define('LAVERSION', '[Robotess Fork] 1.0.2');
 }
 
 require_once(__DIR__ . DIRECTORY_SEPARATOR . 'inc' . DIRECTORY_SEPARATOR . 'Robotess' . DIRECTORY_SEPARATOR . 'autoloader.php');
