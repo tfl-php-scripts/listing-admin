@@ -111,8 +111,7 @@ if (isset($_POST['action'])) {
             }
         }
         ?>
-        <form action="<?php echo $seahorses->getOption('codes_formurl'); ?>"
-              enctype="multipart/form-data" method="post">
+        <form enctype="multipart/form-data" method="post">
 
             <p>
                 <input name="action" type="hidden" value="end"<?php echo $markup; ?>>
@@ -234,7 +233,7 @@ else {
     global $mark;
     $captcha = sha1(random_int(10000, 999999));
     ?>
-    <form action="<?php echo $seahorses->getOption('codes_formurl'); ?>" method="post">
+    <form method="post">
         <p>
             <input name="action" type="hidden" value="start"<?php echo $markup; ?>>
             <?php
