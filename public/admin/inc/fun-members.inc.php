@@ -166,7 +166,7 @@ public function sortMembers($i, $s = '', $a = array())
         $findarray = $listing->dblist == 1 ? ($listing->dbtype == 'listingadmin' ?
             'listingadmin' : 'other') : 'listingadmin';
         $typearray = $get_type_id_array[$findarray];
-        $search = false;
+        $search = new stdClass();
         foreach ($a as $k => $v) {
             $search->$k = $v;
         }
@@ -1087,7 +1087,7 @@ case 'head':
              * Build our search object~
              */
             if (isset($_GET['g']) && $_GET['g'] == 'searchMembers') {
-                $search = false;
+                $search = new stdClass();
                 $search->sType = $tigers->cleanMys($_GET['s']);
                 $search->sText = $tigers->cleanMys($_GET['q']);
             }
@@ -1237,24 +1237,26 @@ case 'head':
                     { $url = "<del>URL</del>"; }
             }
 
-            if (!empty($member->mExtra)) {
+            if (empty($member->mExtra) || count($tigers->emptyarray(explode('|', $member->mExtra))) === 0) {
+                $ffHead ='';
+                $ffFoot ='';
                 $ffBody = '';
+            } else {
                 $fields = $tigers->emptyarray(explode('|', $listing->fave_fields));
                 $answers = $tigers->emptyarray(explode('|', $member->mExtra));
+                $ffBody ='';
                 $ffHead = "<p class=\"faveField\">\n";
                     $n = 0;
                     foreach ($fields as $f) {
-                        $ffBody .= "<span class=\"faveField$n\"><strong>" . str_replace('_', ' ', $f) .
-                            ':</strong> ' . str_replace('NONE', 'All', $answers[$n]) .
-                            "</span> <br$mark>\n";
+                        if(isset($answers[$n]) && strcasecmp($answers[$n], '') !== 0) {
+                            $ffBody .= "<span class=\"faveField$n\"><strong>" . str_replace('_', ' ', $f) .
+                                ':</strong> ' . str_replace('NONE', 'All', $answers[$n]) .
+                                "</span> <br$mark>\n";
+                        }
                         $n++;
                     }
                     $ffBody = rtrim($ffBody, "<br$mark>\n") . ">\n";
                 $ffFoot = "\n</p>\n";
-            } else {
-                $ffHead ='';
-                $ffBody ='';
-                $ffFoot ='';
             }
 
             $format = html_entity_decode($getItem->$t);

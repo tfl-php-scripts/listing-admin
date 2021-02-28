@@ -77,23 +77,12 @@ if (!class_exists('tigers')) {
             return $p;
         }
 
-        /**
-         * My faaaaaavourite function *_* Takes the array given and takes
-         * out elements that are empty (or considered empty, e.g. '', "",
-         * 0, and '0').
-         *
-         * @access   public
-         * @function $tigers->emptyarray()
-         * @param $a
-         * @return array
-         * @since    2.1.9
-         */
-        public function emptyarray($a)
+        public function emptyarray($array)
         {
-            $n = array();
-            $e = array();
+            $n = [];
+            $e = [];
 
-            foreach ($a as $k) {
+            foreach ($array as $k) {
                 $k = trim($k);
                 $e[] = '0';
                 if (!in_array($k, $e) && $k != '') {
