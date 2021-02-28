@@ -272,7 +272,6 @@
                 <legend>Submit</legend>
                 <p class="tc">
                     <input name="action" class="input2" type="submit" value="Update Information"<?php echo $mark; ?>>
-                    <input class="input2" type="reset" value="Reset"<?php echo $mark; ?>>
                 </p>
             </fieldset>
         </form>

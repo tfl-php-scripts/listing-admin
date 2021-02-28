@@ -475,7 +475,6 @@
                 </p>
                 <p class="tc">
                     <input name="action" class="input2" type="submit" value="Join Listing"<?= $mark; ?>>
-                    <input class="input2" type="reset" value="Reset"<?= $mark; ?>>
                 </p>
             </fieldset>
         </form>

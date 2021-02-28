@@ -403,7 +403,6 @@
                 ?>
                 <p class="tc">
                     <input name="action" class="input2" type="submit" value="Join List"<?php echo $mark; ?>>
-                    <input class="input2" type="reset" value="Reset"<?php echo $mark; ?>>
                 </p>
             </fieldset>
         </form>
