@@ -1423,16 +1423,6 @@ parameters:
 			path: public/admin/inc/fun-members.inc.php
 
 		-
-			message: "#^Cannot access property \\$searchType on false\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Cannot access property \\$searchText on false\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 55$#"
 			count: 1
 			path: public/admin/inc/fun-members.inc.php
@@ -1615,16 +1605,6 @@ parameters:
 		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$pages , int; basically, the pagination through ceil\\(\\)\\)\\: Unexpected token \"\\$pages\", expected type at offset 889$#"
 			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Cannot access property \\$sType on false\\.$#"
-			count: 5
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Cannot access property \\$sText on false\\.$#"
-			count: 5
 			path: public/admin/inc/fun-members.inc.php
 
 		-
@@ -2062,11 +2042,6 @@ parameters:
 			path: public/admin/inc/fun.inc.php
 
 		-
-			message: "#^PHPDoc tag @param has invalid value \\(\\$a\\)\\: Unexpected token \"\\$a\", expected type at offset 276$#"
-			count: 1
-			path: public/admin/inc/fun.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$a\\)\\: Unexpected token \"\\$a\", expected type at offset 178$#"
 			count: 1
 			path: public/admin/inc/fun.inc.php
@@ -2178,7 +2153,7 @@ parameters:
 
 		-
 			message: "#^Variable \\$seahorses might not be defined\\.$#"
-			count: 10
+			count: 8
 			path: public/admin/inc/show-codes-form.php
 
 		-
@@ -3703,7 +3678,7 @@ parameters:
 
 		-
 			message: "#^Variable \\$tigers might not be defined\\.$#"
-			count: 119
+			count: 120
 			path: public/admin/listings.php
 
 		-
