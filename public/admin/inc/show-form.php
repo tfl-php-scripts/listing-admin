@@ -486,25 +486,28 @@
                             <input name="url" class="input1" type="url"<?php echo $mark; ?>></p>
                     </fieldset>
 
+                    <?php
+                    $reasonOptions = [];
+                    if ($options->turnAff == 1) {
+                        $reasonOptions[] = 'Affiliation';
+                        $reasonOptions[] = 'Affiliation: Update';
+                    }
+                    if ($options->turnCon == 1) {
+                        $reasonOptions[] = 'Comments';
+                        $reasonOptions[] = 'Contact';
+                        $reasonOptions[] = 'Questions/Concerns';
+                    }
+                    $reasonRequestParam = isset($_GET['reason']) ? trim($_GET['reason']) : '';
+                    ?>
                     <fieldset>
                         <legend>Extra</legend>
                         <p><label>* <strong>Reason:</strong></label> <select name="reason" class="input1"
                                                                              required="required">
                                 <option value="">---</option>
                                 <?php
-                                if ($options->turnAff == 1) {
-                                    ?>
-                                    <option value="Affiliation">Affiliation</option>
-                                    <option value="Affiliation: Update">Affiliation: Update</option>
-                                    <?php
-                                }
-
-                                if ($options->turnCon == 1) {
-                                    ?>
-                                    <option value="Comments">Comments</option>
-                                    <option value="Contact">Contact</option>
-                                    <option value="Questions/Concerns">Questions/Concerns</option>
-                                    <?php
+                                foreach ($reasonOptions as $reasonOption) {
+                                    $selected = strcasecmp($reasonOption, $reasonRequestParam) === 0 ? ' selected' : '';
+                                    echo '<option value="' . $reasonOption . '"' . $selected . '>' . $reasonOption . '</option>';
                                 }
                                 ?>
                             </select></p>
