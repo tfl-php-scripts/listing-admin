@@ -785,7 +785,9 @@ if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
   } elseif (strlen($month) > 2 || strlen($day) > 2) {
    $tigers->displayError('Form Error', 'The <samp>month or day</samp>' . 
 	 ' field needs to be the length of 2 digits.', false);
-  }
+  } elseif(!checkdate($month, $day, $year)) {
+  $tigers->displayError('Form Error', 'The combination of day, month and year is incorrect, please check the date you entered.', false);
+ }
   $date = $tigers->cleanMys($year . '-' . $month . '-' . $day);
   if($seahorses->getVar($id, 'since') != $date) {
    $seahorses->editListing($id, 'since', $date);
