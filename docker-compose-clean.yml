@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  apache:
+    volumes:
+      - ./public:/app/public
+      - ./docker/vhost.conf:/etc/apache2/sites-available/000-default.conf
+
+  mysql:
+    image: mysql:5.7.4
+    networks:
+      - internal

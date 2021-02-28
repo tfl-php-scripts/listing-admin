@@ -17,52 +17,91 @@ if(!empty($_SERVER['HTTP_REFERER'])) {
 }
 $automated = $tigers->cleanMys($auserinfo);
 
-/** 
- * Grab bad SPAM bots for forms 
- */ 
+try {
+    /**
+     * Pre-defined link for e-mail (most often used in forms)
+     */
+    $my_email     = $seahorses->getOption('my_email');
+    $hide_address = "<script type=\"text/javascript\">\n<!--\n" .
+        " var jsEmail = '$my_email';\n" .
+        " document.write('<a h' + 'ref=\"mailto:' + jsEmail + '\">via email</' + " .
+        "'a>');\n//-->\n</script>";
+
+    /**
+     * Grab owner variables \o/
+     */
+    $qname = $seahorses->getOption('collective_name');
+    $qowns = $seahorses->getOption('my_name');
+    $qwebs = $seahorses->getOption('my_website');
+
+    /**
+     * Grab paths!
+     */
+    $my_webpath  = $seahorses->getOption('adm_path');
+    $my_website  = $seahorses->getOption('adm_http');
+    $my_imagesh  = $seahorses->getOption('img_http');
+    $my_wishess  = $seahorses->getOption('wsh_http');
+    $jnd_http    = $seahorses->getOption('jnd_http');
+    $my_updates  = $seahorses->getOption('updates_url');
+
+    /**
+     * Get admin object, without the include folder attached, of course~
+     */
+    $myadminpath = (object) [
+        'http' => str_replace('inc/', '', $seahorses->getOption('adm_http')),
+        'path' => str_replace('inc/', '', $seahorses->getOption('adm_path'))
+    ];
+
+    $checkCr = "<script type=\"text/javascript\">setTimeout(function () {const coll = document.getElementsByClassName(\"showCredits-LA-RF\");if(coll !== undefined && coll.length >= 1) {const el = coll[0]; if(window.getComputedStyle(el).display === 'none') { el.style.display = 'block'; }if(window.getComputedStyle(el).visibility === 'hidden') { el.style.visibility = 'visible'; }}}, 1000);</script>";
+
+    /**
+     * Pending comments functioning~
+     */
+    $pending_comment_form = $seahorses->getOption('updates_comments_moderation') == 'y' ? '1' : '0';
+    if($pending_comment_form == 1) {
+        $if_pending = '<p class="noteButton">As the owner has set comments to <em>pending</em>, your comment' .
+            ' is currently being held for moderation. If your comment does not appear in a week,' .
+            " feel free to submit another one.</p>\n";
+    } else {
+        $if_pending = '<p class="noteButton">Your comment should appear once you hit' .
+            ' "Back to Entry" below. Please do NOT hit "Back" in your browser, as this' .
+            " will cause your comment to resubmit.</p>\n";
+    }
+
+    /**
+     * Pagination variables
+     */
+    $per_joined  = $seahorses->getOption('per_joined');
+    $per_members = $seahorses->getOption('per_members');
+    $per_page    = $seahorses->getOption('per_page');
+    $hide_address_check = $hide_address . $checkCr;
+
+} catch (Exception $e) {
+    if(($getTitle ?? 'none') === 'Install') {
+        return;
+    }
+
+    ?>
+    <section><span class="mysql">Notice:</span> there was an error while trying to retrieve Listing Admin options. Please make sure you have installed the script.
+        <?php
+        if(isset($scorpions)) {
+            ?>Error message/code: <?= $scorpions->error(); ?>. <?php
+    } else {
+            echo 'Check your php logs.';
+        }
+        ?> The script stops executing.
+    </section>
+<?php
+    die;
+}
+
+/**
+ * Grab bad SPAM bots for forms
+ */
 $badheaders = '/(Indy|Blaiz|Java|libwww-perl|Python|OutfoxBot|User' .
     '-Agent|PycURL|AlphaServer|T8Abot|Syntryx|WinHttp|WebBandit|nicebot|Jakar' .
     'ta|curl|Snoopy|PHPcrawl|id-search|WebAlta Crawler|Baiduspider+|Gaisbot|K' .
     'aloogaBot|Gigabot|Gaisbot|ia_archiver)/i';
-
-/** 
- * Grab owner variables \o/ 
- */ 
-$qname = $seahorses->getOption('collective_name');
-$qowns = $seahorses->getOption('my_name');
-$qwebs = $seahorses->getOption('my_website');
-
-/** 
- * Grab paths! 
- */ 
-$my_webpath  = $seahorses->getOption('adm_path');
-$my_website  = $seahorses->getOption('adm_http');
-$my_imagesh  = $seahorses->getOption('img_http');
-$my_wishess  = $seahorses->getOption('wsh_http');
-$jnd_http    = $seahorses->getOption('jnd_http');
-$my_updates  = $seahorses->getOption('updates_url');
-
-/** 
- * Get admin object, without the include folder attached, of course~ 
- */ 
-$myadminpath = (object) array(
- 'http' => str_replace('inc/', '', $seahorses->getOption('adm_http')),
- 'path' => str_replace('inc/', '', $seahorses->getOption('adm_path'))
-);
-
-/** 
- * Pending comments functioning~ 
- */ 
-$pending_comment_form = $seahorses->getOption('updates_comments_moderation') == 'y' ? '1' : '0';
-if($pending_comment_form == 1) {
- $if_pending = '<p class="noteButton">As the owner has set comments to <em>pending</em>, your comment' .
-     ' is currently being held for moderation. If your comment does not appear in a week,' .
- " feel free to submit another one.</p>\n";
-} else {
- $if_pending = '<p class="noteButton">Your comment should appear once you hit' .
-     ' "Back to Entry" below. Please do NOT hit "Back" in your browser, as this' .
- " will cause your comment to resubmit.</p>\n";
-}
 
 /** 
  * Month (date) array 
@@ -260,13 +299,6 @@ $get_addon_array = array(
 $notSupportedAddons = ['lyrics', 'quotes'];
 
 /** 
- * Pagination variables 
- */
-$per_joined  = $seahorses->getOption('per_joined');
-$per_members = $seahorses->getOption('per_members');
-$per_page    = $seahorses->getOption('per_page');
-
-/** 
  * Journal server object :D 
  */ 
 $journals = (object) array( 
@@ -274,12 +306,3 @@ $journals = (object) array(
  'ij' => 'www.insanejournal.com',
  'lj' => 'www.livejournal.com'
 );
-
-/** 
- * Pre-defined link for e-mail (most often used in forms) 
- */ 
-$my_email     = $seahorses->getOption('my_email');
-$hide_address = "<script type=\"text/javascript\">\n<!--\n" .
-" var jsEmail = '$my_email';\n" .
-" document.write('<a h' + 'ref=\"mailto:' + jsEmail + '\">via email</' + " .
-"'a>');\n//-->\n</script>";

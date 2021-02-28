@@ -110,12 +110,12 @@ $_ST['success'] = $prefix . 'success';
 /**
  * And fi-na-lly, let's grab our info object~
  */
-$laoptions = (object)array(
+$laoptions = (object)[
     'dbEngine' => $_ST['dbengine'],
     'saltPass' => date('F'),
     'version' => 'Listing Admin ' . LAVERSION,
     'versionURI' => 'http://scripts.wyngs.net/scripts/listingadmin/',
-);
+];
 
 /**
  * Now we initialise our database jaaaaazzz :D

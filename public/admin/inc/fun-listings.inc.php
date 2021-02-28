@@ -49,7 +49,7 @@ if (!class_exists('wolves')) {
                         $select .= " (`category` LIKE '%!$filterByStatus!%' AND";
                     }
                     $select = trim($select, ' AND');
-                    if ($withSubCategories == 1 && count($lions->categoryList('list', 'child', $filterByStatus)) > 0) {
+                    if ($withSubCategories == 1 && (is_countable($lions->categoryList('list', 'child', $filterByStatus)) ? count($lions->categoryList('list', 'child', $filterByStatus)) : 0) > 0) {
                         $query = '';
                         $childcats = $lions->categoryList('list', 'child', $filterByStatus);
                         foreach ($childcats as $cc) {

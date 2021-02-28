@@ -354,7 +354,7 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'Edit Wish') {
 	' an image.', false);
  }
  $image = $_FILES['image'];
- $image_tag = substr(sha1(date('YmdHis')), mt_rand(0, 8), 15);
+ $image_tag = substr(sha1(date('YmdHis')), random_int(0, 8), 15);
  if($change == 'add' || $change == 'edit') {
 	$imageinfo = getimagesize($_FILES['image']['tmp_name']);
 	$imagetype = $imageinfo[2];
@@ -603,7 +603,7 @@ click "Edit" or "Delete" by the appropriate wish.</p>
   $cs = isset($_GET['g']) && $_GET['g'] == 'searchCategories' ? 'category' : 'id';
   $ss = isset($_GET['g']) && $_GET['g'] == 'searchCategories' ? $catid : '';
   $results = $mermaids->wishlistList($cs, $ss);
-  $pages = ceil(count($results) / $per_page);
+  $pages = ceil((is_countable($results) ? count($results) : 0) / $per_page);
 
   for($i = 1; $i <= $pages; $i++) {
    if($page == $i) {

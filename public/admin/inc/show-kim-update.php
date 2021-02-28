@@ -231,15 +231,14 @@
                 ?>
                 <p class="tc">
                     <input name="action" class="input2" type="submit" value="Update Information"<?php echo $mark; ?>>
-                    <input class="input2" type="reset" value="Reset"<?php echo $mark; ?>>
                 </p>
             </fieldset>
         </form>
 
-        <p class="showCredit" style="text-align: center;">
+        <p class="showCredits-LA-RF" style="text-align: center;">
             Powered by <?php echo $octopus->formatCredit(); ?>
         </p>
-        <?php
+<?php
     }
     ?>
 </div>

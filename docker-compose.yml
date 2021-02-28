@@ -19,6 +19,7 @@ services:
       - ./composer.lock:/app/composer.lock
       - ./phpstan.neon:/app/phpstan.neon
       - ./phpstan-baseline.neon:/app/phpstan-baseline.neon
+      - ./rector.php:/app/rector.php
       - ./docker/vhost.conf:/etc/apache2/sites-available/000-default.conf
       - ./docker/configs/jac.inc.php:/app/public/samplefl/jac.inc.php:ro
       - ./docker/configs/jac.inc.php:/app/public/samplecollective/jac.inc.php:ro

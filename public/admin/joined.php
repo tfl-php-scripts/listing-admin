@@ -391,7 +391,7 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'old') {
     if (!in_array($change, $changeArray)) {
         $tigers->displayError('Form Error', 'You can only add, edit and delete an image.', false);
     }
-    $image_tag = substr(sha1(date('YmdHis')), mt_rand(0, 8), 15);
+    $image_tag = substr(sha1(date('YmdHis')), random_int(0, 8), 15);
     $image = $_FILES['image'];
     if ($change == 'add' || $change == 'edit') {
         $imageinfo = getimagesize($_FILES['image']['tmp_name']);
@@ -657,7 +657,7 @@ if (isset($_GET['g']) && $_GET['g'] == 'searchJoined') {
     $b = '';
 }
 $select = $dragons->sortJoined($q, $b);
-$count = count($select);
+$count = is_countable($select) ? count($select) : 0;
 
 if ($count > 0) {
 if (isset($s)) {
@@ -729,7 +729,7 @@ if ($ender > $count) {
 
         $v = isset($_GET['c']) ? $dragons->joinedList('id', $c) : $dragons->joinedList();
         echo '<p id="pagination">';
-        $pages = ceil(count($v) / $per_joined);
+        $pages = ceil((is_countable($v) ? count($v) : 0) / $per_joined);
         $dragons->paginate($pages);
         echo "</p>\n";
         }

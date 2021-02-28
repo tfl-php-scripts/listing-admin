@@ -418,7 +418,7 @@ else {
    $ij_post_opt = '|itemid:|community:|tags:|userpic:|';
    $lj_post = 'n';
    $lj_post_opt = '|itemid:|community:|tags:|userpic:|';
-   if(isset($_POST['crosspost']) && !empty($_POST['crosspost']) && count($_POST['crosspost']) > 0) {
+   if(isset($_POST['crosspost']) && !empty($_POST['crosspost']) && (is_countable($_POST['crosspost']) ? count($_POST['crosspost']) : 0) > 0) {
     $crosspost = $_POST['crosspost'];
 	  $crosspost = array_map(array($tigers, 'cleanMys'), $crosspost);
     if(in_array('dw', $crosspost)) {
@@ -589,7 +589,7 @@ else {
 	   $lj_post = 'n';
 	   $lj_post_opt = '|itemid:|community:|tags:|userpic:|';
 	  }
-   } elseif (!isset($_POST['crosspost']) || empty($_POST['crosspost']) && count($_POST['crosspost']) < 0) {
+   } elseif (!isset($_POST['crosspost']) || empty($_POST['crosspost']) && (is_countable($_POST['crosspost']) ? count($_POST['crosspost']) : 0) < 0) {
     $dw_post = 'n';
 	  $dw_post_opt = '|itemid:|community:|tags:|userpic:|';
 	  $ij_post = 'n';
@@ -714,7 +714,7 @@ else {
    $ij_post_opt = '|itemid:|community:|tags:|userpic:|';
    $lj_post = 'n';
    $lj_post_opt = '|itemid:|community:|tags:|userpic:|';
-   if(isset($_POST['crosspost']) && !empty($_POST['crosspost']) && count($_POST['crosspost']) > 0) {
+   if(isset($_POST['crosspost']) && !empty($_POST['crosspost']) && (is_countable($_POST['crosspost']) ? count($_POST['crosspost']) : 0) > 0) {
        $crosspost = $_POST['crosspost'];
 	  $crosspost = array_map(array($tigers, 'cleanMys'), $crosspost);
 	  if(in_array('dw', $crosspost)) {
@@ -766,7 +766,7 @@ else {
 		   $w = $dw->editevent($data, $meta);
 	    }
 	   } elseif ($_POST['action'] == 'Delete Update' && !empty($dwitemid)) {
-	    $w = $dw->deleteevent($data, $meta);
+	    $w = $dw->deleteevent($data);
 	   }
 	   if($w[0] == TRUE) {
 	    $dw_post = 'y';
@@ -833,7 +833,7 @@ else {
 		   $w = $ij->editevent($data, $meta);
 	    }
 	   } elseif ($_POST['action'] == 'Delete Update' && !empty($ijitemid)) {
-	    $w = $ij->deleteevent($data, $meta);
+	    $w = $ij->deleteevent($data);
 	   }
 	   if($w[0] == TRUE) {
 	    $ij_post = 'y';
@@ -902,7 +902,7 @@ else {
 		   $w = $lj->editevent($data, $meta);
 	    }
 	   } elseif ($_POST['action'] == 'Delete Update' && !empty($ljitemid)) {
-	    $w = $lj->deleteevent($data, $meta);
+	    $w = $lj->deleteevent($data);
 	   }
 	   if($w[0] == TRUE) {
 	    $lj_post = 'y';
@@ -922,7 +922,7 @@ else {
 	   $lj_post = 'n';
 	   $lj_post_opt = '|itemid:|community:|tags:|userpic:|';
 	  }
-   } elseif (!isset($_POST['crosspost']) || empty($_POST['crosspost']) && count($_POST['crosspost']) < 0) {
+   } elseif (!isset($_POST['crosspost']) || empty($_POST['crosspost']) && (is_countable($_POST['crosspost']) ? count($_POST['crosspost']) : 0) < 0) {
     $dw_post = 'n';
 	  $dw_post_opt = '|itemid:|community:|tags:|userpic:|';
 	  $ij_post = 'n';

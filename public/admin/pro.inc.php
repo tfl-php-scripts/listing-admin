@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * @project          Listing Admin
  * @copyright        2007
@@ -13,10 +14,15 @@ ob_start();
 session_start();
 header('Cache-Control: no-cache, must-revalidate');
 
-/**
- * These files need to be included, as they include the main
- * functions 8D
- */
+if (!file_exists('rats.inc.php')) {
+    ?>
+    <section><span class="mysql">Notice:</span> there was an error while trying to find file rats.inc.php.
+        Please make sure you have copied rats.sample.inc.php to rats.inc.php and added it to <?= __DIR__; ?>. The script stops executing.
+    </section>
+    <?php
+    die;
+}
+
 require('rats.inc.php');
 require_once('inc/Robotess/autoloader.php');
 require('inc/fun.inc.php');
@@ -38,11 +44,29 @@ require('inc/fun-listings.inc.php');
 require('inc/fun-members.inc.php');
 require('inc/fun-wishlist.inc.php');
 
-/**
- * Include classes!
- */
-if ($seahorses->getOption('kim_opt') == 'y') {
-    require('inc/class-kimadmin.inc.php');
+try {
+    /**
+     * Include classes!
+     */
+    if ($seahorses->getOption('kim_opt') == 'y') {
+        require('inc/class-kimadmin.inc.php');
+    }
+} catch (Exception $e) {
+    if(($getTitle ?? 'none') === 'Install') {
+        return;
+    }
+
+    ?>
+    <section><span class="mysql">Notice:</span> there was an error while trying to retrieve Listing Admin options. Please make sure you have installed the script. <?php
+        if(isset($scorpions)) {
+            ?>Error message/code: <?= $scorpions->error(); ?>. <?php
+        } else {
+            echo 'Check your php logs. ';
+        }
+        ?>The script stops executing.
+    </section>
+    <?php
+    die;
 }
 
 if ($seahorses->getOption('updates_opt') == 'y') {
@@ -82,7 +106,7 @@ if (isset($_GET['forgot'])) {
 
     if (isset($_GET['h']) && preg_match('/([A-Za-z0-9]+)/i', $_GET['h'])) {
         if ($seahorses->getOption('user_passhinthash') == trim($_GET['h'])) {
-            $password = substr(sha1(date('YmdHis')), 0, 8) . substr(sha1(mt_rand(99999, 999999)), 0, 8);
+            $password = substr(sha1(date('YmdHis')), 0, 8) . substr(sha1(random_int(99999, 999999)), 0, 8);
             $update = "UPDATE `$_ST[options]` SET `text` = MD5('$password') WHERE `name` =" .
                 " 'user_password' LIMIT 1";
             $scorpions->query("SET NAMES 'utf8';");
@@ -166,7 +190,7 @@ if (isset($_GET['forgot'])) {
 
                     # -- Now check ze password hint! ----------------------------
                     if ($seahorses->getOption('user_passhint') === $passwordhint) {
-                        $hash = substr(sha1(date('YmdHis')), 0, 12) . substr(sha1(mt_rand(99999, 999999)), 0, 12);
+                        $hash = substr(sha1(date('YmdHis')), 0, 12) . substr(sha1(random_int(99999, 999999)), 0, 12);
                         $update = "UPDATE `$_ST[options]` SET `text` = '$hash' WHERE `name` =" .
                             " 'user_passhinthash' LIMIT 1";
                         $scorpions->query("SET NAMES 'utf8';");
@@ -203,7 +227,7 @@ if (isset($_GET['forgot'])) {
                                 " that fails, you update your password via phpMyAdmin or your MySQL manager.</p>\n";
                         }
                     } else {
-                        $userObj->userText = "Password Hint: $passwordhint";
+                        $userObj->userText = "Password Hint: [not shown]";
                         if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
                             $userObj->userInfo .= "{$_SERVER['HTTP_REFERER']}|";
                         }
@@ -217,12 +241,12 @@ if (isset($_GET['forgot'])) {
             </div>
 
             <div id="form">
-                <form action="<?php echo str_replace('inc/', '', $laoptions->getOption('adm_http')); ?>?forgot"
+                <form action="<?php echo str_replace('inc/', '', $seahorses->getOption('adm_http')); ?>?forgot"
                       method="post">
                     <fieldset>
                         <legend>Reset Password</legend>
                         <p><label><strong>Password Hint:</strong></label>
-                            <input name="passwordhint" class="input1" type="password"></p>
+                            <input name="passwordhint" class="input1" type="password" required></p>
                         <p class="tc"><input name="action" class="input2" type="submit" value="Reset Password"></p>
                     </fieldset>
                 </form>
@@ -246,7 +270,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'Log In') {
     $userObj->userUser = trim(strip_tags($_POST['username']));
     $userObj->userPass = md5(trim(strip_tags($_POST['password'])));
     $userObj->userText = 'Username: ' . $userObj->userUser .
-        "\nPassword: " . $scorpions->escape($_POST['password']);
+        "\nPassword: [not shown]";
 
     $checker = $leopards->checkUser($userObj->userUser, $userObj->userPass);
     if ($checker == 1) {
@@ -263,7 +287,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'Log In') {
          * Diagnostics! Update user login, insert into logs and make sure the
          * user isn't locked out!
          */
-        $leopards->logUser($userNm, $userObj->userUser, $userObj->userInfo);
+        $leopards->logUser(0, $userObj->userUser, $userObj->userInfo);
         $seahorses->writeMessage(1, 'User Log-In Success', $userObj->userURL,
             $userObj->userText, $userObj->userInfo);
 

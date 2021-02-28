@@ -30,7 +30,7 @@ if (strpos($get_random_http, 'inc') === false || strpos($get_random_path, 'inc')
 if (is_file('install.php') || is_file('upgrade.php')) {
     ?>
     <p class="mysqlButton"><span class="mysql">Error:</span> It appears you still
-        have the <samp>/install/</samp> or <samp>/upgrade/</samp> folder still on your
+        have the <samp>install.php</samp> or <samp>upgrade.php</samp> files on your
         server. Both the local and online documentation clearly states to delete this
         as soon as you are done installing the script, as it's a security hazard.
         <ins>DO NOT DISAPPOINT AND POSSIBLY DAMAGE YOUR SERVER</ins>
@@ -210,7 +210,7 @@ if ($cheetahs->isInstalled('updates') == true) {
             $no11 = 0;
             $there = $wolves->indexListings(1);
             foreach ($there as $a) {
-                $c11 = $no11 == (count($there) - 1) ? ' class="last"' : '';
+                $c11 = $no11 == ((is_countable($there) ? count($there) : 0) - 1) ? ' class="last"' : '';
                 $g = $wolves->getListings($a, 'object');
                 echo " <li{$c11}><strong>" . $g->subject . '</strong> &#8211; <a href="members' .
                     '.php?listing=' . $g->id . "&#38;action=update\">Update Listing</a><br>\n";
@@ -221,7 +221,7 @@ if ($cheetahs->isInstalled('updates') == true) {
                 $no11++;
             }
 
-            if (count($there) == 0) {
+            if ((is_countable($there) ? count($there) : 0) == 0) {
                 echo " <li class=\"last\">None Found!</li>\n";
             }
             ?>
@@ -232,14 +232,14 @@ if ($cheetahs->isInstalled('updates') == true) {
         <h4>Overdue Listings</h4>
         <menu>
             <?php
-            $no2 = array();
+            $no2 = [];
             $coming = $wolves->indexListings(0);
             foreach ($coming as $b) {
                 $h = $wolves->getListings($b, 'object');
                 echo ' <li><strong>' . $h->subject . "</strong></li>\n";
             }
 
-            if (count($coming) == 0) {
+            if ((is_countable($coming) ? count($coming) : 0) == 0) {
                 echo " <li class=\"last\">None Found!</li>\n";
             }
             ?>

@@ -1,5 +1,17 @@
 # Changes:
 
+Robotess Fork v1.0.2
+
+* Changing default date from 0000-00-00 to 1970-01-01 in order for the script to be working with the latest MySQL versions 
+* Fixed #10 - URLs are not lowered anymore while saving
+* Fixed #8 - bug which didn't allow to edit listing's URL via admin panel
+* Security fix: no password is being logged into _success or _logs tables
+* Fixing minor JS errors for control panel, for example, for adding previous owners for the listings
+* Various fixes for favorite fields - they were not properly working in previous versions
+* Fixing date pickers in add/edit listing - now if you're trying to specify incorrect date, for example, 30th of February any year, you will be getting transparent error message
+* RSS retrieval is now working via JavaScript
+* Various other fixes
+
 Robotess Fork v1.0.1
 
 * Various code fixes + pagination fixes

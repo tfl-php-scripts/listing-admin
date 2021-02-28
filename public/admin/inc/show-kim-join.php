@@ -37,7 +37,7 @@
      */
     if (isset($_POST['action']) && $_POST['action'] == 'Join List') {
         $name = $tigers->cleanMys($_POST['name']);
-        if (empty($name) || !preg_match("/([A-Za-z-\s]+)/", $name)) {
+        if (empty($name) || !preg_match("/([A-Za-z\\-\s]+)/", $name)) {
             $tigers->displayError('Form Error', 'The <samp>name</samp> field contains' .
                 ' invalid characters.', false);
         }
@@ -65,7 +65,7 @@
                 ' out both new password fields or leave both empty.', false);
         }
         if (empty($passwordn) && empty($passwordv)) {
-            $pass = substr(md5(date('YmdHis')), 0, 8) . substr(md5(mt_rand(99999, 999999)), 0, 8);
+            $pass = substr(md5(date('YmdHis')), 0, 8) . substr(md5(random_int(99999, 999999)), 0, 8);
         } else {
             $pass = $passwordn;
         }
@@ -102,13 +102,13 @@
          * Akismet, and antispam \o/ First: spam words!
          */
         foreach ($laantispam->spamarray() as $b) {
-            if (strpos($_POST['comments'], $b) !== false) {
+            if (strpos($_POST['comments'], (string) $b) !== false) {
                 $tigers->displayError('SPAM Error', 'SPAM language is not allowed.', false);
             }
         }
 
         foreach ($laantispam->bbcode as $h) {
-            if (strpos($_POST['comments'], $h) !== false) {
+            if (strpos($_POST['comments'], (string) $h) !== false) {
                 $tigers->displayError('SPAM Error', 'bbCode language is not allowed.', false);
             }
         }
@@ -129,7 +129,7 @@
         }
 
         if ($seahorses->getOption('captcha_opt') == 'y') {
-            if (!isset($_POST['captcha']) || strpos(sha1($ck), $_POST['captcha']) !== 0) {
+            if (!isset($_POST['captcha']) || strpos(sha1($ck), (string) $_POST['captcha']) !== 0) {
                 $tigers->displayError('Form Error', 'The <samp>CAPTCHA</samp> is invalid!', false);
             }
         }
@@ -259,11 +259,11 @@
         $symb = $seahorses->getOption('markup') == 'html5' ? '&#187;' : '&raquo;';
 
         $spamvars = (object)array(
-            'antiuno' => mt_rand(1, 10),
-            'antidos' => mt_rand(1, 10)
+            'antiuno' => random_int(1, 10),
+            'antidos' => random_int(1, 10)
         );
         $spamoptions = (object)array(
-            'capthash' => sha1(mt_rand(10000, 999999)),
+            'capthash' => sha1(random_int(10000, 999999)),
             'antians' => $spamvars->antiuno + $spamvars->antidos,
             'antipro' => $spamvars->antiuno . ' + ' . $spamvars->antidos
         );
@@ -403,15 +403,14 @@
                 ?>
                 <p class="tc">
                     <input name="action" class="input2" type="submit" value="Join List"<?php echo $mark; ?>>
-                    <input class="input2" type="reset" value="Reset"<?php echo $mark; ?>>
                 </p>
             </fieldset>
         </form>
 
-        <p class="showCredit" style="text-align: center;">
+        <p class="showCredits-LA-RF" style="text-align: center;">
             Powered by <?php echo $octopus->formatCredit(); ?>
         </p>
-        <?php
+<?php
     }
     ?>
 </div>

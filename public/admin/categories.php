@@ -227,10 +227,10 @@ or delete your current ones! Below is your list of categories. To edit or delete
 a current one, click "Edit" or "Delete" by the appropriate category.</p>
 <?php 
  $select = $lions->categorySort();
- $count = count($select);
+ $count = is_countable($select) ? count($select) : 0;
  
  if($count > 0) {
-  if($ender > $count) {
+  if((int)$ender > $count) {
 	 $ender = $count;
 	}
 ?>

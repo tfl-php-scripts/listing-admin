@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * @project          Listing Admin
  * @copyright        2007

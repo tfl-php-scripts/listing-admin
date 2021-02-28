@@ -57,7 +57,7 @@
     /**
      * Count members and go from there \o/
      */
-    if (count($kimadmin->membersList(0)) > 0) {
+    if ((is_countable($kimadmin->membersList(0)) ? count($kimadmin->membersList(0)) : 0) > 0) {
         if (isset($_GET['sort']) && in_array($_GET['sort'], $wolves->listingsList())) {
             $sortid = $tigers->cleanMys($_GET['sort']);
 
@@ -73,7 +73,7 @@
         echo "<p class=\"tc\">Currently no members!</p>\n";
     }
     ?>
-    <p class="showCredit" style="text-align: center;">
+    <p class="showCredits-LA-RF" style="text-align: center;">
         Powered by <?php echo $octopus->formatCredit(); ?>
     </p>
 </div>

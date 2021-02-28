@@ -187,11 +187,7 @@ if (!class_exists('leopards')) {
             }
         }
 
-        /**
-         * @function  $leopards->logUser()
-         * @since     2.3alpha
-         */
-        public function logUser($i, $u, $n = '')
+        public function logUser($i, $u, $n = ''): void
         {
             global $_ST, $scorpions, $tigers, $loginInfo;
 
