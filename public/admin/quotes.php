@@ -82,7 +82,7 @@ if($seahorses->getOption('quotes_opt') == 'y') {
   } 
 
   $insert = "INSERT INTO `$_ST[quotes]` (`fNiq`, `qAuthor`, `qQuote`, `qUpdated`," . 
-  " `qAdded`) VALUES ('$listing', '$author', '$quote', '0000-00-00 00:00:00', NOW())";
+  " `qAdded`) VALUES ('$listing', '$author', '$quote', '1970-01-01 00:00:00', NOW())";
   $scorpions->query("SET NAMES 'utf8';");
   $true = $scorpions->query($insert);
   if($true == false) {
@@ -337,7 +337,7 @@ click "Edit" or "Delete" by the appropriate listing.</p>
    echo "</table>\n\n<p id=\"pagination\">Pages: ";
 
    $s     = $listingid ?? '';
-   $total = count($cheetahs->quotesList($s));
+   $total = is_countable($cheetahs->quotesList($s)) ? count($cheetahs->quotesList($s)) : 0;
    $pages = ceil($total / $per_page);
 	 
    for($i = 1; $i <= $pages; $i++) {

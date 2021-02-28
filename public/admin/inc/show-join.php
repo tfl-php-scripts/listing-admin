@@ -65,7 +65,7 @@
         if (empty($name)) {
             $tigers->displayError('Form Error', 'You have not filled out the <samp>' .
                 'name</samp> field.', false);
-        } elseif (!preg_match("/([A-Za-z-\s]+)/i", $name)) {
+        } elseif (!preg_match("/([A-Za-z\\-\s]+)/i", $name)) {
             $tigers->displayError('Form Error', 'There are invalid characters in' .
                 ' the <samp>name</samp> field. Go back and try again.', false);
         } elseif (strlen($name) > 25) {
@@ -101,7 +101,7 @@
             }
         }
         if (empty($password1) && empty($password2)) {
-            $hashy1 = substr(sha1(mt_rand(9999, 999999)), 0, 8);
+            $hashy1 = substr(sha1(random_int(9999, 999999)), 0, 8);
             $hashy2 = substr(sha1(date('YmdHis')), 0, 8);
             $pass = $hashy1 . $hashy2;
         } else {
@@ -110,7 +110,7 @@
         $fav = '';
         if (isset($_POST['fave']) && !empty($getItem->fave_fields) || !empty($fave_field)) {
             $faves = $_POST['fave'];
-            if (count($faves) > 0 && !empty($_POST['fave'])) {
+            if ((is_countable($faves) ? count($faves) : 0) > 0 && !empty($_POST['fave'])) {
                 $faves = array_map(array($tigers, 'replaceArray'), $faves);
                 $faves = str_replace('+', '', $faves);
                 $faves = str_replace('+ ', '', $faves);
@@ -151,13 +151,13 @@
          * Akismet, and antispam \o/ First: spam words!
          */
         foreach ($laantispam->spamarray() as $b) {
-            if (strpos($_POST['comments'], $b) !== false) {
+            if (strpos($_POST['comments'], (string) $b) !== false) {
                 $tigers->displayError('SPAM Error', 'SPAM language is not allowed.', false);
             }
         }
 
         foreach ($laantispam->bbcode as $h) {
-            if (strpos($_POST['comments'], $h) !== false) {
+            if (strpos($_POST['comments'], (string) $h) !== false) {
                 $tigers->displayError('SPAM Error', 'bbCode language is not allowed.', false);
             }
         }
@@ -181,7 +181,7 @@
         }
 
         if ($seahorses->getOption('captcha_opt') == 'y') {
-            if (!isset($_POST['captcha']) || strpos(sha1($ck), $_POST['captcha']) !== 0) {
+            if (!isset($_POST['captcha']) || strpos(sha1($ck), (string) $_POST['captcha']) !== 0) {
                 $tigers->displayError('Form Error', 'The <samp>CAPTCHA</samp> is invalid!', false);
             }
         }
@@ -247,7 +247,7 @@
             ' `mCountry`, `mPassword`, `mExtra`, `mVisible`, `mPending`, `mUpdate`,' .
             " `mEdit`, `mAdd`) VALUES ('$email', '" . $options->listingID .
             "', '$name', '$url', '$country', MD5('$pass'), '$fav', '$visible', 1, 'n'," .
-            " '0000-00-00 00:00:00', CURDATE())";
+            " '1970-01-01 00:00:00', CURDATE())";
         $true = $scorpions->insert($insert);
         if ($true == false) {
             echo '<p>' . $scorpions->error() . "</p>\n";
@@ -320,9 +320,9 @@
     } else {
         $symb = $getItem->markup === 'html5' ? '&#187;' : '&raquo;';
         $mark = $getItem->markup === 'xhtml' ? ' /' : '';
-        $a2 = sha1(mt_rand(10000, 999999));
-        $b1 = mt_rand(1, 10);
-        $b2 = mt_rand(1, 10);
+        $a2 = sha1(random_int(10000, 999999));
+        $b1 = random_int(1, 10);
+        $b2 = random_int(1, 10);
         $b3 = $b1 + $b2;
         $b4 = $b1 . ' + ' . $b2;
         $f3 = !empty($fave_field) && isset($fave_field) ? 'enctype="multipart/form-data" ' : '';
@@ -331,12 +331,12 @@
         ?>
         <p>Please use the form below for joining only. Hit the submit button only once,
             as your application is entered into the database, and ready for approval. If you
-            have any problems, feel more than free to contact me <?php echo $hide_address; ?>.
+            have any problems, feel more than free to contact me <?php echo $hide_address_check; ?>.
             If you would like to update your information, you can
             <a href="<?php echo $u2; ?>">do so here</a>. The asterisks (*) are
             required fields.</p>
 
-        <form action="<?php echo $j2; ?>" <?php echo $f3; ?>method="post">
+        <form action="<?= $j2; ?>" <?= $f3; ?>method="post">
             <?php
             if (
                 $seahorses->getOption('javascript_opt') == 'y' ||
@@ -346,6 +346,7 @@
                 echo "<p style=\"margin: 0;\">\n";
             }
 
+            echo '<!-- Listing Admin ' . $laoptions->version . ' Join Form -->';
             if ($seahorses->getOption('javascript_opt') == 'y') {
                 echo $octopus->javascriptCheat(sha1($seahorses->getOption('javascript_key')));
             }
@@ -470,17 +471,16 @@
                 <legend>Submit</legend>
                 <p class="tc">
                     <input name="emailMe" checked="checked" class="input3" type="checkbox"
-                           value="y"<?php echo $mark; ?>> Send me my details!
+                           value="y"<?= $mark; ?>> Send me my details!
                 </p>
                 <p class="tc">
-                    <input name="action" class="input2" type="submit" value="Join Listing"<?php echo $mark; ?>>
-                    <input class="input2" type="reset" value="Reset"<?php echo $mark; ?>>
+                    <input name="action" class="input2" type="submit" value="Join Listing"<?= $mark; ?>>
                 </p>
             </fieldset>
         </form>
 
-        <p class="showCredit" style="text-align: center;">
-            Powered by <?php echo $octopus->formatCredit(); ?>
+        <p class="showCredits-LA-RF" style="text-align: center;">
+            Powered by <?= $octopus->formatCredit(); ?>
         </p>
         <?php
     }

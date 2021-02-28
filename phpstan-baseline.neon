@@ -57,7 +57,7 @@ parameters:
 
 		-
 			message: "#^Variable \\$wolves might not be defined\\.$#"
-			count: 8
+			count: 9
 			path: public/admin/affiliates.php
 
 		-
@@ -82,7 +82,7 @@ parameters:
 
 		-
 			message: "#^Variable \\$rabbits might not be defined\\.$#"
-			count: 11
+			count: 12
 			path: public/admin/affiliates.php
 
 		-
@@ -107,11 +107,6 @@ parameters:
 
 		-
 			message: "#^Variable \\$laantispam might not be defined\\.$#"
-			count: 1
-			path: public/admin/affiliates.php
-
-		-
-			message: "#^Comparison operation \"\\>\" between \\(array\\|float\\|int\\) and int\\<1, max\\> results in an error\\.$#"
 			count: 1
 			path: public/admin/affiliates.php
 
@@ -146,11 +141,6 @@ parameters:
 			path: public/admin/categories.php
 
 		-
-			message: "#^Comparison operation \"\\>\" between \\(array\\|float\\|int\\) and int\\<1, max\\> results in an error\\.$#"
-			count: 1
-			path: public/admin/categories.php
-
-		-
 			message: "#^Variable \\$tigers might not be defined\\.$#"
 			count: 29
 			path: public/admin/codes-categories.php
@@ -172,7 +162,7 @@ parameters:
 
 		-
 			message: "#^Variable \\$cheetahs might not be defined\\.$#"
-			count: 4
+			count: 5
 			path: public/admin/codes-categories.php
 
 		-
@@ -202,7 +192,7 @@ parameters:
 
 		-
 			message: "#^Variable \\$cheetahs might not be defined\\.$#"
-			count: 1
+			count: 2
 			path: public/admin/codes-donors.php
 
 		-
@@ -222,7 +212,7 @@ parameters:
 
 		-
 			message: "#^Variable \\$tigers might not be defined\\.$#"
-			count: 34
+			count: 35
 			path: public/admin/codes.php
 
 		-
@@ -242,7 +232,7 @@ parameters:
 
 		-
 			message: "#^Variable \\$wolves might not be defined\\.$#"
-			count: 3
+			count: 4
 			path: public/admin/codes.php
 
 		-
@@ -257,7 +247,7 @@ parameters:
 
 		-
 			message: "#^Variable \\$cheetahs might not be defined\\.$#"
-			count: 11
+			count: 14
 			path: public/admin/codes.php
 
 		-
@@ -342,11 +332,6 @@ parameters:
 
 		-
 			message: "#^Variable \\$dbpass might not be defined\\.$#"
-			count: 1
-			path: public/admin/convert.php
-
-		-
-			message: "#^Comparison operation \"\\=\\=\" between array\\<int, string\\>\\|false and 0 results in an error\\.$#"
 			count: 1
 			path: public/admin/convert.php
 
@@ -1233,16 +1218,6 @@ parameters:
 			path: public/admin/inc/fun-external.inc.php
 
 		-
-			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; entry ID\\)\\: Unexpected token \"\\$i\", expected type at offset 113$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
-			message: "#^PHPDoc tag @param has invalid value \\(\\$p , string; type\\)\\: Unexpected token \"\\$p\", expected type at offset 73$#"
-			count: 1
-			path: public/admin/inc/fun-external.inc.php
-
-		-
 			message: "#^Variable \\$link might not be defined\\.$#"
 			count: 1
 			path: public/admin/inc/fun-external.inc.php
@@ -1448,16 +1423,6 @@ parameters:
 			path: public/admin/inc/fun-members.inc.php
 
 		-
-			message: "#^Cannot access property \\$searchType on false\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Cannot access property \\$searchText on false\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$i , int; listing ID\\)\\: Unexpected token \"\\$i\", expected type at offset 55$#"
 			count: 1
 			path: public/admin/inc/fun-members.inc.php
@@ -1643,22 +1608,12 @@ parameters:
 			path: public/admin/inc/fun-members.inc.php
 
 		-
-			message: "#^Cannot access property \\$sType on false\\.$#"
-			count: 5
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Cannot access property \\$sText on false\\.$#"
-			count: 5
-			path: public/admin/inc/fun-members.inc.php
-
-		-
 			message: "#^Variable \\$search might not be defined\\.$#"
 			count: 8
 			path: public/admin/inc/fun-members.inc.php
 
 		-
-			message: "#^PHPDoc tag @param has invalid value \\(\\$e , string; pull member by ID or e\\-mail\\)\\: Unexpected token \"\\$e\", expected type at offset 270$#"
+			message: "#^PHPDoc tag @param has invalid value \\(\\$e , string; pull member by ID or e\\-mail\\)\\: Unexpected token \"\\$e\", expected type at offset 277$#"
 			count: 1
 			path: public/admin/inc/fun-members.inc.php
 
@@ -1668,18 +1623,13 @@ parameters:
 			path: public/admin/inc/fun-members.inc.php
 
 		-
-			message: "#^PHPDoc tag @param has invalid value \\(\\$m , int; member ID\\)\\: Unexpected token \"\\$m\", expected type at offset 228$#"
+			message: "#^PHPDoc tag @param has invalid value \\(\\$memberId , int; member ID\\)\\: Unexpected token \"\\$memberId\", expected type at offset 228$#"
 			count: 1
 			path: public/admin/inc/fun-members.inc.php
 
 		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$t , string; template slug\\)\\: Unexpected token \"\\$t\", expected type at offset 179$#"
 			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Variable \\$ffBody might not be defined\\.$#"
-			count: 2
 			path: public/admin/inc/fun-members.inc.php
 
 		-
@@ -1694,16 +1644,6 @@ parameters:
 
 		-
 			message: "#^Variable \\$url might not be defined\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Variable \\$ffFoot might not be defined\\.$#"
-			count: 1
-			path: public/admin/inc/fun-members.inc.php
-
-		-
-			message: "#^Variable \\$ffHead might not be defined\\.$#"
 			count: 1
 			path: public/admin/inc/fun-members.inc.php
 
@@ -2037,11 +1977,6 @@ parameters:
 			path: public/admin/inc/fun-updates.inc.php
 
 		-
-			message: "#^Variable \\$d might not be defined\\.$#"
-			count: 3
-			path: public/admin/inc/fun-updates.inc.php
-
-		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$c, string; addon slug\\)\\: Unexpected token \"\\$c\", expected type at offset 103$#"
 			count: 1
 			path: public/admin/inc/fun-utility.inc.php
@@ -2103,11 +2038,6 @@ parameters:
 
 		-
 			message: "#^PHPDoc tag @param has invalid value \\(\\$p\\)\\: Unexpected token \"\\$p\", expected type at offset 162$#"
-			count: 1
-			path: public/admin/inc/fun.inc.php
-
-		-
-			message: "#^PHPDoc tag @param has invalid value \\(\\$a\\)\\: Unexpected token \"\\$a\", expected type at offset 276$#"
 			count: 1
 			path: public/admin/inc/fun.inc.php
 
@@ -2223,7 +2153,7 @@ parameters:
 
 		-
 			message: "#^Variable \\$seahorses might not be defined\\.$#"
-			count: 10
+			count: 8
 			path: public/admin/inc/show-codes-form.php
 
 		-
@@ -2318,7 +2248,7 @@ parameters:
 
 		-
 			message: "#^Variable \\$cheetahs might not be defined\\.$#"
-			count: 19
+			count: 20
 			path: public/admin/inc/show-codes.php
 
 		-
@@ -2344,6 +2274,11 @@ parameters:
 		-
 			message: "#^Variable \\$octopus might not be defined\\.$#"
 			count: 5
+			path: public/admin/inc/show-codes.php
+
+		-
+			message: "#^Variable \\$checkCr might not be defined\\.$#"
+			count: 2
 			path: public/admin/inc/show-codes.php
 
 		-
@@ -2578,7 +2513,7 @@ parameters:
 
 		-
 			message: "#^Variable \\$hide_address might not be defined\\.$#"
-			count: 3
+			count: 2
 			path: public/admin/inc/show-join.php
 
 		-
@@ -2619,6 +2554,16 @@ parameters:
 		-
 			message: "#^Variable \\$fave_field in isset\\(\\) always exists and is not nullable\\.$#"
 			count: 2
+			path: public/admin/inc/show-join.php
+
+		-
+			message: "#^Variable \\$hide_address_check might not be defined\\.$#"
+			count: 1
+			path: public/admin/inc/show-join.php
+
+		-
+			message: "#^Variable \\$laoptions might not be defined\\.$#"
+			count: 1
 			path: public/admin/inc/show-join.php
 
 		-
@@ -2793,7 +2738,7 @@ parameters:
 
 		-
 			message: "#^Variable \\$kimadmin might not be defined\\.$#"
-			count: 4
+			count: 5
 			path: public/admin/inc/show-kim-members.php
 
 		-
@@ -3004,6 +2949,11 @@ parameters:
 		-
 			message: "#^Variable \\$tigers might not be defined\\.$#"
 			count: 7
+			path: public/admin/inc/show-members.php
+
+		-
+			message: "#^Variable \\$checkCr might not be defined\\.$#"
+			count: 1
 			path: public/admin/inc/show-members.php
 
 		-
@@ -3612,6 +3562,11 @@ parameters:
 			path: public/admin/install.php
 
 		-
+			message: "#^Variable \\$notSupportedAddons might not be defined\\.$#"
+			count: 1
+			path: public/admin/install.php
+
+		-
 			message: "#^Variable \\$seahorses might not be defined\\.$#"
 			count: 2
 			path: public/admin/install.php
@@ -3723,7 +3678,7 @@ parameters:
 
 		-
 			message: "#^Variable \\$tigers might not be defined\\.$#"
-			count: 118
+			count: 120
 			path: public/admin/listings.php
 
 		-
@@ -3738,12 +3693,17 @@ parameters:
 
 		-
 			message: "#^Variable \\$wolves might not be defined\\.$#"
-			count: 7
+			count: 8
 			path: public/admin/listings.php
 
 		-
 			message: "#^Variable \\$_ST might not be defined\\.$#"
 			count: 16
+			path: public/admin/listings.php
+
+		-
+			message: "#^Variable \\$laoptions might not be defined\\.$#"
+			count: 1
 			path: public/admin/listings.php
 
 		-
@@ -3777,11 +3737,6 @@ parameters:
 			path: public/admin/listings.php
 
 		-
-			message: "#^Variable \\$result might not be defined\\.$#"
-			count: 1
-			path: public/admin/listings.php
-
-		-
 			message: "#^Variable \\$my_imagesh might not be defined\\.$#"
 			count: 1
 			path: public/admin/listings.php
@@ -3803,12 +3758,12 @@ parameters:
 
 		-
 			message: "#^Variable \\$p might not be defined\\.$#"
-			count: 1
+			count: 2
 			path: public/admin/listings.php
 
 		-
 			message: "#^Variable \\$s might not be defined\\.$#"
-			count: 1
+			count: 2
 			path: public/admin/listings.php
 
 		-
@@ -3843,12 +3798,12 @@ parameters:
 
 		-
 			message: "#^Variable \\$cheetahs might not be defined\\.$#"
-			count: 5
+			count: 7
 			path: public/admin/lyrics.php
 
 		-
 			message: "#^Variable \\$tigers might not be defined\\.$#"
-			count: 101
+			count: 103
 			path: public/admin/members.php
 
 		-
@@ -3858,7 +3813,7 @@ parameters:
 
 		-
 			message: "#^Variable \\$wolves might not be defined\\.$#"
-			count: 13
+			count: 14
 			path: public/admin/members.php
 
 		-
@@ -3877,13 +3832,8 @@ parameters:
 			path: public/admin/members.php
 
 		-
-			message: "#^Variable \\$url might not be defined\\.$#"
-			count: 1
-			path: public/admin/members.php
-
-		-
 			message: "#^Variable \\$snakes might not be defined\\.$#"
-			count: 14
+			count: 16
 			path: public/admin/members.php
 
 		-
@@ -3973,7 +3923,7 @@ parameters:
 
 		-
 			message: "#^Variable \\$seahorses might not be defined\\.$#"
-			count: 26
+			count: 27
 			path: public/admin/pro.inc.php
 
 		-
@@ -3983,7 +3933,7 @@ parameters:
 
 		-
 			message: "#^Variable \\$scorpions might not be defined\\.$#"
-			count: 5
+			count: 4
 			path: public/admin/pro.inc.php
 
 		-
@@ -3993,7 +3943,7 @@ parameters:
 
 		-
 			message: "#^Variable \\$laoptions might not be defined\\.$#"
-			count: 6
+			count: 5
 			path: public/admin/pro.inc.php
 
 		-
@@ -4043,7 +3993,7 @@ parameters:
 
 		-
 			message: "#^Variable \\$cheetahs might not be defined\\.$#"
-			count: 1
+			count: 2
 			path: public/admin/quotes.php
 
 		-
@@ -4138,7 +4088,7 @@ parameters:
 
 		-
 			message: "#^Variable \\$turtles might not be defined\\.$#"
-			count: 9
+			count: 10
 			path: public/admin/updates-comments.php
 
 		-
@@ -4184,11 +4134,6 @@ parameters:
 		-
 			message: "#^Variable \\$journals might not be defined\\.$#"
 			count: 6
-			path: public/admin/updates.php
-
-		-
-			message: "#^Method crosspost\\:\\:deleteevent\\(\\) invoked with 2 parameters, 1 required\\.$#"
-			count: 3
 			path: public/admin/updates.php
 
 		-
@@ -4385,26 +4330,6 @@ parameters:
 			message: "#^Constant STPATH not found\\.$#"
 			count: 1
 			path: public/samplecollective/owned.php
-
-		-
-			message: "#^Constant STPATH not found\\.$#"
-			count: 3
-			path: public/samplecollective/stat.php
-
-		-
-			message: "#^Constant MAINDIR not found\\.$#"
-			count: 1
-			path: public/samplecollective/stat.php
-
-		-
-			message: "#^Variable \\$wolves might not be defined\\.$#"
-			count: 2
-			path: public/samplecollective/stat.php
-
-		-
-			message: "#^Variable \\$snakes might not be defined\\.$#"
-			count: 2
-			path: public/samplecollective/stat.php
 
 		-
 			message: "#^Constant STPATH not found\\.$#"

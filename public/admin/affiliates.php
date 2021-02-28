@@ -113,7 +113,7 @@ if (isset($_GET['g']) && $_GET['g'] == 'new') {
     }
     $rec = $tigers->cleanMys($_POST['rec']);
     $image = $_FILES['image'];
-    $image_tag = substr(sha1(date('YmdHis')), mt_rand(0, 9), 15);
+    $image_tag = substr(sha1(date('YmdHis')), random_int(0, 9), 15);
     if (!empty($_FILES['image']['name'])) {
         $imageinfo = getimagesize($_FILES['image']['tmp_name']);
         $imagetype = $imageinfo[2];
@@ -359,7 +359,7 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'old') {
             ' an image.', false);
     }
     $image = $_FILES['image'];
-    $image_tag1 = substr(md5(mt_rand(80, 680)), 0, 5);
+    $image_tag1 = substr(md5(random_int(80, 680)), 0, 5);
     $image_tag2 = substr(md5(date('YmdHis')), 0, 5);
     if ($change == 'add' || $change == 'edit') {
         $imageinfo = getimagesize($_FILES['image']['tmp_name']);
@@ -618,10 +618,10 @@ if (isset($_GET['g']) && $_GET['g'] == 'searchAffiliates') {
     $b = '';
 }
 $select = $rabbits->sortAffiliates($getlistingid, $s, $b);
-$count = count($select);
+$count = is_countable($select) ? count($select) : 0;
 
 if ($count > 0) {
-if ($ender > $count) {
+if ((int)$ender > $count) {
     $ender = $count;
 }
 
@@ -672,7 +672,7 @@ if (isset($_GET['get']) && $_GET['get'] == 'searchAffiliates') {
     echo "</table>\n";
 
     $p = !isset($_GET['p']) || !is_numeric($_GET['p']) ? 1 : $tigers->cleanMys($_GET['p']);
-    $pages = ceil(count($rabbits->affiliatesList($getlistingid)) / $per_page);
+    $pages = ceil((is_countable($rabbits->affiliatesList($getlistingid)) ? count($rabbits->affiliatesList($getlistingid)) : 0) / $per_page);
     echo '<p id="pagination">Pages: ';
     for ($i = 1; $i <= $pages; $i++) {
         if ($p == $i) {
@@ -703,7 +703,7 @@ if (isset($_GET['get']) && $_GET['get'] == 'searchAffiliates') {
 
     # -- Show Index of Fanlistings~ ------------------------------------------------
     else {
-    $countListings = count($wolves->listingsList());
+    $countListings = is_countable($wolves->listingsList()) ? count($wolves->listingsList()) : 0;
     $select = "SELECT * FROM `$_ST[main]` ORDER BY `subject` ASC LIMIT $countListings";
     $count = $scorpions->counts($select, 1);
     $true = $scorpions->query($select);

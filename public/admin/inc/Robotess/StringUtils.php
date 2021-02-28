@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * @project          Listing Admin
  * @copyright        2020
@@ -20,10 +21,7 @@ use function trim;
  */
 final class StringUtils
 {
-    /**
-     * @var self
-     */
-    private static $instance;
+    private static ?StringUtils $instance = null;
 
     private function __construct()
     { /***/
@@ -38,22 +36,22 @@ final class StringUtils
         return self::$instance;
     }
 
-    public function normalizeUrl(string $data): string
+    public function normalizeUrl(?string $data = null): string
     {
-        return trim($data);
+        return trim($data ?? '');
     }
 
-    public function normalizeEmail(string $data): string
+    public function normalizeEmail(?string $data = null): string
     {
-        return strtolower(trim($data));
+        return strtolower(trim($data ?? ''));
     }
 
-    public function isEmailValid(string $email): bool
+    public function isEmailValid(?string $email = null): bool
     {
-        return (bool)preg_match("/^([A-Za-z0-9-_.+]+)@(([A-Za-z0-9-_]+\.)+)([a-zA-Z]{2,})$/i", $email);
+        return (bool)preg_match("/^([A-Za-z0-9-_.+]+)@(([A-Za-z0-9-_]+\.)+)([a-zA-Z]{2,})$/i", $email ?? '');
     }
 
-    public function isUrlValid(string $url): bool
+    public function isUrlValid(?string $url = null): bool
     {
         return (bool)preg_match('@^(https?://)([A-Za-z0-9-_./?]+)@i', $url);
     }

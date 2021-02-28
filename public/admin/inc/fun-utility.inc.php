@@ -23,7 +23,8 @@ if(class_exists('frogs') == false) {
    * @param     $c, string; addon slug 
    */ 
   public function installAddon($c) {
-   global $_ST, $cheetahs, $get_addon_array, $scorpions;
+   global $_ST, $get_addon_array, $notSupportedAddons, $scorpions;
+   $get_addon_array_for_installation = array_diff_key($get_addon_array, array_flip($notSupportedAddons));
  
    /** 
     * Setup our return object ahead of time! 
@@ -34,7 +35,7 @@ if(class_exists('frogs') == false) {
     'status'  => true
    );
 
-   if(array_key_exists($c, $get_addon_array)) {
+   if(array_key_exists($c, $get_addon_array_for_installation)) {
     switch($c) {
      case 'codes':
       $create = "CREATE TABLE `$_ST[codes]` (
@@ -79,7 +80,7 @@ if(class_exists('frogs') == false) {
  `dEmail` varchar(255) NOT NULL,
  `dURL` varchar(255) NOT NULL,
  `dPending` tinyint(1) NOT NULL DEFAULT '1',
- `dUpdated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+ `dUpdated` datetime NOT NULL DEFAULT '1970-01-01 00:00:00',
  `dAdded` datetime NOT NULL,
  PRIMARY KEY (`dID`),
  UNIQUE KEY `dName` (`dName`(25), `dEmail`(80), `dURL`(90))
@@ -119,7 +120,7 @@ if(class_exists('frogs') == false) {
  `mPending` tinyint(1) NOT NULL DEFAULT '0',
  `mPrevious` tinyint(1) NOT NULL DEFAULT '0',
  `mUpdate` enum('y', 'n') NOT NULL DEFAULT 'n',
- `mEdit` datetime NOT NULL DEFAULT '0000-00-00',
+ `mEdit` datetime NOT NULL DEFAULT '1970-01-01',
  `mAdd` date NOT NULL,
 PRIMARY KEY (`mID`),
 UNIQUE KEY `mName` (`fNiq`, `mEmail`)
@@ -173,7 +174,7 @@ UNIQUE KEY `mName` (`fNiq`, `mEmail`)
  `fNiq` mediumint(6) unsigned NOT NULL,
  `qQuote` text NOT NULL,
  `qAuthor` varchar(255) NOT NULL,
- `qUpdated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00', 
+ `qUpdated` datetime NOT NULL DEFAULT '1970-01-01 00:00:00', 
  `qAdded` datetime NOT NULL,
  PRIMARY KEY (`qID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
@@ -479,7 +480,8 @@ edited later.</p>
    * @function  $frogs->installAddons() 
    */ 
   public function installAddons() {
-   global $get_addon_array;
+   global $get_addon_array, $notSupportedAddons;
+   $get_addon_array_for_installation = array_diff_key($get_addon_array, array_flip($notSupportedAddons));
 ?>
 <h2>Step 3: Addons</h2>
 <p>The Addons for Listing Admin include -- but aren't limited to! -- Updates,
@@ -494,7 +496,7 @@ admin panel.</p>
  <fieldset>
   <legend>Install Addons</legend>
 <?php  
- foreach($get_addon_array as $k => $v) {
+ foreach($get_addon_array_for_installation as $k => $v) {
   echo "<p><label><strong>$v:</strong></label> <input name=\"$k\" class=\"input3\"" . 
   " type=\"checkbox\" value=\"y\"> Install!</p>\n";
  }

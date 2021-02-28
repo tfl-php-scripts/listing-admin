@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * @project          Listing Admin
  * @copyright        2007
@@ -27,6 +28,8 @@ if (!class_exists('tigers')) {
         public function cleanMys($post, $p = 'y', $s = 'y', $e = 'y')
         {
             global $scorpions;
+
+            $post = (string)$post;
 
             if ($p == 'y') {
                 $post = strip_tags($post);
@@ -74,23 +77,12 @@ if (!class_exists('tigers')) {
             return $p;
         }
 
-        /**
-         * My faaaaaavourite function *_* Takes the array given and takes
-         * out elements that are empty (or considered empty, e.g. '', "",
-         * 0, and '0').
-         *
-         * @access   public
-         * @function $tigers->emptyarray()
-         * @param $a
-         * @return array
-         * @since    2.1.9
-         */
-        public function emptyarray($a)
+        public function emptyarray($array)
         {
-            $n = array();
-            $e = array();
+            $n = [];
+            $e = [];
 
-            foreach ($a as $k) {
+            foreach ($array as $k) {
                 $k = trim($k);
                 $e[] = '0';
                 if (!in_array($k, $e) && $k != '') {
@@ -289,7 +281,6 @@ if (!class_exists('tigers')) {
 
             echo "<h3>$e</h3>\n";
 
-            $class = '';
             if ($e == 'Database Error') {
                 $class = 'mysql';
             } elseif ($e == 'Script Error') {

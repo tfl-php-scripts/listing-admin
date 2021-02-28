@@ -93,13 +93,13 @@ of the listing you'd like the member added to.</p>
  <legend>Fave Field Options</legend>
 <?php
 if(!isset($_GET['extend']) && !isset($_GET['count']) && !isset($_POST['fave'])) {
- $q = basename($_SERVER['PHP_SELF']) . '?g=new&#38;extend=1&#38;count=1#fave'; 
+ $q = basename($_SERVER['PHP_SELF']) . '?g=new&#38;listing=' . $getlistingid .'&#38;extend=1&#38;count=1#fave';
  echo "<p class=\"tc\"><a href=\"$q\">Add Fave Field(s)?</a></p>\n";
 }
 
 if(isset($_GET['extend']) && is_numeric($_GET['extend'])) {
  $c1 = (int)$tigers->cleanMys($_GET['count']) + 1;
- $q2 = basename($_SERVER['PHP_SELF']) . '?g=old&#38;id=' . $_GET['id'] . 
+ $q2 = basename($_SERVER['PHP_SELF']) . '?g=new&#38;listing=' . $getlistingid .
  '&#38;extend=1&#38;count=' . $c1 . '#fave'; 
  $countQuery = $tigers->cleanMys((int)$_GET['count'], 'y', 'y', 'n');
  echo "<div id=\"fave\">\n";
@@ -126,7 +126,6 @@ if(isset($_GET['extend']) && is_numeric($_GET['extend'])) {
  }
 
  elseif (isset($_POST['action']) && $_POST['action'] == 'Add Member') {
-  $email_now = $tigers->cleanMys($_POST['email_now']);
   $listing = $tigers->cleanMys($_POST['listing']);
   $listingArray = $wolves->listingsList();
   if(empty($listing) || !is_numeric($listing) || !in_array($listing, $listingArray)) {
@@ -149,6 +148,7 @@ $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email
             $tigers->displayError('Form Error', 'The characters specified in the' .
                 ' <samp>e-mail</samp> field are not allowed.', false);
         }
+  $url = StringUtils::instance()->normalizeUrl($tigers->cleanMys($_POST['url']));
         if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
     $tigers->displayError('Form Error', 'Your <samp>site URL</samp> is' .
         ' not valid. Please supply a valid site URL or empty the field.', false);
@@ -175,7 +175,7 @@ $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email
 	 }
   } 
   if(empty($password1) && empty($password2)) {
-   $hashy1 = substr(sha1(mt_rand(1990, 16770)), 0, 8);
+   $hashy1 = substr(sha1(random_int(1990, 16770)), 0, 8);
 	 $hashy2 = substr(sha1(date('YmdHis')), 0, 8);
 	 $pass = $hashy1 . $hashy2;
   } else {
@@ -194,7 +194,7 @@ $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email
 	  } else {
      $dbadditional = explode('|', $dbentry->fave_fields);
      $dbfields = $tigers->emptyarray($dbadditional);
-	   for($i = 0,$iMax = count($dbfields); $i < $iMax; $i++) {
+	   for($i = 0,$iMax = is_countable($dbfields) ? count($dbfields) : 0; $i < $iMax; $i++) {
 	    $fave[] = 'NONE';
 	   }
 	   $ff = implode('|', $fave);
@@ -208,7 +208,7 @@ $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email
 	 } else {
     $dbadditional = explode('|', $dbentry->fave_fields);
     $dbfields = $tigers->emptyarray($dbadditional);
-	  for($i = 0,$iMax = count($dbfields); $i < $iMax; $i++) {
+	  for($i = 0,$iMax = is_countable($dbfields) ? count($dbfields) : 0; $i < $iMax; $i++) {
 	   $fave[] = 'NONE';
 	  }
 	  $ff = implode('|', $fave);
@@ -219,7 +219,7 @@ $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email
   $insert = "INSERT INTO `$_ST[members]` (`mEmail`, `fNiq`, `mName`, `mURL`," . 
 	' `mCountry`, `mPassword`, `mExtra`, `mVisible`, `mPending`, `mUpdate`,' .
   " `mEdit`, `mAdd`) VALUES ('$email', '$listing', '$name', '$url', '$country'," . 
-	" MD5('$pass'), '$ff', '$visible', '0', 'n', '0000-00-00 00:00:00', CURDATE())";
+	" MD5('$pass'), '$ff', '$visible', '0', 'n', '1970-01-01 00:00:00', CURDATE())";
   $true = $scorpions->insert($insert);
 
   if($true == false) {
@@ -312,39 +312,28 @@ $email = StringUtils::instance()->normalizeEmail($tigers->cleanMys($_POST['email
 ?>
 <fieldset>
  <legend>Fave Field Options</legend>
-<?php 
+<?php
   $fave = $getItem->mExtra;
   $favs = explode('|', $fave);
   $favs = $tigers->emptyarray($favs);
   $num = 0;
-
-  if(!empty($fave)) {
-   if(count($favs) == 1) {
-?>
- <p><label><strong>Fave Field 1:</strong></label> 
- <input name="fave[]" class="input1" type="text" value="<?php echo $favs[0]; ?>"></p>
-<?php
- }
-
- elseif (count($favs) > 1) {
+  if(!empty($fave) && is_countable($favs) && count($favs) > 0) {
   foreach($favs as $f) {
-   $nm = $num + 1;
-   if(!empty($f)) {
+   if(strcasecmp($f, '') !== 0) {
 ?>
- <p><label><strong>Fave Field <?php echo $nm; ?>:</strong></label> 
- <input name="fave[]" class="input1" type="text" value="<?php echo $f; ?>"></p>
+ <p><label><strong>Fave Field <?= $num; ?>:</strong></label>
+ <input name="fave[]" class="input1" type="text" value="<?= $f; ?>"></p>
 <?php 
    }
  	 $num++;
   }
- } 
 }
 
-else {if(!isset($_GET['extend']) && !isset($_GET['count']) && !isset($_POST['fave'])) {
+elseif(!isset($_GET['extend']) && !isset($_GET['count']) && !isset($_POST['fave'])) {
  $q = basename($_SERVER['PHP_SELF']) . '?listing=' . $getlistingid .
  '&#38;g=old&#38;d=' . $id . '&#38;extend=1&#38;count=1#fave';
  echo "<p class=\"tc\"><a href=\"$q\">Add Fave Field(s)?</a></p>\n";
-}}
+}
 
 if(isset($_GET['extend']) && is_numeric($_GET['extend']) && is_numeric($_GET['count'])) {
  $c1 = (int)$tigers->cleanMys($_GET['count']) + 1;
@@ -353,9 +342,8 @@ if(isset($_GET['extend']) && is_numeric($_GET['extend']) && is_numeric($_GET['co
  $countQuery = $tigers->cleanMys((int)$_GET['count']);
  echo " <div id=\"fave\">\n";
  for($i = 0; $i < $countQuery; $i++) {
-  $in = $i + 1;
 ?>
- <p><label><strong>Fave Field <?php echo $in; ?>:</strong></label> 
+ <p><label><strong>Fave Field <?= $i; ?>:</strong></label>
  <input name="fave[]" class="input1" type="text"></p>
 <?php 
  }
@@ -365,7 +353,7 @@ if(isset($_GET['extend']) && is_numeric($_GET['extend']) && is_numeric($_GET['co
  echo " </div>\n";
 }
 
-if(count($favs) != 0 && !empty($fave)) {
+if((is_countable($favs) ? count($favs) : 0) != 0 && !empty($fave)) {
 ?>
  <p><label><strong>Erase Record?</strong></label> 
   <input name="record" class="input3" type="radio" value="yes"> Yes 
@@ -792,7 +780,7 @@ Below is the list of your members; to edit or delete a member, click "Edit" or
 	 $b = '';
 	}
   $select = $snakes->sortMembers($getlistingid, $s, $b);
-  $count  = count($select);
+  $count  = is_countable($select) ? count($select) : 0;
 	
   if($count > 0) {
 	 if($ender > $count) {
@@ -858,13 +846,15 @@ Below is the list of your members; to edit or delete a member, click "Edit" or
    if(
     isset($_GET['g'], $_GET['s']) && $_GET['g'] == 'searchMembers' && array_key_exists($_GET['s'], $sa)
    ) {
-    $members_pagination = count(
+    $members_pagination = is_countable($snakes->membersList(
+     $getlistingid, 1, $tigers->cleanMys($_GET['s']), $tigers->cleanMys($_GET['q'])
+    )) ? count(
      $snakes->membersList(
       $getlistingid, 1, $tigers->cleanMys($_GET['s']), $tigers->cleanMys($_GET['q'])
      )
-    );
+    ) : 0;
    } else {
-    $members_pagination = count($snakes->membersList($getlistingid));
+    $members_pagination = is_countable($snakes->membersList($getlistingid)) ? count($snakes->membersList($getlistingid)) : 0;
    }
  
    echo '<p id="pagination">';
@@ -888,7 +878,7 @@ Below is the list of your members; to edit or delete a member, click "Edit" or
  * Show index of listings~ 
  */ 
 else {
- $counter = count($wolves->listingsList());
+ $counter = is_countable($wolves->listingsList()) ? count($wolves->listingsList()) : 0;
  $select  = "SELECT * FROM `$_ST[main]` ORDER BY `subject` ASC LIMIT $counter";
  $true    = $scorpions->query($select);
  $count   = $scorpions->total($true);

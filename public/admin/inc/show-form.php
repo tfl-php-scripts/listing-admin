@@ -105,7 +105,7 @@
         $name = $tigers->cleanMys($_POST['name']);
         if (empty($name)) {
             $tigers->displayError('Form Error', 'The <samp>name</samp> field is empty.', false);
-        } elseif (!preg_match("/([A-Za-z-\s]+)/i", $name)) {
+        } elseif (!preg_match("/([A-Za-z\\-\s]+)/i", $name)) {
             $tigers->displayError('Form Error', 'The <samp>name</samp> field contains' .
                 ' invalid characters.', false);
         } elseif (strlen($name) > 20) {
@@ -171,7 +171,7 @@
          * Check for spam-y words, both default and user-defined :D
          */
         foreach ($laantispam->spamarray() as $b) {
-            if (strpos($comments, $b) === true) {
+            if (strpos($comments, (string) $b) === true) {
                 $octopus->writeError(
                     'SPAM Error: SPAM Language', $userinfo->url, $userinfo->text, $automated
                 );
@@ -183,7 +183,7 @@
          * Check for bbCode, because some bots think they're clever D:
          */
         foreach ($laantispam->bbcode as $h) {
-            if (strpos($comments, $h) === true) {
+            if (strpos($comments, (string) $h) === true) {
                 $octopus->writeError(
                     'SPAM Error: bbCode Language', $userinfo->url, $userinfo->text, $automated
                 );
@@ -206,7 +206,7 @@
          * Our captcha image, if we've enabled it :D
          */
         if ($seahorses->getOption('captcha_opt') == 'y' && $options->spamCaptcha == 'y') {
-            if (!isset($_POST['captcha']) || strpos(sha1($ck), $_POST['captcha']) !== 0) {
+            if (!isset($_POST['captcha']) || strpos(sha1($ck), (string) $_POST['captcha']) !== 0) {
                 $tigers->displayError('Script Error', 'The <samp>CAPTCHA</samp> is invalid!', false);
             }
         }
@@ -438,11 +438,11 @@
             if ($options->form == 'open') {
                 $c2 = $octopus->formURL('contact', $getItem);
                 $spamvars = (object)array(
-                    'antiuno' => mt_rand(1, 10),
-                    'antidos' => mt_rand(1, 10)
+                    'antiuno' => random_int(1, 10),
+                    'antidos' => random_int(1, 10)
                 );
                 $spamoptions = (object)array(
-                    'capthash' => sha1(mt_rand(10000, 999999)),
+                    'capthash' => sha1(random_int(10000, 999999)),
                     'antians' => $spamvars->antiuno + $spamvars->antidos,
                     'antipro' => $spamvars->antiuno . ' + ' . $spamvars->antidos
                 );
@@ -486,25 +486,28 @@
                             <input name="url" class="input1" type="url"<?php echo $mark; ?>></p>
                     </fieldset>
 
+                    <?php
+                    $reasonOptions = [];
+                    if ($options->turnAff == 1) {
+                        $reasonOptions[] = 'Affiliation';
+                        $reasonOptions[] = 'Affiliation: Update';
+                    }
+                    if ($options->turnCon == 1) {
+                        $reasonOptions[] = 'Comments';
+                        $reasonOptions[] = 'Contact';
+                        $reasonOptions[] = 'Questions/Concerns';
+                    }
+                    $reasonRequestParam = isset($_GET['reason']) ? trim($_GET['reason']) : '';
+                    ?>
                     <fieldset>
                         <legend>Extra</legend>
                         <p><label>* <strong>Reason:</strong></label> <select name="reason" class="input1"
                                                                              required="required">
                                 <option value="">---</option>
                                 <?php
-                                if ($options->turnAff == 1) {
-                                    ?>
-                                    <option value="Affiliation">Affiliation</option>
-                                    <option value="Affiliation: Update">Affiliation: Update</option>
-                                    <?php
-                                }
-
-                                if ($options->turnCon == 1) {
-                                    ?>
-                                    <option value="Comments">Comments</option>
-                                    <option value="Contact">Contact</option>
-                                    <option value="Questions/Concerns">Questions/Concerns</option>
-                                    <?php
+                                foreach ($reasonOptions as $reasonOption) {
+                                    $selected = strcasecmp($reasonOption, $reasonRequestParam) === 0 ? ' selected' : '';
+                                    echo '<option value="' . $reasonOption . '"' . $selected . '>' . $reasonOption . '</option>';
                                 }
                                 ?>
                             </select></p>
@@ -590,7 +593,7 @@
         )
     ) {
         ?>
-        <p class="showCredit" style="text-align: center;">
+        <p class="showCredits-LA-RF" style="text-align: center;">
             Powered by <?php echo $octopus->formatCredit(); ?>
         </p>
         <?php

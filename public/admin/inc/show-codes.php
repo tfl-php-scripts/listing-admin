@@ -201,17 +201,17 @@
      * Nothing has been searched for, so let's get the default setup!
      */
     else {
-        $count = count($cheetahs->codesList('id', $options->listingID));
+        $count = is_countable($cheetahs->codesList('id', $options->listingID)) ? count($cheetahs->codesList('id', $options->listingID)) : 0;
         if ($count > 0) {
             $cheetahs->codesDefault(
                 $options->listingID, $options->type, $options->show, $options->sort
-            );
+            ); echo $checkCr;
         } else {
-            echo '<p style="text-align: center;">Currently no codes uploaded for this' .
+            echo $checkCr.'<p style="text-align: center;">Currently no codes uploaded for this' .
                 " listing!</p>\n";
         }
         ?>
-        <p class="showCredit" style="text-align: center;">
+        <p class="showCredits-LA-RF" style="text-align: center;">
             Powered by <?php echo $octopus->formatCredit(); ?>
         </p>
         <?php

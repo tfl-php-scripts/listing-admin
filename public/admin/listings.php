@@ -10,12 +10,15 @@
  */
 
 use Robotess\StringUtils;
+use Robotess\Templates;
 
 $getTitle = 'Listings';
 
 require('pro.inc.php');
 require('vars.inc.php');
 require('header.php');
+
+$templatesExamples = new Templates();
 
 $sp = !isset($_GET['g']) 
 || (isset($_GET['g']) && preg_match('/^(search)([A-Za-z]+)/', $_GET['g'])) ?
@@ -54,8 +57,8 @@ if(isset($_GET['g']) && $_GET['g'] == 'manage') {
  $if4 = isset($_GET['o']) && $_GET['o'] == 'templates' ? '&#187; ' : '';
 ?>
 <menu>
- <li><?php echo $if2; ?><a href="listings.php?g=manage&#38;d=<?php echo $id; ?>&#38;o=crosslist">Crosslist</a></li>
  <li><?php echo $if1; ?><a href="listings.php?g=manage&#38;d=<?php echo $id; ?>">Details</a></li>
+ <li><?php echo $if2; ?><a href="listings.php?g=manage&#38;d=<?php echo $id; ?>&#38;o=crosslist">Crosslist</a></li>
  <li><?php echo $if3; ?><a href="listings.php?g=manage&#38;d=<?php echo $id; ?>&#38;o=options">Options</a></li>
  <li><?php echo $if4; ?><a href="listings.php?g=manage&#38;d=<?php echo $id; ?>&#38;o=templates">Templates</a></li>
 </menu>
@@ -66,6 +69,9 @@ if(isset($_GET['g']) && $_GET['g'] == 'manage') {
   if(isset($_GET['o']) && $_GET['o'] == 'crosslist') {
 ?>
 <h3>Crosslist</h3>
+<p class="scriptButton"><span class="script"><b>Notice:</b></span> This functionality has not been properly
+                tested in <?= $laoptions->version ?>. Please report any issues if such occur.
+            </p>
 <p>Crosslisting should only be used if you are crosslisting a fanlisting with
 another person, or are connecting another domain you own. <ins>This should only
 be used on a as-needed basis!</ins></p>
@@ -137,8 +143,7 @@ if($getItem->dblist == 1 && $getItem->dbtype != 'listingadmin') {
 <fieldset>
  <legend>Submit</legend>
  <p class="tc">
-  <input name="action" class="input2" type="submit" value="Manage Listing"> 
-  <input class="input2" type="reset" value="Reset Form">
+  <input name="action" class="input2" type="submit" value="Manage Listing">
  </p>
 </fieldset>
 </form>
@@ -236,11 +241,11 @@ if(!empty($getItem->fave_fields)) {
  $q3 = basename($_SERVER['PHP_SELF']) . '?g=manage&#38;d=' . $tigers->cleanMys($_GET['d']);
  if(isset($_GET['opt'])) { 
   $q3 .= '&#38;opt=' . $tigers->cleanMys($_GET['opt']) . '&#38;extend=1&' .
-  '#38;count=' . (count($fave_fields) + 1) . '#fave';
+  '#38;count=' . ((is_countable($fave_fields) ? count($fave_fields) : 0) + 1) . '#fave';
  } 
 
  echo "<div id=\"fave\">\n";
- for($i = 0,$iMax = count($fave_fields); $i < $iMax; $i++) {
+ for($i = 0,$iMax = is_countable($fave_fields) ? count($fave_fields) : 0; $i < $iMax; $i++) {
 ?>
  <p><input name="numero[]" type="hidden" value="<?php echo $i; ?>">
  <label><strong>Favourite Field <?php echo $i; ?></strong></label>
@@ -267,11 +272,11 @@ if(isset($_GET['extend']) && is_numeric($_GET['extend'])) {
  $c1 = (int)$tigers->cleanMys($_GET['count']) + 1;
  $q2 = basename($_SERVER['PHP_SELF']) . 
  '?g=manage&#38;d=' . $tigers->cleanMys($_GET['d']) .
- '&#38;opt=' . $tigers->cleanMys($_GET['opt']) .
+ '&#38;opt=' . $tigers->cleanMys($_GET['opt'] ?? "") .
  '&#38;extend=1&#38;count=' . $c1 . '#fave';
  $countQuery = $tigers->cleanMys((int)$_GET['count']);
  echo "<div id=\"fave\">\n";
- $vk = isset($fave_fields) && !empty($getItem->fave_fields) ? count($fave_fields) + 1 : 0;
+ $vk = isset($fave_fields) && !empty($getItem->fave_fields) ? (is_countable($fave_fields) ? count($fave_fields) : 0) + 1 : 0;
  for($n = $vk; $n <= $countQuery; $n++) {
 ?>
  <p><input name="numero[]" type="hidden" value="<?php echo $n - 1; ?>">
@@ -285,7 +290,7 @@ if(isset($_GET['extend']) && is_numeric($_GET['extend'])) {
  echo "</div>\n";
 }
 
-if(!empty($getItem->fave_fields) && count($fave_fields) != 0 && !empty($fave_fields)) {
+if(!empty($getItem->fave_fields) && (is_countable($fave_fields) ? count($fave_fields) : 0) != 0 && !empty($fave_fields)) {
 ?>
 <p><label><strong>Erase Record?</strong></label>
 <input name="record" checked="checked" class="input3" type="radio" value="no"> No
@@ -311,11 +316,11 @@ if(!empty($getItem->fave_fields) && count($fave_fields) != 0 && !empty($fave_fie
   $a = unserialize($getItem->previous, ['allowed_classes' => true]);
  }
 
- if(count($a) > 0) {
+ if((is_countable($a) ? count($a) : 0) > 0) {
   $pn   = 1;
 	$text = '';
   foreach($a as $k => $v) {
-	 $num   = (count($a) + 1) == $pn ? ' <span class="add">[+]</span>' : '';
+	 $num   = ((is_countable($a) ? count($a) : 0) + 1) == $pn ? ' <span class="add">[+]</span>' : '';
 	 $class = 'p' . $pn;
 	 $text .= "  <div class=\"owner\" id=\"$class\">\n   "  . 
 	 "<input name=\"pnumeric[]\" type=\"hidden\" value=\"$pn\">\n   " . 
@@ -565,8 +570,7 @@ on the <a href="templates.php?g=templates">Templates page</a>.</p>
 <fieldset>
  <legend>Submit</legend>
  <p class="tc">
-  <input name="action" class="input2" type="submit" value="Manage Listing"> 
-  <input class="input2" type="reset" value="Reset Form">
+  <input name="action" class="input2" type="submit" value="Manage Listing">
  </p>
 </fieldset>
 </form>
@@ -640,9 +644,9 @@ on the <a href="templates.php?g=templates">Templates page</a>.</p>
 ?>
  </select></p>
  <p><label><strong>Day:</strong></label> 
- <input name="day" class="input1" type="text" value="<?php echo date('d', strtotime($getItem->since)); ?>"></p>
+ <input name="day" class="input1" type="number" value="<?php echo date('d', strtotime($getItem->since)); ?>" min="1" max="31"></p>
  <p><label><strong>Year:</strong></label> 
- <input name="year" class="input1" type="text" value="<?php echo date('Y', strtotime($getItem->since)); ?>"></p>
+ <input name="year" class="input1" type="number" value="<?php echo date('Y', strtotime($getItem->since)); ?>"></p>
 </fieldset>
 
 <fieldset>
@@ -784,7 +788,9 @@ if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
   } elseif (strlen($month) > 2 || strlen($day) > 2) {
    $tigers->displayError('Form Error', 'The <samp>month or day</samp>' . 
 	 ' field needs to be the length of 2 digits.', false);
-  }
+  } elseif(!checkdate($month, $day, $year)) {
+  $tigers->displayError('Form Error', 'The combination of day, month and year is incorrect, please check the date you entered.', false);
+ }
   $date = $tigers->cleanMys($year . '-' . $month . '-' . $day);
   if($seahorses->getVar($id, 'since') != $date) {
    $seahorses->editListing($id, 'since', $date);
@@ -978,7 +984,7 @@ if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
     if(empty($_POST['favefield'][$field])) {
 	   $members = $snakes->membersList($id);
 	   foreach($members as $mid) {
-	    $member = $snakes->getMembers($mid, 'object');
+        $member = $snakes->getMembers($mid, 'id', 'object', $id);
 	    $erase  = $snakes->eraseFave($member->mExtra, $value);
 		  if(isset($_POST['record']) && $_POST['record'] == 'yes') {
 	     $update = "UPDATE `$_ST[members]` SET `mExtra` = '' WHERE `mID` = '$mid' LIMIT 1";
@@ -999,7 +1005,7 @@ if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
   $listingnow = $wolves->getListings($id, 'object');
   $favesfields = explode('|', $listingnow->fave_fields);
   $favesfields = $tigers->emptyarray($favesfields);
-  if((count($additional) > count($favesfields)) && (count($favesfields) > 0)) {
+  if((count($additional) > (is_countable($favesfields) ? count($favesfields) : 0)) && ((is_countable($favesfields) ? count($favesfields) : 0) > 0)) {
    $changemem = $snakes->membersList($id);
    foreach($changemem as $cm) {
 	  $getmem = $snakes->getMembers($cm, 'object');
@@ -1104,6 +1110,9 @@ $favouritefields = '|' . trim($favouritefields, '|') . '|';
    $seahorses->editListing($id, 'desc', $desc);
   }
   $stats = trim(htmlentities($_POST['stats'], ENT_QUOTES));
+  if(empty($stats)) {
+   $stats = trim($templatesExamples->stats);
+  }
   if($seahorses->getVar($id, 'stats') != $stats) {
    $seahorses->editListing($id, 'stats', $stats);
   }
@@ -1112,41 +1121,43 @@ $favouritefields = '|' . trim($favouritefields, '|') . '|';
    $seahorses->editListing($id, 'quotes', $quotes);
   }
   $affiliates = trim(htmlentities($_POST['affiliates'], ENT_QUOTES));
+  if(empty($affiliates)) {
+   $affiliates = trim($templatesExamples->affiliates);
+  }
   if($seahorses->getVar($id, 'affiliates') != $affiliates) { 
    $seahorses->editListing($id, 'affiliates', $affiliates);
   }
   $wishlist = trim(htmlentities($_POST['wishlist'], ENT_QUOTES));
+  if(empty($wishlist)) {
+   $wishlist = trim($templatesExamples->wishlist);
+  }
   if($seahorses->getVar($id, 'wishlist') != $wishlist) {
    $seahorses->editListing($id, 'wishlist', $wishlist);
   }
   $updates = trim(htmlentities($_POST['updates'], ENT_QUOTES));
   if(empty($updates)) {
-   $updates = trim('<div class="entry_listingadmin">
-<span class="date">{date}</span> {entry}
-<p class="tc cat">Filed Under: {categories}</p>
-</div>');
+   $updates = trim($templatesExamples->updates);
   }
   if($seahorses->getVar($id, 'updates') != $updates) {
    $seahorses->editListing($id, 'updates', $updates);
   }
   $member = trim($_POST['mem']);
   if(empty($member)) {
-   $member = trim('<li>{name}<br />
-{email} &middot; {url}</li>');
+   $member = trim($templatesExamples->members);
   }
   if($seahorses->getVar($id, 'members') != $member) {
    $seahorses->editListing($id, 'members', $member);
   }
   $member_header = trim(htmlentities($_POST['mem-head'], ENT_QUOTES));
   if(empty($member_header)) {
-   $member_header = trim('<ol>');
+   $member_header = trim($templatesExamples->members_header);
   } 
   if($seahorses->getVar($id, 'members_header') != $member_header) {
    $seahorses->editListing($id, 'members_header', $member_header);
   }
   $member_footer = trim(htmlentities($_POST['mem-foot'], ENT_QUOTES));
   if(empty($member_footer)) {
-   $member_footer = trim('</ol>');
+   $member_footer = trim($templatesExamples->members_footer);
   }
   if($seahorses->getVar($id, 'members_footer') != $member_footer) {
    $seahorses->editListing($id, 'members_footer', $member_footer);
@@ -1168,7 +1179,7 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'new') {
 <fieldset>
  <legend>Details</legend>
  <p><label><strong>Title:</strong></label> <input name="title" class="input1" type="text"></p>
- <p><label><strong>Subject:</strong></label> <input name="subject" class="input1" type="text"></p>
+ <p><label><strong>Subject:</strong></label> <input name="subject" class="input1" type="text" required></p>
  <p><label><strong><abbr title="Uniform Resource Indentifier">URI</abbr>:</strong>
  </label> <input name="url" class="input1" type="url"></p>
  <p><label><strong>Status:</strong></label> 
@@ -1204,13 +1215,13 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'new') {
  <p><strong>Description:</strong><br>
  <textarea name="desc" cols="50" rows="8" style="height: 150px; margin: 0 1% 0 0; width: 99%;"></textarea></p>
  <p><strong>Stats Template:</strong><br>
- <textarea name="stats" cols="50" rows="8" style="height: 150px; margin: 0 1% 0 0; width: 99%;"></textarea></p>
+ <textarea name="stats" cols="50" rows="8" style="height: 150px; margin: 0 1% 0 0; width: 99%;"><?=$templatesExamples->stats;?></textarea></p>
 </fieldset>
 
 <fieldset>
  <legend>Categories and Opened Date</legend>
  <p><label><strong>Categor(y|ies):</strong></label> 
- <select name="category[]" class="input1" multiple="multiple" size="10">
+ <select name="category[]" class="input1" multiple="multiple" size="10" required>
 <?php 
  $select = "SELECT * FROM `$_ST[categories]` WHERE `parent` = '0' ORDER BY `catname` ASC";
  $true = $scorpions->query($select);
@@ -1233,7 +1244,7 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'new') {
  }
 ?>
  </select></p>
- <p><label><strong>Date Opened:</strong></label> <select name="month" class="input1">
+ <p><label><strong>Date Opened *:</strong></label> <select name="month" class="input1" required>
 <?php 
  $dateArray = $get_date_array;
  $dateNow1 = date('m');
@@ -1246,10 +1257,10 @@ elseif (isset($_GET['g']) && $_GET['g'] == 'new') {
  }
 ?>
  </select></p>
- <p class="tc"><label><strong>Day:</strong></label> 
- <input name="day" class="input1" type="text" value="<?php echo date('d'); ?>"></p>
- <p class="tc"><label><strong>Year:</strong></label> 
- <input name="year" class="input1" type="text" value="<?php echo date('Y'); ?>"></p>
+ <p class="tc"><label><strong>Day *:</strong></label>
+ <input name="day" class="input1" type="number" value="<?php echo date('d'); ?>" min="1" max="31" required></p>
+ <p class="tc"><label><strong>Year *:</strong></label>
+ <input name="year" class="input1" type="number" value="<?php echo date('Y'); ?>" required></p>
 </fieldset>
 
 <fieldset>
@@ -1274,7 +1285,7 @@ if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
         ' not valid. Please supply a valid site URL or empty the field.', false);
 }
  $image = $_FILES['image'];
- $image_tag = substr(sha1(date('YmdHis')), mt_rand(0, 15), 12);
+ $image_tag = substr(sha1(date('YmdHis')), random_int(0, 15), 12);
  if(!empty($_FILES['image']['name'])) {
 	$imageinfo = getimagesize($_FILES['image']['tmp_name']);
 	$imagetype = $imageinfo[2];
@@ -1284,7 +1295,7 @@ if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
   }
  }
 
- $category = $_POST['category'];
+ $category = $_POST['category'] ?? null;
  if(empty($category)) {
   $tigers->displayError('Form Error', 'Your <samp>category</samp> field' . 
 	' is empty.', false);
@@ -1316,6 +1327,8 @@ if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
  } elseif (strlen($month) > 2 || strlen($day) > 2) {
   $tigers->displayError('Form Error', 'The <samp>month or day</samp> field' . 
 	' needs to be the length of 2 digits.', false);
+ } elseif(!checkdate($month, $day, $year)) {
+  $tigers->displayError('Form Error', 'The combination of day, month and year is incorrect, please check the date you entered.', false);
  }
  $date = $tigers->cleanMys($year . '-' . $month . '-' . $day, 'y', 'n');
  $granted = $tigers->cleanMys($_POST['granted']);
@@ -1345,18 +1358,17 @@ if (!empty($url) && !StringUtils::instance()->isUrlValid($url)) {
  $cat = implode('!', $category);
  $cat = '!' . trim($cat, '!') . '!';
 
- $insert = "INSERT INTO `$_ST[main]` (`title`, `subject`, `url`, `image`," . 
+ $insert = "INSERT INTO `$_ST[main]` (`title`, `subject`, `url`, `image`," .
  ' `category`, `status`, `show`, `dbhost`, `dbuser`, `dbpass`, `dbname`,' .
  ' `dbtype`, `dbtabl`, `dblist`, `dbaffs`, `dbflid`, `dbhttp`, `dbpath`,' .
  ' `desc`, `stats`, `affiliates`, `wishlist`, `quotes`, `members`,' .
  ' `members_header`, `members_footer`, `updates`, `form_delete`, `form_form`,' .
  ' `form_join`, `form_join_rules`, `form_reset`, `form_update`, `fave_fields`,' .
- " `date`, `since`, `updated`, `granted`, `markup`) VALUES ('$title', '$subject'," . 
- " '$url', '$file', '$cat', '$status', 0, '', '', '', '', 'enth', '', 0, '', ''," . 
- " '', '', '$desc', '$stats', '', '', '', '', '', '', '', '', '', '', '', '', ''," . 
- " '', '$df', '$date', '0000-00-00', '$granted', '$markup')";
+ " `date`, `since`, `updated`, `granted`, `markup`, `previous`) VALUES ('$title', '$subject'," .
+ " '$url', '$file', '$cat', '$status', 0, '', '', '', '', 'enth', '', 0, '', 0," .
+ " '', '', '$desc', '$stats', '$templatesExamples->affiliates', '$templatesExamples->wishlist', '', '$templatesExamples->members', '$templatesExamples->members_header', '$templatesExamples->members_footer', '$templatesExamples->updates', '', '', '', '', '', ''," .
+ " '', '$df', '$date', '1970-01-01', '$granted', '$markup', '')";
  $true = $scorpions->insert($insert);
-
  if($true == false) {
   $tigers->displayError('Database Error', 'The script was unable to add' . 
 	' the listing to the database.|Make sure your listings table exists.', 
@@ -1466,7 +1478,7 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'Delete Listing') {
   echo '<p class="successButton"><span class="success">SUCCESS!</span> Your' .
 	" listing was deleted!</p>\n";
  }
- if($result == true) {
+ if(isset($result) && $result === true) {
   echo '<p class="successButton"><span class="success">SUCCESS!</span> The' .
 	" members from the deleted listing were deleted!</p>\n";
  }
@@ -1632,7 +1644,7 @@ listing.</p>
 	 $p = '';
 	 $s = '';
 	}
-	$total = count($wolves->listingsList('subject', $s, $p));
+	$total = is_countable($wolves->listingsList('subject', $s, $p)) ? count($wolves->listingsList('subject', $s, $p)) : 0;
   $pages = ceil($total/$per_page);
 	
 	$q = 'listings.php?';

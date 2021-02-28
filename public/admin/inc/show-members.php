@@ -32,6 +32,7 @@
         $options->listingID = $tigers->cleanMys($fKey);
         $getItem = $wolves->getListings($options->listingID, 'object');
     }
+    echo $checkCr;
 
     if (!isset($_GET['page']) || empty($_GET['page']) || !is_numeric($_GET['page'])) {
         $page = 1;
@@ -144,7 +145,7 @@
     }
     ?>
 
-    <p class="showCredit" style="text-align: center;">
+    <p class="showCredits-LA-RF" style="text-align: center;">
         Powered by <?php echo $octopus->formatCredit(); ?>
     </p>
 </div>
