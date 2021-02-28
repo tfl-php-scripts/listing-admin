@@ -3702,6 +3702,11 @@ parameters:
 			path: public/admin/listings.php
 
 		-
+			message: "#^Variable \\$laoptions might not be defined\\.$#"
+			count: 1
+			path: public/admin/listings.php
+
+		-
 			message: "#^Variable \\$get_markup_array might not be defined\\.$#"
 			count: 2
 			path: public/admin/listings.php
