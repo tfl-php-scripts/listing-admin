@@ -6,13 +6,13 @@ An original author is [Tess](http://scripts.wyngs.net) / readme by Tess can be f
 
 #### I would highly recommend not to use this script for new installations, please only update it if you have already installed it before.
 
-This version requires at least PHP 7.3 and MySQLi or PDO_MySQL extensions (with MySQL = 5.7).
+This version requires at least PHP 7.2 and MySQLi or PDO_MySQL extensions (with MySQL = 5.7).
 
 | PHP version | Supported by Listing Admin | Link to download |
 |------------------------------------------|-------------------------|---------------------|
 | 7.2 | + |[an archive of the public folder of this repository for PHP 7.2](https://scripts.robotess.net/files/listing-admin/php72-php73-master.zip)|
 | 7.3 | + |[an archive of the public folder of this repository for PHP 7.3](https://scripts.robotess.net/files/listing-admin/php72-php73-master.zip)| 
-| 7.4 | + |[an archive of the public folder of this repository for PHP 7.4](https://gitlab.com/tfl-php-scripts/enthusiast/-/archive/master/listing-admin-master.zip?path=public) ([mirror](https://scripts.robotess.net/files/listing-admin/php74-master.zip))|
+| 7.4 | + |[an archive of the public folder of this repository for PHP 7.4](https://gitlab.com/tfl-php-scripts/listing-admin/-/archive/master/listing-admin-master.zip?path=public) ([mirror](https://scripts.robotess.net/files/listing-admin/php74-master.zip))|
 | 8.0 | ? |-|
 
 **If you have MySQL 8.0 or higher, proper script operation is not guaranteed. For now, I'm not planning to support MySQL
