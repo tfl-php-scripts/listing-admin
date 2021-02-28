@@ -12,7 +12,8 @@ final class Templates
     public string $stats = '<p class="details">
 <strong>Members:</strong> {members} (<em>{pending} Pending </em>)<br>
 <strong>Since:</strong> {since}<br>
-<strong>Last Updated:</strong> {updated}
+<strong>Last Updated:</strong> {updated}<br>
+<strong>Newest Members:</strong> {newest}<br>
 <strong>Script used:</strong> <a href="https://scripts.robotess.net" target="_blank">Listing Admin [Robotess Fork]</a> (originally by <a href="http://scripts.wyngs.net/scripts/listingadmin/" target="_blank">Tess</a>)
 </p>';
     public string $affiliates = '<a href="{url}" target="_blank"><img src="{image}" alt="{subject}" title="{subject}" /></a>';
