@@ -57,8 +57,8 @@ if(isset($_GET['g']) && $_GET['g'] == 'manage') {
  $if4 = isset($_GET['o']) && $_GET['o'] == 'templates' ? '&#187; ' : '';
 ?>
 <menu>
- <li><?php echo $if2; ?><a href="listings.php?g=manage&#38;d=<?php echo $id; ?>&#38;o=crosslist">Crosslist</a></li>
  <li><?php echo $if1; ?><a href="listings.php?g=manage&#38;d=<?php echo $id; ?>">Details</a></li>
+ <li><?php echo $if2; ?><a href="listings.php?g=manage&#38;d=<?php echo $id; ?>&#38;o=crosslist">Crosslist</a></li>
  <li><?php echo $if3; ?><a href="listings.php?g=manage&#38;d=<?php echo $id; ?>&#38;o=options">Options</a></li>
  <li><?php echo $if4; ?><a href="listings.php?g=manage&#38;d=<?php echo $id; ?>&#38;o=templates">Templates</a></li>
 </menu>
@@ -69,6 +69,9 @@ if(isset($_GET['g']) && $_GET['g'] == 'manage') {
   if(isset($_GET['o']) && $_GET['o'] == 'crosslist') {
 ?>
 <h3>Crosslist</h3>
+<p class="scriptButton"><span class="script"><b>Notice:</b></span> This functionality has not been properly
+                tested in <?= $laoptions->version ?>. Please report any issues if such occur.
+            </p>
 <p>Crosslisting should only be used if you are crosslisting a fanlisting with
 another person, or are connecting another domain you own. <ins>This should only
 be used on a as-needed basis!</ins></p>

@@ -36,14 +36,6 @@ final class StringUtils
         return self::$instance;
     }
 
-    /**
-     * @deprecated
-     */
-    public function normalize(?string $data = null): string
-    {
-        return $this->normalizeUrl($data ?? '');
-    }
-
     public function normalizeUrl(?string $data = null): string
     {
         return trim($data ?? '');

@@ -69,7 +69,7 @@ final class PaginationUtils
 
         $previousPage = null;
         foreach ($otherPages as $i) {
-            if ($previousPage !== null && (int)($previousPage + 1) !== (int)$i) {
+            if ($previousPage !== null && ((int)$previousPage + 1) !== (int)$i) {
                 echo ' ... ';
             }
 

@@ -30,7 +30,7 @@ if (strpos($get_random_http, 'inc') === false || strpos($get_random_path, 'inc')
 if (is_file('install.php') || is_file('upgrade.php')) {
     ?>
     <p class="mysqlButton"><span class="mysql">Error:</span> It appears you still
-        have the <samp>/install/</samp> or <samp>/upgrade/</samp> folder still on your
+        have the <samp>install.php</samp> or <samp>upgrade.php</samp> files on your
         server. Both the local and online documentation clearly states to delete this
         as soon as you are done installing the script, as it's a security hazard.
         <ins>DO NOT DISAPPOINT AND POSSIBLY DAMAGE YOUR SERVER</ins>
