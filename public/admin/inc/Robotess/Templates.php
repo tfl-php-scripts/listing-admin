@@ -13,12 +13,12 @@ final class Templates
 <strong>Members:</strong> {members} (<em>{pending} Pending </em>)<br>
 <strong>Since:</strong> {since}<br>
 <strong>Last Updated:</strong> {updated}
-<strong>Script used:</strong> <a href="https://scripts.robotess.net">Listing Admin [Robotess Fork]</a> (originally by Tess)
+<strong>Script used:</strong> <a href="https://scripts.robotess.net" target="_blank">Listing Admin [Robotess Fork]</a> (originally by <a href="http://scripts.wyngs.net/scripts/listingadmin/" target="_blank">Tess</a>)
 </p>';
-    public string $affiliates = '<a href="{url}"><img src="{image}" alt="{subject}" title="{subject}" /></a>';
+    public string $affiliates = '<a href="{url}" target="_blank"><img src="{image}" alt="{subject}" title="{subject}" /></a>';
     public string $wishlist = '';
     public string $members = '<li>{name}<br />
-{email} &middot; {url}</li>';
+{email} &middot; {url}{fave_field}</li>';
     public string $members_header = '<ol>';
     public string $members_footer = '</ol>';
     public string $updates = '<div class="entry_listingadmin">
